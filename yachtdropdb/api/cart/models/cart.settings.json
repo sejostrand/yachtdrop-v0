@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "carts",
+  "info": {
+    "name": "Cart",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "cart_id": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "product_id": {
+      "type": "string",
+      "required": true
+    },
+    "item_quantity": {
+      "type": "integer",
+      "required": true,
+      "default": 1
+    },
+    "cart_created": {
+      "type": "datetime",
+      "required": false
+    },
+    "cart_updated": {
+      "type": "datetime"
+    },
+    "products": {
+      "collection": "product"
+    },
+    "order": {
+      "model": "order"
+    }
+  }
+}

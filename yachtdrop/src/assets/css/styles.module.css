@@ -1,0 +1,17 @@
+.NavLink {
+}
+
+.NavMenu {
+  background-color: orange;
+}
+
+.Nav {
+  background-color: white;
+  height: 80px;
+}
+
+.NavBar {
+  display: inline;
+  position: fixed;
+  height: 100px;
+}

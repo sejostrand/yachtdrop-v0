@@ -1,0 +1,29 @@
+wine {
+  name: 'Wine';
+  color: purple;
+  icon: '#';
+}
+
+champagne {
+  name: 'Champagne';
+  color: yellow;
+  icon: '#';
+}
+
+spirits {
+  name: 'Spirits';
+  color: blue;
+  icon: '#';
+}
+
+beer {
+  name: 'Beer';
+  color: orange;
+  icon: '#';
+}
+
+softdrinks {
+  name: 'Soft Drinks';
+  color: green;
+  icon: '#';
+}

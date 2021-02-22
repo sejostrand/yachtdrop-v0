@@ -1,0 +1,22 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Calibri';
+  color: black;
+}
+
+body {
+  background-color: lightgray;
+}
+
+/*
+.grid-container {
+  height: 100vh;
+  display: grid;
+  grid-template:
+    'header header header' 100px
+    'nav main ads' 1fr
+    'footer footer footer' 100px
+    / 20% 1fr 15%;
+    */

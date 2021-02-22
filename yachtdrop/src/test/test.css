@@ -1,0 +1,96 @@
+/* Font styling */
+@font-face {
+  font-family: MomcakeThin;
+  src: url(../assets/fonts/MomcakeThin-9Y6aZ.otf);
+}
+
+header img {
+  height: 40px;
+  margin-left: 40px;
+}
+
+header img.icon {
+  height: 40px;
+  margin-left: 40px;
+  float: left;
+}
+
+body {
+  height: 0px;
+  background: lightgray;
+  background-size: cover;
+  font-family: MomcakeThin;
+  margin-top: 0px;
+  padding: 0px;
+}
+
+main {
+  color: white;
+}
+
+header {
+  background-color: green;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 25px 0 black;
+}
+
+header * {
+  display: flex;
+}
+
+header li {
+  margin: 20px;
+}
+
+header li a {
+  color: black;
+  text-decoration: none;
+}
+
+header div {
+  background-color: #f8694b;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  display: flex;
+}
+
+header li a.subNav {
+  color: black;
+  text-decoration: none;
+}
+
+header div.subNav {
+  background-color: #f8694b;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  display: flex;
+}
+
+div {
+  padding: 0px;
+  margin: 0px;
+  display: inline-flex;
+}
+
+div div.img {
+  padding: 0px;
+  margin: 0px;
+}
+
+div div.cover {
+  margin: 0px;
+  padding: 0px;
+  width: 50vw;
+}

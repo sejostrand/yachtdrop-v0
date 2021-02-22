@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "customers",
+  "info": {
+    "name": "Customer",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "first_name": {
+      "type": "string",
+      "required": true
+    },
+    "last_name": {
+      "type": "string",
+      "required": true
+    },
+    "customer_email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "vessel": {
+      "type": "string"
+    },
+    "customer_password": {
+      "type": "password",
+      "required": false
+    },
+    "customer_id": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "reset_password": {
+      "type": "password"
+    },
+    "date_joined": {
+      "type": "date"
+    }
+  }
+}
