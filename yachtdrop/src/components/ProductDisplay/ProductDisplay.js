@@ -3,12 +3,21 @@ import styled from 'styled-components';
 import ProductTile from './objects/ProductTile.js';
 
 const DisplayWrapper = styled.div`
-  padding: 10px;
+  margin-left: 300px;
+  padding: 20px;
   background-color: lightgray;
+  display: flex;
 `;
 
 const ProductDisplay = () => {
-  return <ProductTile />;
+  return (
+    <DisplayWrapper>
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+    </DisplayWrapper>
+  );
 };
 
 export default ProductDisplay;

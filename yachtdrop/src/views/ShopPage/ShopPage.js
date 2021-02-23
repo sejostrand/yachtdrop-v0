@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import NavBar from '../../components/NavBar/NavBar.js';
 import FilterBar from '../../components/FilterBar/FilterBar.js';
 import Footer from '../../components/Footer/Footer.js';
-import ProductTile from '../../components/ProductDisplay/objects/ProductTile.js';
+import ProductDisplay from '../../components/ProductDisplay/ProductDisplay.js';
 import CaptionBar from '../../objects/CaptionBar.js';
 
 import './ShopPage.css';
@@ -22,7 +22,7 @@ const ShopPage = () => {
       <FilterBar />
       <ShopBodyWrapper>
         <CaptionBar />
-        <ProductTile />
+        <ProductDisplay />
         <Footer />
       </ShopBodyWrapper>
     </>

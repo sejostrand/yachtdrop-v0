@@ -5,12 +5,14 @@ import ProductIcon from '../../../assets/img/wine.jpg';
 const TileWrapper = styled.div`
   padding: 5px;
   background-color: white;
-  width: 200px;
-  height: 500px;
+  width: 160px;
+  height: 250px;
+  margin: 10px;
 `;
 
 const ProductImage = styled.img`
-  width: 50px;
+  width: 150px;
+  height: 200px;
 `;
 
 const ProductName = styled.div`
