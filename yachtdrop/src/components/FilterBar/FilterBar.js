@@ -1,7 +1,13 @@
 import styled from 'styled-components';
 import React from 'react';
+import BarButton from './objects/BarButton.js';
 
 const FilterBarWrapper = styled.div`
+  position: fixed;
+  margin-top: 93px;
+`;
+
+const FilterGrid = styled.div`
   justify-content: left;
   height: 100vh;
   width: 300px;
@@ -18,12 +24,27 @@ const FilterDiv = styled.div`
   border-bottom: 2px solid lightgray;
 `;
 
+const FilterTitle = styled.div`
+  padding: 16px;
+  font-size: 30px;
+`;
+
+const BlackSection = styled.div`
+  background-color: black;
+  height: 21px;
+`;
+
 const FilterBar = () => {
   return (
     <FilterBarWrapper>
-      <FilterDiv>Type</FilterDiv>
-      <FilterDiv>Region</FilterDiv>
-      <FilterDiv>Price</FilterDiv>
+      <BarButton />
+      <BlackSection />
+      <FilterGrid>
+        <FilterTitle>Filter by</FilterTitle>
+        <FilterDiv>Type</FilterDiv>
+        <FilterDiv>Region</FilterDiv>
+        <FilterDiv>Price</FilterDiv>
+      </FilterGrid>
     </FilterBarWrapper>
   );
 };
