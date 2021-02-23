@@ -5,21 +5,27 @@ const StyledSearchBar = styled.div`
   background-color: white;
   position: inline;
   justify-content: center;
-  align-items: left;
+  align-items: center;
+  width: 100vw;
 `;
 
-const LocationTag = styled.span`
+const LocationTag = styled.div`
   align-self: center;
-  padding: 2px 100px 2px 63px;
+  margin: 0px 94px 0px 53px;
+  padding: 0px 5px 0px 13px;
   display: inline-block;
   letter-spacing: 8px;
   font-size: 20px;
   font-weight: bold;
+  border-radius: 10px;
+  border-bottom: 4px solid #f8694b;
+  cursor: pointer;
 `;
 
 const SearchForm = styled.span`
   justify-self: center;
   display: inline-block;
+  width: 150vmin;
 `;
 
 const Search = styled.input`
@@ -28,8 +34,8 @@ const Search = styled.input`
   width: 400px;
   display: inline-flex;
   margin: 5px 5px;
-
-  border: 1px solid gray;
+  width: 100%;
+  border: none;
   border-radius: 7px;
 `;
 

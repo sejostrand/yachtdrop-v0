@@ -17,6 +17,7 @@ const LogoContainer = styled.div`
 
 const StyledNavLogo = styled.img`
   height: 20px;
+  cursor: pointer;
 `;
 
 export default NavLogo;

@@ -19,13 +19,13 @@ const Nav = styled.nav`
   min-height: 3rem;
 `;
 
-const NavContainer = styled.div`
+const NavWrap = styled.div`
   box-shadow: 0px 0px 25px;
 `;
 
 const NavBar = () => {
   return (
-    <NavContainer>
+    <NavWrap>
       <Nav>
         <NavMenu>
           <NavLogo />
@@ -42,7 +42,7 @@ const NavBar = () => {
       </Nav>
       <SearchBar />
       <CaptionBar />
-    </NavContainer>
+    </NavWrap>
   );
 };
 

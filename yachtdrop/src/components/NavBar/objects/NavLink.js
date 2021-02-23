@@ -12,12 +12,15 @@ const StyledNavLink = styled.div`
   text-decoration: none;
   color: white;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: bold;
   letter-spacing: 2px;
+  border-radius: 8px;
 
   &:hover {
-    border-bottom: 3px solid white;
+    border-bottom: 3px solid #f8694b;
+    background-color: white;
+    color: black;
   }
 `;
 
