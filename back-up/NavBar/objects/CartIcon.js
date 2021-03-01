@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledNavLink = styled.div`
+const StyledCartIcon = styled.div`
   color: white;
+  background-color: #f8694b;
   font-family: 'Calibri';
   font-size: 13px;
   font-weight: bold;
@@ -14,17 +15,20 @@ const StyledNavLink = styled.div`
   height: 2rem;
   border-radius: 8px;
   padding: 8px 40px;
+  margin-top: 6px;
+  display: inline-block;
+  float: right;
   cursor: pointer;
 
   &:hover {
-    border-bottom: 3px solid #f8694b;
+    border: 3px solid #f8694b;
     background-color: #f8faf7;
     color: black;
   }
 `;
 
-const NavLink = ({ children }) => {
-  return <StyledNavLink>{children}</StyledNavLink>;
+const CartIcon = () => {
+  return <StyledCartIcon>Cart</StyledCartIcon>;
 };
 
-export default NavLink;
+export default CartIcon;

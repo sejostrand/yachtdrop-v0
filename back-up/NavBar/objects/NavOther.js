@@ -6,6 +6,7 @@ const StyledNavOther = styled.div`
   justify-content: center;
   align-items: center;
   justify-self: end;
+  padding: 0px 30px;
 `;
 
 const NavOther = ({ children }) => {

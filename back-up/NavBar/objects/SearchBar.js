@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import CartIcon from './CartIcon';
 
 const StyledSearchBar = styled.div`
   background-color: white;
@@ -31,10 +32,9 @@ const SearchForm = styled.span`
 const Search = styled.input`
   padding: 5px;
   font-size: 20px;
-  width: 400px;
+  width: 500px;
   display: inline-flex;
   margin: 5px 5px;
-  width: 100%;
   border: none;
   border-radius: 7px;
 `;
@@ -46,6 +46,7 @@ const SearchBar = () => {
       <SearchForm>
         <Search type='text' placeholder='What can we help you find?' />
       </SearchForm>
+      <CartIcon />
     </StyledSearchBar>
   );
 };

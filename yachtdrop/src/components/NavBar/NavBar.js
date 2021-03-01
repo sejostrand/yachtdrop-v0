@@ -1,49 +1,43 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ProfileIcon from './objects/ProfileIcon.js';
-import CartIcon from './objects/CartIcon.js';
-import NavLink from './objects/NavLink.js';
-import NavMenu from './objects/NavMenu.js';
-import NavOther from './objects/NavOther.js';
-import NavLogo from './objects/NavLogo.js';
-import SearchBar from './objects/SearchBar.js';
+// IMPORT COMPONENTS
+import NavMenu from './objects/NavMenu';
+import NavLogo from './objects/NavLogo';
+import NavAdmin from './objects/NavAdmin';
+import MenuLink from './objects/MenuLink';
+import LoginLink from './objects/LoginLink';
+import ProfileLink from './objects/ProfileLink';
+import SignUpLink from './objects/SignUpLink';
 
-const Nav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: top;
-  flex-wrap: wrap;
+const StyledNavBar = styled.nav`
   background-color: #03b29a;
-  min-height: 3rem;
-`;
+  padding: 5px 25px;
+  width: 100vw;
+  justify-content: space-between;
+  top: 0;
 
-const NavWrap = styled.div`
-  box-shadow: 0px 0px 5px;
+  display: flex;
   position: fixed;
+  z-index: 10;
 `;
 
 const NavBar = () => {
   return (
-    <>
-      <NavWrap>
-        <Nav>
-          <NavMenu>
-            <NavLogo />
-            <NavLink>Wine</NavLink>
-            <NavLink>Spirits</NavLink>
-            <NavLink>Beer</NavLink>
-            <NavLink>Soft Drinks</NavLink>
-            <NavLink>More</NavLink>
-          </NavMenu>
-          <NavOther>
-            <ProfileIcon />
-            <CartIcon />
-          </NavOther>
-        </Nav>
-        <SearchBar />
-      </NavWrap>
-    </>
+    <StyledNavBar>
+      <NavLogo />
+      <NavMenu>
+        <MenuLink>Wine</MenuLink>
+        <MenuLink>Spirits</MenuLink>
+        <MenuLink>Beer</MenuLink>
+        <MenuLink>Other</MenuLink>
+      </NavMenu>
+      <NavAdmin>
+        <LoginLink />
+        <ProfileLink />
+        <SignUpLink />
+      </NavAdmin>
+    </StyledNavBar>
   );
 };
 

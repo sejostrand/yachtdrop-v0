@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledNavLink = styled.div`
+const StyledProfileLink = styled.div`
   color: white;
   font-family: 'Calibri';
   font-size: 13px;
@@ -13,7 +13,8 @@ const StyledNavLink = styled.div`
 
   height: 2rem;
   border-radius: 8px;
-  padding: 8px 40px;
+  padding: 8px 20px;
+  margin: 5px;
   cursor: pointer;
 
   &:hover {
@@ -23,8 +24,8 @@ const StyledNavLink = styled.div`
   }
 `;
 
-const NavLink = ({ children }) => {
-  return <StyledNavLink>{children}</StyledNavLink>;
+const ProfileLink = () => {
+  return <StyledProfileLink>Profile</StyledProfileLink>;
 };
 
-export default NavLink;
+export default ProfileLink;

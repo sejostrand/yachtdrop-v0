@@ -1,30 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import NavBar from '../../components/NavBar/NavBar.js';
+// IMPORT COMPONENTS
+import NavBar from '../../components/NavBar/NavBar';
+import SearchBar from '../../components/SearchBar/SearchBar';
 import FilterBar from '../../components/FilterBar/FilterBar.js';
 import Footer from '../../components/Footer/Footer.js';
 import ProductDisplay from '../../components/ProductDisplay/ProductDisplay.js';
 import CaptionBar from '../../objects/CaptionBar.js';
-
-import './ShopPage.css';
-
-const ShopBodyWrapper = styled.div`
-  justify-content: center;
-  background-color: lightgray;
-  padding-top: 92px;
-`;
+import BodyWrapper from '../../components/BodyWrapper/BodyWrapper.js';
 
 const ShopPage = () => {
   return (
     <>
       <NavBar />
-      <FilterBar />
-      <ShopBodyWrapper>
+      <SearchBar />
+      <BodyWrapper>
         <CaptionBar />
         <ProductDisplay />
-        <Footer />
-      </ShopBodyWrapper>
+        <Footer />>
+      </BodyWrapper>
     </>
   );
 };

@@ -18,7 +18,7 @@ const ProductTile = () => {
   return (
     <body>
       <StyledProductTile>
-        <ProductName>PIsco</ProductName>
+        <ProductName></ProductName>
       </StyledProductTile>
     </body>
   );
