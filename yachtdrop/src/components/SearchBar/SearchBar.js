@@ -13,7 +13,7 @@ const StyledSearchBar = styled.div`
   background-color: white;
   display: flex;
   position: fixed;
-  width: 100vw;
+  width: 100%;
   z-index: 9;
   box-shadow: 0px 0px 7px;
   justify-content: space-between;

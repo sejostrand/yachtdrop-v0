@@ -18,7 +18,7 @@ const ShopPage = () => {
       <BodyWrapper>
         <CaptionBar />
         <ProductDisplay />
-        <Footer />>
+        <Footer />
       </BodyWrapper>
     </>
   );

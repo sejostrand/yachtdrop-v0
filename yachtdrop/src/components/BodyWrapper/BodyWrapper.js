@@ -7,6 +7,7 @@ const StyledBodyWrapper = styled.body`
   justify-content: space-between;
   background-color: lightgray;
   height: 800px;
+  width: 100%;
 `;
 
 const BodyWrapper = ({ children }) => {

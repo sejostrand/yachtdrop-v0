@@ -4,11 +4,9 @@ import ProductTile from './objects/ProductTile.js';
 import RowWrapper from './objects/RowWrapper.js';
 
 const DisplayWrapper = styled.div`
-  margin-left: 300px;
   padding: 20px 0px;
   background-color: #f8faf7;
-  display: flex;
-  width: 100vw;
+  width: 100%;
 `;
 
 const Title = styled.h1`
@@ -16,6 +14,7 @@ const Title = styled.h1`
   font-size: 30px;
   padding-top: 20px;
   padding-left: 30px;
+  display: relative;
 `;
 
 const ProductDisplay = () => {

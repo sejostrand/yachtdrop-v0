@@ -4,8 +4,10 @@ import styled from 'styled-components';
 const FooterWrapper = styled.footer`
   justify-items: space-between;
   background-color: #f8694b;
-  width: 100vw;
+  padding: 5px 25px;
+  width: 100%;
   height: 200px;
+  bottom: 0;
 `;
 
 const FooterDiv = styled.div`

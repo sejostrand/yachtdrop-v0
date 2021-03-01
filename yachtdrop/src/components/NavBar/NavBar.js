@@ -13,7 +13,7 @@ import SignUpLink from './objects/SignUpLink';
 const StyledNavBar = styled.nav`
   background-color: #03b29a;
   padding: 5px 25px;
-  width: 100vw;
+  width: 99vw;
   justify-content: space-between;
   top: 0;
 
