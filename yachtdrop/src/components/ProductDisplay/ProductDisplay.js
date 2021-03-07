@@ -20,8 +20,8 @@ const Title = styled.h1`
 const ProductDisplay = () => {
   return (
     <DisplayWrapper>
+      <Title>Red Wine</Title>
       <RowWrapper>
-        <Title>Red Wine</Title>
         <ProductTile />
         <ProductTile />
         <ProductTile />

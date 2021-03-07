@@ -3,10 +3,7 @@ import styled from 'styled-components';
 
 const StyledBodyWrapper = styled.body`
   padding-top: 97px;
-  z-index: 3;
-  justify-content: space-between;
-  background-color: lightgray;
-  height: 800px;
+  background-color: red;
   width: 100%;
 `;
 

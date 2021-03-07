@@ -4,6 +4,7 @@ import BarButton from './objects/BarButton.js';
 
 const FilterBarWrapper = styled.div`
   position: fixed;
+  float: left;
   margin-top: 89px;
   z-index: 2;
   box-shadow: 0px 0px 5px;

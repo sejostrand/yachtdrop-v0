@@ -1,18 +1,47 @@
 import React from 'react';
 import styled from 'styled-components';
 import ProductIcon from '../../../assets/img/product-icons/test.jpg';
-import AddButton from './AddButton.js';
+//import AddButton from './AddButton.js';
+
+const AddButtonWrapper = styled.div`
+  background-color: #f8694b;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  cursor: pointer;
+  margin-top: 115px;
+  margin-left: 15px;
+
+  padding: 5px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  border-radius: 4px;
+  width: 130px;
+  height: 50px;
+  opacity: 0.7;
+
+  visibility: hidden;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
 
 const TileWrapper = styled.div`
   padding: 5px;
   margin: 20px 10px 20px 10px;
   background-color: #f8faf7;
   display: inline-block;
+  cursor: pointer;
+  position: relative;
+  border-radius: 4px;
 
-  &:hover ${AddButton} {
-    display: none;
-    width: 200px;
-    transition: width 0.35s ease-in;
+  &:hover ${AddButtonWrapper} {
+    visibility: visible;
   }
 `;
 
@@ -49,7 +78,7 @@ const ProductTile = () => {
   return (
     <TileWrapper>
       <ProductImage src={ProductIcon} />
-      <AddButton />
+      <AddButtonWrapper>ADD</AddButtonWrapper>
       <DetailsWrapper>
         <ProductName>Louis Jadot</ProductName>
         <ProductPrice>$ 34.99</ProductPrice>

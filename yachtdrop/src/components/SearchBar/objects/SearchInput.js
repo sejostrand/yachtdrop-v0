@@ -12,6 +12,10 @@ const StyledSearchInput = styled.input`
   justify-self: center;
   display: inline-block;
   width: 150vmin;
+
+  :focus {
+    border: none;
+  }
 `;
 
 const SearchInput = () => {

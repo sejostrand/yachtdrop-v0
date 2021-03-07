@@ -19,6 +19,8 @@ const AddButtonWrapper = styled.div`
   width: 130px;
   height: 50px;
 
+  visibility: hidden;
+
   &:hover {
     background-color: #f8694b;
   }

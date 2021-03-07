@@ -9,6 +9,7 @@ import MenuLink from './objects/MenuLink';
 import LoginLink from './objects/LoginLink';
 import ProfileLink from './objects/ProfileLink';
 import SignUpLink from './objects/SignUpLink';
+import YachtdropLogo from '../../objects/YachtdropLogo';
 
 const StyledNavBar = styled.nav`
   background-color: #03b29a;
@@ -16,7 +17,6 @@ const StyledNavBar = styled.nav`
   width: 100%;
   justify-content: space-between;
   top: 0;
-
   display: flex;
   position: fixed;
   z-index: 10;
@@ -25,7 +25,7 @@ const StyledNavBar = styled.nav`
 const NavBar = () => {
   return (
     <StyledNavBar>
-      <NavLogo />
+      <YachtdropLogo />
       <NavMenu>
         <MenuLink>Wine</MenuLink>
         <MenuLink>Spirits</MenuLink>

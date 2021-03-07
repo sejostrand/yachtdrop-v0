@@ -7,20 +7,25 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import FilterBar from '../../components/FilterBar/FilterBar.js';
 import Footer from '../../components/Footer/Footer.js';
 import ProductDisplay from '../../components/ProductDisplay/ProductDisplay.js';
-import CaptionBar from '../../objects/CaptionBar.js';
+import CoverBar from '../../components/CoverBar/CoverBar';
 import BodyWrapper from '../../components/BodyWrapper/BodyWrapper.js';
+import SortBy from '../../components/SortBy/SortBy.js';
+
+const StyledShopPage = styled.div``;
 
 const ShopPage = () => {
   return (
-    <>
+    <StyledShopPage>
       <NavBar />
       <SearchBar />
       <BodyWrapper>
-        <CaptionBar />
+        <FilterBar />
+        <CoverBar />
+        <SortBy />
         <ProductDisplay />
-        <Footer />
       </BodyWrapper>
-    </>
+      <Footer />
+    </StyledShopPage>
   );
 };
 
