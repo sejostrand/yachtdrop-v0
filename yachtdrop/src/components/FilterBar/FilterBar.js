@@ -3,16 +3,17 @@ import React from 'react';
 import BarButton from './objects/BarButton.js';
 
 const FilterBarWrapper = styled.div`
-  position: fixed;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
   float: left;
-  margin-top: 89px;
-  z-index: 2;
-  box-shadow: 0px 0px 5px;
+  z-index: 3;
 `;
 
 const FilterGrid = styled.div`
   justify-content: left;
-  height: 100vh;
+  height: 100%;
   width: 300px;
   background-color: #f8faf7;
   padding: 20px;
@@ -34,7 +35,7 @@ const FilterTitle = styled.div`
 
 const BlackSection = styled.div`
   background-color: black;
-  height: 21px;
+  height: 19px;
 `;
 
 const FilterBar = () => {

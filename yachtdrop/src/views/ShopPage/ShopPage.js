@@ -8,7 +8,8 @@ import FilterBar from '../../components/FilterBar/FilterBar.js';
 import Footer from '../../components/Footer/Footer.js';
 import ProductDisplay from '../../components/ProductDisplay/ProductDisplay.js';
 import CoverBar from '../../components/CoverBar/CoverBar';
-import BodyWrapper from '../../components/BodyWrapper/BodyWrapper.js';
+import BodyWrapper from '../../objects/BodyWrapper.js';
+import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '../../components/SortBy/SortBy.js';
 
 const StyledShopPage = styled.div``;
@@ -19,10 +20,14 @@ const ShopPage = () => {
       <NavBar />
       <SearchBar />
       <BodyWrapper>
-        <FilterBar />
-        <CoverBar />
-        <SortBy />
-        <ProductDisplay />
+        <BodyDiv>
+          <FilterBar />
+        </BodyDiv>
+        <BodyDiv>
+          <CoverBar />
+          <SortBy />
+          <ProductDisplay />
+        </BodyDiv>
       </BodyWrapper>
       <Footer />
     </StyledShopPage>

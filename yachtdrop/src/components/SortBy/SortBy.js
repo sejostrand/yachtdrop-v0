@@ -18,6 +18,9 @@ const SortTitle = styled.div`
   display: flex;
   padding: 0px 10px;
   font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 `;
 
 const SortBy = () => {

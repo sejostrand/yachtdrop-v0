@@ -5,6 +5,7 @@ const StyledBodyWrapper = styled.body`
   padding-top: 97px;
   background-color: red;
   width: 100%;
+  display: flex;
 `;
 
 const BodyWrapper = ({ children }) => {
