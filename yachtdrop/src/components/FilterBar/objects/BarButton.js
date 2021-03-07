@@ -3,7 +3,7 @@ import React from 'react';
 
 const ButtonWrapper = styled.div`
   margin-top: 30px;
-  margin-left: 290px;
+  margin-left: 288.5px;
   padding-top: 5px;
   padding-left: 2px;
   position: fixed;

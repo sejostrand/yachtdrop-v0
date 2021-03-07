@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import React from 'react';
 import BarButton from './objects/BarButton.js';
+import Checkbox from './objects/Checkbox.js';
 
 const FilterBarWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  margin: 0px;
   position: relative;
   float: left;
   z-index: 3;
@@ -21,6 +22,7 @@ const FilterGrid = styled.div`
   font-size: 15px;
   font-weight: bold;
   letter-spacing: 2px;
+  border-right: 3px solid black;
 `;
 
 const FilterDiv = styled.div`
@@ -46,6 +48,7 @@ const FilterBar = () => {
       <FilterGrid>
         <FilterTitle>Filter by</FilterTitle>
         <FilterDiv>Type</FilterDiv>
+        <input type='checkbox' />
         <FilterDiv>Region</FilterDiv>
         <FilterDiv>Price</FilterDiv>
       </FilterGrid>

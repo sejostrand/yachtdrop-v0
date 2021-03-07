@@ -20,9 +20,7 @@ const ShopPage = () => {
       <NavBar />
       <SearchBar />
       <BodyWrapper>
-        <BodyDiv>
-          <FilterBar />
-        </BodyDiv>
+        <FilterBar />
         <BodyDiv>
           <CoverBar />
           <SortBy />

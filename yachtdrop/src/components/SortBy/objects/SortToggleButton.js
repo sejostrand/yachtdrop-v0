@@ -23,6 +23,7 @@ const StyledSortToggleButton = styled.div`
     border: 3px solid #03b29a;
     color: #03b29a;
     padding: 0px 17px;
+    border-radius: 8px;
   }
 `;
 
