@@ -17,6 +17,7 @@ const StyledSortToggleButton = styled.div`
   border-radius: 10px;
   cursor: pointer;
   align-self: space-between;
+  display: flex;
 
   &:hover {
     background-color: white;
