@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledBodyDiv = styled.div`
-  width: calc(100% - 200px);
+  width: calc(100% - 300px);
   display: block;
 `;
 

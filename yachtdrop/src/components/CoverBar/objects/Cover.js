@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import coverImage from '../../../assets/img/yacht2.jpg';
+import coverImage from '../../../assets/img/coverimg.jpg';
 
 const StyledCover = styled.img`
   width: 100%;
-  height: 100px;
+  height: auto;
 `;
 
 const Cover = () => {
