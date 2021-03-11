@@ -12,6 +12,9 @@ import BodyWrapper from '../../objects/BodyWrapper.js';
 import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '../../components/SortBy/SortBy.js';
 
+// Import The footer
+import App from '../HomePage/components/Footer/App'
+
 const StyledShopPage = styled.div``;
 
 const ShopPage = () => {
@@ -27,7 +30,7 @@ const ShopPage = () => {
           <ProductDisplay />
         </BodyDiv>
       </BodyWrapper>
-      <Footer />
+      <App />
     </StyledShopPage>
   );
 };
