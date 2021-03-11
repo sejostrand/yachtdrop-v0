@@ -13,8 +13,9 @@ const MainWrapper = styled.div`
     justify-content: center;
     width: 100%;
     height: 250px;
-    background-color: #ffe;
+    //background-color: #fffbf0;
     //background-color: #31708E;
+    background-color: #f8faf7;
 `;
 
 const HowItWorksWrapper = styled.div`

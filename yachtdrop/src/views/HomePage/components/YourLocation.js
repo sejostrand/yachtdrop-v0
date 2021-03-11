@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const YourLocationWrapper = styled.div`
     width: 63%;
     height: 33%;
-    background-color: #f7f9fb;
+    background-color: #fff;
     position: absolute;
     margin-top: -30px;
     border: 1px grey solid;
@@ -14,7 +14,7 @@ const YLText = styled.h1`
     font-family: sans-serif;
     font-size: 40px;
     text-align: center;
-    color: red;
+    color: #f8694b;
     padding: 25px;
     margin-top: 10px;
 `;
@@ -24,7 +24,7 @@ const YLSubText = styled.h4`
     font-size: 20px;
     text-align: center;
     color: black;
-    margin-top: -30px;
+    margin-top: -15px;
 `;
 
 const YLInput = styled.input`
@@ -33,7 +33,7 @@ const YLInput = styled.input`
     font-size: 20px;
     text-align: center;
     margin-left: 10%;
-    margin-top: -1%;
+    margin-top: 1%;
 `;
 
 

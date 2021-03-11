@@ -7,7 +7,8 @@ export const Container = styled.div`
   //background-color: #DADED4;
   //background-color: #FDF8F5;
   //background-color: #2d545e;
-  background-color: #31708E;
+  //background-color: #31708E;
+  background-color: #f8694b;
 
   @media (max-width: 1000px) {
     padding: 70px 30px;
