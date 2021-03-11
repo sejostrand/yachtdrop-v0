@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { COLORS, FONTS } from '../../../assets/theme/theme';
 
 const StyledNavLink = styled.div`
-  color: white;
-  font-family: 'Calibri';
+  color: ${COLORS.color1};
+  font-family: ${FONTS.primaryFont};
   font-size: 13px;
   font-weight: bold;
   letter-spacing: 2px;

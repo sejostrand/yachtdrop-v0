@@ -11,8 +11,11 @@ import ProfileLink from './objects/ProfileLink';
 import SignUpLink from './objects/SignUpLink';
 import YachtdropLogo from '../../objects/YachtdropLogo';
 
+//import colors
+import { COLORS } from '../../assets/theme/theme';
+
 const StyledNavBar = styled.nav`
-  background-color: #03b29a;
+  background-color: ${COLORS.color1};
   padding: 5px 25px;
   width: 100%;
   justify-content: space-between;
