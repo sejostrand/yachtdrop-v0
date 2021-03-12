@@ -8,6 +8,11 @@ const YourLocationWrapper = styled.div`
     position: absolute;
     margin-top: -30px;
     border: 1px grey solid;
+
+    @media (max-width: 1000px) {
+        width: 63%;
+        height: 20%;
+    }
 `;
 
 const YLText = styled.h1`
@@ -17,6 +22,11 @@ const YLText = styled.h1`
     color: #f8694b;
     padding: 25px;
     margin-top: 10px;
+
+    @media (max-width: 1000px) {
+        font-size: 17px;
+        margin-top: -17px;
+    }
 `;
 
 const YLSubText = styled.h4`
@@ -25,6 +35,11 @@ const YLSubText = styled.h4`
     text-align: center;
     color: black;
     margin-top: -15px;
+
+    @media (max-width: 1000px) {
+        font-size: 13px;
+        margin-top: -17px;
+    }
 `;
 
 const YLInput = styled.input`

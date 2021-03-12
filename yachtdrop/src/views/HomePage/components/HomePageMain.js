@@ -15,6 +15,10 @@ const MainWrapper = styled.div`
     height: 250px;
     background-color: #f8faf7;
     //background-color: #31708E;
+
+    @media (max-width: 1000px) {
+        height: 110px;
+    }
 `;
 
 const HowItWorksWrapper = styled.div`

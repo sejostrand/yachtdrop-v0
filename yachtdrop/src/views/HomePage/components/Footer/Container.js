@@ -1,11 +1,14 @@
 import React from 'react'
 import Footer from '../Footer/components/footer/index'
 import Icon from '../Footer/components/icons/index'
+import YD from '../../../../assets/media/yd-logo-black.png'
+
 
 export function FooterContainer() {
     return (
         <Footer>
             <Footer.Wrapper>
+                <Footer.Logo src={YD}/>
             <Footer.Row>
                 <Footer.Column>
                 <Footer.Title>About Us</Footer.Title>
