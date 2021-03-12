@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
     padding: 80px 60px;
   //background: radial-gradient(circle, rgba(92,39,251,1) 0%, rgba(112,71,247,1) 100%);
-  //background: radial-gradient(green 0%, blue 100%);
   //background-color: #DADED4;
   //background-color: #FDF8F5;
   //background-color: #2d545e;
@@ -29,6 +28,11 @@ export const Column = styled.div`
   flex-direction: column;
   text-align: left;
   margin-left: 60px;
+
+  @media (max-width: 1000px) {
+    text-align: center;
+    margin: 0 auto;
+  }
 `;
 
 export const Row = styled.div`
@@ -65,4 +69,13 @@ export const Logo = styled.img`
     position: absolute;
     left: 10px;
     top: 2380px;
+
+    @media (max-width: 1000px) {
+        //margin-left: 140px;
+        width: 40%;
+        position: static;
+        margin: 0 auto;
+        margin-top: -5%;
+        margin-bottom: 10%;
+    }
 `;
