@@ -1,6 +1,6 @@
-import product1 from '../../img/cocktail.png';
-import product2 from '../../img/time-icon.jpg';
-import product3 from '../../img/truck-icon.png';
+import product1 from '../../img/wineog.png';
+import product2 from '../../img/timeog.png';
+import product3 from '../../img/truckog.png';
 
 export const productData = [
   {

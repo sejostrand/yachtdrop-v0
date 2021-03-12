@@ -24,8 +24,10 @@ export const ProductCard = styled.div`
 `;
 
 export const ProductImg = styled.img`
-  height: 200px;
-  min-width: 200px;
+  //height: 200px;
+  width: 160px;
+  height: auto;
+  min-width: 160px;
   max-width: 100%;
   //box-shadow: 8px 8px #fdc500;
   display: flex;
