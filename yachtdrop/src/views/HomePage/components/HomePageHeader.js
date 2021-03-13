@@ -38,7 +38,7 @@ const HomePageHeader = () => {
     return (
         <HeaderWrapper>
             <HeaderImg src={ HeaderIcon } />
-            <Yachtdrop>Yachtdrop</Yachtdrop>
+            <Yachtdrop>yachtdrop</Yachtdrop>
             <LogIn>Log in</LogIn>
         </HeaderWrapper>  
     )

@@ -7,7 +7,8 @@ export const Container = styled.div`
   //background-color: #FDF8F5;
   //background-color: #2d545e;
   //background-color: #31708E;
-    background-color: #f8694b;
+    //background-color: #f8694b;
+    background: linear-gradient(to right top, #f8694b, #ffcc66);
 
   @media (max-width: 1000px) {
     padding: 70px 30px;
@@ -64,7 +65,7 @@ export const Title = styled.p`
   font-weight: bold;
 `;
 
-export const Logo = styled.img`
+/* export const Logo = styled.img`
     width: 15%;
     position: absolute;
     left: 10px;
@@ -78,4 +79,4 @@ export const Logo = styled.img`
         margin-top: -5%;
         margin-bottom: 10%;
     }
-`;
+`; */

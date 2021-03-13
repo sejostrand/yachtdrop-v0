@@ -10,8 +10,8 @@ const YourLocationWrapper = styled.div`
     border: 1px grey solid;
 
     @media (max-width: 1000px) {
-        width: 63%;
-        height: 20%;
+        width: 65%;
+        height: 18%;
     }
 `;
 
@@ -49,6 +49,10 @@ const YLInput = styled.input`
     text-align: center;
     margin-left: 10%;
     margin-top: 2%;
+
+    @media (max-width: 1000px) {
+        font-size: 15px;
+    }
 `;
 
 

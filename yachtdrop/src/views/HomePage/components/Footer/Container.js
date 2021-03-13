@@ -8,7 +8,6 @@ export function FooterContainer() {
     return (
         <Footer>
             <Footer.Wrapper>
-                <Footer.Logo src={YD}/>
             <Footer.Row>
                 <Footer.Column>
                 <Footer.Title>About Us</Footer.Title>
