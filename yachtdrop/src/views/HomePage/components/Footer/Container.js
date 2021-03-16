@@ -11,7 +11,7 @@ export function FooterContainer() {
             <Footer.Row>
                 <Footer.Column>
                 <Footer.Title>About Us</Footer.Title>
-                    <Footer.Link href="#">Story</Footer.Link>
+                    <Footer.Link href="/AboutUs">Story</Footer.Link>
                     <Footer.Link href="#">Clients</Footer.Link>
                     <Footer.Link href="#">Testimonials</Footer.Link>
                 </Footer.Column>
@@ -22,7 +22,7 @@ export function FooterContainer() {
                 </Footer.Column>
                 <Footer.Column>
                 <Footer.Title>Contact Us</Footer.Title>
-                    <Footer.Link href="#">Mallorca</Footer.Link>
+                    <Footer.Link href="/ContactUs">Mallorca</Footer.Link>
                     <Footer.Link href="#">Tu mama</Footer.Link>
                     <Footer.Link href="#">U wot m8</Footer.Link>
                     <Footer.Link href="#">Support</Footer.Link>

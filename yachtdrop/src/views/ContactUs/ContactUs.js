@@ -1,5 +1,5 @@
 import React from 'react'
-import HomePageHeader from '../HomePage/components/HomePageHeader'
+import HomePageHeader from '../HomePage/components/Header/HomePageHeader'
 import App from '../HomePage/components/Footer/App'
 import Main from './components/Main'
 

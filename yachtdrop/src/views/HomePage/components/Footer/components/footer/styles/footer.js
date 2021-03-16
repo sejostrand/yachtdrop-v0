@@ -7,8 +7,8 @@ export const Container = styled.div`
   //background-color: #FDF8F5;
   //background-color: #2d545e;
   //background-color: #31708E;
-    //background-color: #f8694b;
-    background: linear-gradient(to right top, #f8694b, #ffcc66);
+    background-color: #f8694b;
+    //background: linear-gradient(to right top, #f8694b, #ffcc66);
 
   @media (max-width: 1000px) {
     padding: 70px 30px;
