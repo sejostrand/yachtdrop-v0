@@ -7,7 +7,34 @@ import { GridWrapper } from './ProductGrid.style';
 import ProductTile from './objects/ProductTile';
 
 const ProductGrid = () => {
-  return <GridWrapper></GridWrapper>;
+  return (
+    <GridWrapper>
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+      <ProductTile />
+    </GridWrapper>
+  );
 };
 
 export default ProductGrid;

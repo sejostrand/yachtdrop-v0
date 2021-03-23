@@ -8,6 +8,7 @@ const StyledLogo = styled.div`
   color: white;
   align-self: center;
   padding: 0px 20px 0px 30px;
+  cursor: pointer;
 `;
 
 const YachtdropLogo = () => {

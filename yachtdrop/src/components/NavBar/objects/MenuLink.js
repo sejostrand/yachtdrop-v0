@@ -24,7 +24,7 @@ const StyledMenuLink = styled.div`
   }
 `;
 
-const MenuLink = ({ children }) => {
+const MenuLink = ({children}) => {
   return <StyledMenuLink>{children}</StyledMenuLink>;
 };
 
