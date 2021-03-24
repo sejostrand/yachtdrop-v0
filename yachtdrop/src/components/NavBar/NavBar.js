@@ -14,18 +14,21 @@ import YachtdropLogo from '../../objects/YachtdropLogo';
 //import colors
 import { COLORS } from '../../assets/theme/theme';
 
-const StyledNavBar = styled.nav`
-  background-color: ${COLORS.color1};
-  padding: 5px 25px;
-  width: 100%;
-  justify-content: space-between;
-  top: 0;
-  display: flex;
-  position: fixed;
-  z-index: 10;
-`;
+
 
 const NavBar = () => {
+
+  const StyledNavBar = styled.nav`
+    background-color: ${COLORS.color1};
+    padding: 5px 25px;
+    width: 100%;
+    justify-content: space-between;
+    top: 0;
+    display: flex;
+    position: fixed;
+    z-index: 10;
+  `;
+
   return (
     <StyledNavBar>
       <YachtdropLogo />

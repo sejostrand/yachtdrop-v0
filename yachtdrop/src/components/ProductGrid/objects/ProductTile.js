@@ -16,15 +16,15 @@ import {
 //import objects
 import ProductIcon from '../../../assets/img/product-icons/wine/test.jpg';
 
-const ProductTile = () => {
+const ProductTile = (props) => {
   return (
     <TileWrapper>
-      <PackSize>24 PACK</PackSize>
+      <PackSize>{props.pack} PACK</PackSize>
       <ProductImage src={ProductIcon} />
       <DetailsWrapper>
-        <ProductName>Louis Jadot</ProductName>
-        <ProductDescription>Red Wine</ProductDescription>
-        <ProductPrice>$ 34.99</ProductPrice>
+        <ProductName>{props.name}</ProductName>
+        <ProductDescription>{props.description}</ProductDescription>
+        <ProductPrice>$ {props.price}</ProductPrice>
       </DetailsWrapper>
       <AddButtonWrapper>ADD</AddButtonWrapper>
     </TileWrapper>
