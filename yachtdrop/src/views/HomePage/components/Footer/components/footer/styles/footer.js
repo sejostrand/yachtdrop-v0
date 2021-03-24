@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding: 80px 60px;
+    padding: 80px 60px;
   //background: radial-gradient(circle, rgba(92,39,251,1) 0%, rgba(112,71,247,1) 100%);
-  //background: radial-gradient(green 0%, blue 100%);
   //background-color: #DADED4;
   //background-color: #FDF8F5;
   //background-color: #2d545e;
   //background-color: #31708E;
     background-color: #f8694b;
+    //background: linear-gradient(to right top, #f8694b, #ffcc66);
 
   @media (max-width: 1000px) {
     padding: 70px 30px;
@@ -29,6 +29,11 @@ export const Column = styled.div`
   flex-direction: column;
   text-align: left;
   margin-left: 60px;
+
+  @media (max-width: 1000px) {
+    text-align: center;
+    margin: 0 auto;
+  }
 `;
 
 export const Row = styled.div`
@@ -59,3 +64,19 @@ export const Title = styled.p`
   margin-bottom: 40px;
   font-weight: bold;
 `;
+
+/* export const Logo = styled.img`
+    width: 15%;
+    position: absolute;
+    left: 10px;
+    top: 2380px;
+
+    @media (max-width: 1000px) {
+        //margin-left: 140px;
+        width: 40%;
+        position: static;
+        margin: 0 auto;
+        margin-top: -5%;
+        margin-bottom: 10%;
+    }
+`; */

@@ -7,6 +7,7 @@ const ListWrapper = styled.div`
     background-color: #fffbf0;
     //display: flex;
     //justify-content: center;
+    //background: linear-gradient(to right top, #03b29a, #f8694b);
 `;
 
 /*const JoinTitle = styled.h1`
