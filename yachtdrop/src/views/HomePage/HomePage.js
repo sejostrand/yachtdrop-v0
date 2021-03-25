@@ -6,13 +6,13 @@ import HomePageHeader from './components/Header/HomePageHeader'
 import HomePageMain from './components/HomePageMain'
 import App from '../HomePage/components/Footer/App'
 
-import HeaderIcon from './img/yd1.jpg'
+import HeaderIcon from './img/sea.jpg'
 
 
 const HomePage = () => {
   return (
     <>
-      <HomePageHeader />
+      <HomePageHeader image={HeaderIcon} />
       <HomePageMain />
       <App />
     </>

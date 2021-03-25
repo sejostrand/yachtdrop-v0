@@ -19,12 +19,29 @@ const StyledSearchBar = styled.div`
   justify-content: space-between;
 `;
 
-const SearchBar = () => {
+const Button = styled.button`
+  background-color: #f8694b;
+  color: white;
+  font-family: 'Calibri';
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px 20px;
+  margin: 5px;
+  height: 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  align-self: center;
+`;
+
+const SearchBar = ({ onCart }) => {
   return (
     <StyledSearchBar>
       <LocationTag />
       <SearchInput />
-      <CartLink />
+      <Button onClick={onCart}>Cart</Button>
     </StyledSearchBar>
   );
 };

@@ -3,10 +3,10 @@ import Sea from '../../img/sea.jpg'
 import { HeaderWrapper, HeaderImg, Yachtdrop, LogIn } from './styles'
 
 
-const HomePageHeader = ({ src }) => {
+const HomePageHeader = (props) => {
     return (
         <HeaderWrapper>
-            <HeaderImg src={ Sea }/* src={require('../../img/yd1.jpg').default} */ />
+            <HeaderImg src={ props.image }/* src={require('../../img/yd1.jpg').default} */ />
             <Yachtdrop href="/">yachtdrop</Yachtdrop>
             <LogIn href="/ShopPage">Log in</LogIn>
         </HeaderWrapper>  
