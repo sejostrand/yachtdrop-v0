@@ -74,14 +74,15 @@ const ProductDescription = styled.div`
   height: 40px;
 `;
 
-const ProductTile = () => {
+const ProductTile = (props) => {
   return (
     <TileWrapper>
       <ProductImage src={ProductIcon} />
       <AddButtonWrapper>ADD</AddButtonWrapper>
       <DetailsWrapper>
-        <ProductName>Louis Jadot</ProductName>
-        <ProductPrice>$ 34.99</ProductPrice>
+        <ProductName>{props.name}</ProductName>
+        <ProductDescription>{props.description}</ProductDescription>
+        <ProductPrice>{props.price}</ProductPrice>
       </DetailsWrapper>
     </TileWrapper>
   );

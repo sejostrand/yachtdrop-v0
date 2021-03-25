@@ -47,7 +47,6 @@ const CategoryList = styled.div`
 const FilterBar = () => {
   return (
     <FilterBarWrapper>
-      <BarButton />
       <BlackSection />
       <FilterGrid>
         <FilterTitle>Filter by</FilterTitle>
