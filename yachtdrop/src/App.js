@@ -7,12 +7,13 @@ import ShopPage from './views/ShopPage/ShopPage';
 import HomePage from './views/HomePage/HomePage';
 import AboutUs from './views/AboutUs/AboutUs'
 import ContactUs from './views/ContactUs/ContactUs'
+import Embassador from './views/Embassador/Embassador';
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/HomePage">
+        <Route exact path="/">
           <HomePage />
         </Route>
         <Route path="/ShopPage">
@@ -23,6 +24,9 @@ function App() {
         </Route>
         <Route path="/ContactUs">
           <ContactUs />
+        </Route>
+        <Route path="/Embassador">
+          <Embassador />
         </Route>
       </Switch>
     </Router>

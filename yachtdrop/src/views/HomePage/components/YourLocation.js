@@ -8,6 +8,10 @@ const YourLocationWrapper = styled.div`
     position: absolute;
     margin-top: -30px;
     border: 1px grey solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     @media (max-width: 1000px) {
         width: 65%;
@@ -15,7 +19,7 @@ const YourLocationWrapper = styled.div`
     }
 `;
 
-const YLText = styled.h1`
+/* const YLText = styled.h1`
     font-family: sans-serif;
     font-size: 40px;
     text-align: center;
@@ -53,16 +57,65 @@ const YLInput = styled.input`
     @media (max-width: 1000px) {
         font-size: 15px;
     }
+`; */
+
+const YLText = styled.h1`
+    font-family: sans-serif;
+    font-size: 40px;
+    color: #f8694b;
+    padding: 20px;
+
+    @media (max-width: 1000px) {
+        font-size: 17px;
+    }
+`;
+
+const YLSubText = styled.h4`
+    font-family: sans-serif;
+    font-size: 20px;
+    text-align: center;
+    color: black;
+    padding-top: 1%;
+    padding-bottom: 2%;
+
+    @media (max-width: 1000px) {
+        font-size: 13px;
+    }
+`;
+
+const YLInput = styled.input`
+    width: 80%;
+    height: 25%;
+    font-size: 20px;
+    text-align: center;
+    margin-left: 10%;
+    margin-top: 2%;
+
+    @media (max-width: 1000px) {
+        font-size: 15px;
+    }
+`;
+
+const Button = styled.button`
+    background: linear-gradient(45deg, red, blue);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    padding: 1% 5%;
 `;
 
 
-const YourLocation = () => {
+const YourLocation = ({ title }) => {
     return (
         <YourLocationWrapper>
-            <YLText>Order drinks to your yacht.</YLText>
+            <YLText>{title}</YLText>
             <YLSubText>Choose from our vast selection.</YLSubText>
-            <YLInput type='text' placeholder='Enter your location...'></YLInput>
-        </YourLocationWrapper>
+{/*             <YLInput type='text' placeholder='Enter your location...'></YLInput>
+ */}        
+            <Button>Mallorca</Button>
+            </YourLocationWrapper>
     )
 }
 

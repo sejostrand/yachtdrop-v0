@@ -18,7 +18,7 @@ export function FooterContainer() {
                 <Footer.Column>
                 <Footer.Title>Partnership</Footer.Title>
                     <Footer.Link href="#">Become a retail partner</Footer.Link>
-                    <Footer.Link href="#">Become an embassador</Footer.Link>
+                    <Footer.Link href="/Embassador">Become an embassador</Footer.Link>
                 </Footer.Column>
                 <Footer.Column>
                 <Footer.Title>Contact Us</Footer.Title>
