@@ -18,7 +18,7 @@ import styled from 'styled-components';
   align-self: center;
 `; */
 
-const StyledCartLink = styled.button`
+/* const StyledCartLink = styled.button`
   background-color: #f8694b;
   color: white;
   font-family: 'Calibri';
@@ -35,8 +35,8 @@ const StyledCartLink = styled.button`
   align-self: center;
 `;
 
-const CartLink = ({ onCart }) => {
-  return <StyledCartLink onClick={onCart}>Cart</StyledCartLink>;
+const CartLink = () => {
+  return <StyledCartLink>Cart</StyledCartLink>;
 };
 
-export default CartLink;
+export default CartLink; */
