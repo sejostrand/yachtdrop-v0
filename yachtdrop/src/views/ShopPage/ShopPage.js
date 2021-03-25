@@ -18,13 +18,10 @@ import App from '../HomePage/components/Footer/App';
 const StyledShopPage = styled.div``;
 
 const ShopPage = () => {
-  const [showCart, setShowCart] = useState(false)
-
   return (
     <StyledShopPage>
       <NavBar />
-      <SearchBar onCart={() => setShowCart(!showCart)}/>
-      {showCart && <CartMenu />}
+      <SearchBar />
       <BodyWrapper>
         <FilterBar />
         <BodyDiv>
