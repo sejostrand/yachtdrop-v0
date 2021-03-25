@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 //objects
 import SortToggleButton from './objects/SortToggleButton';
+
+
 
 const StyledSortBy = styled.div`
   background-color: white;
