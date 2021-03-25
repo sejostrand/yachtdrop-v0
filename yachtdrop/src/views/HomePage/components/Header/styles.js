@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-//import HeaderIcon from '../../img/yd1.jpg'
-//import Illustration from '../img/7896.jpg'
+/* import HeaderIcon from '../../img/yd1.jpg'*/
+
 
 export const HeaderWrapper = styled.div`
     display: flex;
@@ -11,7 +11,7 @@ export const HeaderWrapper = styled.div`
 
 export const HeaderImg = styled.img`
     width: 100%;
-    height: 100%;
+    height: 70%;
 `;
 
 export const Yachtdrop = styled.a`

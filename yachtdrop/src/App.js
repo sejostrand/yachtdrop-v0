@@ -3,16 +3,17 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 //import GlobalStyles from './styles/global';
 
-import ShopPage from '@views/ShopPage/ShopPage';
-import HomePage from '@views/HomePage/HomePage';
-import AboutUs from '@views/AboutUs/AboutUs';
-import ContactUs from '@views/ContactUs/ContactUs';
+import ShopPage from './views/ShopPage/ShopPage';
+import HomePage from './views/HomePage/HomePage';
+import AboutUs from './views/AboutUs/AboutUs';
+import ContactUs from './views/ContactUs/ContactUs';
+import Embassador from './views/Embassador/Embassador';
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path='/homepage'>
+        <Route exact path='/'>
           <HomePage />
         </Route>
         <Route path='/shoppage'>
@@ -23,6 +24,9 @@ function App() {
         </Route>
         <Route path='/contactus'>
           <ContactUs />
+        </Route>
+        <Route path='/Embassador'>
+          <Embassador />
         </Route>
       </Switch>
     </Router>

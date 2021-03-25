@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 // IMPORT COMPONENTS
@@ -18,10 +18,13 @@ import App from '../HomePage/components/Footer/App';
 const StyledShopPage = styled.div``;
 
 const ShopPage = () => {
+  const [showCart, setShowCart] = useState(false)
+
   return (
     <StyledShopPage>
       <NavBar />
-      <SearchBar />
+      <SearchBar onCart={() => setShowCart(!showCart)}/>
+      {showCart && <CartMenu />}
       <BodyWrapper>
         <FilterBar />
         <BodyDiv>
