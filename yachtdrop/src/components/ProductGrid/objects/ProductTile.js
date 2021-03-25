@@ -20,7 +20,7 @@ const ProductTile = (props) => {
   return (
     <TileWrapper>
       <PackSize>{props.pack} PACK</PackSize>
-      <ProductImage src={ProductIcon} />
+      <ProductImage src={props.imgUrl} />
       <DetailsWrapper>
         <ProductName>{props.name}</ProductName>
         <ProductDescription>{props.description}</ProductDescription>
