@@ -28,8 +28,6 @@ const products = [
   },
 ];
 
-const iconObject = ProductIcon;
-
 const product = {
   id: '1',
   productName: 'Louis Jadot',
@@ -49,29 +47,6 @@ const ProductGrid = () => {
         pack={product.pack}
         imgUrl={product.imgUrl}
       />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
     </GridWrapper>
   );
 };

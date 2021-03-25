@@ -13,7 +13,7 @@ import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '@components/SortBy/SortBy.js';
 import CartMenu from '@components/CartMenu/CartMenu';
 
-import App from '../HomePage/components/Footer/App'
+import App from '../HomePage/components/Footer/App';
 
 const StyledShopPage = styled.div``;
 
