@@ -1,6 +1,6 @@
 import React from 'react'
-import HomePageHeader from '../HomePage/components/Header/HomePageHeader'
-import App from '../HomePage/components/Footer/App'
+import Header from '../HomePage/components/Header/Header'
+import Footer from '../HomePage/components/Footer/Footer'
 import Main from './components/Main'
 import Image from '../HomePage/img/7896.jpg'
 
@@ -8,9 +8,9 @@ import Image from '../HomePage/img/7896.jpg'
 const ContactUs = () => {
     return (
         <>
-        <HomePageHeader image={Image} />
+        <Header image={Image} />
         <Main />
-        <App />
+        <Footer />
         </>
     )
 }

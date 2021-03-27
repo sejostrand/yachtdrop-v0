@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 // IMPORT COMPONENTS
-import HomePageHeader from './components/Header/HomePageHeader'
+import Header from './components/Header/Header'
 import HomePageMain from './components/HomePageMain'
-import App from '../HomePage/components/Footer/App'
+import Footer from './components/Footer/Footer'
 
 import HeaderIcon from './img/sea.jpg'
 
@@ -12,9 +12,9 @@ import HeaderIcon from './img/sea.jpg'
 const HomePage = () => {
   return (
     <>
-      <HomePageHeader image={HeaderIcon} />
+      <Header image={HeaderIcon} />
       <HomePageMain />
-      <App />
+      <Footer />
     </>
   );
 };
