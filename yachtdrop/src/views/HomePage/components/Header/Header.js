@@ -1,10 +1,10 @@
 import { HeaderWrapper, HeaderImg, Yachtdrop, LogIn } from './styles'
 
 
-const Header = (props) => {
+const Header = ({ image }) => {
     return (
         <HeaderWrapper>
-            <HeaderImg src={ props.image } />
+            <HeaderImg src={ image } />
             <Yachtdrop href="/">yachtdrop</Yachtdrop>
             <LogIn href="/ShopPage">Log in</LogIn>
         </HeaderWrapper>  
