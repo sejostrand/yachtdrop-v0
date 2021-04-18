@@ -1,6 +1,6 @@
 import React from 'react'
-import HomePageHeader from '../HomePage/components/Header/HomePageHeader'
-import App from '../HomePage/components/Footer/App'
+import Header from '../HomePage/components/Header/Header'
+import Footer from '../HomePage/components/Footer/Footer'
 import Main from '../AboutUs/components/Main'
 import Image from '../../assets/img/yacht.jpg'
 
@@ -8,9 +8,9 @@ import Image from '../../assets/img/yacht.jpg'
 const AboutUs = () => {
     return (
         <>
-        <HomePageHeader image={Image}/>
+        <Header image={Image}/>
         <Main />
-        <App />
+        <Footer />
         </>
     )
 }

@@ -20,7 +20,7 @@ const StyledSearchBar = styled.div`
   justify-content: space-between;
 `;
 
-const SearchBar = ({ onCart }) => {
+const SearchBar = () => {
   const [showCart, setShowCart] = useState(false);
 
   return (

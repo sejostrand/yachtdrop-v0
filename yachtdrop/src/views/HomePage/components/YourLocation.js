@@ -96,7 +96,7 @@ const YLInput = styled.input`
   }
 `;
 
-const Button = styled.div`
+const Button = styled.a`
   background-color: #f8694b;
   color: white;
   font-family: 'Calibri';
@@ -110,6 +110,7 @@ const Button = styled.div`
   border-radius: 10px;
   cursor: pointer;
   align-self: center;
+  text-decoration: none;
 `;
 
 const YourLocation = ({ title }) => {
@@ -119,7 +120,7 @@ const YourLocation = ({ title }) => {
       <YLSubText>Choose from our vast selection.</YLSubText>
       {/*             <YLInput type='text' placeholder='Enter your location...'></YLInput>
        */}
-      <Button>SHOP NOW</Button>
+      <Button href='/shoppage'>Mallorca</Button>
     </YourLocationWrapper>
   );
 };

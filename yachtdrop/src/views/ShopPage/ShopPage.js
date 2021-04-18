@@ -1,23 +1,40 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 // IMPORT COMPONENTS
 import NavBar from '@components/NavBar/NavBar';
 import SearchBar from '@components/SearchBar/SearchBar';
 import FilterBar from '@components/FilterBar/FilterBar.js';
-import Footer from '@components/Footer/Footer.js';
 import ProductGrid from '@components/ProductGrid/ProductGrid.js';
 import CoverBar from '@components/CoverBar/CoverBar';
 import BodyWrapper from '../../objects/BodyWrapper.js';
 import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '@components/SortBy/SortBy.js';
-import CartMenu from '@components/CartMenu/CartMenu';
 
-import App from '../HomePage/components/Footer/App';
+import Footer from '../HomePage/components/Footer/Footer';
+
+//IMPORT PRODUCTS FROM API
+function getProducts() {
+  axios({
+    method: 'GET',
+    url: 'https://yachtdrop.herokuapp.com/products',
+    params: {
+      featured: true,
+    },
+  })
+    .then((res) => showProducts(res))
+    .catch((err) => console.error(err));
+}
+
+function showProducts(res) {
+  console.log(res.data);
+}
 
 const StyledShopPage = styled.div``;
 
 const ShopPage = () => {
+  getProducts();
   return (
     <StyledShopPage>
       <NavBar />
@@ -27,10 +44,10 @@ const ShopPage = () => {
         <BodyDiv>
           <CoverBar />
           <SortBy />
-          <ProductGrid />
+          <ProductGrid productName='' />
         </BodyDiv>
       </BodyWrapper>
-      <App />
+      <Footer />
     </StyledShopPage>
   );
 };
