@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledSortToggleButton = styled.div`
+const StyledSortButton = styled.div`
   color: white;
   font-family: 'Calibri';
   font-size: 13px;
@@ -20,16 +20,12 @@ const StyledSortToggleButton = styled.div`
   display: flex;
 
   &:hover {
-    background-color: white;
-    border: 3px solid #03b29a;
-    color: #03b29a;
-    padding: 1px 17px;
-    border-radius: 8px;
+    opacity: 0.8;
   }
 `;
 
-const SortToggleButton = ({ children }) => {
-  return <StyledSortToggleButton>{children}</StyledSortToggleButton>;
+const SortButton = ({ children }) => {
+  return <StyledSortButton>{children}</StyledSortButton>;
 };
 
-export default SortToggleButton;
+export default SortButton;

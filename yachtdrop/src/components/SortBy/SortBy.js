@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 //objects
-import SortToggleButton from './objects/SortToggleButton';
-
-
+import SortButton from './objects/SortButton';
+import SelectedSortButton from './objects/SelectedSortButton';
 
 const StyledSortBy = styled.div`
   background-color: white;
@@ -26,12 +25,14 @@ const SortTitle = styled.div`
 `;
 
 const SortBy = () => {
+  const [sort, setSort] = useState('relevance');
+
   return (
     <StyledSortBy>
       <SortTitle>Sort By</SortTitle>
-      <SortToggleButton>Relavance</SortToggleButton>
-      <SortToggleButton>Price</SortToggleButton>
-      <SortToggleButton>Popularity</SortToggleButton>
+      <SelectedSortButton>Relavance</SelectedSortButton>
+      <SortButton>Price</SortButton>
+      <SortButton>Popularity</SortButton>
     </StyledSortBy>
   );
 };

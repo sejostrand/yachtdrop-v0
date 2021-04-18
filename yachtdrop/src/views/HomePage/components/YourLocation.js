@@ -100,14 +100,13 @@ const Button = styled.div`
   background-color: #f8694b;
   color: white;
   font-family: 'Calibri';
-  font-size: 13px;
+  font-size: 18px;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
   padding: 8px 20px;
   margin: 5px;
-  height: 2rem;
   border-radius: 10px;
   cursor: pointer;
   align-self: center;
@@ -120,7 +119,7 @@ const YourLocation = ({ title }) => {
       <YLSubText>Choose from our vast selection.</YLSubText>
       {/*             <YLInput type='text' placeholder='Enter your location...'></YLInput>
        */}
-      <Button>Mallorca</Button>
+      <Button>SHOP NOW</Button>
     </YourLocationWrapper>
   );
 };

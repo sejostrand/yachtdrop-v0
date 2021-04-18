@@ -3,7 +3,7 @@ import { COLORS, FONTS } from '../../assets/theme/theme';
 
 export const CartMenuWrapper = styled.div`
   position: fixed;
-  right: 20px;
+  right: 30px;
   top: 110px;
   display: flex;
   z-index: 8;
@@ -16,7 +16,7 @@ export const CartMenuWrapper = styled.div`
   padding: 0px;
 `;
 
-export const CartMenuTitle = styled.div`
+export const TitleContainer = styled.div`
   height: 2rem;
   width: 100%;
   font-size: 20px;
