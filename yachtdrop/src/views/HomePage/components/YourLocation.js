@@ -100,14 +100,13 @@ const Button = styled.a`
   background-color: #f8694b;
   color: white;
   font-family: 'Calibri';
-  font-size: 13px;
+  font-size: 18px;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
   padding: 8px 20px;
   margin: 5px;
-  height: 2rem;
   border-radius: 10px;
   cursor: pointer;
   align-self: center;

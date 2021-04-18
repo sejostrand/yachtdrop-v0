@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 // IMPORT COMPONENTS
 import NavBar from '@components/NavBar/NavBar';
@@ -13,9 +14,27 @@ import SortBy from '@components/SortBy/SortBy.js';
 
 import Footer from '../HomePage/components/Footer/Footer';
 
+//IMPORT PRODUCTS FROM API
+function getProducts() {
+  axios({
+    method: 'GET',
+    url: 'https://yachtdrop.herokuapp.com/products',
+    params: {
+      featured: true,
+    },
+  })
+    .then((res) => showProducts(res))
+    .catch((err) => console.error(err));
+}
+
+function showProducts(res) {
+  console.log(res.data);
+}
+
 const StyledShopPage = styled.div``;
 
 const ShopPage = () => {
+  getProducts();
   return (
     <StyledShopPage>
       <NavBar />
@@ -25,7 +44,7 @@ const ShopPage = () => {
         <BodyDiv>
           <CoverBar />
           <SortBy />
-          <ProductGrid />
+          <ProductGrid productName='' />
         </BodyDiv>
       </BodyWrapper>
       <Footer />

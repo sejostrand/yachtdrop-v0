@@ -37,11 +37,11 @@ const product = {
   imgUrl: ProductIcon,
 };
 
-const ProductGrid = () => {
+const ProductGrid = (props) => {
   return (
     <GridWrapper>
       <ProductTile
-        name={product.productName}
+        name={props.productName}
         description={product.description}
         price={product.price}
         pack={product.pack}

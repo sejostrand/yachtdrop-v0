@@ -16,36 +16,44 @@
       "required": true
     },
     "product_description": {
-      "type": "string",
-      "required": true
-    },
-    "price": {
-      "type": "decimal",
-      "min": 0
-    },
-    "product_image": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images"
-      ],
-      "plugin": "upload",
-      "required": false
+      "type": "string"
     },
     "featured": {
       "type": "boolean",
       "default": true
     },
-    "location": {
-      "type": "string"
+    "product_img": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
     },
-    "category_tags": {
-      "type": "richtext"
+    "product_price": {
+      "type": "decimal",
+      "default": 1,
+      "min": 0
+    },
+    "categories": {
+      "type": "json"
     },
     "pack_size": {
       "type": "integer",
       "default": 1,
-      "min": 1
+      "required": true
+    },
+    "unit_size": {
+      "type": "string"
+    },
+    "vintage": {
+      "type": "biginteger"
+    },
+    "product_format": {
+      "type": "string"
     }
   }
 }

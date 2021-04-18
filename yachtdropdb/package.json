@@ -1,5 +1,5 @@
 {
-  "name": "yachtdrop",
+  "name": "yachtdropdb",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -19,15 +19,13 @@
     "strapi-plugin-users-permissions": "3.5.2",
     "strapi-plugin-email": "3.5.2",
     "strapi-plugin-upload": "3.5.2",
-    "strapi-connector-bookshelf": "3.5.2",
-    "knex": "0.21.18",
-    "sqlite3": "5.0.0"
+    "strapi-connector-mongoose": "3.5.2"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "eb116ad0-0783-476c-b705-0a7ae95a2af6"
+    "uuid": "c95291f7-51f6-47c8-8fd3-1bce70a55c79"
   },
   "engines": {
     "node": ">=10.16.0 <=14.x.x",

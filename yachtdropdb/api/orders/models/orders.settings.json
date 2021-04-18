@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "name": "orders",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "state": {
+      "type": "enumeration",
+      "enum": [
+        "cart",
+        "active",
+        "cancelled",
+        "completed"
+      ],
+      "default": "cart",
+      "required": true
+    },
+    "order_id": {
+      "type": "string",
+      "required": true
+    },
+    "user": {
+      "model": "users",
+      "via": "orders"
+    },
+    "products": {
+      "type": "json"
+    },
+    "transaction_id": {
+      "type": "string"
+    }
+  }
+}
