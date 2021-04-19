@@ -2,12 +2,19 @@ import React from 'react';
 
 //import styles
 import { GridWrapper } from './ProductGrid.style';
+import styled from 'styled-components'
 
 //import objects
 import ProductTile from './objects/ProductTile';
 import ProductIcon from '@img/product-icons/wine/test.jpg';
 
-const products = [
+
+const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
+/* const products = [
   {
     id: '1',
     productName: 'Louis Jadot',
@@ -26,9 +33,9 @@ const products = [
     description: 'Red Wine',
     price: '39.99',
   },
-];
+]; */
 
-const product = {
+/* const product = {
   id: '1',
   productName: 'Louis Jadot',
   description: 'Red Wine',
@@ -36,18 +43,22 @@ const product = {
   pack: '24',
   imgUrl: ProductIcon,
 };
-
-const ProductGrid = (props) => {
+ */
+const ProductGrid = ({products}) => {
   return (
+    <FlexContainer>
+    {products.map((product) => (
     <GridWrapper>
       <ProductTile
-        name={props.productName}
-        description={product.description}
-        price={product.price}
+        name={product.product_name}
+        description={product.product_description}
+        price={product.product_price}
         pack={product.pack}
-        imgUrl={product.imgUrl}
+        imgUrl={product.product_img}
       />
     </GridWrapper>
+    ))}
+    </FlexContainer>
   );
 };
 

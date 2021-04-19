@@ -6,6 +6,8 @@ export const GridWrapper = styled.div`
   height: auto;
   background-color: ${COLORS.color5};
   padding: 20px;
+  display: flex;
+  flex-direction: row;
 
   justify-content: space-between;
 `;
