@@ -19,12 +19,14 @@ import Footer from '../HomePage/components/Footer/Footer';
   axios({
     method: 'GET',
     url: 'https://yachtdrop.herokuapp.com/products',
+    responseType: 'stream',
     params: {
       featured: true,
     },
   })
     .then((res) => showProducts(res))
-    .catch((err) => console.error(err));
+    .catch((err) => console.error(err))
+    .then(function () {}); //no se aca deberia estar creando nuestra variable con los productos
 }
 
 function showProducts(res) {
