@@ -26,12 +26,11 @@ function getProducts() {
   })
     .then((res) => showProducts(res))
     .catch((err) => console.error(err))
-    .then(function () {}); //no se aca deberia estar creando nuestra variable con los productos
+    .then(function () {}); //no se si aca deberia estar creando nuestra variable con los productos
 }
 
 function showProducts(res) {
-  console.log(res);
-  return res.data;
+  console.log(res.data);
 }
 
 const StyledShopPage = styled.div``;
