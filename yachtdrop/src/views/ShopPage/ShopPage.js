@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -15,7 +15,7 @@ import SortBy from '@components/SortBy/SortBy.js';
 import Footer from '../HomePage/components/Footer/Footer';
 
 //IMPORT PRODUCTS FROM API
-function getProducts() {
+/* function getProducts() {
   axios({
     method: 'GET',
     url: 'https://yachtdrop.herokuapp.com/products',
@@ -31,13 +31,32 @@ function getProducts() {
 
 function showProducts(res) {
   console.log(res.data);
-}
+} */
 
 const StyledShopPage = styled.div``;
 
 const ShopPage = () => {
-  const prods = getProducts();
-  return (
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const getProduct = async () => {
+      const productsFromServer = await fetchProducts();
+      setProducts(productsFromServer);
+    };
+
+    getProduct();
+  }, []);
+
+  // Fetch Products
+  const fetchProducts = async () => {
+    const res = await fetch('https://yachtdrop.herokuapp.com/products');
+    const data = await res.json();
+
+    return data;
+  };
+
+  /*   getProducts();
+   */ return (
     <StyledShopPage>
       <NavBar />
       <SearchBar />
@@ -46,7 +65,7 @@ const ShopPage = () => {
         <BodyDiv>
           <CoverBar />
           <SortBy />
-          <ProductGrid productName='' />
+          <ProductGrid products={products} />
         </BodyDiv>
       </BodyWrapper>
       <Footer />

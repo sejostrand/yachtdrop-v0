@@ -2,52 +2,33 @@ import React from 'react';
 
 //import styles
 import { GridWrapper } from './ProductGrid.style';
+import styled from 'styled-components';
 
 //import objects
 import ProductTile from './objects/ProductTile';
 import ProductIcon from '@img/product-icons/wine/test.jpg';
 
-const products = [
-  {
-    id: '1',
-    productName: 'Louis Jadot',
-    description: 'Red Wine',
-    price: '39.99',
-  },
-  {
-    id: '2',
-    productName: 'Louis Jadott',
-    description: 'Red Wine',
-    price: '39.99',
-  },
-  {
-    id: '3',
-    productName: 'Louis Jadottt',
-    description: 'Red Wine',
-    price: '39.99',
-  },
-];
+const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
 
-const product = {
-  id: '1',
-  productName: 'Louis Jadot',
-  description: 'Red Wine',
-  price: '39.99',
-  pack: '24',
-  imgUrl: ProductIcon,
-};
-
-const ProductGrid = (props) => {
+const ProductGrid = ({ products }) => {
   return (
-    <GridWrapper>
-      <ProductTile
-        name={props.productName}
-        description={product.description}
-        price={product.price}
-        pack={product.pack}
-        imgUrl={product.imgUrl}
-      />
-    </GridWrapper>
+    <FlexContainer>
+      <GridWrapper>
+        {products.map((product) => (
+          <ProductTile
+            name={product.product_name}
+            description={product.product_description}
+            price={product.product_price}
+            pack={product.pack}
+            imgUrl={product.product_img}
+          />
+        ))}
+      </GridWrapper>
+    </FlexContainer>
   );
 };
 
