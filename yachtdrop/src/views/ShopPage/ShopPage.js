@@ -49,14 +49,15 @@ const ShopPage = () => {
 
   // Fetch Products
   const fetchProducts = async () => {
-    const res = await fetch('https://yachtdrop.herokuapp.com/products');
+    const res = await fetch('http://localhost:1337/products');
     const data = await res.json();
 
     return data;
   };
 
-  /*   getProducts();
-   */ return (
+  console.log(products);
+
+  return (
     <StyledShopPage>
       <NavBar />
       <SearchBar />
