@@ -24,7 +24,7 @@ const ProductTile = (props) => {
       <DetailsWrapper>
         <ProductName>{props.name}</ProductName>
         <ProductDescription>{props.description}</ProductDescription>
-        <ProductPrice>$ {props.price}</ProductPrice>
+        <ProductPrice>$ {props.price.toFixed(2)}</ProductPrice>
       </DetailsWrapper>
       <AddButtonWrapper>ADD</AddButtonWrapper>
     </TileWrapper>
