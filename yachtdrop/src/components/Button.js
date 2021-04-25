@@ -1,9 +1,14 @@
 import React from 'react'
 
-const Button = ({ filtered }) => {
+const Button = ({ button, filtered }) => {
     return (
         <div>
-            <button type="button" onClick={() => filtered('Coca Cola 33cl')}>Coca Cola</button>
+            {/* {
+                button.map((cat, i) => {
+                    return <button type="button" onClick={() => filtered(cat)}>{cat}</button>
+                })
+            } */}
+            <button type="button" onClick={() => filtered("gin")}>GIN</button>
         </div>
     )
 }

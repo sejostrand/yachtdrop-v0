@@ -35,17 +35,20 @@ function showProducts(res) {
 
 const StyledShopPage = styled.div``;
 
-/* const allCategories = ['All', 'All', ...products.map(product => product.produc_name)];
-console.log(allCategories); */
 
 
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
+
+  /* const allCategories = ['All', ...products.map(product => product.category[1])];
+    console.log(allCategories); */
+
+
   const [buttons, setButtons] = useState([]);
 
 
   const filtered = (button) => {
-    const filteredData = products.filter(product => product.product_name === button)
+    const filteredData = products.filter(product => product.categories[1] === button)
     setProducts(filteredData)
   }
 
@@ -65,6 +68,8 @@ const ShopPage = () => {
 
     return data;
   };
+
+  
 
 
   /* console.log(products); */
