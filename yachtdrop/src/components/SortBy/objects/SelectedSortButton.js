@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const StyledSortButton = styled.div`
+const StyledSortButton = styled.button`
   background-color: white;
   border: 3px solid #03b29a;
   color: #03b29a;
@@ -21,6 +21,7 @@ const StyledSortButton = styled.div`
   align-self: space-between;
   display: flex;
 `;
+
 
 const SortButton = ({ children }) => {
   return <StyledSortButton>{children}</StyledSortButton>;

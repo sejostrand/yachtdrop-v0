@@ -24,8 +24,11 @@ const StyledMenuLink = styled.div`
   }
 `;
 
+
 const MenuLink = ({children}) => {
-  return <StyledMenuLink>{children}</StyledMenuLink>;
+  return <StyledMenuLink>
+        {children}
+  </StyledMenuLink>;
 };
 
 export default MenuLink;

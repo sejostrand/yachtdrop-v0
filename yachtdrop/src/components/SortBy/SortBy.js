@@ -24,9 +24,10 @@ const SortTitle = styled.div`
   letter-spacing: 1.5px;
 `;
 
-const SortBy = () => {
-  const [sort, setSort] = useState('relevance');
 
+
+const SortBy = () => {
+  
   return (
     <StyledSortBy>
       <SortTitle>Sort By</SortTitle>

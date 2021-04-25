@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const StyledSortButton = styled.div`
+const StyledSortButton = styled.button`
   color: white;
   font-family: 'Calibri';
   font-size: 13px;
@@ -25,6 +25,8 @@ const StyledSortButton = styled.div`
 `;
 
 const SortButton = ({ children }) => {
+
+
   return <StyledSortButton>{children}</StyledSortButton>;
 };
 

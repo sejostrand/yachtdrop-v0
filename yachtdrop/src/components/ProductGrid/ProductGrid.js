@@ -6,20 +6,24 @@ import styled from 'styled-components';
 
 //import objects
 import ProductTile from './objects/ProductTile';
-import ProductIcon from '@img/product-icons/wine/test.jpg';
-
+/* import ProductIcon from '@img/product-icons/wine/test.jpg';
+ */
 const FlexContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 `;
 
+
+
 const ProductGrid = ({ products }) => {
+
   return (
     <FlexContainer>
       <GridWrapper>
-        {products.map((product) => (
+        {products.map((product, index) => (
           <ProductTile
+            key={index}
             name={product.product_name}
             description={product.product_description}
             price={product.product_price}

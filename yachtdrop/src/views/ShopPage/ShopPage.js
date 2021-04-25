@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 
 // IMPORT COMPONENTS
 import NavBar from '@components/NavBar/NavBar';
@@ -11,6 +10,7 @@ import CoverBar from '@components/CoverBar/CoverBar';
 import BodyWrapper from '../../objects/BodyWrapper.js';
 import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '@components/SortBy/SortBy.js';
+import Button from '../../components/Button'
 
 import Footer from '../HomePage/components/Footer/Footer';
 
@@ -35,8 +35,19 @@ function showProducts(res) {
 
 const StyledShopPage = styled.div``;
 
+/* const allCategories = ['All', 'All', ...products.map(product => product.produc_name)];
+console.log(allCategories); */
+
+
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
+  const [buttons, setButtons] = useState([]);
+
+
+  const filtered = (button) => {
+    const filteredData = products.filter(product => product.product_name === button)
+    setProducts(filteredData)
+  }
 
   useEffect(() => {
     const getProduct = async () => {
@@ -55,7 +66,8 @@ const ShopPage = () => {
     return data;
   };
 
-  console.log(products);
+
+  /* console.log(products); */
 
   return (
     <StyledShopPage>
@@ -66,7 +78,9 @@ const ShopPage = () => {
         <BodyDiv>
           <CoverBar />
           <SortBy />
-          <ProductGrid products={products} />
+          <Button filtered={filtered} />
+          <ProductGrid products={products}>
+          </ProductGrid>
         </BodyDiv>
       </BodyWrapper>
       <Footer />
