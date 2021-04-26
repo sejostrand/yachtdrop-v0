@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 //objects
-import SortButton from './objects/SortButton';
+//import SortButton from './objects/SortButton';
 import SelectedSortButton from './objects/SelectedSortButton';
 
 const StyledSortBy = styled.div`
@@ -24,16 +24,35 @@ const SortTitle = styled.div`
   letter-spacing: 1.5px;
 `;
 
+const SortButton = styled.div`
+  color: white;
+  font-family: 'Calibri';
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: #03b29a;
+  margin: 0px 10px;
+  padding: 5px 20px;
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  align-self: space-between;
+  display: flex;
 
+  &:hover {
+    opacity: 0.8;
+  }
+`;
 
-const SortBy = () => {
-  
+const SortBy = (props) => {
   return (
     <StyledSortBy>
       <SortTitle>Sort By</SortTitle>
-      <SelectedSortButton>Relavance</SelectedSortButton>
-      <SortButton>Price</SortButton>
-      <SortButton>Popularity</SortButton>
+      <SelectedSortButton>Alphabetical</SelectedSortButton>
+      <SortButton onClick={() => props.sortProducts()}>Price</SortButton>
     </StyledSortBy>
   );
 };
