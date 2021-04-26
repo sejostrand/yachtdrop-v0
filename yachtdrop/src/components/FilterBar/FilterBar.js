@@ -75,11 +75,14 @@ const FilterBar = (props) => {
       <FilterGrid>
         <FilterTitle>Filter by</FilterTitle>
         <FilterDiv>
-          <CategoryButton onClick={() => props.filtered('gin')}>
+          <CategoryButton onClick={() => props.filterProducts('gin')}>
             Gin
           </CategoryButton>
-          <CategoryButton onClick={() => props.filtered('spirits')}>
+          <CategoryButton onClick={() => props.filterProducts('spirits')}>
             Spirits
+          </CategoryButton>
+          <CategoryButton onClick={() => props.filterProducts('wine')}>
+            Wine
           </CategoryButton>
         </FilterDiv>
         <FilterDiv>Type</FilterDiv>

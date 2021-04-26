@@ -10,7 +10,6 @@ import CoverBar from '@components/CoverBar/CoverBar';
 import BodyWrapper from '../../objects/BodyWrapper.js';
 import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '@components/SortBy/SortBy.js';
-import Button from '../../components/Button';
 
 import Footer from '../HomePage/components/Footer/Footer';
 
@@ -36,19 +35,10 @@ function showProducts(res) {
 const StyledShopPage = styled.div``;
 
 const ShopPage = () => {
+  //STATES
   const [products, setProducts] = useState([]);
-
-  /* const allCategories = ['All', ...products.map(product => product.category[1])];
-    console.log(allCategories); */
-
-  //const [buttons, setButtons] = useState([]);
-
-  const filtered = (tag) => {
-    const filteredData = products.filter((product) =>
-      product.categories.includes(tag)
-    );
-    setProducts(filteredData);
-  };
+  const [filterState, setFilterState] = useState([]);
+  const [sortState, setSortState] = useState([]);
 
   useEffect(() => {
     const getProduct = async () => {
@@ -59,6 +49,20 @@ const ShopPage = () => {
     getProduct();
   }, []);
 
+  const filterProducts = (tag) => {
+    const filteredData = products.filter((product) =>
+      product.categories.includes(tag)
+    );
+    setProducts(filteredData);
+  };
+  //price sort
+  const sortProducts = () => {
+    const sortedData = products.sort(
+      (a, b) => a.product_price - b.product_price
+    );
+    setProducts(sortedData);
+  };
+
   // Fetch Products
   const fetchProducts = async () => {
     const res = await fetch('http://localhost:1337/products');
@@ -67,17 +71,17 @@ const ShopPage = () => {
     return data;
   };
 
-  /* console.log(products); */
+  console.log(products);
 
   return (
     <StyledShopPage>
       <NavBar />
       <SearchBar />
       <BodyWrapper>
-        <FilterBar filtered={filtered} />
+        <FilterBar filterProducts={filterProducts} />
         <BodyDiv>
           <CoverBar />
-          <SortBy />
+          <SortBy sortProducts={sortProducts} />
           <ProductGrid products={products} />
         </BodyDiv>
       </BodyWrapper>
