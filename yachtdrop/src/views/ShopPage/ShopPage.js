@@ -10,7 +10,7 @@ import CoverBar from '@components/CoverBar/CoverBar';
 import BodyWrapper from '../../objects/BodyWrapper.js';
 import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '@components/SortBy/SortBy.js';
-import Button from '../../components/Button'
+import Button from '../../components/Button';
 
 import Footer from '../HomePage/components/Footer/Footer';
 
@@ -35,22 +35,20 @@ function showProducts(res) {
 
 const StyledShopPage = styled.div``;
 
-
-
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
 
   /* const allCategories = ['All', ...products.map(product => product.category[1])];
     console.log(allCategories); */
 
+  //const [buttons, setButtons] = useState([]);
 
-  const [buttons, setButtons] = useState([]);
-
-
-  const filtered = (button) => {
-    const filteredData = products.filter(product => product.categories[1] === button)
-    setProducts(filteredData)
-  }
+  const filtered = (tag) => {
+    const filteredData = products.filter((product) =>
+      product.categories.includes(tag)
+    );
+    setProducts(filteredData);
+  };
 
   useEffect(() => {
     const getProduct = async () => {
@@ -69,9 +67,6 @@ const ShopPage = () => {
     return data;
   };
 
-  
-
-
   /* console.log(products); */
 
   return (
@@ -79,13 +74,11 @@ const ShopPage = () => {
       <NavBar />
       <SearchBar />
       <BodyWrapper>
-        <FilterBar />
+        <FilterBar filtered={filtered} />
         <BodyDiv>
           <CoverBar />
           <SortBy />
-          <Button filtered={filtered} />
-          <ProductGrid products={products}>
-          </ProductGrid>
+          <ProductGrid products={products} />
         </BodyDiv>
       </BodyWrapper>
       <Footer />

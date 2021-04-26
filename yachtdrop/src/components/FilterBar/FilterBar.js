@@ -44,12 +44,44 @@ const CategoryList = styled.div`
   padding: 10px;
 `;
 
-const FilterBar = () => {
+const CategoryButton = styled.div`
+  color: white;
+  font-family: 'Calibri';
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: #03b29a;
+  margin: 0px 10px;
+  padding: 5px 20px;
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  align-self: space-between;
+  display: flex;
+  margin: 4px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+const FilterBar = (props) => {
   return (
     <FilterBarWrapper>
       <BlackSection />
       <FilterGrid>
         <FilterTitle>Filter by</FilterTitle>
+        <FilterDiv>
+          <CategoryButton onClick={() => props.filtered('gin')}>
+            Gin
+          </CategoryButton>
+          <CategoryButton onClick={() => props.filtered('spirits')}>
+            Spirits
+          </CategoryButton>
+        </FilterDiv>
         <FilterDiv>Type</FilterDiv>
         <CategoryList>
           <CategoryItem>Red</CategoryItem>
