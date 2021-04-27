@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 
 // IMPORT COMPONENTS
 import NavBar from '@components/NavBar/NavBar';
@@ -20,6 +20,7 @@ const ShopPage = () => {
   const [defaultProducts, setDefaultProducts] = useState([]);
   const [filterState, setFilterState] = useState([]);
   const [sortState, setSortState] = useState([]);
+  const [objectVisibilityState, setobjectVisibilityState] = useState([]);
 
   // FETCH PRODUCTS
   const fetchProducts = async () => {
@@ -39,6 +40,10 @@ const ShopPage = () => {
   }, []);
 
   // FILTERING
+
+  const removeFilterProducts = () => {
+    setProducts(defaultProducts);
+  };
 
   const toggleFilterProducts = (tag) => {
     const defaultFilteredData = defaultProducts.filter((product) =>
@@ -71,6 +76,7 @@ const ShopPage = () => {
         <FilterBar
           toggleFilterProducts={toggleFilterProducts}
           addFilterProducts={addFilterProducts}
+          removeFilterProducts={removeFilterProducts}
         />
         <BodyDiv>
           <CoverBar />
