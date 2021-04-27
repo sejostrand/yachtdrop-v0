@@ -81,8 +81,8 @@ const FilterBar = (props) => {
           <CategoryButton onClick={() => props.filterProducts('spirits')}>
             Spirits
           </CategoryButton>
-          <CategoryButton onClick={() => props.filterProducts('wine')}>
-            Wine
+          <CategoryButton onClick={() => props.filterProducts('whiskey')}>
+            Whiskey
           </CategoryButton>
         </FilterDiv>
         <FilterDiv>Type</FilterDiv>
