@@ -32,36 +32,18 @@ function showProducts(res) {
   console.log(res.data);
 } */
 
+/*
+  one state two function.
+*/
+
 const StyledShopPage = styled.div``;
 
 const ShopPage = () => {
   //STATES
   const [products, setProducts] = useState([]);
+  const [defaultProducts, setDefaultProducts] = useState([]);
   const [filterState, setFilterState] = useState([]);
   const [sortState, setSortState] = useState([]);
-
-  useEffect(() => {
-    const getProduct = async () => {
-      const productsFromServer = await fetchProducts();
-      setProducts(productsFromServer);
-    };
-
-    getProduct();
-  }, []);
-
-  const filterProducts = (tag) => {
-    const filteredData = products.filter((product) =>
-      product.categories.includes(tag)
-    );
-    setProducts(filteredData);
-  };
-  //price sort
-  const sortProducts = () => {
-    const sortedData = products.sort(
-      (a, b) => a.product_price - b.product_price
-    );
-    setProducts(sortedData);
-  };
 
   // Fetch Products
   const fetchProducts = async () => {
@@ -71,6 +53,40 @@ const ShopPage = () => {
     return data;
   };
 
+  useEffect(() => {
+    const getProduct = async () => {
+      const productsFromServer = await fetchProducts();
+      setProducts(productsFromServer);
+      setDefaultProducts(productsFromServer);
+    };
+    getProduct();
+  }, []);
+
+  // FILTERING
+
+  const toggleFilterProducts = (tag) => {
+    const defaultFilteredData = defaultProducts.filter((product) =>
+      product.categories.includes(tag)
+    );
+    setProducts(defaultFilteredData);
+  };
+
+  const addFilterProducts = (tag) => {
+    const filteredData = products.filter((product) =>
+      product.categories.includes(tag)
+    );
+    setProducts(filteredData);
+  };
+
+  // SORTING
+
+  const sortProducts = () => {
+    const sortedData = products.sort(
+      (a, b) => a.product_price - b.product_price
+    );
+    setProducts(sortedData);
+  };
+
   console.log(products);
 
   return (
@@ -78,7 +94,10 @@ const ShopPage = () => {
       <NavBar />
       <SearchBar />
       <BodyWrapper>
-        <FilterBar filterProducts={filterProducts} />
+        <FilterBar
+          toggleFilterProducts={toggleFilterProducts}
+          addFilterProducts={addFilterProducts}
+        />
         <BodyDiv>
           <CoverBar />
           <SortBy sortProducts={sortProducts} />
