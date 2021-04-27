@@ -95,7 +95,13 @@ const FilterBar = (props) => {
             Spirits
           </CategoryButton>
           <CategoryButton
-            color='#005C47'
+            color='#FD7156'
+            onClick={() => props.addFilterProducts('beer')}
+          >
+            Beer
+          </CategoryButton>
+          <CategoryButton
+            color='#DB607F'
             onClick={() => props.toggleFilterProducts('soft-drinks')}
           >
             Soft Drinks
