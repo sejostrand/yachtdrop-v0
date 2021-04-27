@@ -10,42 +10,18 @@ import CoverBar from '@components/CoverBar/CoverBar';
 import BodyWrapper from '../../objects/BodyWrapper.js';
 import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '@components/SortBy/SortBy.js';
-
 import Footer from '../HomePage/components/Footer/Footer';
-
-//IMPORT PRODUCTS FROM API
-/* function getProducts() {
-  axios({
-    method: 'GET',
-    url: 'https://yachtdrop.herokuapp.com/products',
-    responseType: 'stream',
-    params: {
-      featured: true,
-    },
-  })
-    .then((res) => showProducts(res))
-    .catch((err) => console.error(err))
-    .then(function () {}); //no se si aca deberia estar creando nuestra variable con los productos
-}
-
-function showProducts(res) {
-  console.log(res.data);
-} */
-
-/*
-  one state two function.
-*/
 
 const StyledShopPage = styled.div``;
 
 const ShopPage = () => {
-  //STATES
+  // STATES
   const [products, setProducts] = useState([]);
   const [defaultProducts, setDefaultProducts] = useState([]);
   const [filterState, setFilterState] = useState([]);
   const [sortState, setSortState] = useState([]);
 
-  // Fetch Products
+  // FETCH PRODUCTS
   const fetchProducts = async () => {
     const res = await fetch('http://localhost:1337/products');
     const data = await res.json();
@@ -86,8 +62,6 @@ const ShopPage = () => {
     );
     setProducts(sortedData);
   };
-
-  console.log(products);
 
   return (
     <StyledShopPage>
