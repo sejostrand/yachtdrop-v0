@@ -83,7 +83,7 @@ const FilterBar = (props) => {
             ALL
           </CategoryButton>
           <CategoryButton
-            color='#5B0913'
+            color='#874b96'
             onClick={() => props.toggleFilterProducts('wine')}
           >
             Wine

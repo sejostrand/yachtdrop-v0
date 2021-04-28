@@ -61,10 +61,11 @@ const ShopPage = () => {
 
   // SORTING
 
-  const sortProducts = () => {
+  const sortPrice = () => {
     const sortedData = products.sort(
       (a, b) => a.product_price - b.product_price
     );
+    setProducts(defaultProducts);
     setProducts(sortedData);
   };
 
@@ -80,7 +81,7 @@ const ShopPage = () => {
         />
         <BodyDiv>
           <CoverBar />
-          <SortBy sortProducts={sortProducts} />
+          <SortBy sortPrice={sortPrice} />
           <ProductGrid products={products} />
         </BodyDiv>
       </BodyWrapper>
