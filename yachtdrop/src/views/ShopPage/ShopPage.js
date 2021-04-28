@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 
 // IMPORT COMPONENTS
 import NavBar from '@components/NavBar/NavBar';
@@ -22,6 +22,7 @@ const ShopPage = () => {
   const [sortState, setSortState] = useState([]);
   const [search, setSearch] = useState('');
   const [filteredSearch, setFilteredSearch] = useState([]);
+  const [objectVisibilityState, setobjectVisibilityState] = useState([]);
 
   // FETCH PRODUCTS
   const fetchProducts = async () => {
@@ -51,7 +52,7 @@ const ShopPage = () => {
 
   // FILTERING
 
-  const removeFilterProducts = (tag) => {
+  const removeFilterProducts = () => {
     setProducts(defaultProducts);
   };
 
@@ -71,10 +72,11 @@ const ShopPage = () => {
 
   // SORTING
 
-  const sortProducts = () => {
+  const sortPrice = () => {
     const sortedData = products.sort(
       (a, b) => a.product_price - b.product_price
     );
+    setProducts(defaultProducts);
     setProducts(sortedData);
   };
 
@@ -88,16 +90,16 @@ const ShopPage = () => {
       <SearchBar />
       <BodyWrapper>
         <FilterBar
-          removeFilterProducts={removeFilterProducts}
           toggleFilterProducts={toggleFilterProducts}
           addFilterProducts={addFilterProducts}
+          removeFilterProducts={removeFilterProducts}
         />
         <BodyDiv>
           <CoverBar />
           <input type="text" 
             placeholder="Search" 
             onChange={ char => setSearch(char.target.value)}/>
-          <SortBy sortProducts={sortProducts} />
+          <SortBy sortPrice={sortPrice} />
           <ProductGrid filteredSearch={filteredSearch} />
         </BodyDiv>
       </BodyWrapper>

@@ -42,6 +42,8 @@ const BlackSection = styled.div`
 
 const CategoryList = styled.div`
   padding: 10px;
+  display: flex;
+  flex-flow: column nowrap;
 `;
 
 const CategoryButton = styled.div`
@@ -53,8 +55,7 @@ const CategoryButton = styled.div`
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  background-color: #03b29a;
-  margin: 0px 10px;
+  background-color: ${(props) => props.color};
   padding: 5px 20px;
   height: auto;
   border-radius: 10px;
@@ -75,27 +76,52 @@ const FilterBar = (props) => {
       <FilterGrid>
         <FilterTitle>Filter by</FilterTitle>
         <FilterDiv>
-          <CategoryButton onClick={() => props.removeFilterProducts('all')}>
-            All
+          <CategoryButton
+            color='#03b29a'
+            onClick={() => props.removeFilterProducts()}
+          >
+            ALL
           </CategoryButton>
-          <CategoryButton onClick={() => props.toggleFilterProducts('wine')}>
+          <CategoryButton
+            color='#874b96'
+            onClick={() => props.toggleFilterProducts('wine')}
+          >
             Wine
           </CategoryButton>
-          <CategoryButton onClick={() => props.toggleFilterProducts('spirits')}>
+          <CategoryButton
+            color='#23485A'
+            onClick={() => props.toggleFilterProducts('spirits')}
+          >
             Spirits
           </CategoryButton>
           <CategoryButton
+            color='#FD7156'
+            onClick={() => props.addFilterProducts('beer')}
+          >
+            Beer
+          </CategoryButton>
+          <CategoryButton
+            color='#DB607F'
             onClick={() => props.toggleFilterProducts('soft-drinks')}
           >
             Soft Drinks
           </CategoryButton>
-          <CategoryButton onClick={() => props.addFilterProducts('gin')}>
+          <CategoryButton
+            color='#03b29a'
+            onClick={() => props.addFilterProducts('gin')}
+          >
             Gin
           </CategoryButton>
-          <CategoryButton onClick={() => props.addFilterProducts('whiskey')}>
+          <CategoryButton
+            color='#03b29a'
+            onClick={() => props.addFilterProducts('whiskey')}
+          >
             Whiskey
           </CategoryButton>
-          <CategoryButton onClick={() => props.addFilterProducts('white')}>
+          <CategoryButton
+            color='#03b29a'
+            onClick={() => props.addFilterProducts('white')}
+          >
             White
           </CategoryButton>
         </FilterDiv>
