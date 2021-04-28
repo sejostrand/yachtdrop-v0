@@ -18,8 +18,8 @@ const ShopPage = () => {
   // STATES
   const [products, setProducts] = useState([]);
   const [defaultProducts, setDefaultProducts] = useState([]);
-  const [filterState, setFilterState] = useState([]);
-  const [sortState, setSortState] = useState([]);
+  //const [filterState, setFilterState] = useState([]);
+  //const [sortState, setSortState] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const [filteredSearch, setFilteredSearch] = useState([]);
   //const [objectVisibilityState, setobjectVisibilityState] = useState([]);
@@ -47,7 +47,7 @@ const ShopPage = () => {
   //UseEffect for the search functionality
   useEffect(
     () => [
-      setProducts(
+      setFilteredSearch(
         products.filter((product) => {
           return product.product_name
             .toLowerCase()
@@ -55,7 +55,7 @@ const ShopPage = () => {
         })
       ),
     ],
-    [searchInput]
+    [searchInput, products]
   );
 
   // FILTERING
@@ -83,21 +83,18 @@ const ShopPage = () => {
   const sortPrice = () => {
     if (priceToggle == true) {
       products.sort((a, b) => a.product_price - b.product_price);
+      filteredSearch.sort((a, b) => a.product_price - b.product_price);
     } else {
       products.sort((a, b) => b.product_price - a.product_price);
+      filteredSearch.sort((a, b) => b.product_price - a.product_price);
     }
     setPriceToggle(!priceToggle);
-    //setProducts(products);
   };
-
-  /* const filteredSearch = products.filter( product => {
-    return product.product_name.toLowerCase().includes(search.toLowerCase())
-  }) */
 
   return (
     <StyledShopPage>
       <NavBar />
-      <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} />
+      <SearchBar setSearchInput={setSearchInput} />
       <BodyWrapper>
         <FilterBar
           toggleFilterProducts={toggleFilterProducts}
@@ -107,7 +104,7 @@ const ShopPage = () => {
         <BodyDiv>
           <CoverBar />
           <SortBy sortPrice={sortPrice} />
-          <ProductGrid products={products} />
+          <ProductGrid products={filteredSearch} />
         </BodyDiv>
       </BodyWrapper>
       <Footer />
