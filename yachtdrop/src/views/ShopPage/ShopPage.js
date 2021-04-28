@@ -18,12 +18,14 @@ const ShopPage = () => {
   // STATES
   const [products, setProducts] = useState([]);
   const [defaultProducts, setDefaultProducts] = useState([]);
-  //const [filterState, setFilterState] = useState([]);
-  //const [sortState, setSortState] = useState([]);
+  const [filterState, setFilterState] = useState([]);
+  const [sortState, setSortState] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
+  const [filteredSearch, setFilteredSearch] = useState([]);
   //const [objectVisibilityState, setobjectVisibilityState] = useState([]);
 
   // TOGGLES
-  const [priceToggle, togglePrice] = useState([true]);
+  const [priceToggle, setPriceToggle] = useState([true]);
 
   // FETCH PRODUCTS
   const fetchProducts = async () => {
@@ -41,6 +43,20 @@ const ShopPage = () => {
     };
     getProduct();
   }, []);
+
+  //UseEffect for the search functionality
+  useEffect(
+    () => [
+      setProducts(
+        products.filter((product) => {
+          return product.product_name
+            .toLowerCase()
+            .includes(searchInput.toLowerCase());
+        })
+      ),
+    ],
+    [searchInput]
+  );
 
   // FILTERING
 
@@ -66,22 +82,22 @@ const ShopPage = () => {
 
   const sortPrice = () => {
     if (priceToggle == true) {
-      const sortedData = products.sort(
-        (a, b) => a.product_price - b.product_price
-      );
+      products.sort((a, b) => a.product_price - b.product_price);
     } else {
-      const sortedData = products.sort(
-        (a, b) => b.product_price - a.product_price
-      );
+      products.sort((a, b) => b.product_price - a.product_price);
     }
-    //setProducts(defaultProducts);
-    togglePrice(!priceToggle);
+    setPriceToggle(!priceToggle);
+    //setProducts(products);
   };
+
+  /* const filteredSearch = products.filter( product => {
+    return product.product_name.toLowerCase().includes(search.toLowerCase())
+  }) */
 
   return (
     <StyledShopPage>
       <NavBar />
-      <SearchBar />
+      <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} />
       <BodyWrapper>
         <FilterBar
           toggleFilterProducts={toggleFilterProducts}
