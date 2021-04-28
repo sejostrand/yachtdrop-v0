@@ -18,9 +18,12 @@ const ShopPage = () => {
   // STATES
   const [products, setProducts] = useState([]);
   const [defaultProducts, setDefaultProducts] = useState([]);
-  const [filterState, setFilterState] = useState([]);
-  const [sortState, setSortState] = useState([]);
-  const [objectVisibilityState, setobjectVisibilityState] = useState([]);
+  //const [filterState, setFilterState] = useState([]);
+  //const [sortState, setSortState] = useState([]);
+  //const [objectVisibilityState, setobjectVisibilityState] = useState([]);
+
+  // TOGGLES
+  const [priceToggle, togglePrice] = useState([true]);
 
   // FETCH PRODUCTS
   const fetchProducts = async () => {
@@ -62,11 +65,17 @@ const ShopPage = () => {
   // SORTING
 
   const sortPrice = () => {
-    const sortedData = products.sort(
-      (a, b) => a.product_price - b.product_price
-    );
-    setProducts(defaultProducts);
-    setProducts(sortedData);
+    if (priceToggle == true) {
+      const sortedData = products.sort(
+        (a, b) => a.product_price - b.product_price
+      );
+    } else {
+      const sortedData = products.sort(
+        (a, b) => b.product_price - a.product_price
+      );
+    }
+    //setProducts(defaultProducts);
+    togglePrice(!priceToggle);
   };
 
   return (
