@@ -14,11 +14,11 @@ const FlexContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const ProductGrid = ({ products }) => {
+const ProductGrid = ({ products, filteredSearch }) => {
   return (
     <FlexContainer>
       <GridWrapper>
-        {products.map((product) => (
+        {filteredSearch.map((product) => (
           <ProductTile
             name={product.product_name}
             description={product.product_description}

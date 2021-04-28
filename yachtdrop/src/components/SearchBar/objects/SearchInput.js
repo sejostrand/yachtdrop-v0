@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const StyledSearchInput = styled.input`
@@ -20,7 +20,9 @@ const StyledSearchInput = styled.input`
 
 const SearchInput = () => {
   return (
-    <StyledSearchInput type='text' placeholder='What can we help you find?' />
+    <StyledSearchInput type='text' 
+    placeholder='What can we help you find?' 
+    onChange={ e => setSearch(e.target.value)} />
   );
 };
 

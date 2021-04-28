@@ -75,6 +75,9 @@ const FilterBar = (props) => {
       <FilterGrid>
         <FilterTitle>Filter by</FilterTitle>
         <FilterDiv>
+          <CategoryButton onClick={() => props.removeFilterProducts('all')}>
+            All
+          </CategoryButton>
           <CategoryButton onClick={() => props.toggleFilterProducts('wine')}>
             Wine
           </CategoryButton>

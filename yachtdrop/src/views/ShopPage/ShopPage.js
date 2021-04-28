@@ -20,6 +20,8 @@ const ShopPage = () => {
   const [defaultProducts, setDefaultProducts] = useState([]);
   const [filterState, setFilterState] = useState([]);
   const [sortState, setSortState] = useState([]);
+  const [search, setSearch] = useState('');
+  const [filteredSearch, setFilteredSearch] = useState([]);
 
   // FETCH PRODUCTS
   const fetchProducts = async () => {
@@ -38,7 +40,20 @@ const ShopPage = () => {
     getProduct();
   }, []);
 
+  // UseEffect for the search functionality
+  useEffect(() => [
+    setFilteredSearch(
+      products.filter( product => {
+        return product.product_name.toLowerCase().includes(search.toLowerCase())
+      })
+    )
+  ], [search, products])
+
   // FILTERING
+
+  const removeFilterProducts = (tag) => {
+    setProducts(defaultProducts);
+  };
 
   const toggleFilterProducts = (tag) => {
     const defaultFilteredData = defaultProducts.filter((product) =>
@@ -63,19 +78,27 @@ const ShopPage = () => {
     setProducts(sortedData);
   };
 
+  /* const filteredSearch = products.filter( product => {
+    return product.product_name.toLowerCase().includes(search.toLowerCase())
+  }) */
+
   return (
     <StyledShopPage>
       <NavBar />
       <SearchBar />
       <BodyWrapper>
         <FilterBar
+          removeFilterProducts={removeFilterProducts}
           toggleFilterProducts={toggleFilterProducts}
           addFilterProducts={addFilterProducts}
         />
         <BodyDiv>
           <CoverBar />
+          <input type="text" 
+            placeholder="Search" 
+            onChange={ char => setSearch(char.target.value)}/>
           <SortBy sortProducts={sortProducts} />
-          <ProductGrid products={products} />
+          <ProductGrid filteredSearch={filteredSearch} />
         </BodyDiv>
       </BodyWrapper>
       <Footer />
