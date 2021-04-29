@@ -54,7 +54,7 @@ const CategoryButton = styled.div`
   color: ${(props) =>
     props.filterButtonState != props.cat ? 'white' : props.color};
   padding: ${(props) =>
-    props.filterButtonState != props.cat ? '5px 20px' : '1px 17px'};
+    props.filterButtonState != props.cat ? '5px 20px' : '2px 17px'};
 
   border-radius: 8px;
   font-family: 'Calibri';
