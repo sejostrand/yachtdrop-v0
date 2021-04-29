@@ -54,6 +54,9 @@
     },
     "product_format": {
       "type": "string"
+    },
+    "supplier_product_id": {
+      "type": "string"
     }
   }
 }

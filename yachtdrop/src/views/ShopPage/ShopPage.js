@@ -12,13 +12,18 @@ import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '@components/SortBy/SortBy.js';
 import Footer from '../HomePage/components/Footer/Footer';
 
-const StyledShopPage = styled.div``;
+const StyledShopPage = styled.div`
+  background-color: white;
+`;
 
 const ShopPage = () => {
   // STATES
   const [products, setProducts] = useState([]);
+  const [subProducts, setSubProducts] = useState([]);
   const [defaultProducts, setDefaultProducts] = useState([]);
-  //const [filterState, setFilterState] = useState([]);
+
+  const [filterButtonState, setFilterButtonState] = useState(['all']);
+  const [sortButtonState, setSortButtonState] = useState(['popularity']);
   //const [sortState, setSortState] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const [filteredSearch, setFilteredSearch] = useState([]);
@@ -26,6 +31,7 @@ const ShopPage = () => {
 
   // TOGGLES
   const [priceToggle, setPriceToggle] = useState([true]);
+  const [alphaToggle, setAlphaToggle] = useState([true]);
 
   // FETCH PRODUCTS
   const fetchProducts = async () => {
@@ -55,13 +61,14 @@ const ShopPage = () => {
         })
       ),
     ],
-    [searchInput, products]
+    [searchInput, products, subProducts]
   );
 
   // FILTERING
 
-  const removeFilterProducts = () => {
+  const removeFilterProducts = (tag) => {
     setProducts(defaultProducts);
+    setFilterButtonState(tag);
   };
 
   const toggleFilterProducts = (tag) => {
@@ -69,6 +76,7 @@ const ShopPage = () => {
       product.categories.includes(tag)
     );
     setProducts(defaultFilteredData);
+    setFilterButtonState(tag);
   };
 
   const addFilterProducts = (tag) => {
@@ -80,15 +88,34 @@ const ShopPage = () => {
 
   // SORTING
 
-  const sortPrice = () => {
+  const sortPrice = (tag) => {
     if (priceToggle == true) {
-      products.sort((a, b) => a.product_price - b.product_price);
       filteredSearch.sort((a, b) => a.product_price - b.product_price);
     } else {
-      products.sort((a, b) => b.product_price - a.product_price);
       filteredSearch.sort((a, b) => b.product_price - a.product_price);
     }
     setPriceToggle(!priceToggle);
+    setSortButtonState(tag);
+  };
+
+  const sortAlpha = (tag) => {
+    if (alphaToggle == true) {
+      filteredSearch.sort(function (a, b) {
+        a = a.product_name.toLowerCase();
+        b = b.product_name.toLowerCase();
+
+        return a < b ? -1 : a > b ? 1 : 0;
+      });
+    } else {
+      filteredSearch.sort(function (a, b) {
+        a = a.product_name.toLowerCase();
+        b = b.product_name.toLowerCase();
+
+        return a > b ? -1 : a > b ? 1 : 0;
+      });
+    }
+    setAlphaToggle(!alphaToggle);
+    setSortButtonState(tag);
   };
 
   return (
@@ -100,10 +127,15 @@ const ShopPage = () => {
           toggleFilterProducts={toggleFilterProducts}
           addFilterProducts={addFilterProducts}
           removeFilterProducts={removeFilterProducts}
+          filterButtonState={filterButtonState}
         />
         <BodyDiv>
           <CoverBar />
-          <SortBy sortPrice={sortPrice} />
+          <SortBy
+            sortPrice={sortPrice}
+            sortAlpha={sortAlpha}
+            sortButtonState={sortButtonState}
+          />
           <ProductGrid products={filteredSearch} />
         </BodyDiv>
       </BodyWrapper>
