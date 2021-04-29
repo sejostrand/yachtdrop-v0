@@ -47,7 +47,6 @@ const CategoryList = styled.div`
 `;
 
 const CategoryButton = styled.div`
-  border: 3px solid ${(props) => props.color};
   border: ${(props) =>
     props.filterButtonState != props.cat ? 'none' : '3px solid ' + props.color};
   background-color: ${(props) =>

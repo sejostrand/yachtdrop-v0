@@ -19,8 +19,11 @@ const StyledShopPage = styled.div`
 const ShopPage = () => {
   // STATES
   const [products, setProducts] = useState([]);
+  const [subProducts, setSubProducts] = useState([]);
   const [defaultProducts, setDefaultProducts] = useState([]);
+
   const [filterButtonState, setFilterButtonState] = useState(['all']);
+  const [sortButtonState, setSortButtonState] = useState(['popularity']);
   //const [sortState, setSortState] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const [filteredSearch, setFilteredSearch] = useState([]);
@@ -58,7 +61,7 @@ const ShopPage = () => {
         })
       ),
     ],
-    [searchInput, products]
+    [searchInput, products, subProducts]
   );
 
   // FILTERING
@@ -85,16 +88,17 @@ const ShopPage = () => {
 
   // SORTING
 
-  const sortPrice = () => {
+  const sortPrice = (tag) => {
     if (priceToggle == true) {
       filteredSearch.sort((a, b) => a.product_price - b.product_price);
     } else {
       filteredSearch.sort((a, b) => b.product_price - a.product_price);
     }
     setPriceToggle(!priceToggle);
+    setSortButtonState(tag);
   };
 
-  const sortAlpha = () => {
+  const sortAlpha = (tag) => {
     if (alphaToggle == true) {
       filteredSearch.sort(function (a, b) {
         a = a.product_name.toLowerCase();
@@ -111,6 +115,7 @@ const ShopPage = () => {
       });
     }
     setAlphaToggle(!alphaToggle);
+    setSortButtonState(tag);
   };
 
   return (
@@ -126,7 +131,11 @@ const ShopPage = () => {
         />
         <BodyDiv>
           <CoverBar />
-          <SortBy sortPrice={sortPrice} sortAlpha={sortAlpha} />
+          <SortBy
+            sortPrice={sortPrice}
+            sortAlpha={sortAlpha}
+            sortButtonState={sortButtonState}
+          />
           <ProductGrid products={filteredSearch} />
         </BodyDiv>
       </BodyWrapper>
