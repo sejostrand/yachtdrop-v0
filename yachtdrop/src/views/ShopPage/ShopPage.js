@@ -18,11 +18,14 @@ const ShopPage = () => {
   // STATES
   const [products, setProducts] = useState([]);
   const [defaultProducts, setDefaultProducts] = useState([]);
-  const [filterState, setFilterState] = useState([]);
-  const [sortState, setSortState] = useState([]);
-  const [search, setSearch] = useState('');
+  //const [filterState, setFilterState] = useState([]);
+  //const [sortState, setSortState] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
   const [filteredSearch, setFilteredSearch] = useState([]);
-  const [objectVisibilityState, setobjectVisibilityState] = useState([]);
+  //const [objectVisibilityState, setobjectVisibilityState] = useState([]);
+
+  // TOGGLES
+  const [priceToggle, setPriceToggle] = useState([true]);
 
   // FETCH PRODUCTS
   const fetchProducts = async () => {
@@ -41,14 +44,19 @@ const ShopPage = () => {
     getProduct();
   }, []);
 
-  // UseEffect for the search functionality
-  useEffect(() => [
-    setFilteredSearch(
-      products.filter( product => {
-        return product.product_name.toLowerCase().includes(search.toLowerCase())
-      })
-    )
-  ], [search, products])
+  //UseEffect for the search functionality
+  useEffect(
+    () => [
+      setFilteredSearch(
+        products.filter((product) => {
+          return product.product_name
+            .toLowerCase()
+            .includes(searchInput.toLowerCase());
+        })
+      ),
+    ],
+    [searchInput, products]
+  );
 
   // FILTERING
 
@@ -73,21 +81,20 @@ const ShopPage = () => {
   // SORTING
 
   const sortPrice = () => {
-    const sortedData = products.sort(
-      (a, b) => a.product_price - b.product_price
-    );
-    setProducts(defaultProducts);
-    setProducts(sortedData);
+    if (priceToggle == true) {
+      products.sort((a, b) => a.product_price - b.product_price);
+      filteredSearch.sort((a, b) => a.product_price - b.product_price);
+    } else {
+      products.sort((a, b) => b.product_price - a.product_price);
+      filteredSearch.sort((a, b) => b.product_price - a.product_price);
+    }
+    setPriceToggle(!priceToggle);
   };
-
-  /* const filteredSearch = products.filter( product => {
-    return product.product_name.toLowerCase().includes(search.toLowerCase())
-  }) */
 
   return (
     <StyledShopPage>
       <NavBar />
-      <SearchBar />
+      <SearchBar setSearchInput={setSearchInput} />
       <BodyWrapper>
         <FilterBar
           toggleFilterProducts={toggleFilterProducts}
@@ -96,11 +103,8 @@ const ShopPage = () => {
         />
         <BodyDiv>
           <CoverBar />
-          <input type="text" 
-            placeholder="Search" 
-            onChange={ char => setSearch(char.target.value)}/>
           <SortBy sortPrice={sortPrice} />
-          <ProductGrid filteredSearch={filteredSearch} />
+          <ProductGrid products={filteredSearch} />
         </BodyDiv>
       </BodyWrapper>
       <Footer />
