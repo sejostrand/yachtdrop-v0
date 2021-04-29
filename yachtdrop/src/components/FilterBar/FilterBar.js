@@ -106,6 +106,8 @@ const FilterBar = (props) => {
           >
             Soft Drinks
           </CategoryButton>
+        </FilterDiv>
+        <FilterDiv>
           <CategoryButton
             color='#03b29a'
             onClick={() => props.addFilterProducts('gin')}
@@ -125,7 +127,6 @@ const FilterBar = (props) => {
             White
           </CategoryButton>
         </FilterDiv>
-        <FilterDiv>Type</FilterDiv>
         <CategoryList>
           <CategoryItem>Red</CategoryItem>
           <CategoryItem>White</CategoryItem>
