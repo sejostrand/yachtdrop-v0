@@ -15,24 +15,22 @@ import YachtdropLogo from '../../objects/YachtdropLogo';
 import { COLORS } from '../../assets/theme/theme';
 
 const StyledNavBar = styled.nav`
-    background-color: ${COLORS.color1};
-    padding: 5px 25px;
-    width: 100%;
-    justify-content: space-between;
-    top: 0;
-    display: flex;
-    position: fixed;
-    z-index: 10;
-  `;
-
-
+  background-color: ${COLORS.color1};
+  padding: 5px 25px;
+  width: 100%;
+  justify-content: space-between;
+  top: 0;
+  display: flex;
+  position: fixed;
+  z-index: 10;
+`;
 
 const NavBar = ({ filteredProducts }) => {
-
   return (
     <StyledNavBar>
       <YachtdropLogo />
       <NavMenu>
+        <MenuLink>All</MenuLink>
         <MenuLink>Wine</MenuLink>
         <MenuLink>Spirits</MenuLink>
         <MenuLink>Beer</MenuLink>

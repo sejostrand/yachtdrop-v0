@@ -26,6 +26,7 @@ const ShopPage = () => {
 
   // TOGGLES
   const [priceToggle, setPriceToggle] = useState([true]);
+  const [alphaToggle, setAlphaToggle] = useState([true]);
 
   // FETCH PRODUCTS
   const fetchProducts = async () => {
@@ -82,13 +83,30 @@ const ShopPage = () => {
 
   const sortPrice = () => {
     if (priceToggle == true) {
-      products.sort((a, b) => a.product_price - b.product_price);
       filteredSearch.sort((a, b) => a.product_price - b.product_price);
     } else {
-      products.sort((a, b) => b.product_price - a.product_price);
       filteredSearch.sort((a, b) => b.product_price - a.product_price);
     }
     setPriceToggle(!priceToggle);
+  };
+
+  const sortAlpha = () => {
+    if (alphaToggle == true) {
+      filteredSearch.sort(function (a, b) {
+        a = a.product_name.toLowerCase();
+        b = b.product_name.toLowerCase();
+
+        return a < b ? -1 : a > b ? 1 : 0;
+      });
+    } else {
+      filteredSearch.sort(function (a, b) {
+        a = a.product_name.toLowerCase();
+        b = b.product_name.toLowerCase();
+
+        return a > b ? -1 : a > b ? 1 : 0;
+      });
+    }
+    setAlphaToggle(!alphaToggle);
   };
 
   return (
@@ -103,7 +121,7 @@ const ShopPage = () => {
         />
         <BodyDiv>
           <CoverBar />
-          <SortBy sortPrice={sortPrice} />
+          <SortBy sortPrice={sortPrice} sortAlpha={sortAlpha} />
           <ProductGrid products={filteredSearch} />
         </BodyDiv>
       </BodyWrapper>

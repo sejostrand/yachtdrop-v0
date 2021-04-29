@@ -52,6 +52,7 @@ const SortBy = (props) => {
     <StyledSortBy>
       <SortTitle>Sort By</SortTitle>
       <SelectedSortButton>Alphabetical</SelectedSortButton>
+      <SortButton onClick={() => props.sortAlpha()}>Alphabetical</SortButton>
       <SortButton onClick={() => props.sortPrice()}>Price</SortButton>
     </StyledSortBy>
   );
