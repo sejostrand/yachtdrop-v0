@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledBodyWrapper = styled.body`
   padding-top: 97px;
-  background-color: red;
+  background-color: white;
   width: 100%;
   height: auto;
   display: flex;

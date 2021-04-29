@@ -12,7 +12,9 @@ import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '@components/SortBy/SortBy.js';
 import Footer from '../HomePage/components/Footer/Footer';
 
-const StyledShopPage = styled.div``;
+const StyledShopPage = styled.div`
+  background-color: white;
+`;
 
 const ShopPage = () => {
   // STATES
