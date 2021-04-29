@@ -20,7 +20,7 @@ const ShopPage = () => {
   // STATES
   const [products, setProducts] = useState([]);
   const [defaultProducts, setDefaultProducts] = useState([]);
-  //const [filterState, setFilterState] = useState([]);
+  const [filterButtonState, setFilterButtonState] = useState(['all']);
   //const [sortState, setSortState] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const [filteredSearch, setFilteredSearch] = useState([]);
@@ -63,8 +63,9 @@ const ShopPage = () => {
 
   // FILTERING
 
-  const removeFilterProducts = () => {
+  const removeFilterProducts = (tag) => {
     setProducts(defaultProducts);
+    setFilterButtonState(tag);
   };
 
   const toggleFilterProducts = (tag) => {
@@ -72,6 +73,7 @@ const ShopPage = () => {
       product.categories.includes(tag)
     );
     setProducts(defaultFilteredData);
+    setFilterButtonState(tag);
   };
 
   const addFilterProducts = (tag) => {
@@ -120,6 +122,7 @@ const ShopPage = () => {
           toggleFilterProducts={toggleFilterProducts}
           addFilterProducts={addFilterProducts}
           removeFilterProducts={removeFilterProducts}
+          filterButtonState={filterButtonState}
         />
         <BodyDiv>
           <CoverBar />
