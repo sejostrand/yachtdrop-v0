@@ -11,14 +11,11 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "email": {
-      "type": "email"
-    },
-    "active": {
-      "type": "boolean"
-    },
     "first_name": {
       "type": "string"
+    },
+    "email": {
+      "type": "email"
     }
   }
 }
