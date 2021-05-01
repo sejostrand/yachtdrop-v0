@@ -67,10 +67,9 @@ const ShopPage = () => {
     if (filterArray == 'none') {
       return defaultArray;
     } else {
-      const result = defaultArray.filter((item) => {
-        return item.categories.some((tag) => filterArray.includes(tag));
-      });
-      return result;
+      return defaultArray.filter((item) =>
+        item.categories.some((tag) => filterArray.includes(tag))
+      );
     }
   };
 
