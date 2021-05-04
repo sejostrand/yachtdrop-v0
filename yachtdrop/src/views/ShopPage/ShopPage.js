@@ -17,21 +17,19 @@ const StyledShopPage = styled.div`
 `;
 
 const ShopPage = () => {
-  // STATES
-  const [products, setProducts] = useState([]);
-  const [subProducts, setSubProducts] = useState([]);
-  const [defaultProducts, setDefaultProducts] = useState([]);
+  // FILTER STATES
 
-  const [filterButtonState, setFilterButtonState] = useState(['all']);
-  const [sortButtonState, setSortButtonState] = useState(['popularity']);
-  //const [sortState, setSortState] = useState([]);
+  // all data
+  const [productData, setProductData] = useState([]); //DISPLAYED DATA ARRAY IS filteredProductData
+  const [defaultProductData, setDefaultProductData] = useState([]);
+  //filter
+  const [filterTags, setFilterTags] = useState(['none']); //active filter
+  const [primaryFilter, setPrimaryFilter] = useState();
+  const [secondaryFilter, setSecondaryFilter] = useState();
+  const [checkBoxFilter, setCheckBoxFilter] = useState([]);
+  //searchbar
   const [searchInput, setSearchInput] = useState('');
-  const [filteredSearch, setFilteredSearch] = useState([]);
-  //const [objectVisibilityState, setobjectVisibilityState] = useState([]);
-
-  // TOGGLES
-  const [priceToggle, setPriceToggle] = useState([true]);
-  const [alphaToggle, setAlphaToggle] = useState([true]);
+  const [filteredProductData, setFilteredProductData] = useState([]);
 
   // FETCH PRODUCTS
   const fetchProducts = async () => {
@@ -42,29 +40,38 @@ const ShopPage = () => {
   };
 
   useEffect(() => {
-    const getProduct = async () => {
-      const productsFromServer = await fetchProducts();
-      setProducts(productsFromServer);
-      setDefaultProducts(productsFromServer);
+    const getProductData = async () => {
+      const dataFromServer = await fetchProducts();
+      setProductData(dataFromServer);
+      setDefaultProductData(dataFromServer);
     };
-    getProduct();
+    getProductData();
   }, []);
 
-  //UseEffect for the search functionality
+  //update searchbar filter
   useEffect(
     () => [
-      setFilteredSearch(
-        products.filter((product) => {
+      setFilteredProductData(
+        productData.filter((product) => {
           return product.product_name
             .toLowerCase()
             .includes(searchInput.toLowerCase());
         })
       ),
     ],
-    [searchInput, products, subProducts]
+    [searchInput, productData]
   );
 
-  // FILTERING
+  //returns array of filtered products using filterTags
+  const applyFilter = (defaultArray, filterArray) => {
+    if (filterArray == 'none') {
+      return defaultArray;
+    } else {
+      return defaultArray.filter((item) =>
+        item.categories.some((tag) => filterArray.includes(tag))
+      );
+    }
+  };
 
 
   const removeFilterProducts = (tag) => {
@@ -72,6 +79,50 @@ const ShopPage = () => {
     setFilterButtonState(tag);
   };
 
+  useEffect(() => [setFilterTags(checkBoxFilter.concat(primaryFilter))], [
+    primaryFilter,
+  ]);
+
+  useEffect(() => [setFilterTags(checkBoxFilter.concat(secondaryFilter))], [
+    secondaryFilter,
+  ]);
+
+  useEffect(
+    () => [
+      setFilterTags(checkBoxFilter.concat([primaryFilter, secondaryFilter])),
+    ],
+    [checkBoxFilter]
+  );
+
+  //useEffect(() => [applyFilter()], [filterTags]);
+
+  //update filter
+  /*
+  useEffect(
+    () => [
+      setProductData(
+        defaultProductData.filter((product) => {
+          return product.categories.includes(() => filterTags.forEach());
+        })
+      ),
+    ],
+    [filterTags]
+  );
+*/
+  // HANDLE FILTER UPDATES
+
+  const [filterButtonState, setFilterButtonState] = useState(['all']);
+
+  const [sortButtonState, setSortButtonState] = useState(['popularity']);
+  //const [sortState, setSortState] = useState([]);
+
+  // TOGGLE STATES
+  const [priceToggle, setPriceToggle] = useState([true]);
+  const [alphaToggle, setAlphaToggle] = useState([true]);
+
+  // FILTERING
+
+  /*
   const toggleFilterProducts = (tag) => {
     const defaultFilteredData = defaultProducts.filter((product) =>
       product.categories.includes(tag)
@@ -86,6 +137,7 @@ const ShopPage = () => {
     );
     setProducts(filteredData)  
   };
+*/
 
   const fixThis = (tag) => {
     setProducts(defaultProducts);
@@ -100,9 +152,9 @@ const ShopPage = () => {
 
   const sortPrice = (tag) => {
     if (priceToggle == true) {
-      filteredSearch.sort((a, b) => a.product_price - b.product_price);
+      productData.sort((a, b) => a.product_price - b.product_price);
     } else {
-      filteredSearch.sort((a, b) => b.product_price - a.product_price);
+      productData.sort((a, b) => b.product_price - a.product_price);
     }
     setPriceToggle(!priceToggle);
     setSortButtonState(tag);
@@ -111,14 +163,14 @@ const ShopPage = () => {
 
   const sortAlpha = (tag) => {
     if (alphaToggle == true) {
-      filteredSearch.sort(function (a, b) {
+      productData.sort(function (a, b) {
         a = a.product_name.toLowerCase();
         b = b.product_name.toLowerCase();
 
         return a < b ? -1 : a > b ? 1 : 0;
       });
     } else {
-      filteredSearch.sort(function (a, b) {
+      productData.sort(function (a, b) {
         a = a.product_name.toLowerCase();
         b = b.product_name.toLowerCase();
 
@@ -135,9 +187,9 @@ const ShopPage = () => {
       <SearchBar setSearchInput={setSearchInput} />
       <BodyWrapper>
         <FilterBar
-          toggleFilterProducts={toggleFilterProducts}
-          addFilterProducts={addFilterProducts}
-          removeFilterProducts={removeFilterProducts}
+          setPrimaryFilter={updateFilter}
+          setSecondaryFilter={updateFilter}
+          setFilterTags={updateFilter}
           filterButtonState={filterButtonState}
           setSearchInput={setSearchInput}
           fixThis={fixThis}
@@ -149,7 +201,7 @@ const ShopPage = () => {
             sortAlpha={sortAlpha}
             sortButtonState={sortButtonState}
           />
-          <ProductGrid products={filteredSearch} />
+          <ProductGrid products={filteredProductData} />
         </BodyDiv>
       </BodyWrapper>
       <Footer />

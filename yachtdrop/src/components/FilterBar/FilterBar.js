@@ -88,7 +88,7 @@ const FilterBar = (props) => {
           <CategoryButton
             color='#03b29a'
             cat='all'
-            onClick={() => props.removeFilterProducts('all')}
+            onClick={() => props.setFilterTags([])}
             filterButtonState={props.filterButtonState}
           >
             ALL
@@ -96,7 +96,7 @@ const FilterBar = (props) => {
           <CategoryButton
             color='#874b96'
             cat='wine'
-            onClick={() => props.toggleFilterProducts('wine')}
+            onClick={() => props.setPrimaryFilter('wine')}
             filterButtonState={props.filterButtonState}
           >
             Wine
@@ -104,7 +104,7 @@ const FilterBar = (props) => {
           <CategoryButton
             color='#23485A'
             cat='spirits'
-            onClick={() => props.toggleFilterProducts('spirits')}
+            onClick={() => props.setPrimaryFilter('spirits')}
             filterButtonState={props.filterButtonState}
           >
             Spirits
@@ -112,7 +112,7 @@ const FilterBar = (props) => {
           <CategoryButton
             color='#FD7156'
             cat='beer'
-            onClick={() => props.toggleFilterProducts('beer')}
+            onClick={() => props.setPrimaryFilter('beer')}
             filterButtonState={props.filterButtonState}
           >
             Beer
@@ -120,10 +120,18 @@ const FilterBar = (props) => {
           <CategoryButton
             color='#DB607F'
             cat='soft-drinks'
-            onClick={() => props.toggleFilterProducts('soft-drinks')}
+            onClick={() => props.setPrimaryFilter('soft-drinks')}
             filterButtonState={props.filterButtonState}
           >
             Soft Drinks
+          </CategoryButton>
+          <CategoryButton
+            color='#874b96'
+            cat='other'
+            onClick={() => props.setPrimaryFilter('other')}
+            filterButtonState={props.filterButtonState}
+          >
+            Other
           </CategoryButton>
         </FilterDiv>
         <FilterDiv>
@@ -135,7 +143,7 @@ const FilterBar = (props) => {
           </CategoryButton>
           <CategoryButton
             color='#03b29a'
-            onClick={() => props.addFilterProducts('whiskey')}
+            onClick={() => props.setSecondaryFilter('whiskey')}
           >
             Whiskey
           </CategoryButton>
