@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, { useState } from 'react';
 import BarButton from './objects/BarButton.js';
 import CategoryItem from './objects/CategoryItem.js';
 
@@ -76,6 +76,9 @@ const CategoryButton = styled.div`
 `;
 
 const FilterBar = (props) => {
+  const [buttons, setButtons] = useState(false);
+
+
   return (
     <FilterBarWrapper>
       <BlackSection />
@@ -126,7 +129,7 @@ const FilterBar = (props) => {
         <FilterDiv>
           <CategoryButton
             color='#03b29a'
-            onClick={() => props.addFilterProducts('gin')}
+            onClick={() => props.fixThis('gin')}
           >
             Gin
           </CategoryButton>
@@ -138,9 +141,21 @@ const FilterBar = (props) => {
           </CategoryButton>
           <CategoryButton
             color='#03b29a'
-            onClick={() => props.addFilterProducts('white')}
+            onClick={() => {setButtons(!buttons) ; buttons ? props.addFilterProducts('whiskey') : props.removeFilterProducts('all')}}
+          >
+            Whiskey
+          </CategoryButton>
+          <CategoryButton
+            color='#03b29a'
+            onClick={() => {props.toggleFilterProducts('wine') ; props.fixThis('white')}}
           >
             White
+          </CategoryButton>
+          <CategoryButton
+            color='#03b29a'
+            onClick={() => {props.toggleFilterProducts('wine') ; props.fixThis('red')}}
+          >
+            Red
           </CategoryButton>
         </FilterDiv>
         <CategoryList>

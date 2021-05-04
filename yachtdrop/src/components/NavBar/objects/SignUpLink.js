@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import SignUp from '../../../views/SignUp/SignUp'
 
-const StyledSignUpLink = styled.div`
+const StyledSignUpLink = styled.a`
   border-bottom: 3px solid #f8694b;
   background-color: #f8faf7;
   color: #f8694b;
@@ -23,7 +24,7 @@ const StyledSignUpLink = styled.div`
 `;
 
 const SignUpLink = () => {
-  return <StyledSignUpLink>Sign up</StyledSignUpLink>;
+  return <StyledSignUpLink href="/signup">Sign up</StyledSignUpLink>;
 };
 
 export default SignUpLink;

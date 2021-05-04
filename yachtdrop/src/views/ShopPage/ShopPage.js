@@ -66,6 +66,7 @@ const ShopPage = () => {
 
   // FILTERING
 
+
   const removeFilterProducts = (tag) => {
     setProducts(defaultProducts);
     setFilterButtonState(tag);
@@ -83,8 +84,17 @@ const ShopPage = () => {
     const filteredData = products.filter((product) =>
       product.categories.includes(tag)
     );
-    setProducts(filteredData);
+    setProducts(filteredData)  
   };
+
+  const fixThis = (tag) => {
+    setProducts(defaultProducts);
+
+    const fixedData = defaultProducts.filter((product) => 
+    product.categories.includes(tag)
+    );
+    setProducts(fixedData)
+  }
 
   // SORTING
 
@@ -97,6 +107,7 @@ const ShopPage = () => {
     setPriceToggle(!priceToggle);
     setSortButtonState(tag);
   };
+
 
   const sortAlpha = (tag) => {
     if (alphaToggle == true) {
@@ -128,6 +139,8 @@ const ShopPage = () => {
           addFilterProducts={addFilterProducts}
           removeFilterProducts={removeFilterProducts}
           filterButtonState={filterButtonState}
+          setSearchInput={setSearchInput}
+          fixThis={fixThis}
         />
         <BodyDiv>
           <CoverBar />
