@@ -12,6 +12,56 @@ import SignUp from './views/SignUp/SignUp'
 import SignIn from './views/SignIn/SignIn'
 
 function App() {
+  class Filter {
+    constructor() {
+      this.primaryTag = [];
+      this.secondaryTag = [];
+      this.otherTags = [];
+    }
+
+    checkTag(whichTag, tag) {}
+
+    getTags() {
+      let group = [];
+      return group.concat(this.primaryTag, this.secondaryTag, this.otherTags);
+    }
+
+    togglePrimaryTag(tag) {
+      if (String(this.primaryTag[0]) == String(tag)) {
+        this.clearTags();
+      } else {
+        this.clearTags();
+        this.primaryTag = [tag];
+        console.log(this.getTags());
+      }
+
+      return console.log(tag + ' was toggled');
+    }
+
+    toggleSecondaryTag(tag) {
+      String(this.secondaryTag[0]) == String([tag])
+        ? (this.secondaryTag = [])
+        : (this.secondaryTag = [tag]);
+      console.log(this.getTags());
+    }
+    toggleTag(tag) {
+      if (this.otherTags.includes(tag)) {
+        this.otherTags.splice(this.otherTags.indexOf(tag), 1);
+      } else {
+        this.otherTags.push(tag);
+      }
+      console.log(this.getTags());
+    }
+    clearTags() {
+      this.primaryTag = [];
+      this.secondaryTag = [];
+      this.otherTags = [];
+      return console.log('tags were cleared');
+    }
+  }
+
+  const productFilter = new Filter();
+
   return (
     <Router>
       <Switch>
@@ -19,7 +69,7 @@ function App() {
           <HomePage />
         </Route>
         <Route path='/shoppage'>
-          <ShopPage />
+          <ShopPage productFilter={productFilter} />
         </Route>
         <Route path='/signup'>
           <SignUp />

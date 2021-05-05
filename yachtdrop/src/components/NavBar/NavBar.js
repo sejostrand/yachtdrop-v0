@@ -15,7 +15,7 @@ import YachtdropLogo from '../../objects/YachtdropLogo';
 import { COLORS } from '../../assets/theme/theme';
 
 const StyledNavBar = styled.nav`
-  background-color: ${COLORS.color1};
+  background-color: ${COLORS.green};
   padding: 5px 25px;
   width: 100%;
   justify-content: space-between;
