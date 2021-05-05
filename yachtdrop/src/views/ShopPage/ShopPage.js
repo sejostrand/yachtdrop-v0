@@ -147,7 +147,11 @@ const ShopPage = (props) => {
         />
         <BodyDiv>
           <CoverBar />
-          <SortBy sortAlpha={sortAlpha} sortPrice={sortPrice} />
+          <SortBy
+            sortAlpha={sortAlpha}
+            sortPrice={sortPrice}
+            sortButtonState={sortButtonState}
+          />
           <ProductGrid products={filteredProductData} />
         </BodyDiv>
       </BodyWrapper>
