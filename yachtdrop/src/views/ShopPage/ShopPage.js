@@ -24,6 +24,10 @@ const ShopPage = (props) => {
   const [filteredProductData, setFilteredProductData] = useState([]); //products filtered by category and search
   const [searchInput, setSearchInput] = useState(''); //state for searchbar input
 
+  const [alphaToggle, setAlphaToggle] = useState();
+  const [priceToggle, setPriceToggle] = useState();
+  const [sortButtonState, setSortButtonState] = useState();
+
   // FETCH PRODUCTS
   const fetchProducts = async () => {
     const res = await fetch('http://localhost:1337/products');
@@ -77,53 +81,6 @@ const ShopPage = (props) => {
     setProductData(applyProductFilter(filterArray, defaultProductData));
   }, [filterArray]);
 
-  //productFilter class
-  // class Filter {
-  //   constructor() {
-  //     this.primaryTag = [];
-  //     this.secondaryTag = [];
-  //     this.otherTags = [];
-  //   }
-  //   getTags() {
-  //     let group = [];
-  //     return group.concat(this.primaryTag, this.secondaryTag, this.otherTags);
-  //   }
-  //   setPrimaryTag(tag) {
-  //     this.primaryTag == [tag] ? this.clearTags() : this.replacePrimary(tag);
-
-  //     return console.log(this.getTags());
-  //   }
-  //   replacePrimary(tag) {
-  //     this.clearTags();
-  //     this.primaryTag = [tag];
-  //   }
-  //   setSecondaryTag(tag) {
-  //     this.secondaryTag == [tag]
-  //       ? (this.secondaryTag = [])
-  //       : (this.secondaryTag = [tag]);
-  //     return console.log(this.getTags());
-  //   }
-  //   toggleTag(tag) {
-  //     if (this.otherTags == []) {
-  //       this.otherTags = [tag];
-  //     } else if (this.otherTags.includes(tag)) {
-  //       this.otherTags.splice(this.otherTags.indexOf(tag), 1);
-  //     } else {
-  //       this.otherTags.push(tag);
-  //     }
-  //     return console.log(this.getTags());
-  //   }
-  //   clearTags() {
-  //     this.primaryTag = [];
-  //     this.secondaryTag = [];
-  //     this.otherTags = [];
-  //     return console.log('tags were cleared');
-  //   }
-  // }
-
-  // //create productFilter object
-  // const productFilter = new Filter();
-
   const clearFilter = () => {
     productFilter.clearTags();
     setFilterArray([]);
@@ -147,40 +104,35 @@ const ShopPage = (props) => {
 
   // SORTING
 
-  // const applySort = (field) => {
-  //   if (field == 'price') {
-  //   }
-  // };
+  const sortPrice = (tag) => {
+    if (priceToggle == true) {
+      filteredProductData.sort((a, b) => a.product_price - b.product_price);
+    } else {
+      filteredProductData.sort((a, b) => b.product_price - a.product_price);
+    }
+    setPriceToggle(!priceToggle);
+    setSortButtonState(tag);
+  };
 
-  // const sortPrice = (tag) => {
-  //   if (priceToggle == true) {
-  //     productData.sort((a, b) => a.product_price - b.product_price);
-  //   } else {
-  //     productData.sort((a, b) => b.product_price - a.product_price);
-  //   }
-  //   setPriceToggle(!priceToggle);
-  //   setSortButtonState(tag);
-  // };
+  const sortAlpha = (tag) => {
+    if (alphaToggle == true) {
+      filteredProductData.sort(function (a, b) {
+        a = a.product_name.toLowerCase();
+        b = b.product_name.toLowerCase();
 
-  // const sortAlpha = (tag) => {
-  //   if (alphaToggle == true) {
-  //     productData.sort(function (a, b) {
-  //       a = a.product_name.toLowerCase();
-  //       b = b.product_name.toLowerCase();
+        return a < b ? -1 : a > b ? 1 : 0;
+      });
+    } else {
+      filteredProductData.sort(function (a, b) {
+        a = a.product_name.toLowerCase();
+        b = b.product_name.toLowerCase();
 
-  //       return a < b ? -1 : a > b ? 1 : 0;
-  //     });
-  //   } else {
-  //     productData.sort(function (a, b) {
-  //       a = a.product_name.toLowerCase();
-  //       b = b.product_name.toLowerCase();
-
-  //       return a > b ? -1 : a > b ? 1 : 0;
-  //     });
-  //   }
-  //   setAlphaToggle(!alphaToggle);
-  //   setSortButtonState(tag);
-  // };
+        return a > b ? -1 : a > b ? 1 : 0;
+      });
+    }
+    setAlphaToggle(!alphaToggle);
+    setSortButtonState(tag);
+  };
 
   return (
     <StyledShopPage>
@@ -195,7 +147,7 @@ const ShopPage = (props) => {
         />
         <BodyDiv>
           <CoverBar />
-          <SortBy />
+          <SortBy sortAlpha={sortAlpha} sortPrice={sortPrice} />
           <ProductGrid products={filteredProductData} />
         </BodyDiv>
       </BodyWrapper>
