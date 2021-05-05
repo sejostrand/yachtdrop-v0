@@ -64,8 +64,8 @@ export const ProductPrice = styled.div`
 `;
 
 export const AddButtonWrapper = styled.div`
-  background-color: ${COLORS.color2};
-  color: ${COLORS.color5};
+  background-color: ${COLORS.orange};
+  color: white;
   font-family: ${FONTS.secondaryFont};
   font-size: 20px;
   font-weight: bold;

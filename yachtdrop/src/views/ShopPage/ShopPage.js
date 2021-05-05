@@ -12,30 +12,22 @@ import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '@components/SortBy/SortBy.js';
 import Footer from '../HomePage/components/Footer/Footer';
 
-const StyledShopPage = styled.div`
-  background-color: white;
-`;
+const StyledShopPage = styled.div``;
 
-const ShopPage = () => {
-  // FILTER STATES
-
-  // all data
-  const [productData, setProductData] = useState([]); //DISPLAYED DATA ARRAY IS filteredProductData
-  const [defaultProductData, setDefaultProductData] = useState([]);
-  //filter
-  const [filterTags, setFilterTags] = useState(['none']); //active filter
-  const [primaryFilter, setPrimaryFilter] = useState();
-  const [secondaryFilter, setSecondaryFilter] = useState();
-  const [checkBoxFilter, setCheckBoxFilter] = useState([]);
-  //searchbar
-  const [searchInput, setSearchInput] = useState('');
-  const [filteredProductData, setFilteredProductData] = useState([]);
+const ShopPage = (props) => {
+  const productFilter = props.productFilter;
+  // STATES
+  const [filterArray, setFilterArray] = useState([]); //array of filterTags
+  const [sortState, setSortState] = useState('popularity'); //state of sorting
+  const [defaultProductData, setDefaultProductData] = useState([]); //all products
+  const [productData, setProductData] = useState([]); //products filtered by category
+  const [filteredProductData, setFilteredProductData] = useState([]); //products filtered by category and search
+  const [searchInput, setSearchInput] = useState(''); //state for searchbar input
 
   // FETCH PRODUCTS
   const fetchProducts = async () => {
     const res = await fetch('http://localhost:1337/products');
     const data = await res.json();
-
     return data;
   };
 
@@ -48,7 +40,7 @@ const ShopPage = () => {
     getProductData();
   }, []);
 
-  //update searchbar filter
+  //UPDATES SEARCHBAR FILTER
   useEffect(
     () => [
       setFilteredProductData(
@@ -62,134 +54,133 @@ const ShopPage = () => {
     [searchInput, productData]
   );
 
-  //returns array of filtered products using filterTags
-  const applyFilter = (defaultArray, filterArray) => {
-    if (filterArray == 'none') {
-      return defaultArray;
-    } else {
-      return defaultArray.filter((item) =>
-        item.categories.some((tag) => filterArray.includes(tag))
-      );
-    }
-  };
-
-  //updates the state filterTags
-  const updateFilter = (tag) => {
-    if (tag == 'none') {
-      setFilterTags(['none']);
-    } else {
-      if (tag.type == Array) {
-        setFilterTags(filterTags.concat(tag));
-      } else {
-        setFilterTags([tag]);
+  //applyProductFilter() functions: filters an array using another array
+  const checkArray = (filterTags, productArray) => {
+    let hasAllElems = true;
+    for (let i = 0; i < filterTags.length; i++) {
+      if (productArray.indexOf(filterTags[i]) === -1) {
+        hasAllElems = false;
+        break;
       }
     }
+    return hasAllElems;
   };
 
-  //updates filtered products whenever filterTags is modified
-  useEffect(
-    () => [setProductData(applyFilter(defaultProductData, filterTags))],
-    [filterTags]
-  );
-
-  // SET FILTER TAGS
-
-  const clearFilter = (tag) => {
-    setFilterTags('none');
-    setFilterButtonState(tag);
-  };
-
-  useEffect(() => [setFilterTags(checkBoxFilter.concat(primaryFilter))], [
-    primaryFilter,
-  ]);
-
-  useEffect(() => [setFilterTags(checkBoxFilter.concat(secondaryFilter))], [
-    secondaryFilter,
-  ]);
-
-  useEffect(
-    () => [
-      setFilterTags(checkBoxFilter.concat([primaryFilter, secondaryFilter])),
-    ],
-    [checkBoxFilter]
-  );
-
-  //useEffect(() => [applyFilter()], [filterTags]);
-
-  //update filter
-  /*
-  useEffect(
-    () => [
-      setProductData(
-        defaultProductData.filter((product) => {
-          return product.categories.includes(() => filterTags.forEach());
-        })
-      ),
-    ],
-    [filterTags]
-  );
-*/
-  // HANDLE FILTER UPDATES
-
-  const [filterButtonState, setFilterButtonState] = useState(['all']);
-
-  const [sortButtonState, setSortButtonState] = useState(['popularity']);
-  //const [sortState, setSortState] = useState([]);
-
-  // TOGGLE STATES
-  const [priceToggle, setPriceToggle] = useState([true]);
-  const [alphaToggle, setAlphaToggle] = useState([true]);
-
-  // FILTERING
-
-  /*
-  const toggleFilterProducts = (tag) => {
-    const defaultFilteredData = defaultProducts.filter((product) =>
-      product.categories.includes(tag)
+  const applyProductFilter = (filterTags, productArray) => {
+    return productArray.filter((item) =>
+      checkArray(filterTags, item.categories)
     );
-    setProducts(defaultFilteredData);
-    setFilterButtonState(tag);
   };
 
-  const addFilterProducts = (tag) => {
-    const filteredData = products.filter((product) =>
-      product.categories.includes(tag)
-    );
-    setProducts(filteredData);
+  //UPDATES productData ON filterState CHANGE
+  useEffect(() => {
+    setProductData(applyProductFilter(filterArray, defaultProductData));
+  }, [filterArray]);
+
+  //productFilter class
+  // class Filter {
+  //   constructor() {
+  //     this.primaryTag = [];
+  //     this.secondaryTag = [];
+  //     this.otherTags = [];
+  //   }
+  //   getTags() {
+  //     let group = [];
+  //     return group.concat(this.primaryTag, this.secondaryTag, this.otherTags);
+  //   }
+  //   setPrimaryTag(tag) {
+  //     this.primaryTag == [tag] ? this.clearTags() : this.replacePrimary(tag);
+
+  //     return console.log(this.getTags());
+  //   }
+  //   replacePrimary(tag) {
+  //     this.clearTags();
+  //     this.primaryTag = [tag];
+  //   }
+  //   setSecondaryTag(tag) {
+  //     this.secondaryTag == [tag]
+  //       ? (this.secondaryTag = [])
+  //       : (this.secondaryTag = [tag]);
+  //     return console.log(this.getTags());
+  //   }
+  //   toggleTag(tag) {
+  //     if (this.otherTags == []) {
+  //       this.otherTags = [tag];
+  //     } else if (this.otherTags.includes(tag)) {
+  //       this.otherTags.splice(this.otherTags.indexOf(tag), 1);
+  //     } else {
+  //       this.otherTags.push(tag);
+  //     }
+  //     return console.log(this.getTags());
+  //   }
+  //   clearTags() {
+  //     this.primaryTag = [];
+  //     this.secondaryTag = [];
+  //     this.otherTags = [];
+  //     return console.log('tags were cleared');
+  //   }
+  // }
+
+  // //create productFilter object
+  // const productFilter = new Filter();
+
+  const clearFilter = () => {
+    productFilter.clearTags();
+    setFilterArray([]);
+    //setProductData(defaultProductData);
   };
-*/
+
+  const primaryFilter = (tag) => {
+    productFilter.togglePrimaryTag(tag);
+    setFilterArray(productFilter.getTags());
+  };
+
+  const secondaryFilter = (tag) => {
+    productFilter.toggleSecondaryTag(tag);
+    setFilterArray(productFilter.getTags());
+  };
+
+  const toggleFilter = (tag) => {
+    productFilter.toggleTag(tag);
+    setFilterArray(productFilter.getTags());
+  };
 
   // SORTING
 
-  const sortPrice = (tag) => {
-    if (priceToggle == true) {
-      productData.sort((a, b) => a.product_price - b.product_price);
-    } else {
-      productData.sort((a, b) => b.product_price - a.product_price);
-    }
-    setPriceToggle(!priceToggle);
-    setSortButtonState(tag);
-  };
+  // const applySort = (field) => {
+  //   if (field == 'price') {
+  //   }
+  // };
 
-  const sortAlpha = (tag) => {
-    if (alphaToggle == true) {
-      productData.sort(function (a, b) {
-        a = a.product_name.toLowerCase();
-        b = b.product_name.toLowerCase();
+  // const sortPrice = (tag) => {
+  //   if (priceToggle == true) {
+  //     productData.sort((a, b) => a.product_price - b.product_price);
+  //   } else {
+  //     productData.sort((a, b) => b.product_price - a.product_price);
+  //   }
+  //   setPriceToggle(!priceToggle);
+  //   setSortButtonState(tag);
+  // };
 
-        return a < b ? -1 : a > b ? 1 : 0;
-      });
-    } else {
-      productData.sort(function (a, b) {
-        a = a.product_name.toLowerCase();
-        b = b.product_name.toLowerCase();
+  // const sortAlpha = (tag) => {
+  //   if (alphaToggle == true) {
+  //     productData.sort(function (a, b) {
+  //       a = a.product_name.toLowerCase();
+  //       b = b.product_name.toLowerCase();
 
-        return a > b ? -1 : a > b ? 1 : 0;
-      });
-    }
-    setAlphaToggle(!alphaToggle);
-    setSortButtonState(tag);
-  };
+  //       return a < b ? -1 : a > b ? 1 : 0;
+  //     });
+  //   } else {
+  //     productData.sort(function (a, b) {
+  //       a = a.product_name.toLowerCase();
+  //       b = b.product_name.toLowerCase();
+
+  //       return a > b ? -1 : a > b ? 1 : 0;
+  //     });
+  //   }
+  //   setAlphaToggle(!alphaToggle);
+  //   setSortButtonState(tag);
+  // };
 
   return (
     <StyledShopPage>
@@ -197,18 +188,14 @@ const ShopPage = () => {
       <SearchBar setSearchInput={setSearchInput} />
       <BodyWrapper>
         <FilterBar
-          setPrimaryFilter={updateFilter}
-          setSecondaryFilter={updateFilter}
-          setFilterTags={updateFilter}
-          filterButtonState={filterButtonState}
+          productFilter={productFilter}
+          primaryFilter={primaryFilter}
+          secondaryFilter={secondaryFilter}
+          clearFilter={clearFilter}
         />
         <BodyDiv>
           <CoverBar />
-          <SortBy
-            sortPrice={sortPrice}
-            sortAlpha={sortAlpha}
-            sortButtonState={sortButtonState}
-          />
+          <SortBy />
           <ProductGrid products={filteredProductData} />
         </BodyDiv>
       </BodyWrapper>

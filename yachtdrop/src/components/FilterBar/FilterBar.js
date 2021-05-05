@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import React from 'react';
 import BarButton from './objects/BarButton.js';
 import CategoryItem from './objects/CategoryItem.js';
+import { COLORS } from '@assets/theme/theme.js';
 
 const FilterBarWrapper = styled.div`
   display: flex;
@@ -46,15 +47,11 @@ const CategoryList = styled.div`
   flex-flow: column nowrap;
 `;
 
-const CategoryButton = styled.div`
-  border: ${(props) =>
-    props.filterButtonState != props.cat ? 'none' : '3px solid ' + props.color};
+const PrimaryCategoryButton = styled.div`
   background-color: ${(props) =>
-    props.filterButtonState != props.cat ? props.color : 'white'};
-  color: ${(props) =>
-    props.filterButtonState != props.cat ? 'white' : props.color};
-  padding: ${(props) =>
-    props.filterButtonState != props.cat ? '5px 20px' : '2px 17px'};
+    props.primaryTag != props.tag ? COLORS.green : COLORS.darkGreen};
+  color: white;
+  padding: 5px 20px;
 
   border-radius: 8px;
   font-family: 'Calibri';
@@ -75,6 +72,33 @@ const CategoryButton = styled.div`
   }
 `;
 
+const SecondaryCategoryButton = styled.div`
+  background-color: ${(props) =>
+    props.secondaryTag != props.tag ? COLORS.purple : COLORS.orange};
+  color: white;
+  padding: 5px 20px;
+
+  border-radius: 8px;
+  font-family: 'Calibri';
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  height: auto;
+  cursor: pointer;
+  align-self: space-between;
+  display: flex;
+  margin: 4px;
+  visibility: ${(props) =>
+    props.primaryTag == props.parentTag ? 'visible' : 'hidden'};
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
 const FilterBar = (props) => {
   return (
     <FilterBarWrapper>
@@ -82,74 +106,87 @@ const FilterBar = (props) => {
       <FilterGrid>
         <FilterTitle>Filter by</FilterTitle>
         <FilterDiv>
-          <CategoryButton
-            color='#03b29a'
-            cat='all'
-            onClick={() => props.setFilterTags([])}
-            filterButtonState={props.filterButtonState}
+          <PrimaryCategoryButton
+            primaryTag={props.productFilter.primaryTag}
+            onClick={() => props.clearFilter()}
           >
-            ALL
-          </CategoryButton>
-          <CategoryButton
-            color='#874b96'
-            cat='wine'
-            onClick={() => props.setPrimaryFilter('wine')}
-            filterButtonState={props.filterButtonState}
+            Clear filters
+          </PrimaryCategoryButton>
+          <PrimaryCategoryButton
+            tag='wine'
+            primaryTag={props.productFilter.primaryTag}
+            onClick={() => props.primaryFilter('wine')}
           >
             Wine
-          </CategoryButton>
-          <CategoryButton
-            color='#23485A'
-            cat='spirits'
-            onClick={() => props.setPrimaryFilter('spirits')}
-            filterButtonState={props.filterButtonState}
+          </PrimaryCategoryButton>
+          <PrimaryCategoryButton
+            tag='spirits'
+            primaryTag={props.productFilter.primaryTag}
+            cond={props.productFilter.setPrimaryTag != props.tag}
+            onClick={() => props.primaryFilter('spirits')}
           >
             Spirits
-          </CategoryButton>
-          <CategoryButton
-            color='#FD7156'
-            cat='beer'
-            onClick={() => props.setPrimaryFilter('beer')}
-            filterButtonState={props.filterButtonState}
+          </PrimaryCategoryButton>
+          <PrimaryCategoryButton
+            tag='beer'
+            primaryTag={props.productFilter.primaryTag}
+            onClick={() => props.primaryFilter('beer')}
           >
             Beer
-          </CategoryButton>
-          <CategoryButton
-            color='#DB607F'
-            cat='soft-drinks'
-            onClick={() => props.setPrimaryFilter('soft-drinks')}
-            filterButtonState={props.filterButtonState}
+          </PrimaryCategoryButton>
+          <PrimaryCategoryButton
+            tag='soft-drinks'
+            primaryTag={props.productFilter.primaryTag}
+            onClick={() => props.primaryFilter('soft-drinks')}
           >
             Soft Drinks
-          </CategoryButton>
-          <CategoryButton
-            color='#874b96'
-            cat='other'
-            onClick={() => props.setPrimaryFilter('other')}
-            filterButtonState={props.filterButtonState}
+          </PrimaryCategoryButton>
+          <PrimaryCategoryButton
+            tag='other'
+            primaryTag={props.productFilter.primaryTag}
+            onClick={() => props.primaryFilter('other')}
           >
             Other
-          </CategoryButton>
+          </PrimaryCategoryButton>
         </FilterDiv>
         <FilterDiv>
-          <CategoryButton
-            color='#03b29a'
-            onClick={() => props.setSecondaryFilter('gin')}
+          <SecondaryCategoryButton
+            parentTag='spirits'
+            tag='gin'
+            secondaryTag={props.productFilter.secondaryTag}
+            primaryTag={props.productFilter.primaryTag}
+            onClick={() => props.secondaryFilter('gin')}
           >
+            {' '}
             Gin
-          </CategoryButton>
-          <CategoryButton
-            color='#03b29a'
-            onClick={() => props.setSecondaryFilter('whiskey')}
+          </SecondaryCategoryButton>
+          <SecondaryCategoryButton
+            parentTag='spirits'
+            tag='whiskey'
+            secondaryTag={props.productFilter.secondaryTag}
+            primaryTag={props.productFilter.primaryTag}
+            onClick={() => props.secondaryFilter('whiskey')}
           >
             Whiskey
-          </CategoryButton>
-          <CategoryButton
-            color='#03b29a'
-            onClick={() => props.setSecondaryFilter('white')}
+          </SecondaryCategoryButton>
+          <SecondaryCategoryButton
+            parentTag='wine'
+            tag='white'
+            secondaryTag={props.productFilter.secondaryTag}
+            primaryTag={props.productFilter.primaryTag}
+            onClick={() => props.secondaryFilter('white')}
           >
             White
-          </CategoryButton>
+          </SecondaryCategoryButton>
+          <SecondaryCategoryButton
+            parentTag='wine'
+            tag='red'
+            secondaryTag={props.productFilter.secondaryTag}
+            primaryTag={props.productFilter.primaryTag}
+            onClick={() => props.secondaryFilter('red')}
+          >
+            Red
+          </SecondaryCategoryButton>
         </FilterDiv>
         <CategoryList>
           <CategoryItem>Red</CategoryItem>
