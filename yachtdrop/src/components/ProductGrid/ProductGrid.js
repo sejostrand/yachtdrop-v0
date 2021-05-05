@@ -18,8 +18,9 @@ const ProductGrid = (props) => {
   return (
     <FlexContainer>
       <GridWrapper>
-        {props.products.map((product) => (
+        {props.products.map((product, index) => (
           <ProductTile
+            key={index}
             name={product.product_name}
             description={product.product_description}
             price={product.product_price}

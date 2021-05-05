@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, { useState } from 'react';
 import BarButton from './objects/BarButton.js';
 import CategoryItem from './objects/CategoryItem.js';
 import { COLORS } from '@assets/theme/theme.js';
@@ -100,6 +100,8 @@ const SecondaryCategoryButton = styled.div`
 `;
 
 const FilterBar = (props) => {
+  const [buttons, setButtons] = useState(false);
+
   return (
     <FilterBarWrapper>
       <BlackSection />

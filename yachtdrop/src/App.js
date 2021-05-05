@@ -8,6 +8,8 @@ import HomePage from './views/HomePage/HomePage';
 import AboutUs from './views/AboutUs/AboutUs';
 import ContactUs from './views/ContactUs/ContactUs';
 import Embassador from './views/Embassador/Embassador';
+import SignUp from './views/SignUp/SignUp'
+import SignIn from './views/SignIn/SignIn'
 
 function App() {
   class Filter {
@@ -68,6 +70,12 @@ function App() {
         </Route>
         <Route path='/shoppage'>
           <ShopPage productFilter={productFilter} />
+        </Route>
+        <Route path='/signup'>
+          <SignUp />
+        </Route>
+        <Route path='/signin'>
+          <SignIn />
         </Route>
         <Route path='/aboutus'>
           <AboutUs />
