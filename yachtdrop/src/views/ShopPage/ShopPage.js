@@ -20,7 +20,8 @@ const ShopPage = (props) => {
   const productFilter = props.productFilter;
 
   // Product/Tags STATES
-  const [filterArray, setFilterArray] = useState([]); //array of filterTags
+  const [filterArray1, setFilterArray1] = useState([]); //array of filterTags
+  const [filterArray2, setFilterArray2] = useState([]);
   const [defaultProductData, setDefaultProductData] = useState([]); //all products
   const [productData, setProductData] = useState([]); //products filtered by category
   // Search Bar States
@@ -64,7 +65,7 @@ const ShopPage = (props) => {
   );
 
   // applyProductFilter() functions: filters an array using another array
-  const checkArray = (filterTags, productArray) => {
+  const checkEveryArray = (filterTags, productArray) => {
     let hasAllElems = true;
     for (let i = 0; i < filterTags.length; i++) {
       if (productArray.indexOf(filterTags[i]) === -1) {
@@ -75,38 +76,73 @@ const ShopPage = (props) => {
     return hasAllElems;
   };
 
-  const applyProductFilter = (filterTags, productArray) => {
-    return productArray.filter((item) =>
-      checkArray(filterTags, item.categories)
+  const checkSomeArray = (filterTags, productTags) => {
+    let hasElem = false;
+
+    for (let i = 0; i < filterTags.length; i++) {
+      if (productTags.includes(filterTags[i])) {
+        hasElem = true;
+        break;
+      }
+    }
+    return hasElem;
+  };
+
+  const applyProductFilter = (filterTags1, filterTags2, productTags) => {
+    const newProductArray = productTags.filter((item) =>
+      checkEveryArray(filterTags1, item.categories)
     );
+
+    if (filterTags2.length == 0) {
+      return newProductArray;
+    } else {
+      return newProductArray.filter((item) =>
+        checkSomeArray(filterTags2, item.categories)
+      );
+    }
   };
 
   //UPDATES productData ON filterState CHANGE
   useEffect(() => {
-    setProductData(applyProductFilter(filterArray, defaultProductData));
-  }, [filterArray]);
+    let result;
+    setProductData(
+      applyProductFilter(filterArray1, filterArray2, defaultProductData)
+    );
+    console.log('updated');
+  }, [filterArray1]);
+
+  useEffect(() => {
+    let result;
+    setProductData(
+      applyProductFilter(filterArray1, filterArray2, defaultProductData)
+    );
+    console.log('updated');
+  }, [filterArray2]);
 
   // Filtering
 
   const clearFilter = () => {
     productFilter.clearTags();
-    setFilterArray([]);
+    setFilterArray1([]);
+    setFilterArray2([]);
     //setProductData(defaultProductData);
   };
 
   const primaryFilter = (tag) => {
     productFilter.togglePrimaryTag(tag);
-    setFilterArray(productFilter.getTags());
+    setFilterArray1(productFilter.getTags());
   };
 
   const secondaryFilter = (tag) => {
     productFilter.toggleSecondaryTag(tag);
-    setFilterArray(productFilter.getTags());
+    setFilterArray1(productFilter.getTags());
   };
 
   const toggleFilter = (tag) => {
     productFilter.toggleTag(tag);
-    setFilterArray(productFilter.getTags());
+    productFilter.otherTags.length == 0
+      ? setFilterArray2([])
+      : setFilterArray2(productFilter.otherTags);
   };
 
   // SORTING

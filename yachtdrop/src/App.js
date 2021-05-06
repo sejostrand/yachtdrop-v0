@@ -23,7 +23,7 @@ function App() {
 
     getTags() {
       let group = [];
-      return group.concat(this.primaryTag, this.secondaryTag, this.otherTags);
+      return group.concat(this.primaryTag, this.secondaryTag);
     }
 
     togglePrimaryTag(tag) {
@@ -50,7 +50,7 @@ function App() {
       } else {
         this.otherTags.push(tag);
       }
-      console.log(this.getTags());
+      console.log(this.otherTags);
     }
     clearTags() {
       this.primaryTag = [];
