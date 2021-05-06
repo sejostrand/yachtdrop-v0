@@ -143,6 +143,7 @@ const ShopPage = (props) => {
           productFilter={productFilter}
           primaryFilter={primaryFilter}
           secondaryFilter={secondaryFilter}
+          toggleFilter={toggleFilter}
           clearFilter={clearFilter}
         />
         <BodyDiv>
