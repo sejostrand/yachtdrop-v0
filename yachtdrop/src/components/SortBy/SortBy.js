@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { COLORS } from '../../assets/theme/theme';
 
 //objects
 //import SortButton from './objects/SortButton';
@@ -25,14 +26,10 @@ const SortTitle = styled.div`
 `;
 
 const SortButton = styled.div`
-  border: ${(props) =>
-    props.sortButtonState != props.field ? 'none' : '3px solid ' + props.color};
   background-color: ${(props) =>
-    props.sortButtonState != props.field ? props.color : 'white'};
-  color: ${(props) =>
-    props.sortButtonState != props.field ? 'white' : props.color};
-  padding: ${(props) =>
-    props.sortButtonState != props.field ? '5px 20px' : '1px 17px'};
+    props.sortButtonState == props.field ? COLORS.darkGreen : COLORS.green};
+  color: white;
+  padding: 5px 20px;
 
   font-family: 'Calibri';
   font-size: 13px;

@@ -157,11 +157,16 @@ const ShopPage = (props) => {
           productFilter={productFilter}
           primaryFilter={primaryFilter}
           secondaryFilter={secondaryFilter}
+          toggleFilter={toggleFilter}
           clearFilter={clearFilter}
         />
         <BodyDiv>
           <CoverBar />
-          <SortBy sortAlpha={sortAlpha} sortPrice={sortPrice} />
+          <SortBy
+            sortAlpha={sortAlpha}
+            sortPrice={sortPrice}
+            sortButtonState={sortButtonState}
+          />
           <ProductGrid products={filteredProductData} />
         </BodyDiv>
       </BodyWrapper>

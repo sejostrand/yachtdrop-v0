@@ -3,51 +3,19 @@ import React, { useState } from 'react';
 import BarButton from './objects/BarButton.js';
 import CategoryItem from './objects/CategoryItem.js';
 import { COLORS } from '@assets/theme/theme.js';
+import CheckBoxItem from '@objects/CheckBoxItem';
+import {
+  FilterBarWrapper,
+  BlackSection,
+  FilterGrid,
+  FilterTitle,
+  PrimarySection,
+  Section,
+  SectionTitle,
+  MenuContainer,
+} from './FilterBar.styles';
 
-const FilterBarWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0px;
-  position: relative;
-  float: left;
-  z-index: 3;
-`;
-
-const FilterGrid = styled.div`
-  justify-content: left;
-  height: 100%;
-  width: 300px;
-  background-color: #f8faf7;
-  padding: 20px;
-  text-transform: uppercase;
-  font-size: 15px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  border-right: 3px solid black;
-`;
-
-const FilterDiv = styled.div`
-  padding: 12px;
-  border-bottom: 2px solid lightgray;
-`;
-
-const FilterTitle = styled.div`
-  padding: 16px;
-  font-size: 30px;
-`;
-
-const BlackSection = styled.div`
-  background-color: black;
-  height: 19px;
-`;
-
-const CategoryList = styled.div`
-  padding: 10px;
-  display: flex;
-  flex-flow: column nowrap;
-`;
-
-const PrimaryCategoryButton = styled.div`
+const PrimaryButton = styled.div`
   background-color: ${(props) =>
     props.primaryTag != props.tag ? COLORS.green : COLORS.darkGreen};
   color: white;
@@ -70,7 +38,7 @@ const PrimaryCategoryButton = styled.div`
   }
 `;
 
-const SecondaryCategoryButton = styled.div`
+const SecondaryButton = styled.div`
   background-color: ${(props) =>
     props.secondaryTag != props.tag ? COLORS.purple : COLORS.orange};
   color: white;
@@ -96,107 +64,307 @@ const SecondaryCategoryButton = styled.div`
 
 
 const FilterBar = (props) => {
+  const productFilter = props.productFilter;
+  const clearFilter = props.clearFilter;
+  const secondaryFilter = props.secondaryFilter;
+  const primaryFilter = props.primaryFilter;
+  const toggleFilter = props.toggleFilter;
+
+  const isActive = (tag) => {
+    return productFilter.primaryTag[0] == tag ? true : false;
+  };
 
   return (
     <FilterBarWrapper>
       <BlackSection />
       <FilterGrid>
         <FilterTitle>Filter by</FilterTitle>
-        <FilterDiv>
-          <PrimaryCategoryButton
-            primaryTag={props.productFilter.primaryTag}
-            onClick={() => props.clearFilter()}
+        <PrimarySection>
+          <PrimaryButton
+            primaryTag={productFilter.primaryTag}
+            onClick={() => clearFilter()}
           >
             Clear filters
-          </PrimaryCategoryButton>
-          <PrimaryCategoryButton
+          </PrimaryButton>
+          <PrimaryButton
             tag='wine'
-            primaryTag={props.productFilter.primaryTag}
-            onClick={() => props.primaryFilter('wine')}
+            primaryTag={productFilter.primaryTag}
+            onClick={() => primaryFilter('wine')}
           >
             Wine
-          </PrimaryCategoryButton>
-          <PrimaryCategoryButton
+          </PrimaryButton>
+          <PrimaryButton
             tag='spirits'
-            primaryTag={props.productFilter.primaryTag}
-            cond={props.productFilter.setPrimaryTag != props.tag}
-            onClick={() => props.primaryFilter('spirits')}
+            primaryTag={productFilter.primaryTag}
+            //cond={productFilter.setPrimaryTag != props.tag}
+            onClick={() => primaryFilter('spirits')}
           >
             Spirits
-          </PrimaryCategoryButton>
-          <PrimaryCategoryButton
+          </PrimaryButton>
+          <PrimaryButton
             tag='beer'
-            primaryTag={props.productFilter.primaryTag}
-            onClick={() => props.primaryFilter('beer')}
+            primaryTag={productFilter.primaryTag}
+            onClick={() => primaryFilter('beer')}
           >
             Beer
-          </PrimaryCategoryButton>
-          <PrimaryCategoryButton
+          </PrimaryButton>
+          <PrimaryButton
             tag='soft-drinks'
-            primaryTag={props.productFilter.primaryTag}
-            onClick={() => props.primaryFilter('soft-drinks')}
+            primaryTag={productFilter.primaryTag}
+            onClick={() => primaryFilter('soft-drinks')}
           >
             Soft Drinks
-          </PrimaryCategoryButton>
-          <PrimaryCategoryButton
+          </PrimaryButton>
+          <PrimaryButton
             tag='other'
-            primaryTag={props.productFilter.primaryTag}
-            onClick={() => props.primaryFilter('other')}
+            primaryTag={productFilter.primaryTag}
+            onClick={() => primaryFilter('other')}
           >
             Other
-          </PrimaryCategoryButton>
-        </FilterDiv>
-        <FilterDiv>
-          {props.productFilter.primaryTag[0] == 'spirits' && <SecondaryCategoryButton
-            parentTag='spirits'
-            tag='gin'
-            secondaryTag={props.productFilter.secondaryTag}
-            primaryTag={props.productFilter.primaryTag}
-            onClick={() => props.secondaryFilter('gin')}
-          >
-            {' '}
-            Gin
-          </SecondaryCategoryButton>}
-          {props.productFilter.primaryTag[0] == 'spirits' && <SecondaryCategoryButton
-            parentTag='spirits'
-            tag='whiskey'
-            secondaryTag={props.productFilter.secondaryTag}
-            primaryTag={props.productFilter.primaryTag}
-            onClick={() => props.secondaryFilter('whiskey')}
-          >
-            Whiskey
-          </SecondaryCategoryButton>}
-          {props.productFilter.primaryTag[0] == 'wine' && <SecondaryCategoryButton
-            parentTag='wine'
-            tag='white'
-            secondaryTag={props.productFilter.secondaryTag}
-            primaryTag={props.productFilter.primaryTag}
-            onClick={() => props.secondaryFilter('white')}
-          >
-            White
-          </SecondaryCategoryButton>}
-          {props.productFilter.primaryTag[0] == 'wine' && <SecondaryCategoryButton
-            parentTag='wine'
-            tag='red'
-            secondaryTag={props.productFilter.secondaryTag}
-            primaryTag={props.productFilter.primaryTag}
-            onClick={() => props.secondaryFilter('red')}
-          >
-            Red
-          </SecondaryCategoryButton>}
-        </FilterDiv>
-        <CategoryList>
-          <CategoryItem>Red</CategoryItem>
-          <CategoryItem>White</CategoryItem>
-        </CategoryList>
-        <FilterDiv>Region</FilterDiv>
-        <CategoryList>
-          <CategoryItem>France</CategoryItem>
-          <CategoryItem>Italy</CategoryItem>
-          <CategoryItem>Spain</CategoryItem>
-          <CategoryItem>Chile</CategoryItem>
-        </CategoryList>
-        <FilterDiv>Price</FilterDiv>
+          </PrimaryButton>
+        </PrimarySection>
+
+        {/* WineMenu */}
+        {isActive('wine') && (
+          <MenuContainer>
+            <Section>
+              <SectionTitle>Type</SectionTitle>
+              <SecondaryButton
+                tag='red'
+                secondaryTag={productFilter.secondaryTag}
+                onClick={() => secondaryFilter('red')}
+              >
+                Red
+              </SecondaryButton>
+              <SecondaryButton
+                tag='white'
+                secondaryTag={productFilter.secondaryTag}
+                onClick={() => secondaryFilter('white')}
+              >
+                White
+              </SecondaryButton>
+              <SecondaryButton
+                tag='rose'
+                secondaryTag={productFilter.secondaryTag}
+                onClick={() => secondaryFilter('rose')}
+              >
+                Rose
+              </SecondaryButton>
+              <SecondaryButton
+                tag='champagne'
+                secondaryTag={productFilter.secondaryTag}
+                onClick={() => secondaryFilter('champagne')}
+              >
+                Champagne
+              </SecondaryButton>
+              <SecondaryButton
+                tag='sparkling'
+                secondaryTag={productFilter.secondaryTag}
+                onClick={() => secondaryFilter('sparkling')}
+              >
+                Sparkling
+              </SecondaryButton>
+            </Section>
+            <Section>
+              <SectionTitle>Region</SectionTitle>
+              <CheckBoxItem onClick={() => toggleFilter('argentina')}>
+                Argentina
+              </CheckBoxItem>
+              <CheckBoxItem>Australia</CheckBoxItem>
+              <CheckBoxItem>Austria</CheckBoxItem>
+              <CheckBoxItem>Chile</CheckBoxItem>
+              <CheckBoxItem>France</CheckBoxItem>
+              <CheckBoxItem>Hungary</CheckBoxItem>
+              <CheckBoxItem>Italy</CheckBoxItem>
+              <CheckBoxItem>New Zealand</CheckBoxItem>
+              <CheckBoxItem>South Africa</CheckBoxItem>
+              <CheckBoxItem>Spain</CheckBoxItem>
+              <CheckBoxItem>USA</CheckBoxItem>
+            </Section>
+
+            <Section>
+              <SectionTitle>Variety</SectionTitle>
+              <CheckBoxItem>Alsace</CheckBoxItem>
+              <CheckBoxItem>Bordeaux</CheckBoxItem>
+              <CheckBoxItem>Cava</CheckBoxItem>
+              <CheckBoxItem>Chardonnay</CheckBoxItem>
+              <CheckBoxItem>Cotes de Provence</CheckBoxItem>
+              <CheckBoxItem>Emporda</CheckBoxItem>
+              <CheckBoxItem>Fronsac</CheckBoxItem>
+              <CheckBoxItem>Margaux</CheckBoxItem>
+              <CheckBoxItem>Pauillac</CheckBoxItem>
+              <CheckBoxItem>Penedes</CheckBoxItem>
+              <CheckBoxItem>Pessac-Leognan</CheckBoxItem>
+              <CheckBoxItem>Pomeral</CheckBoxItem>
+              <CheckBoxItem>Priorat</CheckBoxItem>
+              <CheckBoxItem>Provence</CheckBoxItem>
+              <CheckBoxItem>Rhone</CheckBoxItem>
+              <CheckBoxItem>Ria Baixas</CheckBoxItem>
+              <CheckBoxItem>Ribera del Duero</CheckBoxItem>
+              <CheckBoxItem>Riesling</CheckBoxItem>
+              <CheckBoxItem>Rioja</CheckBoxItem>
+              <CheckBoxItem>Rueda</CheckBoxItem>
+              <CheckBoxItem>Saint Emilion</CheckBoxItem>
+              <CheckBoxItem>Saint Estephe</CheckBoxItem>
+              <CheckBoxItem>Saint Julien</CheckBoxItem>
+              <CheckBoxItem>Sauternes</CheckBoxItem>
+              <CheckBoxItem>Semillon</CheckBoxItem>
+              <CheckBoxItem>Tokaji</CheckBoxItem>
+            </Section>
+
+            <Section>
+              <SectionTitle>Vintage</SectionTitle>
+              <CheckBoxItem>1989</CheckBoxItem>
+              <CheckBoxItem>2000</CheckBoxItem>
+              <CheckBoxItem>2003</CheckBoxItem>
+              <CheckBoxItem>2004</CheckBoxItem>
+              <CheckBoxItem>2005</CheckBoxItem>
+              <CheckBoxItem>2006</CheckBoxItem>
+              <CheckBoxItem>2007</CheckBoxItem>
+              <CheckBoxItem>2008</CheckBoxItem>
+              <CheckBoxItem>2009</CheckBoxItem>
+              <CheckBoxItem>2010</CheckBoxItem>
+              <CheckBoxItem>2011</CheckBoxItem>
+              <CheckBoxItem>2012</CheckBoxItem>
+              <CheckBoxItem>2013</CheckBoxItem>
+              <CheckBoxItem>2014</CheckBoxItem>
+              <CheckBoxItem>2015</CheckBoxItem>
+              <CheckBoxItem>2016</CheckBoxItem>
+              <CheckBoxItem>2017</CheckBoxItem>
+              <CheckBoxItem>2018</CheckBoxItem>
+              <CheckBoxItem>2019</CheckBoxItem>
+              <CheckBoxItem>NV</CheckBoxItem>
+            </Section>
+
+            <Section>
+              <SectionTitle>Volume</SectionTitle>
+              <CheckBoxItem>1.5L</CheckBoxItem>
+              <CheckBoxItem>75cl</CheckBoxItem>
+              <CheckBoxItem>50cl</CheckBoxItem>
+              <CheckBoxItem>37.5cl</CheckBoxItem>
+            </Section>
+          </MenuContainer>
+        )}
+
+        {/* SpiritsMenu */}
+        {isActive('spirits') && (
+          <MenuContainer>
+            <SectionTitle>Type</SectionTitle>
+            <Section>
+              <SecondaryButton
+                tag='gin'
+                secondaryTag={productFilter.secondaryTag}
+                onClick={() => secondaryFilter('gin')}
+              >
+                Gin
+              </SecondaryButton>
+              <SecondaryButton
+                tag='rum'
+                secondaryTag={productFilter.secondaryTag}
+                onClick={() => secondaryFilter('rum')}
+              >
+                Rum
+              </SecondaryButton>
+              <SecondaryButton
+                tag='whiskey'
+                secondaryTag={productFilter.secondaryTag}
+                onClick={() => secondaryFilter('whiskey')}
+              >
+                Whiskey
+              </SecondaryButton>
+              <SecondaryButton
+                tag='vodka'
+                secondaryTag={productFilter.secondaryTag}
+                onClick={() => secondaryFilter('vodka')}
+              >
+                Vodka
+              </SecondaryButton>
+            </Section>
+          </MenuContainer>
+        )}
+
+        {/* BeerMenu */}
+        {isActive('beer') && (
+          <MenuContainer>
+            <SectionTitle>Type</SectionTitle>
+            <Section>
+              <SecondaryButton
+                tag='larger'
+                secondaryTag={productFilter.secondaryTag}
+                onClick={() => secondaryFilter('larger')}
+              >
+                Larger
+              </SecondaryButton>
+              <SecondaryButton
+                tag='ale'
+                secondaryTag={productFilter.secondaryTag}
+                onClick={() => secondaryFilter('ale')}
+              >
+                Ale
+              </SecondaryButton>
+              <SecondaryButton
+                tag='cider'
+                secondaryTag={productFilter.secondaryTag}
+                onClick={() => secondaryFilter('cider')}
+              >
+                Cider
+              </SecondaryButton>
+            </Section>
+          </MenuContainer>
+        )}
+
+        {/* SoftDrinksMenu */}
+        {isActive('soft-drinks') && (
+          <MenuContainer>
+            <SectionTitle>Type</SectionTitle>
+            <Section>
+              <SecondaryButton
+                tag='mixers'
+                secondaryTag={productFilter.secondaryTag}
+                onClick={() => secondaryFilter('mixers')}
+              >
+                Mixers
+              </SecondaryButton>
+              <SecondaryButton
+                tag='juice'
+                secondaryTag={productFilter.secondaryTag}
+                onClick={() => secondaryFilter('juice')}
+              >
+                Juice
+              </SecondaryButton>
+              <SecondaryButton
+                tag='water'
+                secondaryTag={productFilter.secondaryTag}
+                onClick={() => secondaryFilter('water')}
+              >
+                Water
+              </SecondaryButton>
+              <SecondaryButton
+                tag='fizzy-drinks'
+                secondaryTag={productFilter.secondaryTag}
+                onClick={() => secondaryFilter('fizzy-drinks')}
+              >
+                Fizzy Drinks
+              </SecondaryButton>
+            </Section>
+          </MenuContainer>
+        )}
+
+        {/* SpiritsMenu */}
+        {isActive('other') && (
+          <MenuContainer>
+            <SectionTitle>Type</SectionTitle>
+            <Section>
+              <SecondaryButton
+                tag='whatever'
+                secondaryTag={productFilter.secondaryTag}
+                onClick={() => secondaryFilter('whatever')}
+              >
+                Whatever
+              </SecondaryButton>
+            </Section>
+          </MenuContainer>
+        )}
       </FilterGrid>
     </FilterBarWrapper>
   );
