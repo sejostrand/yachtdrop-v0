@@ -8,8 +8,8 @@ import HomePage from './views/HomePage/HomePage';
 import AboutUs from './views/AboutUs/AboutUs';
 import ContactUs from './views/ContactUs/ContactUs';
 import Embassador from './views/Embassador/Embassador';
-import SignUp from './views/SignUp/SignUp'
-import SignIn from './views/SignIn/SignIn'
+import SignUp from './views/SignUp/SignUp';
+import SignIn from './views/SignIn/SignIn';
 
 function App() {
   class Filter {

@@ -62,8 +62,6 @@ const SecondaryButton = styled.div`
   }
 `;
 
-
-
 const FilterBar = (props) => {
   const productFilter = props.productFilter;
   const clearFilter = props.clearFilter;
@@ -355,7 +353,7 @@ const FilterBar = (props) => {
           </MenuContainer>
         )}
 
-        {/* SpiritsMenu */}
+        {/* OtherMenu */}
         {isActive('other') && (
           <MenuContainer>
             <SectionTitle>Type</SectionTitle>

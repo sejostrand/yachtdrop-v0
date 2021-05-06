@@ -15,7 +15,6 @@ import Footer from '../HomePage/components/Footer/Footer';
 // Styled-Components
 const StyledShopPage = styled.div``;
 
-
 // MAIN
 const ShopPage = (props) => {
   const productFilter = props.productFilter;
@@ -24,10 +23,10 @@ const ShopPage = (props) => {
   const [filterArray, setFilterArray] = useState([]); //array of filterTags
   const [defaultProductData, setDefaultProductData] = useState([]); //all products
   const [productData, setProductData] = useState([]); //products filtered by category
- // Search Bar States
+  // Search Bar States
   const [filteredProductData, setFilteredProductData] = useState([]); //products filtered by category and search
   const [searchInput, setSearchInput] = useState(''); //state for searchbar input
-// Sorting States
+  // Sorting States
   const [sortState, setSortState] = useState('popularity'); //state of sorting
   const [alphaToggle, setAlphaToggle] = useState();
   const [priceToggle, setPriceToggle] = useState();
@@ -64,7 +63,6 @@ const ShopPage = (props) => {
     [searchInput, productData]
   );
 
-
   // applyProductFilter() functions: filters an array using another array
   const checkArray = (filterTags, productArray) => {
     let hasAllElems = true;
@@ -83,13 +81,10 @@ const ShopPage = (props) => {
     );
   };
 
-
   //UPDATES productData ON filterState CHANGE
   useEffect(() => {
     setProductData(applyProductFilter(filterArray, defaultProductData));
   }, [filterArray]);
-
-
 
   // Filtering
 
@@ -113,7 +108,6 @@ const ShopPage = (props) => {
     productFilter.toggleTag(tag);
     setFilterArray(productFilter.getTags());
   };
-
 
   // SORTING
   const sortPrice = (tag) => {
