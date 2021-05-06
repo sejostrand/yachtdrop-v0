@@ -3,18 +3,27 @@ import { COLORS, FONTS } from '../../assets/theme/theme';
 
 export const CartMenuWrapper = styled.div`
   box-sizing: border-box;
+  background-color: ${COLORS.color4};
+  border: 3px solid ${COLORS.color2};
   margin: 0;
   padding: 0;
   display: flex;
   width: 50vw;
   height: 70vh;
-  background-color: black;
+  position: absolute;
+  right: 50px;
+  top: 70px;
 `;
 
 export const TitleContainer = styled.header`
   width: 100%;
   height: 2rem;
-  background-color: red;
+  font-size: 20px;
+  color: ${COLORS.color5};
+  background-color: orange;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px;
+  display: inline-block;
 `;
 
 /* export const CartMenuWrapper = styled.div`
