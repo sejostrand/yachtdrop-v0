@@ -269,11 +269,11 @@ const FilterBar = (props) => {
                 Rum
               </SecondaryButton>
               <SecondaryButton
-                tag='whiskey'
+                tag='tequila'
                 secondaryTag={productFilter.secondaryTag}
-                onClick={() => secondaryFilter('whiskey')}
+                onClick={() => secondaryFilter('tequila')}
               >
-                Whiskey
+                Tequila
               </SecondaryButton>
               <SecondaryButton
                 tag='vodka'
@@ -281,6 +281,13 @@ const FilterBar = (props) => {
                 onClick={() => secondaryFilter('vodka')}
               >
                 Vodka
+              </SecondaryButton>
+              <SecondaryButton
+                tag='whiskey'
+                secondaryTag={productFilter.secondaryTag}
+                onClick={() => secondaryFilter('whiskey')}
+              >
+                Whiskey
               </SecondaryButton>
             </Section>
           </MenuContainer>
