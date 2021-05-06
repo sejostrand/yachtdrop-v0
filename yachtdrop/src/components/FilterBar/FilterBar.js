@@ -21,7 +21,6 @@ const PrimaryButton = styled.div`
     props.primaryTag != props.tag ? COLORS.green : COLORS.darkGreen};
   color: white;
   padding: 5px 20px;
-
   border-radius: 8px;
   font-family: 'Calibri';
   font-size: 13px;
@@ -35,7 +34,6 @@ const PrimaryButton = styled.div`
   align-self: space-between;
   display: flex;
   margin: 4px;
-
   &:hover {
     opacity: 0.8;
   }
@@ -46,7 +44,6 @@ const SecondaryButton = styled.div`
     props.secondaryTag != props.tag ? COLORS.purple : COLORS.orange};
   color: white;
   padding: 5px 20px;
-
   border-radius: 8px;
   font-family: 'Calibri';
   font-size: 13px;
@@ -60,13 +57,12 @@ const SecondaryButton = styled.div`
   align-self: space-between;
   display: flex;
   margin: 4px;
-  visibility: ${(props) =>
-    props.primaryTag == props.parentTag ? 'visible' : 'hidden'};
-
   &:hover {
     opacity: 0.8;
   }
 `;
+
+
 
 const FilterBar = (props) => {
   const productFilter = props.productFilter;

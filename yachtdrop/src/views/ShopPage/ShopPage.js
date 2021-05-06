@@ -12,29 +12,35 @@ import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '@components/SortBy/SortBy.js';
 import Footer from '../HomePage/components/Footer/Footer';
 
+// Styled-Components
 const StyledShopPage = styled.div``;
 
+
+// MAIN
 const ShopPage = (props) => {
   const productFilter = props.productFilter;
-  // STATES
+
+  // Product/Tags STATES
   const [filterArray, setFilterArray] = useState([]); //array of filterTags
-  const [sortState, setSortState] = useState('popularity'); //state of sorting
   const [defaultProductData, setDefaultProductData] = useState([]); //all products
   const [productData, setProductData] = useState([]); //products filtered by category
+ // Search Bar States
   const [filteredProductData, setFilteredProductData] = useState([]); //products filtered by category and search
   const [searchInput, setSearchInput] = useState(''); //state for searchbar input
-
+// Sorting States
+  const [sortState, setSortState] = useState('popularity'); //state of sorting
   const [alphaToggle, setAlphaToggle] = useState();
   const [priceToggle, setPriceToggle] = useState();
   const [sortButtonState, setSortButtonState] = useState();
 
-  // FETCH PRODUCTS
+  // FETCH PRODUCTS FROM BACKEND
   const fetchProducts = async () => {
     const res = await fetch('http://localhost:1337/products');
     const data = await res.json();
     return data;
   };
 
+  // SET PRODUCTS FROM BACKEND
   useEffect(() => {
     const getProductData = async () => {
       const dataFromServer = await fetchProducts();
@@ -58,7 +64,8 @@ const ShopPage = (props) => {
     [searchInput, productData]
   );
 
-  //applyProductFilter() functions: filters an array using another array
+
+  // applyProductFilter() functions: filters an array using another array
   const checkArray = (filterTags, productArray) => {
     let hasAllElems = true;
     for (let i = 0; i < filterTags.length; i++) {
@@ -76,10 +83,15 @@ const ShopPage = (props) => {
     );
   };
 
+
   //UPDATES productData ON filterState CHANGE
   useEffect(() => {
     setProductData(applyProductFilter(filterArray, defaultProductData));
   }, [filterArray]);
+
+
+
+  // Filtering
 
   const clearFilter = () => {
     productFilter.clearTags();
@@ -102,8 +114,8 @@ const ShopPage = (props) => {
     setFilterArray(productFilter.getTags());
   };
 
-  // SORTING
 
+  // SORTING
   const sortPrice = (tag) => {
     if (priceToggle == true) {
       filteredProductData.sort((a, b) => a.product_price - b.product_price);
@@ -133,6 +145,8 @@ const ShopPage = (props) => {
     setAlphaToggle(!alphaToggle);
     setSortButtonState(tag);
   };
+
+  // Rendering
 
   return (
     <StyledShopPage>
