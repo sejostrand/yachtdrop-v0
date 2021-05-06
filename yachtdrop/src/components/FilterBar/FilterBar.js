@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import BarButton from './objects/BarButton.js';
 import CategoryItem from './objects/CategoryItem.js';
 import { COLORS } from '@assets/theme/theme.js';
+import YearSlider from '../YearSlider'
+import { Slider }  from '@material-ui/core'
 import CheckBoxItem from '@objects/CheckBoxItem';
 import {
   FilterBarWrapper,
@@ -63,6 +65,28 @@ const SecondaryButton = styled.div`
 `;
 
 const FilterBar = (props) => {
+  let hello = [
+    {
+      value: 1989,
+      label: "1989"
+    },
+    {
+      value: 2000,
+      label: "2000"
+    },
+    {
+      value: 2003,
+      label: "2003"
+    },
+    {
+      value: 2004,
+      label: "2004"
+    }
+  ]
+  const [val, setVal] = useState([20, 40]);
+  const updateVal = (e, data) => {
+    setVal(data);
+  }
   const productFilter = props.productFilter;
   const clearFilter = props.clearFilter;
   const secondaryFilter = props.secondaryFilter;
@@ -237,6 +261,13 @@ const FilterBar = (props) => {
               <CheckBoxItem tag='2018' toggleFilter={toggleFilter} />
               <CheckBoxItem tag='2019' toggleFilter={toggleFilter} />
               <CheckBoxItem tag='NV' toggleFilter={toggleFilter} />
+            </Section>
+            <Section>
+              <Slider 
+                value={val}
+                onChange={updateVal}
+                marks={hello}
+              />
             </Section>
 
             <Section>

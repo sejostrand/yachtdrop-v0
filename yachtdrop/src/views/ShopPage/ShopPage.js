@@ -33,14 +33,17 @@ const ShopPage = (props) => {
   const [priceToggle, setPriceToggle] = useState();
   const [sortButtonState, setSortButtonState] = useState();
 
-  // FETCH PRODUCTS FROM BACKEND
+  // ******** FETCH PRODUCTS FROM BACKEND ********
+  // ********************************
   const fetchProducts = async () => {
     const res = await fetch('http://localhost:1337/products');
     const data = await res.json();
     return data;
   };
 
-  // SET PRODUCTS FROM BACKEND
+
+  // ******** SET PRODUCTS FROM BACKEND **********
+  // ********************************
   useEffect(() => {
     const getProductData = async () => {
       const dataFromServer = await fetchProducts();
@@ -50,7 +53,10 @@ const ShopPage = (props) => {
     getProductData();
   }, []);
 
-  //UPDATES SEARCHBAR FILTER
+
+  // ******** UPDATES SEARCHBAR FILTER ********
+  // ********************************
+
   useEffect(
     () => [
       setFilteredProductData(
@@ -64,6 +70,8 @@ const ShopPage = (props) => {
     [searchInput, productData]
   );
 
+
+  // ********************************
   // applyProductFilter() functions: filters an array using another array
   const checkEveryArray = (filterTags, productArray) => {
     let hasAllElems = true;
@@ -102,7 +110,9 @@ const ShopPage = (props) => {
     }
   };
 
+
   //UPDATES productData ON filterState CHANGE
+  // ********************************
   useEffect(() => {
     let result;
     setProductData(
@@ -111,8 +121,10 @@ const ShopPage = (props) => {
     console.log('updated');
   }, [filterArray1, counter]);
 
-  // Filtering
 
+
+  // Filtering
+  //********************************
   const clearFilter = () => {
     productFilter.clearTags();
     setFilterArray1([]);
@@ -138,7 +150,9 @@ const ShopPage = (props) => {
     setCounter(counter + 1);
   };
 
+
   // SORTING
+  // ********************************
   const sortPrice = (tag) => {
     if (priceToggle == true) {
       filteredProductData.sort((a, b) => a.product_price - b.product_price);
@@ -169,7 +183,9 @@ const ShopPage = (props) => {
     setSortButtonState(tag);
   };
 
+
   // Rendering
+  // ********************************
 
   return (
     <StyledShopPage>
