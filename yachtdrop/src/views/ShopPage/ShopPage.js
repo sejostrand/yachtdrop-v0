@@ -18,7 +18,7 @@ const StyledShopPage = styled.div``;
 // MAIN
 const ShopPage = (props) => {
   const productFilter = props.productFilter;
-
+  const [counter, setCounter] = useState(0);
   // Product/Tags STATES
   const [filterArray1, setFilterArray1] = useState([]); //array of filterTags
   const [filterArray2, setFilterArray2] = useState([]);
@@ -97,7 +97,7 @@ const ShopPage = (props) => {
       return newProductArray;
     } else {
       return newProductArray.filter((item) =>
-        checkSomeArray(filterTags2, item.categories)
+        item.categories.some((e) => filterArray2.includes(e))
       );
     }
   };
@@ -109,15 +109,7 @@ const ShopPage = (props) => {
       applyProductFilter(filterArray1, filterArray2, defaultProductData)
     );
     console.log('updated');
-  }, [filterArray1]);
-
-  useEffect(() => {
-    let result;
-    setProductData(
-      applyProductFilter(filterArray1, filterArray2, defaultProductData)
-    );
-    console.log('updated');
-  }, [filterArray2]);
+  }, [filterArray1, counter]);
 
   // Filtering
 
@@ -143,6 +135,7 @@ const ShopPage = (props) => {
     productFilter.otherTags.length == 0
       ? setFilterArray2([])
       : setFilterArray2(productFilter.otherTags);
+    setCounter(counter + 1);
   };
 
   // SORTING
