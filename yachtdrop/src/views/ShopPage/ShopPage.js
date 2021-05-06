@@ -109,15 +109,7 @@ const ShopPage = (props) => {
       applyProductFilter(filterArray1, filterArray2, defaultProductData)
     );
     console.log('updated');
-  }, [filterArray1]);
-
-  useEffect(() => {
-    let result;
-    setProductData(
-      applyProductFilter(filterArray1, filterArray2, defaultProductData)
-    );
-    console.log('updated');
-  }, [counter]);
+  }, [filterArray1, counter]);
 
   // Filtering
 
