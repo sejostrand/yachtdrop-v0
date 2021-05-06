@@ -29,6 +29,7 @@ export const PrimarySection = styled.div`
 
 export const MenuContainer = styled.div`
   padding: 12px;
+  border-top: 2px solid lightgray;
 `;
 
 export const FilterTitle = styled.div`
@@ -48,8 +49,8 @@ export const CategoryList = styled.div`
 `;
 
 export const Section = styled.div`
-  padding: 10px;
-  border-top: 2px solid lightgray;
+  padding: 10px 10px 20px 10px;
+  border-bottom: 2px solid lightgray;
 `;
 
 export const SectionTitle = styled.div`

@@ -13,14 +13,17 @@ const CheckboxContainer = styled.div`
   padding: 3px 8px;
 `;
 
-const CheckBoxItem = ({ children }) => {
+const CheckBoxItem = (props) => {
   return (
     <>
       <Wrapper>
         <CheckboxContainer>
-          <input type='checkbox' />
+          <input
+            type='checkbox'
+            onChange={() => props.toggleFilter(props.tag)}
+          />
         </CheckboxContainer>
-        {children}
+        {props.tag}
       </Wrapper>
     </>
   );

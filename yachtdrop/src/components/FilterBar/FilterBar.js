@@ -13,6 +13,7 @@ import {
   Section,
   SectionTitle,
   MenuContainer,
+  CheckboxLabel,
 } from './FilterBar.styles';
 
 const PrimaryButton = styled.div`
@@ -171,81 +172,85 @@ const FilterBar = (props) => {
             </Section>
             <Section>
               <SectionTitle>Region</SectionTitle>
-              <CheckBoxItem onClick={() => toggleFilter('argentina')}>
-                Argentina
-              </CheckBoxItem>
-              <CheckBoxItem>Australia</CheckBoxItem>
-              <CheckBoxItem>Austria</CheckBoxItem>
-              <CheckBoxItem>Chile</CheckBoxItem>
-              <CheckBoxItem>France</CheckBoxItem>
-              <CheckBoxItem>Hungary</CheckBoxItem>
-              <CheckBoxItem>Italy</CheckBoxItem>
-              <CheckBoxItem>New Zealand</CheckBoxItem>
-              <CheckBoxItem>South Africa</CheckBoxItem>
-              <CheckBoxItem>Spain</CheckBoxItem>
-              <CheckBoxItem>USA</CheckBoxItem>
+              <CheckBoxItem tag='argentina' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='australia' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='austria' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='chile' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='france' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='hungary' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='italy' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='new zealand' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='south africa' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='spain' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='usa' toggleFilter={toggleFilter} />
             </Section>
 
             <Section>
               <SectionTitle>Variety</SectionTitle>
-              <CheckBoxItem>Alsace</CheckBoxItem>
-              <CheckBoxItem>Bordeaux</CheckBoxItem>
-              <CheckBoxItem>Cava</CheckBoxItem>
-              <CheckBoxItem>Chardonnay</CheckBoxItem>
-              <CheckBoxItem>Cotes de Provence</CheckBoxItem>
-              <CheckBoxItem>Emporda</CheckBoxItem>
-              <CheckBoxItem>Fronsac</CheckBoxItem>
-              <CheckBoxItem>Margaux</CheckBoxItem>
-              <CheckBoxItem>Pauillac</CheckBoxItem>
-              <CheckBoxItem>Penedes</CheckBoxItem>
-              <CheckBoxItem>Pessac-Leognan</CheckBoxItem>
-              <CheckBoxItem>Pomeral</CheckBoxItem>
-              <CheckBoxItem>Priorat</CheckBoxItem>
-              <CheckBoxItem>Provence</CheckBoxItem>
-              <CheckBoxItem>Rhone</CheckBoxItem>
-              <CheckBoxItem>Ria Baixas</CheckBoxItem>
-              <CheckBoxItem>Ribera del Duero</CheckBoxItem>
-              <CheckBoxItem>Riesling</CheckBoxItem>
-              <CheckBoxItem>Rioja</CheckBoxItem>
-              <CheckBoxItem>Rueda</CheckBoxItem>
-              <CheckBoxItem>Saint Emilion</CheckBoxItem>
-              <CheckBoxItem>Saint Estephe</CheckBoxItem>
-              <CheckBoxItem>Saint Julien</CheckBoxItem>
-              <CheckBoxItem>Sauternes</CheckBoxItem>
-              <CheckBoxItem>Semillon</CheckBoxItem>
-              <CheckBoxItem>Tokaji</CheckBoxItem>
+              <CheckBoxItem tag='alsace' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='bordeaux' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='cava' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='chardonanay' toggleFilter={toggleFilter} />
+              <CheckBoxItem
+                tag='cotes de provence'
+                toggleFilter={toggleFilter}
+              />
+              <CheckBoxItem tag='emporda' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='fronsac' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='margaux' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='pauillac' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='penedes' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='pessac-leognan' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='pomeral' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='priorat' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='provence' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='rhone' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='ria baixas' toggleFilter={toggleFilter} />
+              <CheckBoxItem
+                tag='ribera del duero'
+                toggleFilter={toggleFilter}
+              />
+              <CheckBoxItem tag='riesling' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='rioja' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='rueda' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='saint emilion' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='saint estephe' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='saint julien' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='sauternes' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='semillon' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='tokaji' toggleFilter={toggleFilter} />
             </Section>
 
             <Section>
               <SectionTitle>Vintage</SectionTitle>
-              <CheckBoxItem>1989</CheckBoxItem>
-              <CheckBoxItem>2000</CheckBoxItem>
-              <CheckBoxItem>2003</CheckBoxItem>
-              <CheckBoxItem>2004</CheckBoxItem>
-              <CheckBoxItem>2005</CheckBoxItem>
-              <CheckBoxItem>2006</CheckBoxItem>
-              <CheckBoxItem>2007</CheckBoxItem>
-              <CheckBoxItem>2008</CheckBoxItem>
-              <CheckBoxItem>2009</CheckBoxItem>
-              <CheckBoxItem>2010</CheckBoxItem>
-              <CheckBoxItem>2011</CheckBoxItem>
-              <CheckBoxItem>2012</CheckBoxItem>
-              <CheckBoxItem>2013</CheckBoxItem>
-              <CheckBoxItem>2014</CheckBoxItem>
-              <CheckBoxItem>2015</CheckBoxItem>
-              <CheckBoxItem>2016</CheckBoxItem>
-              <CheckBoxItem>2017</CheckBoxItem>
-              <CheckBoxItem>2018</CheckBoxItem>
-              <CheckBoxItem>2019</CheckBoxItem>
-              <CheckBoxItem>NV</CheckBoxItem>
+              <CheckBoxItem tag='1989' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='2000' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='2003' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='2004' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='2005' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='2006' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='2007' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='2008' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='2009' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='2010' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='2011' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='2012' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='2013' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='2014' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='2015' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='2016' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='2017' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='2018' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='2019' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='NV' toggleFilter={toggleFilter} />
             </Section>
 
             <Section>
               <SectionTitle>Volume</SectionTitle>
-              <CheckBoxItem>1.5L</CheckBoxItem>
-              <CheckBoxItem>75cl</CheckBoxItem>
-              <CheckBoxItem>50cl</CheckBoxItem>
-              <CheckBoxItem>37.5cl</CheckBoxItem>
+              <CheckBoxItem tag='1.5L' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='75cl' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='50cl' toggleFilter={toggleFilter} />
+              <CheckBoxItem tag='37.5cl' toggleFilter={toggleFilter} />
             </Section>
           </MenuContainer>
         )}
