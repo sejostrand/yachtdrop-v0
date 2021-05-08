@@ -14,7 +14,7 @@ export const TileWrapper = styled.div`
 export const PackSize = styled.div`
   float: left;
   position: absolute;
-  background-color: ${COLORS.color1};
+  background-color: ${COLORS.green};
   color: ${COLORS.color5};
   border-radius: 4px;
   padding: 3px;
