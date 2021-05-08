@@ -36,11 +36,17 @@ const SignUp = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const mailing = {first_name, user_email, user_password};
+        const mailing = {
+            username: first_name, 
+            email: user_email, 
+            password: user_password};
 
-        fetch('http://localhost:1337/users', {
+        fetch('http://localhost:1337/auth/local/register', {
             method: 'POST',
-            headers: { "Content-Type": "application/json" },
+            headers: { 
+                "Accept": "application/json",
+                "Content-Type": "application/json" 
+            },
             body: JSON.stringify(mailing)
         }).then(() => {
             console.log('new user added');
