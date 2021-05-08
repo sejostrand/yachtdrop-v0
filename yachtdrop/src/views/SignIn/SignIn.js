@@ -28,22 +28,28 @@ const SubmitButton = styled.button`
 `;
 
 
-const SignIn = () => {
+const SignUp = () => {
+    const [first_name, setFirst_name] = useState('');
     const [user_email, setUser_email] = useState('');
     const [user_password, setUser_password] = useState('');
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const mailing = {user_email, user_password};
+        const mailing = {
+            identifier: user_email, 
+            password: user_password};
 
-        const fetchProducts = async () => {
-            const res = await fetch('http://localhost:1337/users');
-            const data = await res.json();
-        
-            return data;
-            console.log(data)
-          };
+        fetch('http://localhost:1337/auth/local', {
+            method: 'POST',
+            headers: { 
+                "Accept": "application/json",
+                "Content-Type": "application/json" 
+            },
+            body: JSON.stringify(mailing)
+        }).then(() => {
+            console.log('new user added');
+        })
     }
 
 
@@ -64,8 +70,9 @@ const SignIn = () => {
                 onChange={(e) => setUser_password(e.target.value)}
             />
             <SubmitButton type="submit">Submit</SubmitButton>
+            <a href="/signin">Sign In</a>
         </SignUpWrapper>
     )
 }
 
-export default SignIn
+export default SignUp
