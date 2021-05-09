@@ -26,10 +26,6 @@
       "type": "string",
       "required": true
     },
-    "user": {
-      "model": "users",
-      "via": "orders"
-    },
     "products": {
       "type": "json"
     },
