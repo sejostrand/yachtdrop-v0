@@ -59,7 +59,6 @@ function App() {
       return console.log('tags were cleared');
     }
   }
-
   const productFilter = new Filter();
 
   return (
@@ -83,7 +82,7 @@ function App() {
         <Route path='/contactus'>
           <ContactUs />
         </Route>
-        <Route path='/Embassador'>
+        <Route path='/embassador'>
           <Embassador />
         </Route>
       </Switch>

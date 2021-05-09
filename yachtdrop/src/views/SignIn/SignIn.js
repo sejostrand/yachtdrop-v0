@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import NavBar from '@components/NavBar/NavBar';
+import Footer from '@components/Footer/Footer';
 
 const BodyWrapper = styled.div`
   display: flex;
@@ -83,6 +84,7 @@ const SignUp = () => {
           <a href='/signin'>Sign In</a>
         </SignUpWrapper>
       </BodyWrapper>
+      <Footer />
     </>
   );
 };

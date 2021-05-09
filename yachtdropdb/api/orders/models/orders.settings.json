@@ -31,6 +31,15 @@
     },
     "transaction_id": {
       "type": "string"
+    },
+    "user": {
+      "type": "string"
+    },
+    "order_datetime": {
+      "type": "datetime"
+    },
+    "expected_delivery": {
+      "type": "datetime"
     }
   }
 }

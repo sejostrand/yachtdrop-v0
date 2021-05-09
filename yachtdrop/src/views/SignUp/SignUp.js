@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import NavBar from '@components/NavBar/NavBar';
+import Footer from '@components/Footer/Footer';
+
+const BodyWrapper = styled.div`
+  display: flex;
+`;
 
 const SignUpWrapper = styled.form`
   display: flex;
@@ -56,7 +61,7 @@ const SignUp = () => {
   return (
     <>
       <NavBar />
-      <div>
+      <BodyWrapper>
         <SignUpWrapper
           action={'/signup'}
           method={'POST'}
@@ -86,7 +91,8 @@ const SignUp = () => {
           <SubmitButton type='submit'>Submit</SubmitButton>
           <a href='/signin'>Sign In</a>
         </SignUpWrapper>
-      </div>
+      </BodyWrapper>
+      <Footer />
     </>
   );
 };

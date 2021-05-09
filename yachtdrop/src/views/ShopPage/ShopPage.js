@@ -33,7 +33,7 @@ const ShopPage = (props) => {
   const [priceToggle, setPriceToggle] = useState();
   const [sortButtonState, setSortButtonState] = useState();
 
-  // ******** FETCH PRODUCTS FROM BACKEND ********
+  // ******** FETCH PRODUCTS FROM SERVER ********
   // ********************************
   const fetchProducts = async () => {
     const res = await fetch('http://localhost:1337/products');
@@ -41,8 +41,7 @@ const ShopPage = (props) => {
     return data;
   };
 
-
-  // ******** SET PRODUCTS FROM BACKEND **********
+  // ******** SET PRODUCTS FROM SERVER **********
   // ********************************
   useEffect(() => {
     const getProductData = async () => {
@@ -52,7 +51,6 @@ const ShopPage = (props) => {
     };
     getProductData();
   }, []);
-
 
   // ******** UPDATES SEARCHBAR FILTER ********
   // ********************************
@@ -69,7 +67,6 @@ const ShopPage = (props) => {
     ],
     [searchInput, productData]
   );
-
 
   // ********************************
   // applyProductFilter() functions: filters an array using another array
@@ -110,7 +107,6 @@ const ShopPage = (props) => {
     }
   };
 
-
   //UPDATES productData ON filterState CHANGE
   // ********************************
   useEffect(() => {
@@ -120,8 +116,6 @@ const ShopPage = (props) => {
     );
     console.log('updated');
   }, [filterArray1, counter]);
-
-
 
   // Filtering
   //********************************
@@ -149,7 +143,6 @@ const ShopPage = (props) => {
       : setFilterArray2(productFilter.otherTags);
     setCounter(counter + 1);
   };
-
 
   // SORTING
   // ********************************
@@ -182,7 +175,6 @@ const ShopPage = (props) => {
     setAlphaToggle(!alphaToggle);
     setSortButtonState(tag);
   };
-
 
   // Rendering
   // ********************************
