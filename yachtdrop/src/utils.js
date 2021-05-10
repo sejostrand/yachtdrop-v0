@@ -4,7 +4,8 @@ export const callApi = async (path, method, body) => {
   const response = await fetch(`${API_URL}${path}`, {
     method,
     headers: {
-      "content-type": "application/json"
+        "Accept": "application/json",
+        "content-type": "application/json"
     },
     credentials: "include",
     body: JSON.stringify(body)

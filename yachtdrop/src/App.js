@@ -10,6 +10,7 @@ import ContactUs from './views/ContactUs/ContactUs';
 import Embassador from './views/Embassador/Embassador';
 import SignUp from './views/SignUp/SignUp';
 import SignIn from './views/SignIn/SignIn';
+import Login from './views/SignIn/Login';
 
 function App() {
   class Filter {
@@ -73,6 +74,9 @@ function App() {
         </Route>
         <Route path='/signup'>
           <SignUp />
+        </Route>
+        <Route path='/login'>
+          <Login />
         </Route>
         <Route path='/signin'>
           <SignIn />
