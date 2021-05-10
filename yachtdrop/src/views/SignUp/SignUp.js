@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import NavBar from '@components/NavBar/NavBar';
 import Footer from '@components/Footer/Footer';
-import FieldInput from './objects/FieldInput';
 import { COLORS } from '@assets/theme/theme';
 import BG from '@assets/img/sea.jpg';
 
@@ -41,6 +40,9 @@ const FormContainer = styled.form`
 const ContentContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
 `;
 
 const PageTitle = styled.div`
@@ -52,19 +54,19 @@ const PageTitle = styled.div`
 
 const Caption = styled.div`
   display: flex;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  width: 100%;
-  padding: 10px;
-  justify-content: space-between;
+  flex-flow: row wrap;
+  margin: 30px 0px;
+  font-size: 18px;
 `;
 
 const SubmitButton = styled.div`
-  padding: 10px 15px;
-  margin: 0px;
+  margin: 10px 0px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 100px;
   border-radius: 5px;
   background-color: ${COLORS.orange};
   color: white;
@@ -80,8 +82,13 @@ const SubmitButton = styled.div`
 `;
 
 const LogInButton = styled.div`
-  padding: 10px 15px;
   margin: 0px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 100px;
   border-radius: 5px;
   background-color: ${COLORS.green};
   color: white;
@@ -94,6 +101,21 @@ const LogInButton = styled.div`
   &:hover {
     opacity: 0.8;
   }
+`;
+
+const Label = styled.div`
+  font-size: 18px;
+  color: black;
+  margin: 2px 0px;
+  position: relative;
+`;
+
+const StyledInput = styled.input`
+  margin: 6px 0px;
+  color: black;
+  text-transform: capitalize;
+  padding: 5px;
+  width: 300px;
 `;
 
 const SignUp = () => {
@@ -133,41 +155,41 @@ const SignUp = () => {
             onSubmit={handleSubmit}
           >
             <PageTitle>Sign Up</PageTitle>
-            <FieldInput
+            <Label>Full Name</Label>
+            <StyledInput
               type='text'
               placeholder='Name'
-              label='Full Name:'
               value={first_name}
               onChange={(e) => setFirst_name(e.taget.value)}
             />
-            <FieldInput
-              label='Email:'
+            <Label>Email:</Label>
+            <StyledInput
               type='email'
               placeholder='Email'
               value={user_email}
               onChange={(e) => setUser_email(e.target.value)}
             />
-            <FieldInput
-              label='Password:'
+            <Label>Password:</Label>
+            <StyledInput
               type='password'
               placeholder='Password'
               value={user_password}
               onChange={(e) => setUser_password(e.target.value)}
             />
-            <FieldInput
-              label='Password:'
+            <StyledInput
               type='password'
               placeholder='Repeat password'
               value={repeat_password}
               onChange={(e) => setRepeat_password(e.target.value)}
             />
-            <ButtonContainer>
-              <SubmitButton type='submit'>SUBMIT</SubmitButton>
-              <LogInButton href='/login'>LOG IN</LogInButton>
-            </ButtonContainer>
+            <SubmitButton type='submit'>SUBMIT</SubmitButton>
           </FormContainer>
           <ContentContainer>
-            <Caption>Fill out your details and set sail!</Caption>
+            <Caption>
+              Fill out your details and become part of the crew!
+            </Caption>
+            <Caption>Already registered? Log in to your account below.</Caption>
+            <LogInButton href='/login'>LOG IN</LogInButton>
           </ContentContainer>
         </Container>
       </BodyWrapper>
