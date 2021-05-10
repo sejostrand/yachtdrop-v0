@@ -9,7 +9,12 @@ import AboutUs from './views/AboutUs/AboutUs';
 import ContactUs from './views/ContactUs/ContactUs';
 import Embassador from './views/Embassador/Embassador';
 import SignUp from './views/SignUp/SignUp';
+<<<<<<< HEAD
 import LogIn from './views/SignIn/LogIn';
+=======
+import SignIn from './views/SignIn/SignIn';
+import Login from './views/SignIn/Login';
+>>>>>>> faf8d3e16cebbdabab7a2b48cd2aa00e0a4da357
 
 function App() {
   //filter object for generating an array of filter tags: primaryTag, secondaryTag, otherTags
