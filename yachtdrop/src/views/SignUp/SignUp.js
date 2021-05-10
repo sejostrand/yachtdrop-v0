@@ -186,7 +186,17 @@ const SignUp = () => {
               value={user_password}
               onChange={(e) => setUser_password(e.target.value)}
             />
-            <SubmitButton type='submit' value='register'>
+            <StyledInput
+              type='password'
+              placeholder='Repeat Password'
+              value={repeat_password}
+              onChange={(e) => setRepeat_password(e.target.value)}
+            />
+            <SubmitButton
+              disabled={user_password != repeat_password}
+              type='submit'
+              value='register'
+            >
               SUBMIT
             </SubmitButton>
           </FormContainer>
