@@ -13,7 +13,6 @@ const BodyWrapper = styled.div`
   margin-top: 52px;
   display: flex;
   width: 100%;
-  height: 80vh;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
@@ -24,10 +23,11 @@ const BodyWrapper = styled.div`
 
 const Container = styled.div`
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   background-color: #f8faf7;
   padding: 30px;
   border-radius: 20px;
+  margin: 10vh 0px;
 `;
 
 const FormContainer = styled.form`
