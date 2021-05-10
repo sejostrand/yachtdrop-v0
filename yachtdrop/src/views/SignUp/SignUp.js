@@ -49,7 +49,7 @@ const PageTitle = styled.div`
   display: flex;
   color: black;
   font-size: 30px;
-  padding: 10px;
+  padding: 10px 0px;
 `;
 
 const Caption = styled.div`
