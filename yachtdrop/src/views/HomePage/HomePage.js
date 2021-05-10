@@ -2,12 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 // IMPORT COMPONENTS
-import Header from './components/Header/Header'
-import HomePageMain from './components/HomePageMain'
-import Footer from './components/Footer/Footer'
+import Header from './components/Header/Header';
+import HomePageMain from './components/HomePageMain';
+import Footer from '@components/Footer/Footer';
 
-import HeaderIcon from './img/sea.jpg'
-
+import HeaderIcon from '@assets/img/sea.jpg';
 
 const HomePage = () => {
   return (

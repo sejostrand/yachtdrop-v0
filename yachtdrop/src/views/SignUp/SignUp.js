@@ -1,10 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import NavBar from '@components/NavBar/NavBar';
 import Footer from '@components/Footer/Footer';
 import { COLORS } from '@assets/theme/theme';
 import BG from '@assets/img/sea.jpg';
-import { callApi } from '../../utils'
+import {
+  useCurrentUser,
+  useDispatchCurrentUser,
+} from '@assets/utils/CurrentUser';
 
 const BodyWrapper = styled.div`
   margin-top: 52px;
@@ -50,7 +53,7 @@ const PageTitle = styled.div`
   display: flex;
   color: black;
   font-size: 30px;
-  padding: 10px;
+  padding: 10px 0px;
 `;
 
 const Caption = styled.div`
@@ -73,7 +76,6 @@ const SubmitButton = styled.button`
   color: white;
   font-size: 18px;
   cursor: pointer;
-  text-transform: capitalize;
   font-weight: bold;
   letter-spacing: 1px;
 
@@ -82,7 +84,7 @@ const SubmitButton = styled.button`
   }
 `;
 
-const LogInButton = styled.div`
+const LogInButton = styled.a`
   margin: 0px;
   display: flex;
   flex-flow: row nowrap;
@@ -95,9 +97,9 @@ const LogInButton = styled.div`
   color: white;
   font-size: 18px;
   cursor: pointer;
-  text-transform: capitalize;
   font-weight: bold;
   letter-spacing: 1px;
+  text-decoration: none;
 
   &:hover {
     opacity: 0.8;
@@ -123,8 +125,7 @@ const SignUp = () => {
   const [user_email, setUser_email] = useState('');
   const [user_password, setUser_password] = useState('');
   const [repeat_password, setRepeat_password] = useState('');
-  
-
+  const [redirect, setRedirect] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -141,10 +142,16 @@ const SignUp = () => {
         },
         body: JSON.stringify(mailing)
     }).then(() => {
-        console.log('new user added');
-    })
-}
+      console.log('new user added');
+    });
+    setRedirect(true);
+  };
 
+  useEffect(() => {
+    if (redirect == true) {
+      window.location.assign('/newlogin');
+    }
+  }, [redirect]);
 
   return (
     <>
@@ -174,7 +181,9 @@ const SignUp = () => {
               value={user_password}
               onChange={(e) => setUser_password(e.target.value)}
             />
-            <SubmitButton type='submit' value='register'>SUBMIT</SubmitButton>
+            <SubmitButton type='submit' value='register'>
+              SUBMIT
+            </SubmitButton>
           </FormContainer>
           <ContentContainer>
             <Caption>

@@ -10,7 +10,7 @@ import CoverBar from '@components/CoverBar/CoverBar';
 import BodyWrapper from '../../objects/BodyWrapper.js';
 import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '@components/SortBy/SortBy.js';
-import Footer from '../HomePage/components/Footer/Footer';
+import Footer from '@components/Footer/Footer';
 
 // Styled-Components
 const StyledShopPage = styled.div``;
@@ -117,7 +117,7 @@ const ShopPage = (props) => {
     console.log('updated');
   }, [filterArray1, counter]);
 
-  // Filtering
+  // Filtering (modifies filterState to trigger)
   //********************************
   const clearFilter = () => {
     productFilter.clearTags();

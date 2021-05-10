@@ -9,7 +9,8 @@ import AboutUs from './views/AboutUs/AboutUs';
 import ContactUs from './views/ContactUs/ContactUs';
 import Embassador from './views/Embassador/Embassador';
 import SignUp from './views/SignUp/SignUp';
-import LogIn from './views/SignIn/Login';
+import LogIn from './views/LogIn/LogIn';
+import NewLogIn from '@views/LogIn/NewLogIn';
 
 function App() {
   //filter object for generating an array of filter tags: primaryTag, secondaryTag, otherTags
@@ -78,6 +79,9 @@ function App() {
         </Route>
         <Route path='/login'>
           <LogIn />
+        </Route>
+        <Route path='/newlogin'>
+          <NewLogIn />
         </Route>
         <Route path='/aboutus'>
           <AboutUs />
