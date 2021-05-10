@@ -1,19 +1,18 @@
-import React from 'react'
-import Header from '../HomePage/components/Header/Header'
-import Footer from '../HomePage/components/Footer/Footer'
-import Main from '../AboutUs/components/Main'
-import Image from '../../assets/img/yacht.jpg'
-
+import React from 'react';
+import styled from 'styled-components';
+import Header from '@views/HomePage/components/Header/Header';
+import Footer from '@components/Footer/Footer';
+import Main from '@views/AboutUs/components/Main';
+import Image from '@assets/img/yacht.jpg';
 
 const AboutUs = () => {
-    return (
-        <>
-        <Header image={Image}/>
-        <Main />
-        <Footer />
-        </>
-    )
-}
+  return (
+    <>
+      <Header image={Image} />
+      <Main />
+      <Footer />
+    </>
+  );
+};
 
-export default AboutUs
-
+export default AboutUs;

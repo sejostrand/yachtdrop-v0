@@ -1,5 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import {
+  useCurrentUser,
+  useDispatchCurrentUser,
+} from '@assets/utils/CurrentUser';
 
 const StyledLoginLink = styled.a`
   color: white;
@@ -25,7 +29,15 @@ const StyledLoginLink = styled.a`
 `;
 
 const LoginLink = () => {
-  return <StyledLoginLink href='/login'>Log in</StyledLoginLink>;
+  const user = useCurrentUser();
+
+  return (
+    <>
+      {!user.isAuthenticated && (
+        <StyledLoginLink href='/login'>Log in</StyledLoginLink>
+      )}
+    </>
+  );
 };
 
 export default LoginLink;

@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import NavBar from '@components/NavBar/NavBar';
-import Footer from '@components/Footer/Footer';
-import { COLORS } from '@assets/theme/theme';
-import BG from '@assets/img/sea.jpg';
 import {
   useCurrentUser,
   useDispatchCurrentUser,
 } from '@assets/utils/CurrentUser';
+import { useHistory } from 'react-router-dom';
+import { callApi } from '../../utils';
+import { COLORS } from '@assets/theme/theme';
+import NavBar from '@components/NavBar/NavBar';
+import Footer from '@components/Footer/Footer';
+import BG from '@assets/img/sea.jpg';
 
 const BodyWrapper = styled.div`
   margin-top: 52px;
@@ -63,7 +65,7 @@ const Caption = styled.div`
   font-size: 18px;
 `;
 
-const SubmitButton = styled.button`
+const SubmitButton = styled.input`
   margin: 10px 0px;
   display: flex;
   flex-flow: row nowrap;
@@ -84,8 +86,8 @@ const SubmitButton = styled.button`
   }
 `;
 
-const LogInButton = styled.a`
-  margin: 0px;
+const LogInButton = styled.button`
+  margin: 10px 0px;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -99,6 +101,28 @@ const LogInButton = styled.a`
   cursor: pointer;
   font-weight: bold;
   letter-spacing: 1px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+const SignUpButton = styled.a`
+  margin: 0px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 100px;
+  border-radius: 5px;
+  background-color: ${COLORS.orange};
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  text-transform: capitalize;
+  font-weight: bold;
+  letter-spacing: 1px;
   text-decoration: none;
 
   &:hover {
@@ -106,7 +130,7 @@ const LogInButton = styled.a`
   }
 `;
 
-const Label = styled.label`
+const Label = styled.div`
   font-size: 18px;
   color: black;
   margin: 2px 0px;
@@ -115,93 +139,83 @@ const Label = styled.label`
 
 const StyledInput = styled.input`
   margin: 6px 0px;
-  color: black;
   padding: 5px;
   width: 300px;
 `;
 
-const SignUp = () => {
-  const [first_name, setFirst_name] = useState('');
-  const [user_email, setUser_email] = useState('');
-  const [user_password, setUser_password] = useState('');
-  const [repeat_password, setRepeat_password] = useState('');
-  const [redirect, setRedirect] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const mailing = {
-      username: first_name,
-      email: user_email,
-      password: user_password,
-    };
-
-    fetch('http://localhost:1337/auth/local/register', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(mailing),
-    }).then(() => {
-      console.log('new user added');
-    });
-    setRedirect(true);
-  };
+export default function LogIn() {
+  const dispatch = useDispatchCurrentUser();
+  const currentUser = useCurrentUser();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const history = useHistory();
+  const [errorMsg, setErrorMsg] = useState(null);
 
   useEffect(() => {
-    if (redirect == true) {
-      window.location.assign('/newlogin');
+    if (currentUser.isAuthenticated) {
+      history.push('/shoppage');
     }
-  }, [redirect]);
+  }, [currentUser]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrorMsg(null);
+    try {
+      const data = await callApi('/auth/local', 'POST', {
+        identifier: emailRef.current.value,
+        password: passwordRef.current.value,
+      });
+
+      if (!data.user) {
+        throw 'Cannot login. Please try again.';
+      }
+
+      dispatch({ type: 'LOGIN', user: data.user });
+      history.push('/login');
+    } catch (err) {
+      setErrorMsg(err);
+    }
+  };
 
   return (
     <>
       <NavBar />
       <BodyWrapper>
         <Container>
-          <FormContainer
-            action={'/signup'}
-            method={'POST'}
-            onSubmit={handleSubmit}
-          >
-            <PageTitle>Sign Up</PageTitle>
-            <Label>Full Name</Label>
+          {errorMsg && <p>{errorMsg}</p>}
+          <FormContainer style={{}} onSubmit={handleSubmit}>
+            <PageTitle>Log In</PageTitle>
+
+            <Label for='email-address'>Email</Label>
             <StyledInput
-              type='text'
-              placeholder='Name'
-              value={first_name}
-              onChange={(e) => setFirst_name(e.target.value)}
-            />
-            <Label>Email:</Label>
-            <StyledInput
+              ref={emailRef}
               type='email'
-              placeholder='Email'
-              value={user_email}
-              onChange={(e) => setUser_email(e.target.value)}
+              name='email-address'
+              id='email-address'
             />
-            <Label>Password:</Label>
+            <Label className='db fw6 lh-copy f6' for='password'>
+              Password
+            </Label>
             <StyledInput
+              ref={passwordRef}
               type='password'
-              placeholder='Password'
-              value={user_password}
-              onChange={(e) => setUser_password(e.target.value)}
+              name='password'
+              id='password'
             />
-            <SubmitButton type='submit' value='register'>
-              SUBMIT
-            </SubmitButton>
+
+            <LogInButton type='submit'>LOG IN</LogInButton>
+
+            <a href='#0'>Forgot your password?</a>
           </FormContainer>
           <ContentContainer>
             <Caption>
-              Fill out your details and become part of the crew!
+              Not registered? Click on the link below to register!
             </Caption>
-            <Caption>Already registered? Log in to your account below.</Caption>
-            <LogInButton href='/login'>LOG IN</LogInButton>
+            <SignUpButton href='/signup'>SIGN UP</SignUpButton>
           </ContentContainer>
         </Container>
       </BodyWrapper>
       <Footer />
     </>
   );
-};
-
-export default SignUp;
+}

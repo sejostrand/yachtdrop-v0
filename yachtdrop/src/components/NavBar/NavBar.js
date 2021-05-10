@@ -10,6 +10,7 @@ import LoginLink from './objects/LoginLink';
 import ProfileLink from './objects/ProfileLink';
 import SignUpLink from './objects/SignUpLink';
 import YachtdropLogo from '../../objects/YachtdropLogo';
+import LogOutButton from '@objects/LogOutButton';
 
 //import colors
 import { COLORS } from '../../assets/theme/theme';
@@ -40,6 +41,7 @@ const NavBar = ({ filteredProducts }) => {
         <LoginLink />
         <ProfileLink />
         <SignUpLink />
+        <LogOutButton />
       </NavAdmin>
     </StyledNavBar>
   );
