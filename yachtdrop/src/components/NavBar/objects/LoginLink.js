@@ -25,7 +25,7 @@ const StyledLoginLink = styled.a`
 `;
 
 const LoginLink = () => {
-  return <StyledLoginLink href='/signin'>Log in</StyledLoginLink>;
+  return <StyledLoginLink href='/login'>Log in</StyledLoginLink>;
 };
 
 export default LoginLink;

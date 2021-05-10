@@ -1,42 +1,106 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import NavBar from '@components/NavBar/NavBar';
 import Footer from '@components/Footer/Footer';
+import FieldInput from './objects/FieldInput';
+import { COLORS } from '@assets/theme/theme';
+import BG from '@assets/img/sea.jpg';
 
 const BodyWrapper = styled.div`
+  margin-top: 52px;
   display: flex;
-`;
-
-const SignUpWrapper = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  background-image: url(${BG});
+  background-position: center bottom;
+  background-size: auto 100vh;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
   background-color: #f8faf7;
+  padding: 30px;
+  border-radius: 20px;
 `;
 
-const SignUpInput = styled.input`
-  width: 40%;
-  height: 10%;
-  text-align: center;
-  margin: 20px;
+const FormContainer = styled.form`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: start;
+  width: auto;
+  background-color: #f8faf7;
+  padding: 30px;
+  border-radius: 20px;
 `;
 
-const SubmitButton = styled.button`
-  padding: 10px;
-  margin-top: 20px;
-  border-radius: 5px;
-  background-color: lightblue;
+const ContentContainer = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+`;
+
+const PageTitle = styled.div`
+  display: flex;
   color: black;
+  font-size: 30px;
+  padding: 10px;
+`;
+
+const Caption = styled.div`
+  display: flex;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  padding: 10px;
+  justify-content: space-between;
+`;
+
+const SubmitButton = styled.div`
+  padding: 10px 15px;
+  margin: 0px;
+  border-radius: 5px;
+  background-color: ${COLORS.orange};
+  color: white;
   font-size: 18px;
+  cursor: pointer;
+  text-transform: capitalize;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+const LogInButton = styled.div`
+  padding: 10px 15px;
+  margin: 0px;
+  border-radius: 5px;
+  background-color: ${COLORS.green};
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  text-transform: capitalize;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 const SignUp = () => {
   const [first_name, setFirst_name] = useState('');
   const [user_email, setUser_email] = useState('');
   const [user_password, setUser_password] = useState('');
+  const [repeat_password, setRepeat_password] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,35 +126,50 @@ const SignUp = () => {
     <>
       <NavBar />
       <BodyWrapper>
-        <SignUpWrapper
-          action={'/signup'}
-          method={'POST'}
-          onSubmit={handleSubmit}
-        >
-          <h1>Name</h1>
-          <SignUpInput
-            type='text'
-            placeholder='First Name'
-            value={first_name}
-            onChange={(e) => setFirst_name(e.target.value)}
-          />
-          <h1>Email</h1>
-          <SignUpInput
-            type='email'
-            placeholder='Email'
-            value={user_email}
-            onChange={(e) => setUser_email(e.target.value)}
-          />
-          <h1>Password</h1>
-          <SignUpInput
-            type='password'
-            placeholder='Password'
-            value={user_password}
-            onChange={(e) => setUser_password(e.target.value)}
-          />
-          <SubmitButton type='submit'>Submit</SubmitButton>
-          <a href='/signin'>Sign In</a>
-        </SignUpWrapper>
+        <Container>
+          <FormContainer
+            action={'/signup'}
+            method={'POST'}
+            onSubmit={handleSubmit}
+          >
+            <PageTitle>Sign Up</PageTitle>
+            <FieldInput
+              type='text'
+              placeholder='Name'
+              label='Full Name:'
+              value={first_name}
+              onChange={(e) => setFirst_name(e.taget.value)}
+            />
+            <FieldInput
+              label='Email:'
+              type='email'
+              placeholder='Email'
+              value={user_email}
+              onChange={(e) => setUser_email(e.target.value)}
+            />
+            <FieldInput
+              label='Password:'
+              type='password'
+              placeholder='Password'
+              value={user_password}
+              onChange={(e) => setUser_password(e.target.value)}
+            />
+            <FieldInput
+              label='Password:'
+              type='password'
+              placeholder='Repeat password'
+              value={repeat_password}
+              onChange={(e) => setRepeat_password(e.target.value)}
+            />
+            <ButtonContainer>
+              <SubmitButton type='submit'>SUBMIT</SubmitButton>
+              <LogInButton href='/login'>LOG IN</LogInButton>
+            </ButtonContainer>
+          </FormContainer>
+          <ContentContainer>
+            <Caption>Fill out your details and set sail!</Caption>
+          </ContentContainer>
+        </Container>
       </BodyWrapper>
       <Footer />
     </>

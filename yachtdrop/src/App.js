@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 //import GlobalStyles from './styles/global';
@@ -9,9 +9,12 @@ import AboutUs from './views/AboutUs/AboutUs';
 import ContactUs from './views/ContactUs/ContactUs';
 import Embassador from './views/Embassador/Embassador';
 import SignUp from './views/SignUp/SignUp';
-import SignIn from './views/SignIn/SignIn';
+import LogIn from './views/SignIn/LogIn';
 
 function App() {
+  //filter object for generating an array of filter tags: primaryTag, secondaryTag, otherTags
+  //exclusive tags such as primaryTag and secondaryTag toggle between various tag
+  //otherTags contains tags that are inclusive of eachother
   class Filter {
     constructor() {
       this.primaryTag = [];
@@ -73,8 +76,8 @@ function App() {
         <Route path='/signup'>
           <SignUp />
         </Route>
-        <Route path='/signin'>
-          <SignIn />
+        <Route path='/login'>
+          <LogIn />
         </Route>
         <Route path='/aboutus'>
           <AboutUs />
