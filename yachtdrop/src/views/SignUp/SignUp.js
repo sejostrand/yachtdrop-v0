@@ -11,7 +11,7 @@ import {
 import SearchBar from '@components/SearchBar/SearchBar';
 
 const BodyWrapper = styled.div`
-  margin-top: 52px;
+  margin-top: 95px;
   display: flex;
   width: 100%;
   flex-flow: column nowrap;
