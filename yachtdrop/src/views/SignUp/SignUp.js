@@ -190,7 +190,7 @@ const SignUp = () => {
             />
             <StyledInput
               type='password'
-              placeholder='Repeat Password'
+              placeholder='Confirm password'
               value={repeat_password}
               onChange={(e) => setRepeat_password(e.target.value)}
             />
