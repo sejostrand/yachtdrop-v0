@@ -8,6 +8,7 @@ import {
   useCurrentUser,
   useDispatchCurrentUser,
 } from '@assets/utils/CurrentUser';
+import SearchBar from '@components/SearchBar/SearchBar';
 
 const BodyWrapper = styled.div`
   margin-top: 52px;
@@ -156,6 +157,7 @@ const SignUp = () => {
   return (
     <>
       <NavBar />
+      <SearchBar disabled={true} />
       <BodyWrapper>
         <Container>
           <FormContainer action={"/signup"} method={"POST"} onSubmit={handleSubmit}>

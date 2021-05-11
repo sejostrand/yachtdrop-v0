@@ -43,11 +43,13 @@ const SearchBar = (props) => {
   return (
     <StyledSearchBar>
       <LocationTag />
-      <SearchInput
-        type='text'
-        placeholder='What can we help you find?'
-        onChange={(char) => props.setSearchInput(char.target.value)}
-      />
+      {!props.disabled && (
+        <SearchInput
+          type='text'
+          placeholder='What can we help you find?'
+          onChange={(char) => props.setSearchInput(char.target.value)}
+        />
+      )}
       <CartLink onCart={() => setShowCart(!showCart)} />
       {showCart && <CartMenu />}
     </StyledSearchBar>

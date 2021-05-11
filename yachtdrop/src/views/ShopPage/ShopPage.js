@@ -12,9 +12,6 @@ import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '@components/SortBy/SortBy.js';
 import Footer from '@components/Footer/Footer';
 
-// Styled-Components
-const StyledShopPage = styled.div``;
-
 // MAIN
 const ShopPage = (props) => {
   const productFilter = props.productFilter;
@@ -51,6 +48,8 @@ const ShopPage = (props) => {
     };
     getProductData();
   }, []);
+
+  //ROUTING FUNCTIONS
 
   // ******** UPDATES SEARCHBAR FILTER ********
   // ********************************
@@ -180,7 +179,7 @@ const ShopPage = (props) => {
   // ********************************
 
   return (
-    <StyledShopPage>
+    <>
       <NavBar />
       <SearchBar setSearchInput={setSearchInput} />
       <BodyWrapper>
@@ -202,7 +201,7 @@ const ShopPage = (props) => {
         </BodyDiv>
       </BodyWrapper>
       <Footer />
-    </StyledShopPage>
+    </>
   );
 };
 
