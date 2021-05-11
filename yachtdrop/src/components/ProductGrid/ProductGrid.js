@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 //import styles
 import { GridWrapper } from './ProductGrid.style';
@@ -15,6 +15,8 @@ const FlexContainer = styled.div`
 `;
 
 const ProductGrid = (props) => {
+  //const [isVisible, setIsVisible] = useState(false);
+
   return (
     <FlexContainer>
       <GridWrapper>

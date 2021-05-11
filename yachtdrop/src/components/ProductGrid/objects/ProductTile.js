@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import {
   useCurrentUser,
@@ -26,6 +26,40 @@ import emptyStar from '@assets/img/empty-star.png';
 
 const ProductTile = (props) => {
   const userData = useCurrentUserData();
+
+  //POST PRODUCT
+  const addFavourite = (id) => {
+    const user = {
+      favouriteProducts: [id],
+    };
+    fetch('http://localhost:1337/users/me', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    }).then(() => {
+      console.log('product added to favourites');
+    });
+  };
+
+  const removeFavourite = (id) => {
+    const user = {
+      favouriteProducts: [id],
+    };
+    fetch('http://localhost:1337/users/me', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    }).then(() => {
+      console.log('product added to favourites');
+    });
+  };
+  //END OF RUBBISH CODE
 
   return (
     <TileWrapper>
