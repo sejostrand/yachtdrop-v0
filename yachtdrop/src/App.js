@@ -75,22 +75,22 @@ function App() {
           <ShopPage productFilter={productFilter} />
         </Route>
         <Route path='/signup'>
-          <SignUp />
+          <SignUp productFilter={productFilter} />
         </Route>
         <Route path='/login'>
-          <LogIn />
+          <LogIn productFilter={productFilter} />
         </Route>
         <Route path='/newlogin'>
-          <NewLogIn />
+          <NewLogIn productFilter={productFilter} />
         </Route>
         <Route path='/aboutus'>
-          <AboutUs />
+          <AboutUs productFilter={productFilter} />
         </Route>
         <Route path='/contactus'>
-          <ContactUs />
+          <ContactUs productFilter={productFilter} />
         </Route>
         <Route path='/embassador'>
-          <Embassador />
+          <Embassador productFilter={productFilter} />
         </Route>
       </Switch>
     </Router>

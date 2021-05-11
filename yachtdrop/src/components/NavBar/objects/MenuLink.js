@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledMenuLink = styled.div`
+const StyledMenuLink = styled.a`
   color: white;
   font-family: 'Calibri';
   font-size: 13px;
@@ -24,11 +24,12 @@ const StyledMenuLink = styled.div`
   }
 `;
 
-
-const MenuLink = ({children}) => {
-  return <StyledMenuLink>
-        {children}
-  </StyledMenuLink>;
+const MenuLink = (props) => {
+  return (
+    <StyledMenuLink href={props.href} onClick={props.toTag}>
+      {props.children}
+    </StyledMenuLink>
+  );
 };
 
 export default MenuLink;

@@ -26,16 +26,18 @@ const StyledNavBar = styled.nav`
   z-index: 10;
 `;
 
-const NavBar = ({ filteredProducts }) => {
+const NavBar = (props) => {
+  const productFilter = props.productFilter;
+
   return (
     <StyledNavBar>
       <YachtdropLogo />
       <NavMenu>
-        <MenuLink>All</MenuLink>
-        <MenuLink>Wine</MenuLink>
-        <MenuLink>Spirits</MenuLink>
-        <MenuLink>Beer</MenuLink>
-        <MenuLink>Other</MenuLink>
+        <MenuLink href='/shoppage'>All</MenuLink>
+        <MenuLink href='/shoppage'>Wine</MenuLink>
+        <MenuLink href='/shoppage'>Spirits</MenuLink>
+        <MenuLink href='/shoppage'>Beer</MenuLink>
+        <MenuLink href='/shoppage'>Other</MenuLink>
       </NavMenu>
       <NavAdmin>
         <LoginLink />
