@@ -13,7 +13,7 @@ export const TileWrapper = styled.div`
 
 export const PackSize = styled.div`
   float: left;
-  position: absolute;
+  position: relative;
   background-color: ${COLORS.green};
   color: ${COLORS.color5};
   border-radius: 4px;
@@ -82,4 +82,11 @@ export const AddButtonWrapper = styled.div`
   &:hover {
     opacity: 0.8;
   }
+`;
+
+export const FavStar = styled.img`
+  display: relative;
+  float: right;
+  width: 30px;
+  height: 30px;
 `;
