@@ -121,6 +121,11 @@ const StyledInput = styled.input`
   width: 300px;
 `;
 
+const Message = styled.span`
+  color: red;
+  font-size: 10px;
+`;
+
 const SignUp = () => {
   const [first_name, setFirst_name] = useState('');
   const [user_email, setUser_email] = useState('');
@@ -155,6 +160,12 @@ const SignUp = () => {
     }
   }, [redirect]);
 
+  const checkPasswords = () => {
+    if (user_password != repeat_password) {
+      return;
+    }
+  };
+
   return (
     <>
       <NavBar />
@@ -181,7 +192,12 @@ const SignUp = () => {
               value={user_email}
               onChange={(e) => setUser_email(e.target.value)}
             />
-            <Label>Password:</Label>
+            <Label>
+              Password:{' '}
+              {user_password != repeat_password && (
+                <Message>&nbsp;&nbsp; * passwords do not match</Message>
+              )}
+            </Label>
             <StyledInput
               type='password'
               placeholder='Password'
