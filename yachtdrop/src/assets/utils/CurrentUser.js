@@ -1,8 +1,15 @@
-import React, { useEffect, useReducer, useContext, createContext } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useReducer,
+  useContext,
+  createContext,
+} from 'react';
 import { callApi } from '../../utils';
 
 const CurrentUserStateContext = createContext();
 const CurrentUserDispatchContext = createContext();
+const CurrentUserDataContext = createContext();
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -17,11 +24,13 @@ const reducer = (state, action) => {
 
 export const CurrentUserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, { isAuthenticated: false });
+  const [userData, setUserData] = useState([]);
 
   useEffect(() => {
     const fetchUser = async () => {
       const user = await callApi('/users/me', 'GET');
-      console.log('dataa user', user);
+      console.log('user data', user.favouriteProducts);
+      setUserData(user);
       if (user.id) {
         dispatch({ type: 'LOGIN', user });
         return;
@@ -33,12 +42,15 @@ export const CurrentUserProvider = ({ children }) => {
   return (
     <CurrentUserDispatchContext.Provider value={dispatch}>
       <CurrentUserStateContext.Provider value={state}>
-        {children}
+        <CurrentUserDataContext.Provider value={userData}>
+          {children}
+        </CurrentUserDataContext.Provider>
       </CurrentUserStateContext.Provider>
     </CurrentUserDispatchContext.Provider>
   );
 };
 
 export const useCurrentUser = () => useContext(CurrentUserStateContext);
+export const useCurrentUserData = () => useContext(CurrentUserDataContext);
 export const useDispatchCurrentUser = () =>
   useContext(CurrentUserDispatchContext);

@@ -8,6 +8,8 @@
 
 body {
   background-color: lightgray;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 /*

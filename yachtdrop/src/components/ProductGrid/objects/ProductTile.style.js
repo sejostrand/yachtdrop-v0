@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 import { COLORS, FONTS } from '../../../assets/theme/theme';
 
+export const FavStar = styled.img`
+  display: absolute;
+  float: right;
+  width: 30px;
+  height: 30px;
+  visibility: hidden;
+`;
+
 export const TileWrapper = styled.div`
   padding: 5px;
   margin: 20px 10px;
@@ -9,6 +17,10 @@ export const TileWrapper = styled.div`
   width: 160px;
   cursor: pointer;
   border-radius: 4px;
+
+  &:hover ${FavStar} {
+    visibility: visible;
+  }
 `;
 
 export const PackSize = styled.div`

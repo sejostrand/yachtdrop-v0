@@ -11,7 +11,7 @@ import {
 import SearchBar from '@components/SearchBar/SearchBar';
 
 const BodyWrapper = styled.div`
-  margin-top: 52px;
+  margin-top: 95px;
   display: flex;
   width: 100%;
   flex-flow: column nowrap;
@@ -121,6 +121,11 @@ const StyledInput = styled.input`
   width: 300px;
 `;
 
+const Message = styled.span`
+  color: red;
+  font-size: 10px;
+`;
+
 const SignUp = () => {
   const [first_name, setFirst_name] = useState('');
   const [user_email, setUser_email] = useState('');
@@ -154,6 +159,12 @@ const SignUp = () => {
     }
   }, [redirect]);
 
+  const checkPasswords = () => {
+    if (user_password != repeat_password) {
+      return;
+    }
+  };
+
   return (
     <>
       <NavBar />
@@ -176,7 +187,12 @@ const SignUp = () => {
               value={user_email}
               onChange={(e) => setUser_email(e.target.value)}
             />
-            <Label>Password:</Label>
+            <Label>
+              Password:{' '}
+              {user_password != repeat_password && (
+                <Message>&nbsp;&nbsp; * passwords do not match</Message>
+              )}
+            </Label>
             <StyledInput
               type='password' 
               placeholder='Password'
@@ -185,7 +201,7 @@ const SignUp = () => {
             />
             <StyledInput
               type='password'
-              placeholder='Repeat Password'
+              placeholder='Confirm password'
               value={repeat_password}
               onChange={(e) => setRepeat_password(e.target.value)}
             />

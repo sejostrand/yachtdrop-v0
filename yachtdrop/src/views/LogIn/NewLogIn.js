@@ -10,6 +10,7 @@ import { COLORS } from '@assets/theme/theme';
 import NavBar from '@components/NavBar/NavBar';
 import Footer from '@components/Footer/Footer';
 import BG from '@assets/img/sea.jpg';
+import SearchBar from '@components/SearchBar/SearchBar';
 
 const BodyWrapper = styled.div`
   margin-top: 52px;
@@ -180,6 +181,7 @@ export default function NewLogIn() {
   return (
     <>
       <NavBar />
+      <SearchBar disabled={true} />
       <BodyWrapper>
         <Container>
           {errorMsg && <p>{errorMsg}</p>}
