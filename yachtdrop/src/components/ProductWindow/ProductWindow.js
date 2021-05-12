@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -43,7 +43,7 @@ const ProductWindow = (props) => {
   return (
     <Container>
       <Window>
-        <Cross onClick={props.setWindow(false)} />
+        <Cross />
         <Section>
           Content
           <ProductImg />
