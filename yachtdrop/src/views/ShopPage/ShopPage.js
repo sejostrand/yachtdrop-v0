@@ -11,6 +11,7 @@ import BodyWrapper from '../../objects/BodyWrapper.js';
 import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '@components/SortBy/SortBy.js';
 import Footer from '@components/Footer/Footer';
+import ProductWindow from '@components/ProductWindow/ProductWindow';
 
 // MAIN
 const ShopPage = (props) => {
@@ -180,6 +181,7 @@ const ShopPage = (props) => {
 
   return (
     <>
+      <ProductWindow />
       <NavBar />
       <SearchBar setSearchInput={setSearchInput} />
       <BodyWrapper>

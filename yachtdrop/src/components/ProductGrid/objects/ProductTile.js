@@ -63,23 +63,25 @@ const ProductTile = (props) => {
   //END OF RUBBISH CODE
 
   return (
-    <TileWrapper>
-      {props.pack != 1 && <PackSize>{props.pack + ' PACK'}</PackSize>}
-      {!user ? (
-        userData.favouriteProducts.includes(props.id) ? (
-          <FavStar src={star} />
-        ) : (
-          <FavStar src={emptyStar} />
-        )
-      ) : null}
-      <ProductImage src={props.imgUrl} />
-      <DetailsWrapper>
-        <ProductName>{props.name}</ProductName>
-        <ProductDescription>{props.description}</ProductDescription>
-        <ProductPrice>$ {props.price.toFixed(2)}</ProductPrice>
-      </DetailsWrapper>
-      <AddButtonWrapper>ADD</AddButtonWrapper>
-    </TileWrapper>
+    <>
+      <TileWrapper>
+        {props.pack != 1 && <PackSize>{props.pack + ' PACK'}</PackSize>}
+        {!user ? (
+          userData.favouriteProducts.includes(props.id) ? (
+            <FavStar src={star} />
+          ) : (
+            <FavStar src={emptyStar} />
+          )
+        ) : null}
+        <ProductImage src={props.imgUrl} />
+        <DetailsWrapper>
+          <ProductName>{props.name}</ProductName>
+          <ProductDescription>{props.description}</ProductDescription>
+          <ProductPrice>$ {props.price.toFixed(2)}</ProductPrice>
+        </DetailsWrapper>
+        <AddButtonWrapper>ADD</AddButtonWrapper>
+      </TileWrapper>
+    </>
   );
 };
 

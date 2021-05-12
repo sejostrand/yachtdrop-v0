@@ -5,7 +5,7 @@ import {
   useDispatchCurrentUser,
 } from '@assets/utils/CurrentUser';
 
-const StyledProfileLink = styled.div`
+const StyledProfileLink = styled.a`
   color: white;
   font-family: 'Calibri';
   font-size: 13px;
@@ -33,7 +33,9 @@ const ProfileLink = () => {
 
   return (
     <>
-      {user.isAuthenticated && <StyledProfileLink>Profile</StyledProfileLink>}
+      {user.isAuthenticated && (
+        <StyledProfileLink href='/profile'>Profile</StyledProfileLink>
+      )}
     </>
   );
 };
