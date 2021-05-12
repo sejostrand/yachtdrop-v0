@@ -179,9 +179,11 @@ const ShopPage = (props) => {
   // Rendering
   // ********************************
 
+  const [window, setWindow] = useState(false);
+
   return (
     <>
-      <ProductWindow />
+      {window && <ProductWindow setWindow={setWindow} />}
       <NavBar />
       <SearchBar setSearchInput={setSearchInput} />
       <BodyWrapper>
@@ -199,7 +201,7 @@ const ShopPage = (props) => {
             sortPrice={sortPrice}
             sortButtonState={sortButtonState}
           />
-          <ProductGrid products={filteredProductData} />
+          <ProductGrid setWindow={setWindow} products={filteredProductData} />
         </BodyDiv>
       </BodyWrapper>
       <Footer />

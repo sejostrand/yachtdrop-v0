@@ -64,7 +64,7 @@ const ProductTile = (props) => {
 
   return (
     <>
-      <TileWrapper>
+      <TileWrapper onClick={props.setWindow(true)}>
         {props.pack != 1 && <PackSize>{props.pack + ' PACK'}</PackSize>}
         {!user ? (
           userData.favouriteProducts.includes(props.id) ? (

@@ -32,10 +32,18 @@ const Section = styled.div`
 
 const ProductImg = styled.img``;
 
+const Cross = styled.div`
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  cursor: pointer;
+`;
+
 const ProductWindow = (props) => {
   return (
     <Container>
       <Window>
+        <Cross onClick={props.setWindow(false)} />
         <Section>
           Content
           <ProductImg />
