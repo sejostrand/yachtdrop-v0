@@ -15,8 +15,6 @@ const FlexContainer = styled.div`
 `;
 
 const ProductGrid = (props) => {
-  //const [isVisible, setIsVisible] = useState(false);
-
   return (
     <FlexContainer>
       <GridWrapper>

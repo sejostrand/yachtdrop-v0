@@ -26,6 +26,7 @@ import emptyStar from '@assets/img/empty-star.png';
 
 const ProductTile = (props) => {
   const userData = useCurrentUserData();
+  const user = useCurrentUser();
 
   //POST PRODUCT
   const addFavourite = (id) => {
@@ -64,11 +65,13 @@ const ProductTile = (props) => {
   return (
     <TileWrapper>
       {props.pack != 1 && <PackSize>{props.pack + ' PACK'}</PackSize>}
-      {userData.favouriteProducts.includes(props.id) ? (
-        <FavStar src={star} />
-      ) : (
-        <FavStar src={emptyStar} />
-      )}
+      {!user ? (
+        userData.favouriteProducts.includes(props.id) ? (
+          <FavStar src={star} />
+        ) : (
+          <FavStar src={emptyStar} />
+        )
+      ) : null}
       <ProductImage src={props.imgUrl} />
       <DetailsWrapper>
         <ProductName>{props.name}</ProductName>
