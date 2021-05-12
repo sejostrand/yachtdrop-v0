@@ -183,7 +183,6 @@ const ShopPage = (props) => {
 
   return (
     <>
-      <ProductWindow />
       <NavBar />
       <SearchBar setSearchInput={setSearchInput} />
       <BodyWrapper>

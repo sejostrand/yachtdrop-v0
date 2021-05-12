@@ -23,10 +23,12 @@ import {
 import ProductIcon from '../../../assets/img/product-icons/wine/test.jpg';
 import star from '@assets/img/star.png';
 import emptyStar from '@assets/img/empty-star.png';
+import ProductWindow from '@components/ProductWindow/ProductWindow';
 
 const ProductTile = (props) => {
   const userData = useCurrentUserData();
-  const User = useCurrentUserData();
+  const user = useCurrentUser();
+  const [isVisible, setIsVisible] = useState(false);
 
   //POST PRODUCT
   const addFavourite = (id) => {
@@ -63,21 +65,26 @@ const ProductTile = (props) => {
   //END OF RUBBISH CODE
 
   return (
-    <TileWrapper>
-      {props.pack != 1 && <PackSize>{props.pack + ' PACK'}</PackSize>}
-      {!userData && userData.favouriteProducts.includes(props.id) ? (
-        <FavStar src={star} />
-      ) : (
-        <FavStar src={emptyStar} />
-      )}
-      <ProductImage src={props.imgUrl} />
-      <DetailsWrapper>
-        <ProductName>{props.name}</ProductName>
-        <ProductDescription>{props.description}</ProductDescription>
-        <ProductPrice>$ {props.price.toFixed(2)}</ProductPrice>
-      </DetailsWrapper>
-      <AddButtonWrapper>ADD</AddButtonWrapper>
-    </TileWrapper>
+    <>
+      {isVisible && <ProductWindow setIsVisible={setIsVisible} />}
+      <TileWrapper onClick={() => setIsVisible(true)}>
+        {props.pack != 1 && <PackSize>{props.pack + ' PACK'}</PackSize>}
+        {!user ? (
+          userData.favouriteProducts.includes(props.id) ? (
+            <FavStar src={star} />
+          ) : (
+            <FavStar src={emptyStar} />
+          )
+        ) : null}
+        <ProductImage src={props.imgUrl} />
+        <DetailsWrapper>
+          <ProductName>{props.name}</ProductName>
+          <ProductDescription>{props.description}</ProductDescription>
+          <ProductPrice>$ {props.price.toFixed(2)}</ProductPrice>
+        </DetailsWrapper>
+        <AddButtonWrapper>ADD</AddButtonWrapper>
+      </TileWrapper>
+    </>
   );
 };
 
