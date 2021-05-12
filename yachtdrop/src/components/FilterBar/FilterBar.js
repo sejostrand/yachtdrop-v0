@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import BarButton from './objects/BarButton.js';
 import CategoryItem from './objects/CategoryItem.js';
 import { COLORS } from '@assets/theme/theme.js';
-import YearSlider from '../YearSlider'
-import { Slider }  from '@material-ui/core'
+import YearSlider from '../YearSlider';
+import { Slider } from '@material-ui/core';
 import CheckBoxItem from '@objects/CheckBoxItem';
 import {
   FilterBarWrapper,
@@ -16,6 +16,7 @@ import {
   SectionTitle,
   MenuContainer,
   CheckboxLabel,
+  HiddenSection,
 } from './FilterBar.styles';
 
 const PrimaryButton = styled.div`
@@ -68,25 +69,25 @@ const FilterBar = (props) => {
   let hello = [
     {
       value: 1989,
-      label: "1989"
+      label: '1989',
     },
     {
       value: 2000,
-      label: "2000"
+      label: '2000',
     },
     {
       value: 2003,
-      label: "2003"
+      label: '2003',
     },
     {
       value: 2004,
-      label: "2004"
-    }
-  ]
+      label: '2004',
+    },
+  ];
   const [val, setVal] = useState([20, 40]);
   const updateVal = (e, data) => {
     setVal(data);
-  }
+  };
   const productFilter = props.productFilter;
   const clearFilter = props.clearFilter;
   const secondaryFilter = props.secondaryFilter;
@@ -188,7 +189,7 @@ const FilterBar = (props) => {
                 Sparkling
               </SecondaryButton>
             </Section>
-            <Section>
+            <HiddenSection>
               <SectionTitle>Region</SectionTitle>
               <CheckBoxItem tag='argentina' toggleFilter={toggleFilter} />
               <CheckBoxItem tag='australia' toggleFilter={toggleFilter} />
@@ -201,9 +202,9 @@ const FilterBar = (props) => {
               <CheckBoxItem tag='south africa' toggleFilter={toggleFilter} />
               <CheckBoxItem tag='spain' toggleFilter={toggleFilter} />
               <CheckBoxItem tag='usa' toggleFilter={toggleFilter} />
-            </Section>
+            </HiddenSection>
 
-            <Section>
+            <HiddenSection>
               <SectionTitle>Variety</SectionTitle>
               <CheckBoxItem tag='alsace' toggleFilter={toggleFilter} />
               <CheckBoxItem tag='bordeaux' toggleFilter={toggleFilter} />
@@ -237,9 +238,9 @@ const FilterBar = (props) => {
               <CheckBoxItem tag='sauternes' toggleFilter={toggleFilter} />
               <CheckBoxItem tag='semillon' toggleFilter={toggleFilter} />
               <CheckBoxItem tag='tokaji' toggleFilter={toggleFilter} />
-            </Section>
+            </HiddenSection>
 
-            <Section>
+            <HiddenSection>
               <SectionTitle>Vintage</SectionTitle>
               <CheckBoxItem tag='1989' toggleFilter={toggleFilter} />
               <CheckBoxItem tag='2000' toggleFilter={toggleFilter} />
@@ -261,22 +262,15 @@ const FilterBar = (props) => {
               <CheckBoxItem tag='2018' toggleFilter={toggleFilter} />
               <CheckBoxItem tag='2019' toggleFilter={toggleFilter} />
               <CheckBoxItem tag='NV' toggleFilter={toggleFilter} />
-            </Section>
-            <Section>
-              <Slider 
-                value={val}
-                onChange={updateVal}
-                marks={hello}
-              />
-            </Section>
+            </HiddenSection>
 
-            <Section>
+            <HiddenSection>
               <SectionTitle>Volume</SectionTitle>
               <CheckBoxItem tag='1.5L' toggleFilter={toggleFilter} />
               <CheckBoxItem tag='75cl' toggleFilter={toggleFilter} />
               <CheckBoxItem tag='50cl' toggleFilter={toggleFilter} />
               <CheckBoxItem tag='37.5cl' toggleFilter={toggleFilter} />
-            </Section>
+            </HiddenSection>
           </MenuContainer>
         )}
 

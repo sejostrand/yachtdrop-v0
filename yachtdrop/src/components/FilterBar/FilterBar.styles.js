@@ -51,6 +51,12 @@ export const CategoryList = styled.div`
 export const Section = styled.div`
   padding: 10px 10px 20px 10px;
   border-bottom: 2px solid lightgray;
+  }
+`;
+
+export const HiddenSection = styled.div`
+  padding: 10px 10px 20px 10px;
+  border-bottom: 2px solid lightgray;
   overflow: hidden;
   max-height: 55px;
   transition: max-height 0.5s ease-in-out;
