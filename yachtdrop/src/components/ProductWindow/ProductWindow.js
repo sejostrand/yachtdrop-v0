@@ -16,8 +16,6 @@ const Window = styled.div`
   display: flex;
   flex-flow: row wrap;
   background-color: white;
-  height: 50vh;
-  width: 50vw;
   margin: auto;
   border-radius: 10px;
   padding: 10px;
@@ -31,7 +29,11 @@ const Section = styled.div`
   margin: auto;
 `;
 
-const ProductImg = styled.img``;
+const ProductImg = styled.img`
+  height: 50vh;
+  width: auto;
+  display: flex;
+`;
 
 const Cross = styled.div`
   width: 10px;
@@ -40,16 +42,25 @@ const Cross = styled.div`
   cursor: pointer;
 `;
 
+const Title = styled.p`
+  font-size: 20px;
+`;
+
 const ProductWindow = (props) => {
   return (
     <Container>
       <Window>
         <Cross onClick={() => props.setIsVisible(false)} />
         <Section>
-          Content
-          <ProductImg />
+          <ProductImg src={props.imgUrl} />
         </Section>
-        <Section>Content</Section>
+        <Section>
+          <Title>{props.name}</Title>
+          {props.id}
+          {props.description}
+          {props.price}
+          {props.pack}
+        </Section>
       </Window>
     </Container>
   );

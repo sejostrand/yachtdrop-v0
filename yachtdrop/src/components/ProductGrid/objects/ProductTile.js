@@ -66,7 +66,17 @@ const ProductTile = (props) => {
 
   return (
     <>
-      {isVisible && <ProductWindow setIsVisible={setIsVisible} />}
+      {isVisible && (
+        <ProductWindow
+          setIsVisible={setIsVisible}
+          id={props.id}
+          name={props.name}
+          description={props.description}
+          price={props.price}
+          pack={props.pack}
+          imgUrl={props.imgUrl}
+        />
+      )}
       <TileWrapper onClick={() => setIsVisible(true)}>
         {props.pack != 1 && <PackSize>{props.pack + ' PACK'}</PackSize>}
         {!user ? (
