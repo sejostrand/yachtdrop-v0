@@ -11,6 +11,7 @@ import Embassador from './views/Embassador/Embassador';
 import SignUp from './views/SignUp/SignUp';
 import LogIn from './views/LogIn/LogIn';
 import NewLogIn from '@views/LogIn/NewLogIn';
+import Profile from '@views/Profile/Profile';
 
 function App() {
   //filter object for generating an array of filter tags: primaryTag, secondaryTag, otherTags
@@ -85,6 +86,9 @@ function App() {
         </Route>
         <Route path='/aboutus'>
           <AboutUs productFilter={productFilter} />
+        </Route>
+        <Route path='/profile'>
+          <Profile />
         </Route>
         <Route path='/contactus'>
           <ContactUs productFilter={productFilter} />

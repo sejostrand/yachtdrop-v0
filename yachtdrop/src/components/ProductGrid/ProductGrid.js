@@ -15,13 +15,12 @@ const FlexContainer = styled.div`
 `;
 
 const ProductGrid = (props) => {
-  //const [isVisible, setIsVisible] = useState(false);
-
   return (
     <FlexContainer>
       <GridWrapper>
         {props.products.map((product, index) => (
           <ProductTile
+            setWindow={props.setWindow}
             id={product.id}
             key={index}
             name={product.product_name}
