@@ -42,9 +42,28 @@ const Cross = styled.div`
   cursor: pointer;
 `;
 
-const Title = styled.p`
-  font-size: 20px;
+const Title = styled.h1`
+  font-size: 22px;
+  top: 10px;
+  margin-top: -30px;
+  margin-bottom: 20px;
 `;
+
+const Description = styled.p`
+  font-size: 18px;
+  margin: 5px;
+`;
+
+const Price = styled.p`
+  font-size: 18px;
+  margin: 5px;
+`;
+
+const PackSize = styled.p`
+  font-size: 18px;
+  margin: 5px;
+`;
+
 
 const ProductWindow = (props) => {
   return (
@@ -57,9 +76,9 @@ const ProductWindow = (props) => {
         <Section>
           <Title>{props.name}</Title>
           {props.id}
-          {props.description}
-          {props.price}
-          {props.pack}
+          <Description>{`Category: ${props.description}`}</Description>
+          <Price><p>{`Price: ${props.price}$`}</p></Price>
+          <PackSize>{`Pack size: ${props.pack}`}</PackSize>
         </Section>
       </Window>
     </Container>
