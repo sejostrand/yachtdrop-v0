@@ -136,18 +136,17 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const mailing = {
-      username: first_name,
-      email: user_email,
-      password: user_password,
-    };
+        username: first_name, 
+        email: user_email, 
+        password: user_password};
 
     fetch('http://localhost:1337/auth/local/register', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(mailing),
+        method: 'POST',
+        headers: { 
+            "Accept": "application/json",
+            "Content-Type": "application/json" 
+        },
+        body: JSON.stringify(mailing)
     }).then(() => {
       console.log('new user added');
     });
@@ -172,11 +171,7 @@ const SignUp = () => {
       <SearchBar disabled={true} />
       <BodyWrapper>
         <Container>
-          <FormContainer
-            action={'/signup'}
-            method={'POST'}
-            onSubmit={handleSubmit}
-          >
+          <FormContainer action={"/signup"} method={"POST"} onSubmit={handleSubmit}>
             <PageTitle>Sign Up</PageTitle>
             <Label>Full Name</Label>
             <StyledInput
@@ -187,7 +182,7 @@ const SignUp = () => {
             />
             <Label>Email:</Label>
             <StyledInput
-              type='email'
+              type='email' 
               placeholder='Email'
               value={user_email}
               onChange={(e) => setUser_email(e.target.value)}
@@ -199,7 +194,7 @@ const SignUp = () => {
               )}
             </Label>
             <StyledInput
-              type='password'
+              type='password' 
               placeholder='Password'
               value={user_password}
               onChange={(e) => setUser_password(e.target.value)}
