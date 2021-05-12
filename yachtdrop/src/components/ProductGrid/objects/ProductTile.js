@@ -23,10 +23,12 @@ import {
 import ProductIcon from '../../../assets/img/product-icons/wine/test.jpg';
 import star from '@assets/img/star.png';
 import emptyStar from '@assets/img/empty-star.png';
+import ProductWindow from '@components/ProductWindow/ProductWindow';
 
 const ProductTile = (props) => {
   const userData = useCurrentUserData();
   const user = useCurrentUser();
+  const [isVisible, setIsVisible] = useState(false);
 
   //POST PRODUCT
   const addFavourite = (id) => {
@@ -64,7 +66,8 @@ const ProductTile = (props) => {
 
   return (
     <>
-      <TileWrapper>
+      {isVisible && <ProductWindow setIsVisible={setIsVisible} />}
+      <TileWrapper onClick={() => setIsVisible(true)}>
         {props.pack != 1 && <PackSize>{props.pack + ' PACK'}</PackSize>}
         {!user ? (
           userData.favouriteProducts.includes(props.id) ? (
