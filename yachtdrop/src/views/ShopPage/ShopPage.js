@@ -11,7 +11,7 @@ import BodyWrapper from '../../objects/BodyWrapper.js';
 import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '@components/SortBy/SortBy.js';
 import Footer from '@components/Footer/Footer';
-import ProductWindow from '@components/ProductWindow/ProductWindow';
+import ProductWindow from '@components/ProductWindow/ProductWindow.js';
 
 // MAIN
 const ShopPage = (props) => {
@@ -30,6 +30,8 @@ const ShopPage = (props) => {
   const [alphaToggle, setAlphaToggle] = useState();
   const [priceToggle, setPriceToggle] = useState();
   const [sortButtonState, setSortButtonState] = useState();
+
+  //RenderStates
 
   // ******** FETCH PRODUCTS FROM SERVER ********
   // ********************************
@@ -179,11 +181,9 @@ const ShopPage = (props) => {
   // Rendering
   // ********************************
 
-  const [window, setWindow] = useState(false);
-
   return (
     <>
-      {window && <ProductWindow setWindow={setWindow} />}
+      <ProductWindow />
       <NavBar />
       <SearchBar setSearchInput={setSearchInput} />
       <BodyWrapper>
@@ -201,7 +201,7 @@ const ShopPage = (props) => {
             sortPrice={sortPrice}
             sortButtonState={sortButtonState}
           />
-          <ProductGrid setWindow={setWindow} products={filteredProductData} />
+          <ProductGrid products={filteredProductData} />
         </BodyDiv>
       </BodyWrapper>
       <Footer />
