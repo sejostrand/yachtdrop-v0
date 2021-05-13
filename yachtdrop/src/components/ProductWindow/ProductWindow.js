@@ -64,11 +64,10 @@ const PackSize = styled.p`
   margin: 5px;
 `;
 
-
 const ProductWindow = (props) => {
   return (
-    <Container>
-      <Window>
+    <Container onClick={() => props.setIsVisible(false)}>
+      <Window onClick={() => props.setIsVisible(true)}>
         <Cross onClick={() => props.setIsVisible(false)} />
         <Section>
           <ProductImg src={props.imgUrl} />
@@ -77,7 +76,9 @@ const ProductWindow = (props) => {
           <Title>{props.name}</Title>
           {props.id}
           <Description>{`Category: ${props.description}`}</Description>
-          <Price><p>{`Price: ${props.price}$`}</p></Price>
+          <Price>
+            <p>{`Price: ${props.price}$`}</p>
+          </Price>
           <PackSize>{`Pack size: ${props.pack}`}</PackSize>
         </Section>
       </Window>

@@ -32,37 +32,43 @@ const ProductTile = (props) => {
 
   //POST PRODUCT
   const addFavourite = (id) => {
-    const user = {
-      favouriteProducts: [id],
-    };
-    fetch('http://localhost:1337/users/me', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(user),
-    }).then(() => {
+    let userFavourites = userData.favouriteProducts;
+    console.log(userFavourites);
+    userFavourites.concat([id]);
+    fetch(
+      // 'http://localhost:1337/users/' +
+      //   userData.id.toString() +
+      //   '?id=' +
+      //   userData.id.toString(),
+
+      `http://localhost:1337/users/${userData.id}?id=${userData.id}`,
+      {
+        method: 'PUT',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ favouriteProducts: userFavourites }),
+      }
+    ).then(() => {
       console.log('product added to favourites');
     });
   };
 
   const removeFavourite = (id) => {
-    const user = {
-      favouriteProducts: [id],
-    };
-    fetch('http://localhost:1337/users/me', {
-      method: 'POST',
+    let userFavourites = userData.favouriteProducts;
+    userFavourites.splice(userFavourites.indexOf(id), 1);
+    fetch('http://localhost:1337/users/' + userData.id, {
+      method: 'PUT',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify({ favouriteProducts: userFavourites }),
     }).then(() => {
-      console.log('product added to favourites');
+      console.log('product removed from favourites');
     });
   };
-  //END OF RUBBISH CODE
 
   return (
     <>
@@ -77,16 +83,15 @@ const ProductTile = (props) => {
           imgUrl={props.imgUrl}
         />
       )}
-      <TileWrapper onClick={() => setIsVisible(true)}>
+      <TileWrapper>
         {props.pack != 1 && <PackSize>{props.pack + ' PACK'}</PackSize>}
-        {!user ? (
-          userData.favouriteProducts.includes(props.id) ? (
-            <FavStar src={star} />
+        {userData.favouriteProducts &&
+          (userData.favouriteProducts.includes(props.id) ? (
+            <FavStar src={star} onClick={() => removeFavourite(props.id)} />
           ) : (
-            <FavStar src={emptyStar} />
-          )
-        ) : null}
-        <ProductImage src={props.imgUrl} />
+            <FavStar src={emptyStar} onClick={() => addFavourite(props.id)} />
+          ))}
+        <ProductImage src={props.imgUrl} onClick={() => setIsVisible(true)} />
         <DetailsWrapper>
           <ProductName>{props.name}</ProductName>
           <ProductDescription>{props.description}</ProductDescription>

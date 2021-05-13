@@ -7,6 +7,7 @@ export const FavStar = styled.img`
   width: 30px;
   height: 30px;
   visibility: hidden;
+  cursor: pointer;
 `;
 
 export const TileWrapper = styled.div`
@@ -15,7 +16,6 @@ export const TileWrapper = styled.div`
   background-color: ${COLORS.color4};
   display: block;
   width: 160px;
-  cursor: pointer;
   border-radius: 4px;
 
   &:hover ${FavStar} {
@@ -41,6 +41,7 @@ export const PackSize = styled.div`
 export const ProductImage = styled.img`
   width: 150px;
   height: 150px;
+  cursor: pointer;
 `;
 
 export const DetailsWrapper = styled.div`
