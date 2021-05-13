@@ -35,23 +35,17 @@ const ProductTile = (props) => {
     let userFavourites = userData.favouriteProducts;
     console.log(userFavourites);
     userFavourites.concat([id]);
-    fetch(
-      // 'http://localhost:1337/users/' +
-      //   userData.id.toString() +
-      //   '?id=' +
-      //   userData.id.toString(),
-
-      `http://localhost:1337/users/${userData.id}?id=${userData.id}`,
-      {
-        method: 'PUT',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ favouriteProducts: userFavourites }),
-      }
-    ).then(() => {
+    fetch(`http://localhost:1337/users/${userData.id}?id=${userData.id}`, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ favouriteProducts: userFavourites }),
+    }).then(() => {
       console.log('product added to favourites');
+      console.log(userData.id);
+      console.log(userFavourites);
     });
   };
 
