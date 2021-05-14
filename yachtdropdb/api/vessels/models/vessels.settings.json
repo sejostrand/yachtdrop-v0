@@ -11,14 +11,14 @@
   },
   "attributes": {
     "users_permissions_users": {
+      "via": "vessels",
       "plugin": "users-permissions",
       "collection": "user",
-      "via": "vessels",
       "dominant": true
     },
     "orders": {
-      "collection": "orders",
-      "via": "vessel"
+      "via": "vessel",
+      "collection": "orders"
     },
     "vesselName": {
       "type": "string",

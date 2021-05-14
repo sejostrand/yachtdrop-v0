@@ -40,12 +40,12 @@
       "model": "user"
     },
     "transaction": {
-      "via": "order",
-      "model": "transactions"
+      "model": "transactions",
+      "via": "order"
     },
     "vessel": {
-      "via": "orders",
-      "model": "vessels"
+      "model": "vessels",
+      "via": "orders"
     }
   }
 }

@@ -59,16 +59,19 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "favouriteProducts": {
-      "type": "json"
-    },
     "favourites": {
       "collection": "favourites",
       "via": "users_permissions_user"
     },
     "vessels": {
-      "via": "users_permissions_users",
-      "collection": "vessels"
+      "collection": "vessels",
+      "via": "users_permissions_users"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
     }
   }
 }

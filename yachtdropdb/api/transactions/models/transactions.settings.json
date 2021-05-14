@@ -16,8 +16,8 @@
       "model": "user"
     },
     "order": {
-      "model": "orders",
-      "via": "transaction"
+      "via": "transaction",
+      "model": "orders"
     },
     "transactionId": {
       "type": "string"
