@@ -26,13 +26,7 @@
       "type": "string",
       "required": true
     },
-    "products": {
-      "type": "json"
-    },
     "transaction_id": {
-      "type": "string"
-    },
-    "user": {
       "type": "string"
     },
     "order_datetime": {
@@ -40,6 +34,18 @@
     },
     "expected_delivery": {
       "type": "datetime"
+    },
+    "users_permissions_user": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "transaction": {
+      "via": "order",
+      "model": "transactions"
+    },
+    "vessel": {
+      "via": "orders",
+      "model": "vessels"
     }
   }
 }
