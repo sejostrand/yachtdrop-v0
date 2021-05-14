@@ -42,14 +42,14 @@ const Cross = styled.div`
   cursor: pointer;
 `;
 
-const Title = styled.h1`
+const FullDescription = styled.h1`
   font-size: 22px;
   top: 10px;
   margin-top: -30px;
   margin-bottom: 20px;
 `;
 
-const Description = styled.p`
+const Display = styled.p`
   font-size: 18px;
   margin: 5px;
 `;
@@ -73,9 +73,9 @@ const ProductWindow = (props) => {
           <ProductImg src={props.imgUrl} />
         </Section>
         <Section>
-          <Title>{props.name}</Title>
+          <FullDescription>{props.fullDescription}</FullDescription>
           {props.id}
-          <Description>{`Category: ${props.description}`}</Description>
+          <Display>{`Category: ${props.display}`}</Display>
           <Price>
             <p>{`Price: ${props.price}$`}</p>
           </Price>

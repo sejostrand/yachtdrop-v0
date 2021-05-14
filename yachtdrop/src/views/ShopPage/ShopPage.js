@@ -150,9 +150,9 @@ const ShopPage = (props) => {
   // ********************************
   const sortPrice = (tag) => {
     if (priceToggle == true) {
-      filteredProductData.sort((a, b) => a.product_price - b.product_price);
+      filteredProductData.sort((a, b) => a.price - b.price);
     } else {
-      filteredProductData.sort((a, b) => b.product_price - a.product_price);
+      filteredProductData.sort((a, b) => b.price - a.price);
     }
     setPriceToggle(!priceToggle);
     setSortButtonState(tag);
@@ -161,15 +161,15 @@ const ShopPage = (props) => {
   const sortAlpha = (tag) => {
     if (alphaToggle == true) {
       filteredProductData.sort(function (a, b) {
-        a = a.product_name.toLowerCase();
-        b = b.product_name.toLowerCase();
+        a = a.display.toLowerCase();
+        b = b.display.toLowerCase();
 
         return a < b ? -1 : a > b ? 1 : 0;
       });
     } else {
       filteredProductData.sort(function (a, b) {
-        a = a.product_name.toLowerCase();
-        b = b.product_name.toLowerCase();
+        a = a.display.toLowerCase();
+        b = b.display.toLowerCase();
 
         return a > b ? -1 : a > b ? 1 : 0;
       });

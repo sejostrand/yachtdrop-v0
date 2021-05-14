@@ -609,7 +609,7 @@
             "type": "integer",
             "default": 1
           },
-          "unit_size": {
+          "unitVolume": {
             "type": "string"
           },
           "vintage": {
@@ -670,6 +670,12 @@
                 "type": "string"
               },
               "products": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "ports": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -775,6 +781,38 @@
                 }
               }
             }
+          },
+          "port": {
+            "required": [
+              "id",
+              "port"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "port": {
+                "type": "string"
+              },
+              "suppliers": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "portAddress": {
+                "type": "string"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -802,7 +840,7 @@
             "type": "integer",
             "default": 1
           },
-          "unit_size": {
+          "unitVolume": {
             "type": "string"
           },
           "vintage": {
@@ -834,6 +872,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "port": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

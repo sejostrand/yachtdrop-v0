@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/suppliers": {
+    "/ports": {
       "get": {
         "deprecated": false,
-        "description": "Find all the suppliers's records",
+        "description": "Find all the ports's records",
         "responses": {
           "200": {
-            "description": "Retrieve suppliers document(s)",
+            "description": "Retrieve ports document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Suppliers"
+                    "$ref": "#/components/schemas/Ports"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Suppliers"
+          "Ports"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new suppliers record",
+        "description": "Create a new ports record",
         "responses": {
           "200": {
-            "description": "Retrieve suppliers document(s)",
+            "description": "Retrieve ports document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Suppliers"
+                  "$ref": "#/components/schemas/Ports"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Suppliers"
+          "Ports"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewSuppliers"
+                "$ref": "#/components/schemas/NewPorts"
               }
             }
           }
         }
       }
     },
-    "/suppliers/count": {
+    "/ports/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of suppliers documents",
+        "description": "Retrieve the numver of ports documents",
         "responses": {
           "200": {
-            "description": "Retrieve suppliers document(s)",
+            "description": "Retrieve ports document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Suppliers"
+          "Ports"
         ],
         "parameters": []
       }
     },
-    "/suppliers/{id}": {
+    "/ports/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one suppliers record",
+        "description": "Find one ports record",
         "responses": {
           "200": {
-            "description": "Retrieve suppliers document(s)",
+            "description": "Retrieve ports document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Suppliers"
+                  "$ref": "#/components/schemas/Ports"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Suppliers"
+          "Ports"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single suppliers record",
+        "description": "Update a single ports record",
         "responses": {
           "200": {
-            "description": "Retrieve suppliers document(s)",
+            "description": "Retrieve ports document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Suppliers"
+                  "$ref": "#/components/schemas/Ports"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Suppliers"
+          "Ports"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewSuppliers"
+                "$ref": "#/components/schemas/NewPorts"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single suppliers record",
+        "description": "Delete a single ports record",
         "responses": {
           "200": {
-            "description": "deletes a single suppliers based on the ID supplied",
+            "description": "deletes a single ports based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Suppliers"
+          "Ports"
         ],
         "parameters": [
           {
@@ -514,123 +514,51 @@
   },
   "components": {
     "schemas": {
-      "Suppliers": {
+      "Ports": {
         "required": [
-          "id"
+          "id",
+          "port"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "supplierName": {
+          "port": {
             "type": "string"
           },
-          "supplierEmail": {
-            "type": "string"
-          },
-          "contactNumber": {
-            "type": "integer"
-          },
-          "address": {
-            "type": "string"
-          },
-          "products": {
+          "suppliers": {
             "type": "array",
             "items": {
               "required": [
-                "id",
-                "display",
-                "pack_size"
+                "id"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "display": {
+                "supplierName": {
                   "type": "string"
                 },
-                "subDisplay": {
+                "supplierEmail": {
                   "type": "string"
                 },
-                "featured": {
-                  "type": "boolean"
-                },
-                "product_img": {
-                  "type": "string"
-                },
-                "price": {
-                  "type": "number"
-                },
-                "pack_size": {
+                "contactNumber": {
                   "type": "integer"
                 },
-                "unitVolume": {
+                "address": {
                   "type": "string"
                 },
-                "vintage": {
-                  "type": "integer"
-                },
-                "product_format": {
-                  "type": "string"
-                },
-                "favourites": {
+                "products": {
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
                 },
-                "supplier": {
-                  "type": "string"
-                },
-                "category": {
-                  "type": "string"
-                },
-                "sub_category": {
-                  "type": "string"
-                },
-                "fullDescription": {
-                  "type": "string"
-                },
-                "category_tags": {
+                "ports": {
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
-                },
-                "port": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "ports": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "port"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "port": {
-                  "type": "string"
-                },
-                "suppliers": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "portAddress": {
-                  "type": "string"
                 },
                 "published_at": {
                   "type": "string"
@@ -644,37 +572,31 @@
               }
             }
           },
+          "portAddress": {
+            "type": "string"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
           }
         }
       },
-      "NewSuppliers": {
+      "NewPorts": {
+        "required": [
+          "port"
+        ],
         "properties": {
-          "supplierName": {
+          "port": {
             "type": "string"
           },
-          "supplierEmail": {
-            "type": "string"
-          },
-          "contactNumber": {
-            "type": "integer"
-          },
-          "address": {
-            "type": "string"
-          },
-          "products": {
+          "suppliers": {
             "type": "array",
             "items": {
               "type": "string"
             }
           },
-          "ports": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "portAddress": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -692,7 +614,7 @@
   },
   "tags": [
     {
-      "name": "Suppliers"
+      "name": "Ports"
     }
   ]
 }

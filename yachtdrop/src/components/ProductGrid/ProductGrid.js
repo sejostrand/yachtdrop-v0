@@ -22,8 +22,9 @@ const ProductGrid = (props) => {
           <ProductTile
             id={product.id}
             key={index}
-            name={product.product_name}
-            description={product.product_description}
+            fullDescription={product.full_description}
+            display={product.display}
+            subDisplay={product.sub_display}
             price={product.product_price}
             pack={product.pack_size}
             imgUrl={'http://localhost:1337' + product.product_img.url}

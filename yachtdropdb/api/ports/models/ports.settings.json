@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "category_tags",
+  "collectionName": "ports",
   "info": {
-    "name": "categoryTags",
+    "name": "ports",
     "description": ""
   },
   "options": {
@@ -11,15 +11,17 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "categoryTag": {
+    "port": {
       "type": "string",
-      "required": false,
-      "unique": true
+      "required": true
     },
-    "products": {
-      "via": "category_tags",
-      "collection": "products",
+    "suppliers": {
+      "collection": "suppliers",
+      "via": "ports",
       "dominant": true
+    },
+    "portAddress": {
+      "type": "richtext"
     }
   }
 }

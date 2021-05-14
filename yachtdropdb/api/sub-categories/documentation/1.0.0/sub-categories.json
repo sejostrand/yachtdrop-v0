@@ -568,7 +568,7 @@
                 "pack_size": {
                   "type": "integer"
                 },
-                "unit_size": {
+                "unitVolume": {
                   "type": "string"
                 },
                 "vintage": {
@@ -600,6 +600,9 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "port": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"

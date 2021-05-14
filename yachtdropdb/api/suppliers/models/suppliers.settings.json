@@ -26,6 +26,10 @@
     "products": {
       "via": "supplier",
       "collection": "products"
+    },
+    "ports": {
+      "via": "suppliers",
+      "collection": "ports"
     }
   }
 }

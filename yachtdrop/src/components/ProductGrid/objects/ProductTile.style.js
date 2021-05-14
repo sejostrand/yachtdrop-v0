@@ -52,7 +52,7 @@ export const DetailsWrapper = styled.div`
   flex-flow: column wrap;
 `;
 
-export const ProductName = styled.div`
+export const ProductDisplay = styled.div`
   font-size: 15px;
   width: 100%;
   flex-flow: row wrap;
@@ -61,7 +61,7 @@ export const ProductName = styled.div`
   margin: 1px;
 `;
 
-export const ProductDescription = styled.div`
+export const ProductSubDisplay = styled.div`
   font-size: 14px;
   color: gray;
   width: 100%;

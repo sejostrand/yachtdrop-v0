@@ -13,9 +13,9 @@ import {
   ProductImage,
   AddButtonWrapper,
   DetailsWrapper,
-  ProductName,
+  ProductDisplay,
   ProductPrice,
-  ProductDescription,
+  ProductSubDisplay,
   FavStar,
 } from './ProductTile.style';
 
@@ -26,43 +26,12 @@ import emptyStar from '@assets/img/empty-star.png';
 import ProductWindow from '@components/ProductWindow/ProductWindow';
 
 const ProductTile = (props) => {
-  const userData = useCurrentUserData();
-  const user = useCurrentUser();
   const [isVisible, setIsVisible] = useState(false);
 
   //POST PRODUCT
-  const addFavourite = (id) => {
-    let userFavourites = userData.favouriteProducts;
-    console.log(userFavourites);
-    userFavourites.concat([id]);
-    fetch(`http://localhost:1337/users/${userData.id}?id=${userData.id}`, {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ favouriteProducts: userFavourites }),
-    }).then(() => {
-      console.log('product added to favourites');
-      console.log(userData.id);
-      console.log(userFavourites);
-    });
-  };
+  const addFavourite = (id) => {};
 
-  const removeFavourite = (id) => {
-    let userFavourites = userData.favouriteProducts;
-    userFavourites.splice(userFavourites.indexOf(id), 1);
-    fetch('http://localhost:1337/users/' + userData.id, {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ favouriteProducts: userFavourites }),
-    }).then(() => {
-      console.log('product removed from favourites');
-    });
-  };
+  const removeFavourite = (id) => {};
 
   return (
     <>
@@ -70,8 +39,9 @@ const ProductTile = (props) => {
         <ProductWindow
           setIsVisible={setIsVisible}
           id={props.id}
-          name={props.name}
-          description={props.description}
+          fullDescription={props.fullDescription}
+          display={props.display}
+          subDisplay={props.subDisplay}
           price={props.price}
           pack={props.pack}
           imgUrl={props.imgUrl}
@@ -79,17 +49,16 @@ const ProductTile = (props) => {
       )}
       <TileWrapper>
         {props.pack != 1 && <PackSize>{props.pack + ' PACK'}</PackSize>}
-        {userData.favouriteProducts &&
-          (userData.favouriteProducts.includes(props.id) ? (
-            <FavStar src={star} onClick={() => removeFavourite(props.id)} />
-          ) : (
-            <FavStar src={emptyStar} onClick={() => addFavourite(props.id)} />
-          ))}
+        {true ? (
+          <FavStar src={star} onClick={() => removeFavourite(props.id)} />
+        ) : (
+          <FavStar src={emptyStar} onClick={() => addFavourite(props.id)} />
+        )}
         <ProductImage src={props.imgUrl} onClick={() => setIsVisible(true)} />
         <DetailsWrapper>
-          <ProductName>{props.name}</ProductName>
-          <ProductDescription>{props.description}</ProductDescription>
-          <ProductPrice>$ {props.price.toFixed(2)}</ProductPrice>
+          <ProductDisplay>{props.display}</ProductDisplay>
+          <ProductSubDisplay>{props.subDisplay}</ProductSubDisplay>
+          <ProductPrice>€ {props.price.toFixed(2)}</ProductPrice>
         </DetailsWrapper>
         <AddButtonWrapper>ADD</AddButtonWrapper>
       </TileWrapper>

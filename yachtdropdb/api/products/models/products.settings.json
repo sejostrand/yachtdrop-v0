@@ -43,7 +43,7 @@
       "default": 1,
       "required": true
     },
-    "unit_size": {
+    "unitVolume": {
       "type": "string"
     },
     "vintage": {
@@ -65,15 +65,18 @@
       "via": "products"
     },
     "sub_category": {
-      "via": "products",
-      "model": "sub-categories"
+      "model": "sub-categories",
+      "via": "products"
     },
     "fullDescription": {
       "type": "text"
     },
     "category_tags": {
-      "via": "products",
-      "collection": "category-tags"
+      "collection": "category-tags",
+      "via": "products"
+    },
+    "port": {
+      "model": "ports"
     }
   }
 }
