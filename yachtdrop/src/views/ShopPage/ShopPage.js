@@ -187,18 +187,18 @@ const ShopPage = (props) => {
       <SearchBar setSearchInput={setSearchInput} />
       <BodyWrapper>
         <FilterBar
-          productFilter={productFilter}
-          primaryFilter={primaryFilter}
-          secondaryFilter={secondaryFilter}
-          toggleFilter={toggleFilter}
-          clearFilter={clearFilter}
+        // productFilter={productFilter}
+        // primaryFilter={primaryFilter}
+        // secondaryFilter={secondaryFilter}
+        //toggleFilter={toggleFilter}
+        //clearFilter={clearFilter}
         />
         <BodyDiv>
           <CoverBar />
           <SortBy
-            sortAlpha={sortAlpha}
-            sortPrice={sortPrice}
-            sortButtonState={sortButtonState}
+          //sortAlpha={sortAlpha}
+          //sortPrice={sortPrice}
+          //sortButtonState={sortButtonState}
           />
           <ProductGrid products={filteredProductData} />
         </BodyDiv>
