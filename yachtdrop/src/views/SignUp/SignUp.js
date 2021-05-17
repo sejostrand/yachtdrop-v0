@@ -128,6 +128,8 @@ const Message = styled.span`
 
 const SignUp = () => {
   const [first_name, setFirst_name] = useState('');
+  const [surname, setSurname] = useState('');
+  const [username, setUsername] = useState('');
   const [user_email, setUser_email] = useState('');
   const [user_password, setUser_password] = useState('');
   const [repeat_password, setRepeat_password] = useState('');
@@ -136,7 +138,9 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const mailing = {
-        username: first_name, 
+        firstName: first_name,
+        lastName: surname,
+        username: username, 
         email: user_email, 
         password: user_password};
 
@@ -173,12 +177,26 @@ const SignUp = () => {
         <Container>
           <FormContainer action={"/signup"} method={"POST"} onSubmit={handleSubmit}>
             <PageTitle>Sign Up</PageTitle>
-            <Label>Full Name</Label>
+            <Label>First Name</Label>
             <StyledInput
               type='text'
               placeholder='Name'
               value={first_name}
               onChange={(e) => setFirst_name(e.target.value)}
+            />
+            <Label>Surname</Label>
+            <StyledInput
+              type='text'
+              placeholder='Surname'
+              value={surname}
+              onChange={(e) => setSurname(e.target.value)}
+            />
+            <Label>User Name</Label>
+            <StyledInput
+              type='text'
+              placeholder='Username'
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
             <Label>Email:</Label>
             <StyledInput

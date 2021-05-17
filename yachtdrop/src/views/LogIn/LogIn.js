@@ -152,11 +152,11 @@ export default function LogIn() {
   const history = useHistory();
   const [errorMsg, setErrorMsg] = useState(null);
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (currentUser.isAuthenticated) {
       history.push('/shoppage');
     }
-  }, [currentUser]);
+  }, [currentUser]); */
 
   const handleSubmit = async (e) => {
     e.preventDefault();
