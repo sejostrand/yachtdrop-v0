@@ -9,6 +9,7 @@ import {
   useDispatchCurrentUser,
 } from '@assets/utils/CurrentUser';
 import SearchBar from '@components/SearchBar/SearchBar';
+import axios from 'axios';
 
 const BodyWrapper = styled.div`
   margin-top: 95px;
@@ -137,23 +138,20 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const mailing = {
+    axios
+      .post('http://localhost:1337/auth/local/register', {
         firstName: first_name,
         lastName: surname,
-        username: username, 
-        email: user_email, 
-        password: user_password};
-
-    fetch('http://localhost:1337/auth/local/register', {
-        method: 'POST',
-        headers: { 
-            "Accept": "application/json",
-            "Content-Type": "application/json" 
-        },
-        body: JSON.stringify(mailing)
-    }).then(() => {
-      console.log('new user added');
-    });
+        username: username,
+        email: user_email,
+        password: user_password,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     setRedirect(true);
   };
 
@@ -175,7 +173,11 @@ const SignUp = () => {
       <SearchBar disabled={true} />
       <BodyWrapper>
         <Container>
-          <FormContainer action={"/signup"} method={"POST"} onSubmit={handleSubmit}>
+          <FormContainer
+            action={'/signup'}
+            method={'POST'}
+            onSubmit={handleSubmit}
+          >
             <PageTitle>Sign Up</PageTitle>
             <Label>First Name</Label>
             <StyledInput
@@ -200,7 +202,7 @@ const SignUp = () => {
             />
             <Label>Email:</Label>
             <StyledInput
-              type='email' 
+              type='email'
               placeholder='Email'
               value={user_email}
               onChange={(e) => setUser_email(e.target.value)}
@@ -212,7 +214,7 @@ const SignUp = () => {
               )}
             </Label>
             <StyledInput
-              type='password' 
+              type='password'
               placeholder='Password'
               value={user_password}
               onChange={(e) => setUser_password(e.target.value)}
