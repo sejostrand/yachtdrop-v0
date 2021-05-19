@@ -1,86 +1,51 @@
 import { useState, useEffect } from 'react';
 import styled, { withTheme } from 'styled-components';
 import { COLORS, FONTS } from '../../assets/theme/theme';
-
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
-import { useQuery } from '@apollo/react-hooks';
-import { PRODUCTS_QUERY } from '@assets/utils/queries.js';
+import axios from 'axios';
 
 // IMPORT COMPONENTS
 import NavBar from '@components/NavBar/NavBar';
 import SearchBar from '@components/SearchBar/SearchBar';
 import FilterBar from '@components/FilterBar/FilterBar.js';
-//import ProductGrid from '@components/ProductGrid/ProductGrid.js';
 import CoverBar from '@components/CoverBar/CoverBar';
 import BodyWrapper from '../../objects/BodyWrapper.js';
 import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '@components/SortBy/SortBy.js';
 import Footer from '@components/Footer/Footer';
-import ProductTile from '@components/ProductTile/ProductTile.js';
-import ProductWindow from '@components/ProductWindow/ProductWindow.js';
-
-export const GridWrapper = styled.div`
-  width: 100%;
-  height: auto;
-  background-color: ${COLORS.color5};
-  padding: 20px;
-  display: flex;
-  flex-flow: row wrap;
-
-  justify-content: start;
-`;
+import ProductGrid from '@components/ProductGrid/ProductGrid';
 
 // MAIN
 const ShopPage = (props) => {
-  const productFilter = props.productFilter;
-  const [counter, setCounter] = useState(0);
-  // Product/Tags STATES
-  const [filterArray1, setFilterArray1] = useState([]); //array of filterTags
-  const [filterArray2, setFilterArray2] = useState([]);
-  const [defaultProductData, setDefaultProductData] = useState([]); //all products
-  const [productData, setProductData] = useState([]); //products filtered by category
-  // Search Bar States
-  const [filteredProductData, setFilteredProductData] = useState([]); //products filtered by category and search
-  const [searchInput, setSearchInput] = useState(''); //state for searchbar input
-  // Sorting States
-  const [sortState, setSortState] = useState('popularity'); //state of sorting
-  const [alphaToggle, setAlphaToggle] = useState();
-  const [priceToggle, setPriceToggle] = useState();
-  const [sortButtonState, setSortButtonState] = useState();
+  const [allProducts, setAllProducts] = useState([]);
+  const [displayedProducts, setDisplayedProducts] = useState([]);
+  const [category, setCategory] = useState();
+  const [subCategory, setSubCategory] = useState();
+  const [categoryTags, setCategoryTags] = useState([]);
+
+  //GET ALL PRODUCTS
+  const getProductData = axios
+    .get('http://localhost:1337/products')
+    .then((response) => setAllProducts(response.data))
+    .catch((error) => console.log(error));
+
+  //SET DEFAULT DISPLAYED PRODUCTS
+  useEffect(() => {
+    setDisplayedProducts(allProducts.splice(0, 20));
+  }, [allProducts]);
 
   return (
     <>
       <NavBar />
-      <SearchBar setSearchInput={setSearchInput} />
+      <SearchBar />
       <BodyWrapper>
-        <FilterBar />
+        <FilterBar productFilter={props.productFilter} />
         <BodyDiv>
           <CoverBar />
           <SortBy />
-          <Query query={PRODUCTS_QUERY}>
-            {({ loading, error, data }) => {
-              if (loading) return <div>loading...</div>;
-              if (error) console.log(error);
-
-              return (
-                <GridWrapper>
-                  {data.products.map((product) => (
-                    <ProductTile
-                      product={product}
-                      id={product.id}
-                      fullDescription={product.fullDescription}
-                      display={product.display}
-                      subDisplay={product.subDisplay}
-                      price={product.price}
-                      packSize={product.packSize}
-                      imgUrl={'http://localhost:1337' + product.productImg.url}
-                    />
-                  ))}
-                </GridWrapper>
-              );
-            }}
-          </Query>
+          <ProductGrid
+            products={displayedProducts}
+            productFilter={props.productFilter}
+          />
         </BodyDiv>
       </BodyWrapper>
       <Footer />

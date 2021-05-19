@@ -69,9 +69,8 @@
     "lastName": {
       "type": "string"
     },
-    "favourites": {
-      "collection": "favourites",
-      "via": "usersPermissionsUser"
+    "favouriteProducts": {
+      "collection": "products"
     },
     "userContactNumber": {
       "type": "biginteger"

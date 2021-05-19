@@ -1295,26 +1295,61 @@
           "lastName": {
             "type": "string"
           },
-          "favourites": {
+          "favouriteProducts": {
             "type": "array",
             "items": {
               "required": [
-                "id"
+                "id",
+                "display",
+                "packSize"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "usersPermissionsUser": {
+                "display": {
                   "type": "string"
                 },
-                "products": {
+                "subDisplay": {
+                  "type": "string"
+                },
+                "featured": {
+                  "type": "boolean"
+                },
+                "productImg": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "number"
+                },
+                "packSize": {
+                  "type": "integer"
+                },
+                "unitVolume": {
+                  "type": "string"
+                },
+                "vintage": {
+                  "type": "integer"
+                },
+                "packageType": {
+                  "type": "string"
+                },
+                "supplier": {
+                  "type": "string"
+                },
+                "subCategory": {
+                  "type": "string"
+                },
+                "fullDescription": {
+                  "type": "string"
+                },
+                "categoryTags": {
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
                 },
-                "published_at": {
+                "port": {
                   "type": "string"
                 },
                 "created_by": {
@@ -1382,7 +1417,7 @@
           "lastName": {
             "type": "string"
           },
-          "favourites": {
+          "favouriteProducts": {
             "type": "array",
             "items": {
               "type": "string"

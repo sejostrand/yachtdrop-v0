@@ -574,7 +574,7 @@
                 "lastName": {
                   "type": "string"
                 },
-                "favourites": {
+                "favouriteProducts": {
                   "type": "array",
                   "items": {
                     "type": "string"

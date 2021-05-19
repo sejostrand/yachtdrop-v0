@@ -36,8 +36,6 @@ const LogOutButton = () => {
   const dispatch = useDispatchCurrentUser();
   const user = useCurrentUser();
 
-  console.log(user);
-
   const handleLogout = async () => {
     await callApi('/logout', 'POST');
     dispatch({ type: 'LOGOUT' });

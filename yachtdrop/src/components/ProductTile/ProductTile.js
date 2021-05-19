@@ -26,6 +26,7 @@ import ProductWindow from '@components/ProductWindow/ProductWindow';
 
 const ProductTile = (props) => {
   const [isVisible, setIsVisible] = useState(false);
+  const user = useCurrentUser();
 
   //POST PRODUCT
   const addFavourite = (id) => {};
@@ -48,11 +49,12 @@ const ProductTile = (props) => {
       )}
       <TileWrapper>
         {props.packSize != 1 && <PackSize>{props.packSize + ' PACK'}</PackSize>}
-        {true ? (
-          <FavStar src={star} onClick={() => removeFavourite(props.id)} />
-        ) : (
-          <FavStar src={emptyStar} onClick={() => addFavourite(props.id)} />
-        )}
+        {user.isAuthenticated &&
+          (user.favouriteProducts.includes(props.id) ? (
+            <FavStar src={star} onClick={() => removeFavourite(props.id)} />
+          ) : (
+            <FavStar src={emptyStar} onClick={() => addFavourite(props.id)} />
+          ))}
         <ProductImage src={props.imgUrl} onClick={() => setIsVisible(true)} />
         <DetailsWrapper>
           <ProductDisplay>{props.display}</ProductDisplay>

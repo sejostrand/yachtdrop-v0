@@ -577,16 +577,7 @@
                 "packageType": {
                   "type": "string"
                 },
-                "favourites": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "supplier": {
-                  "type": "string"
-                },
-                "category": {
                   "type": "string"
                 },
                 "subCategory": {

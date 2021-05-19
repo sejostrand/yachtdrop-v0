@@ -52,17 +52,9 @@
     "packageType": {
       "type": "string"
     },
-    "favourites": {
-      "collection": "favourites",
-      "via": "products"
-    },
     "supplier": {
       "via": "products",
       "model": "suppliers"
-    },
-    "category": {
-      "model": "categories",
-      "via": "products"
     },
     "subCategory": {
       "via": "products",

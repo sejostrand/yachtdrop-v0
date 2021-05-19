@@ -618,37 +618,6 @@
           "packageType": {
             "type": "string"
           },
-          "favourites": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "usersPermissionsUser": {
-                  "type": "string"
-                },
-                "products": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "supplier": {
             "required": [
               "id"
@@ -676,34 +645,6 @@
                 }
               },
               "ports": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "category": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "category": {
-                "type": "string"
-              },
-              "products": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -849,16 +790,7 @@
           "packageType": {
             "type": "string"
           },
-          "favourites": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "supplier": {
-            "type": "string"
-          },
-          "category": {
             "type": "string"
           },
           "subCategory": {
