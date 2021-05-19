@@ -542,10 +542,10 @@
                 "supplierEmail": {
                   "type": "string"
                 },
-                "contactNumber": {
+                "supplierContactNumber": {
                   "type": "integer"
                 },
-                "address": {
+                "supplierAddress": {
                   "type": "string"
                 },
                 "products": {

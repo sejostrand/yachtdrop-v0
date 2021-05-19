@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { COLORS, FONTS } from '../../../assets/theme/theme';
+import { COLORS, FONTS } from '@assets/theme/theme';
 
 export const FavStar = styled.img`
   display: absolute;

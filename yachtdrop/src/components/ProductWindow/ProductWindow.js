@@ -79,7 +79,7 @@ const ProductWindow = (props) => {
           <Price>
             <p>{`Price: ${props.price}$`}</p>
           </Price>
-          <PackSize>{`Pack size: ${props.pack}`}</PackSize>
+          <PackSize>{`Pack size: ${props.packSize}`}</PackSize>
         </Section>
       </Window>
     </Container>

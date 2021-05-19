@@ -518,7 +518,7 @@
         "required": [
           "id",
           "state",
-          "order_id"
+          "orderId"
         ],
         "properties": {
           "id": {
@@ -534,21 +534,21 @@
               "completed"
             ]
           },
-          "order_id": {
+          "orderId": {
             "type": "string"
           },
-          "transaction_id": {
+          "transactionId": {
             "type": "string"
           },
-          "order_datetime": {
+          "orderDatetime": {
             "type": "string",
             "format": "date-time"
           },
-          "expected_delivery": {
+          "expectedDelivery": {
             "type": "string",
             "format": "date-time"
           },
-          "users_permissions_user": {
+          "usersPermissionsUser": {
             "required": [
               "id",
               "username",
@@ -585,12 +585,6 @@
               "role": {
                 "type": "string"
               },
-              "favourites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "vessels": {
                 "type": "array",
                 "items": {
@@ -602,6 +596,15 @@
               },
               "lastName": {
                 "type": "string"
+              },
+              "favourites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "userContactNumber": {
+                "type": "integer"
               },
               "created_by": {
                 "type": "string"
@@ -625,7 +628,7 @@
               "order": {
                 "type": "string"
               },
-              "transactionId": {
+              "transaction_id": {
                 "type": "string"
               },
               "provider": {
@@ -648,7 +651,7 @@
           "vessel": {
             "required": [
               "id",
-              "vesselName"
+              "vessel_name"
             ],
             "properties": {
               "id": {
@@ -666,7 +669,7 @@
                   "type": "string"
                 }
               },
-              "vesselName": {
+              "vessel_name": {
                 "type": "string"
               },
               "published_at": {
@@ -689,7 +692,7 @@
       "NewOrders": {
         "required": [
           "state",
-          "order_id"
+          "orderId"
         ],
         "properties": {
           "state": {
@@ -702,21 +705,21 @@
               "completed"
             ]
           },
-          "order_id": {
+          "orderId": {
             "type": "string"
           },
-          "transaction_id": {
+          "transactionId": {
             "type": "string"
           },
-          "order_datetime": {
+          "orderDatetime": {
             "type": "string",
             "format": "date-time"
           },
-          "expected_delivery": {
+          "expectedDelivery": {
             "type": "string",
             "format": "date-time"
           },
-          "users_permissions_user": {
+          "usersPermissionsUser": {
             "type": "string"
           },
           "transaction": {

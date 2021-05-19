@@ -535,7 +535,7 @@
           "id": {
             "type": "string"
           },
-          "first_name": {
+          "firstName": {
             "type": "string"
           },
           "email": {
@@ -549,7 +549,7 @@
       },
       "NewMailing-list": {
         "properties": {
-          "first_name": {
+          "firstName": {
             "type": "string"
           },
           "email": {

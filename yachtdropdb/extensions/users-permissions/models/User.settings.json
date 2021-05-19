@@ -59,10 +59,6 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "favourites": {
-      "collection": "favourites",
-      "via": "users_permissions_user"
-    },
     "vessels": {
       "collection": "vessels",
       "via": "users_permissions_users"
@@ -72,6 +68,13 @@
     },
     "lastName": {
       "type": "string"
+    },
+    "favourites": {
+      "collection": "favourites",
+      "via": "usersPermissionsUser"
+    },
+    "userContactNumber": {
+      "type": "biginteger"
     }
   }
 }

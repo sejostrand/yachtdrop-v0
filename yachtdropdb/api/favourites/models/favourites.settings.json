@@ -11,7 +11,7 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "users_permissions_user": {
+    "usersPermissionsUser": {
       "via": "favourites",
       "plugin": "users-permissions",
       "model": "user"

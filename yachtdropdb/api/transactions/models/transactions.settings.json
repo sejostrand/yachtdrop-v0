@@ -19,7 +19,7 @@
       "via": "transaction",
       "model": "orders"
     },
-    "transactionId": {
+    "transaction_id": {
       "type": "string"
     },
     "provider": {

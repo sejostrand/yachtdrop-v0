@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "suppliers",
   "info": {
-    "name": "suppliers"
+    "name": "suppliers",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -17,19 +18,19 @@
     "supplierEmail": {
       "type": "email"
     },
-    "contactNumber": {
+    "supplierContactNumber": {
       "type": "biginteger"
     },
-    "address": {
+    "supplierAddress": {
       "type": "richtext"
     },
     "products": {
-      "via": "supplier",
-      "collection": "products"
+      "collection": "products",
+      "via": "supplier"
     },
     "ports": {
-      "via": "suppliers",
-      "collection": "ports"
+      "collection": "ports",
+      "via": "suppliers"
     }
   }
 }

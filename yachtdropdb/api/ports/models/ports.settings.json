@@ -16,8 +16,8 @@
       "required": true
     },
     "suppliers": {
-      "collection": "suppliers",
       "via": "ports",
+      "collection": "suppliers",
       "dominant": true
     },
     "portAddress": {

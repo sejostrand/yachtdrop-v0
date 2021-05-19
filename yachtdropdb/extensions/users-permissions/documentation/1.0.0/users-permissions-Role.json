@@ -561,12 +561,6 @@
                 "role": {
                   "type": "string"
                 },
-                "favourites": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "vessels": {
                   "type": "array",
                   "items": {
@@ -578,6 +572,15 @@
                 },
                 "lastName": {
                   "type": "string"
+                },
+                "favourites": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "userContactNumber": {
+                  "type": "integer"
                 },
                 "created_by": {
                   "type": "string"

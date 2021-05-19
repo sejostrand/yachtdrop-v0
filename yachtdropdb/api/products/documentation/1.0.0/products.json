@@ -518,7 +518,7 @@
         "required": [
           "id",
           "display",
-          "pack_size"
+          "packSize"
         ],
         "properties": {
           "id": {
@@ -534,7 +534,7 @@
             "type": "boolean",
             "default": true
           },
-          "product_img": {
+          "productImg": {
             "required": [
               "id",
               "name",
@@ -605,7 +605,7 @@
             "type": "number",
             "default": 1
           },
-          "pack_size": {
+          "packSize": {
             "type": "integer",
             "default": 1
           },
@@ -615,7 +615,7 @@
           "vintage": {
             "type": "integer"
           },
-          "product_format": {
+          "packageType": {
             "type": "string"
           },
           "favourites": {
@@ -628,7 +628,7 @@
                 "id": {
                   "type": "string"
                 },
-                "users_permissions_user": {
+                "usersPermissionsUser": {
                   "type": "string"
                 },
                 "products": {
@@ -663,10 +663,10 @@
               "supplierEmail": {
                 "type": "string"
               },
-              "contactNumber": {
+              "supplierContactNumber": {
                 "type": "integer"
               },
-              "address": {
+              "supplierAddress": {
                 "type": "string"
               },
               "products": {
@@ -700,7 +700,7 @@
               "id": {
                 "type": "string"
               },
-              "categoryTag": {
+              "category": {
                 "type": "string"
               },
               "products": {
@@ -720,7 +720,7 @@
               }
             }
           },
-          "sub_category": {
+          "subCategory": {
             "required": [
               "id"
             ],
@@ -751,7 +751,7 @@
           "fullDescription": {
             "type": "string"
           },
-          "category_tags": {
+          "categoryTags": {
             "type": "array",
             "items": {
               "required": [
@@ -819,7 +819,7 @@
       "NewProducts": {
         "required": [
           "display",
-          "pack_size"
+          "packSize"
         ],
         "properties": {
           "display": {
@@ -836,7 +836,7 @@
             "type": "number",
             "default": 1
           },
-          "pack_size": {
+          "packSize": {
             "type": "integer",
             "default": 1
           },
@@ -846,7 +846,7 @@
           "vintage": {
             "type": "integer"
           },
-          "product_format": {
+          "packageType": {
             "type": "string"
           },
           "favourites": {
@@ -861,13 +861,13 @@
           "category": {
             "type": "string"
           },
-          "sub_category": {
+          "subCategory": {
             "type": "string"
           },
           "fullDescription": {
             "type": "string"
           },
-          "category_tags": {
+          "categoryTags": {
             "type": "array",
             "items": {
               "type": "string"

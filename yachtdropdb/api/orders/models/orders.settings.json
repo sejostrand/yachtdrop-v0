@@ -22,20 +22,20 @@
       "default": "cart",
       "required": true
     },
-    "order_id": {
+    "orderId": {
       "type": "string",
       "required": true
     },
-    "transaction_id": {
+    "transactionId": {
       "type": "string"
     },
-    "order_datetime": {
+    "orderDatetime": {
       "type": "datetime"
     },
-    "expected_delivery": {
+    "expectedDelivery": {
       "type": "datetime"
     },
-    "users_permissions_user": {
+    "usersPermissionsUser": {
       "plugin": "users-permissions",
       "model": "user"
     },

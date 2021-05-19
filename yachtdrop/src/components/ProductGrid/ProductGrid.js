@@ -8,11 +8,6 @@ import styled from 'styled-components';
 import ProductTile from './objects/ProductTile';
 /* import ProductIcon from '@img/product-icons/wine/test.jpg';
  */
-const FlexContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-`;
 
 const ProductGrid = (props) => {
   return (

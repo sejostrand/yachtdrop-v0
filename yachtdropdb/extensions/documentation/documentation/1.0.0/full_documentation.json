@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/14/2021 8:22:29 PM"
+    "x-generation-date": "05/18/2021 6:28:54 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -7885,7 +7885,7 @@
           "id": {
             "type": "string"
           },
-          "categoryTag": {
+          "category": {
             "type": "string"
           },
           "products": {
@@ -7894,7 +7894,7 @@
               "required": [
                 "id",
                 "display",
-                "pack_size"
+                "packSize"
               ],
               "properties": {
                 "id": {
@@ -7909,13 +7909,13 @@
                 "featured": {
                   "type": "boolean"
                 },
-                "product_img": {
+                "productImg": {
                   "type": "string"
                 },
                 "price": {
                   "type": "number"
                 },
-                "pack_size": {
+                "packSize": {
                   "type": "integer"
                 },
                 "unitVolume": {
@@ -7924,7 +7924,7 @@
                 "vintage": {
                   "type": "integer"
                 },
-                "product_format": {
+                "packageType": {
                   "type": "string"
                 },
                 "favourites": {
@@ -7939,13 +7939,13 @@
                 "category": {
                   "type": "string"
                 },
-                "sub_category": {
+                "subCategory": {
                   "type": "string"
                 },
                 "fullDescription": {
                   "type": "string"
                 },
-                "category_tags": {
+                "categoryTags": {
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -7971,7 +7971,7 @@
       },
       "NewCategories": {
         "properties": {
-          "categoryTag": {
+          "category": {
             "type": "string"
           },
           "products": {
@@ -8009,7 +8009,7 @@
               "required": [
                 "id",
                 "display",
-                "pack_size"
+                "packSize"
               ],
               "properties": {
                 "id": {
@@ -8024,13 +8024,13 @@
                 "featured": {
                   "type": "boolean"
                 },
-                "product_img": {
+                "productImg": {
                   "type": "string"
                 },
                 "price": {
                   "type": "number"
                 },
-                "pack_size": {
+                "packSize": {
                   "type": "integer"
                 },
                 "unitVolume": {
@@ -8039,7 +8039,7 @@
                 "vintage": {
                   "type": "integer"
                 },
-                "product_format": {
+                "packageType": {
                   "type": "string"
                 },
                 "favourites": {
@@ -8054,13 +8054,13 @@
                 "category": {
                   "type": "string"
                 },
-                "sub_category": {
+                "subCategory": {
                   "type": "string"
                 },
                 "fullDescription": {
                   "type": "string"
                 },
-                "category_tags": {
+                "categoryTags": {
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -8115,7 +8115,7 @@
           "id": {
             "type": "string"
           },
-          "users_permissions_user": {
+          "usersPermissionsUser": {
             "required": [
               "id",
               "username",
@@ -8152,12 +8152,6 @@
               "role": {
                 "type": "string"
               },
-              "favourites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "vessels": {
                 "type": "array",
                 "items": {
@@ -8169,6 +8163,15 @@
               },
               "lastName": {
                 "type": "string"
+              },
+              "favourites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "userContactNumber": {
+                "type": "integer"
               },
               "created_by": {
                 "type": "string"
@@ -8184,7 +8187,7 @@
               "required": [
                 "id",
                 "display",
-                "pack_size"
+                "packSize"
               ],
               "properties": {
                 "id": {
@@ -8199,13 +8202,13 @@
                 "featured": {
                   "type": "boolean"
                 },
-                "product_img": {
+                "productImg": {
                   "type": "string"
                 },
                 "price": {
                   "type": "number"
                 },
-                "pack_size": {
+                "packSize": {
                   "type": "integer"
                 },
                 "unitVolume": {
@@ -8214,7 +8217,7 @@
                 "vintage": {
                   "type": "integer"
                 },
-                "product_format": {
+                "packageType": {
                   "type": "string"
                 },
                 "favourites": {
@@ -8229,13 +8232,13 @@
                 "category": {
                   "type": "string"
                 },
-                "sub_category": {
+                "subCategory": {
                   "type": "string"
                 },
                 "fullDescription": {
                   "type": "string"
                 },
-                "category_tags": {
+                "categoryTags": {
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -8261,7 +8264,7 @@
       },
       "NewFavourites": {
         "properties": {
-          "users_permissions_user": {
+          "usersPermissionsUser": {
             "type": "string"
           },
           "products": {
@@ -8290,7 +8293,7 @@
           "id": {
             "type": "string"
           },
-          "first_name": {
+          "firstName": {
             "type": "string"
           },
           "email": {
@@ -8304,7 +8307,7 @@
       },
       "NewMailing-list": {
         "properties": {
-          "first_name": {
+          "firstName": {
             "type": "string"
           },
           "email": {
@@ -8326,7 +8329,7 @@
         "required": [
           "id",
           "state",
-          "order_id"
+          "orderId"
         ],
         "properties": {
           "id": {
@@ -8342,21 +8345,21 @@
               "completed"
             ]
           },
-          "order_id": {
+          "orderId": {
             "type": "string"
           },
-          "transaction_id": {
+          "transactionId": {
             "type": "string"
           },
-          "order_datetime": {
+          "orderDatetime": {
             "type": "string",
             "format": "date-time"
           },
-          "expected_delivery": {
+          "expectedDelivery": {
             "type": "string",
             "format": "date-time"
           },
-          "users_permissions_user": {
+          "usersPermissionsUser": {
             "required": [
               "id",
               "username",
@@ -8393,12 +8396,6 @@
               "role": {
                 "type": "string"
               },
-              "favourites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "vessels": {
                 "type": "array",
                 "items": {
@@ -8410,6 +8407,15 @@
               },
               "lastName": {
                 "type": "string"
+              },
+              "favourites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "userContactNumber": {
+                "type": "integer"
               },
               "created_by": {
                 "type": "string"
@@ -8433,7 +8439,7 @@
               "order": {
                 "type": "string"
               },
-              "transactionId": {
+              "transaction_id": {
                 "type": "string"
               },
               "provider": {
@@ -8456,7 +8462,7 @@
           "vessel": {
             "required": [
               "id",
-              "vesselName"
+              "vessel_name"
             ],
             "properties": {
               "id": {
@@ -8474,7 +8480,7 @@
                   "type": "string"
                 }
               },
-              "vesselName": {
+              "vessel_name": {
                 "type": "string"
               },
               "published_at": {
@@ -8497,7 +8503,7 @@
       "NewOrders": {
         "required": [
           "state",
-          "order_id"
+          "orderId"
         ],
         "properties": {
           "state": {
@@ -8510,21 +8516,21 @@
               "completed"
             ]
           },
-          "order_id": {
+          "orderId": {
             "type": "string"
           },
-          "transaction_id": {
+          "transactionId": {
             "type": "string"
           },
-          "order_datetime": {
+          "orderDatetime": {
             "type": "string",
             "format": "date-time"
           },
-          "expected_delivery": {
+          "expectedDelivery": {
             "type": "string",
             "format": "date-time"
           },
-          "users_permissions_user": {
+          "usersPermissionsUser": {
             "type": "string"
           },
           "transaction": {
@@ -8573,10 +8579,10 @@
                 "supplierEmail": {
                   "type": "string"
                 },
-                "contactNumber": {
+                "supplierContactNumber": {
                   "type": "integer"
                 },
-                "address": {
+                "supplierAddress": {
                   "type": "string"
                 },
                 "products": {
@@ -8645,7 +8651,7 @@
         "required": [
           "id",
           "display",
-          "pack_size"
+          "packSize"
         ],
         "properties": {
           "id": {
@@ -8661,7 +8667,7 @@
             "type": "boolean",
             "default": true
           },
-          "product_img": {
+          "productImg": {
             "required": [
               "id",
               "name",
@@ -8732,7 +8738,7 @@
             "type": "number",
             "default": 1
           },
-          "pack_size": {
+          "packSize": {
             "type": "integer",
             "default": 1
           },
@@ -8742,7 +8748,7 @@
           "vintage": {
             "type": "integer"
           },
-          "product_format": {
+          "packageType": {
             "type": "string"
           },
           "favourites": {
@@ -8755,7 +8761,7 @@
                 "id": {
                   "type": "string"
                 },
-                "users_permissions_user": {
+                "usersPermissionsUser": {
                   "type": "string"
                 },
                 "products": {
@@ -8790,10 +8796,10 @@
               "supplierEmail": {
                 "type": "string"
               },
-              "contactNumber": {
+              "supplierContactNumber": {
                 "type": "integer"
               },
-              "address": {
+              "supplierAddress": {
                 "type": "string"
               },
               "products": {
@@ -8827,7 +8833,7 @@
               "id": {
                 "type": "string"
               },
-              "categoryTag": {
+              "category": {
                 "type": "string"
               },
               "products": {
@@ -8847,7 +8853,7 @@
               }
             }
           },
-          "sub_category": {
+          "subCategory": {
             "required": [
               "id"
             ],
@@ -8878,7 +8884,7 @@
           "fullDescription": {
             "type": "string"
           },
-          "category_tags": {
+          "categoryTags": {
             "type": "array",
             "items": {
               "required": [
@@ -8946,7 +8952,7 @@
       "NewProducts": {
         "required": [
           "display",
-          "pack_size"
+          "packSize"
         ],
         "properties": {
           "display": {
@@ -8963,7 +8969,7 @@
             "type": "number",
             "default": 1
           },
-          "pack_size": {
+          "packSize": {
             "type": "integer",
             "default": 1
           },
@@ -8973,7 +8979,7 @@
           "vintage": {
             "type": "integer"
           },
-          "product_format": {
+          "packageType": {
             "type": "string"
           },
           "favourites": {
@@ -8988,13 +8994,13 @@
           "category": {
             "type": "string"
           },
-          "sub_category": {
+          "subCategory": {
             "type": "string"
           },
           "fullDescription": {
             "type": "string"
           },
-          "category_tags": {
+          "categoryTags": {
             "type": "array",
             "items": {
               "type": "string"
@@ -9028,7 +9034,7 @@
               "required": [
                 "id",
                 "display",
-                "pack_size"
+                "packSize"
               ],
               "properties": {
                 "id": {
@@ -9043,13 +9049,13 @@
                 "featured": {
                   "type": "boolean"
                 },
-                "product_img": {
+                "productImg": {
                   "type": "string"
                 },
                 "price": {
                   "type": "number"
                 },
-                "pack_size": {
+                "packSize": {
                   "type": "integer"
                 },
                 "unitVolume": {
@@ -9058,7 +9064,7 @@
                 "vintage": {
                   "type": "integer"
                 },
-                "product_format": {
+                "packageType": {
                   "type": "string"
                 },
                 "favourites": {
@@ -9073,13 +9079,13 @@
                 "category": {
                   "type": "string"
                 },
-                "sub_category": {
+                "subCategory": {
                   "type": "string"
                 },
                 "fullDescription": {
                   "type": "string"
                 },
-                "category_tags": {
+                "categoryTags": {
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -9140,10 +9146,10 @@
           "supplierEmail": {
             "type": "string"
           },
-          "contactNumber": {
+          "supplierContactNumber": {
             "type": "integer"
           },
-          "address": {
+          "supplierAddress": {
             "type": "string"
           },
           "products": {
@@ -9152,7 +9158,7 @@
               "required": [
                 "id",
                 "display",
-                "pack_size"
+                "packSize"
               ],
               "properties": {
                 "id": {
@@ -9167,13 +9173,13 @@
                 "featured": {
                   "type": "boolean"
                 },
-                "product_img": {
+                "productImg": {
                   "type": "string"
                 },
                 "price": {
                   "type": "number"
                 },
-                "pack_size": {
+                "packSize": {
                   "type": "integer"
                 },
                 "unitVolume": {
@@ -9182,7 +9188,7 @@
                 "vintage": {
                   "type": "integer"
                 },
-                "product_format": {
+                "packageType": {
                   "type": "string"
                 },
                 "favourites": {
@@ -9197,13 +9203,13 @@
                 "category": {
                   "type": "string"
                 },
-                "sub_category": {
+                "subCategory": {
                   "type": "string"
                 },
                 "fullDescription": {
                   "type": "string"
                 },
-                "category_tags": {
+                "categoryTags": {
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -9270,10 +9276,10 @@
           "supplierEmail": {
             "type": "string"
           },
-          "contactNumber": {
+          "supplierContactNumber": {
             "type": "integer"
           },
-          "address": {
+          "supplierAddress": {
             "type": "string"
           },
           "products": {
@@ -9345,12 +9351,6 @@
               "role": {
                 "type": "string"
               },
-              "favourites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "vessels": {
                 "type": "array",
                 "items": {
@@ -9362,6 +9362,15 @@
               },
               "lastName": {
                 "type": "string"
+              },
+              "favourites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "userContactNumber": {
+                "type": "integer"
               },
               "created_by": {
                 "type": "string"
@@ -9375,7 +9384,7 @@
             "required": [
               "id",
               "state",
-              "order_id"
+              "orderId"
             ],
             "properties": {
               "id": {
@@ -9390,19 +9399,19 @@
                   "completed"
                 ]
               },
-              "order_id": {
+              "orderId": {
                 "type": "string"
               },
-              "transaction_id": {
+              "transactionId": {
                 "type": "string"
               },
-              "order_datetime": {
+              "orderDatetime": {
                 "type": "string"
               },
-              "expected_delivery": {
+              "expectedDelivery": {
                 "type": "string"
               },
-              "users_permissions_user": {
+              "usersPermissionsUser": {
                 "type": "string"
               },
               "transaction": {
@@ -9422,7 +9431,7 @@
               }
             }
           },
-          "transactionId": {
+          "transaction_id": {
             "type": "string"
           },
           "provider": {
@@ -9445,7 +9454,7 @@
           "order": {
             "type": "string"
           },
-          "transactionId": {
+          "transaction_id": {
             "type": "string"
           },
           "provider": {
@@ -9469,7 +9478,7 @@
       "Vessels": {
         "required": [
           "id",
-          "vesselName"
+          "vessel_name"
         ],
         "properties": {
           "id": {
@@ -9514,12 +9523,6 @@
                 "role": {
                   "type": "string"
                 },
-                "favourites": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "vessels": {
                   "type": "array",
                   "items": {
@@ -9531,6 +9534,15 @@
                 },
                 "lastName": {
                   "type": "string"
+                },
+                "favourites": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "userContactNumber": {
+                  "type": "integer"
                 },
                 "created_by": {
                   "type": "string"
@@ -9547,7 +9559,7 @@
               "required": [
                 "id",
                 "state",
-                "order_id"
+                "orderId"
               ],
               "properties": {
                 "id": {
@@ -9562,19 +9574,19 @@
                     "completed"
                   ]
                 },
-                "order_id": {
+                "orderId": {
                   "type": "string"
                 },
-                "transaction_id": {
+                "transactionId": {
                   "type": "string"
                 },
-                "order_datetime": {
+                "orderDatetime": {
                   "type": "string"
                 },
-                "expected_delivery": {
+                "expectedDelivery": {
                   "type": "string"
                 },
-                "users_permissions_user": {
+                "usersPermissionsUser": {
                   "type": "string"
                 },
                 "transaction": {
@@ -9595,7 +9607,7 @@
               }
             }
           },
-          "vesselName": {
+          "vessel_name": {
             "type": "string"
           },
           "published_at": {
@@ -9606,7 +9618,7 @@
       },
       "NewVessels": {
         "required": [
-          "vesselName"
+          "vessel_name"
         ],
         "properties": {
           "users_permissions_users": {
@@ -9621,7 +9633,7 @@
               "type": "string"
             }
           },
-          "vesselName": {
+          "vessel_name": {
             "type": "string"
           },
           "published_at": {
@@ -9735,12 +9747,6 @@
                 "role": {
                   "type": "string"
                 },
-                "favourites": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "vessels": {
                   "type": "array",
                   "items": {
@@ -9752,6 +9758,15 @@
                 },
                 "lastName": {
                   "type": "string"
+                },
+                "favourites": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "userContactNumber": {
+                  "type": "integer"
                 },
                 "created_by": {
                   "type": "string"
@@ -9866,6 +9881,50 @@
               }
             }
           },
+          "vessels": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "vessel_name"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "users_permissions_users": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "orders": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "vessel_name": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
           "favourites": {
             "type": "array",
             "items": {
@@ -9876,7 +9935,7 @@
                 "id": {
                   "type": "string"
                 },
-                "users_permissions_user": {
+                "usersPermissionsUser": {
                   "type": "string"
                 },
                 "products": {
@@ -9897,49 +9956,8 @@
               }
             }
           },
-          "vessels": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "vesselName"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "users_permissions_users": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "orders": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "vesselName": {
-                  "type": "string"
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "firstName": {
-            "type": "string"
-          },
-          "lastName": {
-            "type": "string"
+          "userContactNumber": {
+            "type": "integer"
           }
         }
       },
@@ -9982,12 +10000,6 @@
           "role": {
             "type": "string"
           },
-          "favourites": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "vessels": {
             "type": "array",
             "items": {
@@ -9999,6 +10011,15 @@
           },
           "lastName": {
             "type": "string"
+          },
+          "favourites": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "userContactNumber": {
+            "type": "integer"
           },
           "created_by": {
             "type": "string"

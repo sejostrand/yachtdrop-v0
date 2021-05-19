@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
 
 //import GlobalStyles from './styles/global';
 
@@ -13,10 +15,11 @@ import LogIn from './views/LogIn/LogIn';
 import NewLogIn from '@views/LogIn/NewLogIn';
 import Profile from '@views/Profile/Profile';
 
+const client = new ApolloClient({
+  uri: 'http://localhost:1337/graphql',
+});
+
 function App() {
-  //filter object for generating an array of filter tags: primaryTag, secondaryTag, otherTags
-  //exclusive tags such as primaryTag and secondaryTag toggle between various tag
-  //otherTags contains tags that are inclusive of eachother
   class Filter {
     constructor() {
       this.primaryTag = [];
@@ -67,37 +70,39 @@ function App() {
   const productFilter = new Filter();
 
   return (
-    <Router>
-      <Switch>
-        <Route exact path='/'>
-          <HomePage />
-        </Route>
-        <Route path='/shoppage'>
-          <ShopPage productFilter={productFilter} />
-        </Route>
-        <Route path='/signup'>
-          <SignUp productFilter={productFilter} />
-        </Route>
-        <Route path='/login'>
-          <LogIn productFilter={productFilter} />
-        </Route>
-        <Route path='/newlogin'>
-          <NewLogIn productFilter={productFilter} />
-        </Route>
-        <Route path='/aboutus'>
-          <AboutUs productFilter={productFilter} />
-        </Route>
-        <Route path='/profile'>
-          <Profile />
-        </Route>
-        <Route path='/contactus'>
-          <ContactUs productFilter={productFilter} />
-        </Route>
-        <Route path='/embassador'>
-          <Embassador productFilter={productFilter} />
-        </Route>
-      </Switch>
-    </Router>
+    <ApolloProvider client={client}>
+      <Router>
+        <Switch>
+          <Route exact path='/'>
+            <HomePage />
+          </Route>
+          <Route path='/shoppage'>
+            <ShopPage productFilter={productFilter} />
+          </Route>
+          <Route path='/signup'>
+            <SignUp productFilter={productFilter} />
+          </Route>
+          <Route path='/login'>
+            <LogIn productFilter={productFilter} />
+          </Route>
+          <Route path='/newlogin'>
+            <NewLogIn productFilter={productFilter} />
+          </Route>
+          <Route path='/aboutus'>
+            <AboutUs productFilter={productFilter} />
+          </Route>
+          <Route path='/profile'>
+            <Profile />
+          </Route>
+          <Route path='/contactus'>
+            <ContactUs productFilter={productFilter} />
+          </Route>
+          <Route path='/embassador'>
+            <Embassador productFilter={productFilter} />
+          </Route>
+        </Switch>
+      </Router>
+    </ApolloProvider>
   );
 }
 export default App;

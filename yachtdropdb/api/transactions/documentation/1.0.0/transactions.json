@@ -559,12 +559,6 @@
               "role": {
                 "type": "string"
               },
-              "favourites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "vessels": {
                 "type": "array",
                 "items": {
@@ -576,6 +570,15 @@
               },
               "lastName": {
                 "type": "string"
+              },
+              "favourites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "userContactNumber": {
+                "type": "integer"
               },
               "created_by": {
                 "type": "string"
@@ -589,7 +592,7 @@
             "required": [
               "id",
               "state",
-              "order_id"
+              "orderId"
             ],
             "properties": {
               "id": {
@@ -604,19 +607,19 @@
                   "completed"
                 ]
               },
-              "order_id": {
+              "orderId": {
                 "type": "string"
               },
-              "transaction_id": {
+              "transactionId": {
                 "type": "string"
               },
-              "order_datetime": {
+              "orderDatetime": {
                 "type": "string"
               },
-              "expected_delivery": {
+              "expectedDelivery": {
                 "type": "string"
               },
-              "users_permissions_user": {
+              "usersPermissionsUser": {
                 "type": "string"
               },
               "transaction": {
@@ -636,7 +639,7 @@
               }
             }
           },
-          "transactionId": {
+          "transaction_id": {
             "type": "string"
           },
           "provider": {
@@ -659,7 +662,7 @@
           "order": {
             "type": "string"
           },
-          "transactionId": {
+          "transaction_id": {
             "type": "string"
           },
           "provider": {

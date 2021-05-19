@@ -522,7 +522,7 @@
           "id": {
             "type": "string"
           },
-          "users_permissions_user": {
+          "usersPermissionsUser": {
             "required": [
               "id",
               "username",
@@ -559,12 +559,6 @@
               "role": {
                 "type": "string"
               },
-              "favourites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "vessels": {
                 "type": "array",
                 "items": {
@@ -576,6 +570,15 @@
               },
               "lastName": {
                 "type": "string"
+              },
+              "favourites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "userContactNumber": {
+                "type": "integer"
               },
               "created_by": {
                 "type": "string"
@@ -591,7 +594,7 @@
               "required": [
                 "id",
                 "display",
-                "pack_size"
+                "packSize"
               ],
               "properties": {
                 "id": {
@@ -606,13 +609,13 @@
                 "featured": {
                   "type": "boolean"
                 },
-                "product_img": {
+                "productImg": {
                   "type": "string"
                 },
                 "price": {
                   "type": "number"
                 },
-                "pack_size": {
+                "packSize": {
                   "type": "integer"
                 },
                 "unitVolume": {
@@ -621,7 +624,7 @@
                 "vintage": {
                   "type": "integer"
                 },
-                "product_format": {
+                "packageType": {
                   "type": "string"
                 },
                 "favourites": {
@@ -636,13 +639,13 @@
                 "category": {
                   "type": "string"
                 },
-                "sub_category": {
+                "subCategory": {
                   "type": "string"
                 },
                 "fullDescription": {
                   "type": "string"
                 },
-                "category_tags": {
+                "categoryTags": {
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -668,7 +671,7 @@
       },
       "NewFavourites": {
         "properties": {
-          "users_permissions_user": {
+          "usersPermissionsUser": {
             "type": "string"
           },
           "products": {

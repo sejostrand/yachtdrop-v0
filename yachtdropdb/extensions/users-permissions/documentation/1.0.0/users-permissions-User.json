@@ -1251,6 +1251,50 @@
               }
             }
           },
+          "vessels": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "vessel_name"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "users_permissions_users": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "orders": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "vessel_name": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
           "favourites": {
             "type": "array",
             "items": {
@@ -1261,7 +1305,7 @@
                 "id": {
                   "type": "string"
                 },
-                "users_permissions_user": {
+                "usersPermissionsUser": {
                   "type": "string"
                 },
                 "products": {
@@ -1282,49 +1326,8 @@
               }
             }
           },
-          "vessels": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "vesselName"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "users_permissions_users": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "orders": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "vesselName": {
-                  "type": "string"
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "firstName": {
-            "type": "string"
-          },
-          "lastName": {
-            "type": "string"
+          "userContactNumber": {
+            "type": "integer"
           }
         }
       },
@@ -1367,12 +1370,6 @@
           "role": {
             "type": "string"
           },
-          "favourites": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "vessels": {
             "type": "array",
             "items": {
@@ -1384,6 +1381,15 @@
           },
           "lastName": {
             "type": "string"
+          },
+          "favourites": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "userContactNumber": {
+            "type": "integer"
           },
           "created_by": {
             "type": "string"

@@ -20,7 +20,6 @@ import {
 } from './ProductTile.style';
 
 //import objects
-import ProductIcon from '../../../assets/img/product-icons/wine/test.jpg';
 import star from '@assets/img/star.png';
 import emptyStar from '@assets/img/empty-star.png';
 import ProductWindow from '@components/ProductWindow/ProductWindow';
@@ -43,12 +42,12 @@ const ProductTile = (props) => {
           display={props.display}
           subDisplay={props.subDisplay}
           price={props.price}
-          pack={props.pack}
+          packSize={props.packSize}
           imgUrl={props.imgUrl}
         />
       )}
       <TileWrapper>
-        {props.pack != 1 && <PackSize>{props.pack + ' PACK'}</PackSize>}
+        {props.packSize != 1 && <PackSize>{props.packSize + ' PACK'}</PackSize>}
         {true ? (
           <FavStar src={star} onClick={() => removeFavourite(props.id)} />
         ) : (
