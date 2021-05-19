@@ -5,6 +5,7 @@ import { COLORS, FONTS } from '../../assets/theme/theme';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { useQuery } from '@apollo/react-hooks';
+import { PRODUCTS_QUERY } from '@assets/utils/queries.js';
 
 // IMPORT COMPONENTS
 import NavBar from '@components/NavBar/NavBar';
@@ -47,22 +48,6 @@ const ShopPage = (props) => {
   const [alphaToggle, setAlphaToggle] = useState();
   const [priceToggle, setPriceToggle] = useState();
   const [sortButtonState, setSortButtonState] = useState();
-
-  const PRODUCTS_QUERY = gql`
-    query {
-      products {
-        id
-        display
-        subDisplay
-        fullDescription
-        productImg {
-          url
-        }
-        price
-        packSize
-      }
-    }
-  `;
 
   return (
     <>
