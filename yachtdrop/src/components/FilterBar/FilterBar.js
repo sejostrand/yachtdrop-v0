@@ -123,7 +123,9 @@ const FilterBar = (props) => {
             tag='spirits'
             primaryTag={productFilter.primaryTag}
             //cond={productFilter.setPrimaryTag != props.tag}
-            onClick={() => primaryFilter('spirits')}
+            onClick={() =>
+              props.setCategory('?category=60a63608ab4f414abc9136f7')
+            }
           >
             Spirits
           </PrimaryButton>
