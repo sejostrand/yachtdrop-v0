@@ -1,0 +1,49 @@
+import { useState, useEffect } from 'react';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 6px 12px;
+`;
+
+const ImgWrapper = styled.img`
+  height: 70px;
+  width: auto;
+`;
+
+const Details = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  font-size: 16px;
+`;
+
+const Display = styled.div`
+  font-size: 10px;
+  margin: 3px;
+`;
+
+const SubDisplay = styled.div`
+  font-size: 10px;
+  margin: 3px;
+`;
+
+const Price = styled.div`
+  font-size: 10px;
+  margin: 3px;
+`;
+
+const cartItem = (props) => {
+  return (
+    <Container>
+      <ImgWrapper src={props.imgUrl} />
+      <Details>
+        <Display>{props.display}</Display>
+        <SubDisplay>{props.subDisplay}</SubDisplay>
+        <Price>{props.price}</Price>
+      </Details>
+    </Container>
+  );
+};
+
+export default cartItem;

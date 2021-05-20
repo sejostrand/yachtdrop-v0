@@ -51,7 +51,7 @@ const SearchBar = (props) => {
         />
       )}
       <CartLink onCart={() => setShowCart(!showCart)} />
-      <CartBar showCart={showCart} />
+      <CartBar cartItems={props.products} showCart={showCart} />
     </StyledSearchBar>
   );
 };

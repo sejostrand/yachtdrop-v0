@@ -40,7 +40,7 @@ const ShopPage = (props) => {
   return (
     <>
       <NavBar />
-      <SearchBar />
+      <SearchBar products={displayedProducts} />
       <BodyWrapper>
         <FilterBar
           productFilter={props.productFilter}

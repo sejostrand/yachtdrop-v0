@@ -132,21 +132,27 @@ const FilterBar = (props) => {
           <PrimaryButton
             tag='beer'
             primaryTag={productFilter.primaryTag}
-            onClick={() => primaryFilter('beer')}
+            onClick={() =>
+              props.setCategory('?category=60a63608ab4f414abc9136f7')
+            }
           >
             Beer
           </PrimaryButton>
           <PrimaryButton
             tag='soft-drinks'
             primaryTag={productFilter.primaryTag}
-            onClick={() => primaryFilter('soft-drinks')}
+            onClick={() =>
+              props.setCategory('?category=60a63608ab4f414abc9136f7')
+            }
           >
             Soft Drinks
           </PrimaryButton>
           <PrimaryButton
             tag='other'
             primaryTag={productFilter.primaryTag}
-            onClick={() => primaryFilter('other')}
+            onClick={() =>
+              props.setCategory('?category=60a63608ab4f414abc9136f7')
+            }
           >
             Other
           </PrimaryButton>
