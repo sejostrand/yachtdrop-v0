@@ -1337,20 +1337,23 @@
                 "supplier": {
                   "type": "string"
                 },
-                "subCategory": {
-                  "type": "string"
-                },
                 "fullDescription": {
                   "type": "string"
                 },
-                "categoryTags": {
+                "port": {
+                  "type": "string"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "sub_category": {
+                  "type": "string"
+                },
+                "category_tags": {
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
-                },
-                "port": {
-                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"

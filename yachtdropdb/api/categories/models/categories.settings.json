@@ -14,9 +14,6 @@
     "category": {
       "type": "string",
       "unique": true
-    },
-    "products": {
-      "collection": "products"
     }
   }
 }

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import LocationTag from './objects/LocationTag';
 //import SearchInput from './objects/SearchInput';
 import CartLink from './objects/CartLink';
-import CartMenu from '@components/CartMenu/CartMenu';
+import CartBar from '@components/CartBar/CartBar';
 
 const SearchInput = styled.input`
   padding: 5px;
@@ -51,7 +51,7 @@ const SearchBar = (props) => {
         />
       )}
       <CartLink onCart={() => setShowCart(!showCart)} />
-      {showCart && <CartMenu />}
+      <CartBar showCart={showCart} />
     </StyledSearchBar>
   );
 };

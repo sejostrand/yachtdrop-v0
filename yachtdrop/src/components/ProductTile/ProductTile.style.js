@@ -13,10 +13,11 @@ export const FavStar = styled.img`
 export const TileWrapper = styled.div`
   padding: 5px;
   margin: 20px;
-  background-color: ${COLORS.color4};
+  background-color: ${COLORS.white};
   display: block;
   width: 160px;
   border-radius: 4px;
+  height: min-content;
 
   &:hover ${FavStar} {
     visibility: visible;
@@ -27,7 +28,7 @@ export const PackSize = styled.div`
   float: left;
   position: absolute;
   background-color: ${COLORS.green};
-  color: ${COLORS.color5};
+  color: ${COLORS.white};
   border-radius: 4px;
   padding: 3px;
   font-size: 10px;

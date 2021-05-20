@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import styled, { withTheme } from 'styled-components';
 import { COLORS, FONTS } from '../../assets/theme/theme';
 import axios from 'axios';
+import { wineCategoryQuery, spiritCategoryQuery } from '@assets/utils/queries';
 
 // IMPORT COMPONENTS
 import NavBar from '@components/NavBar/NavBar';
@@ -13,32 +14,36 @@ import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '@components/SortBy/SortBy.js';
 import Footer from '@components/Footer/Footer';
 import ProductGrid from '@components/ProductGrid/ProductGrid';
+import CartBar from '@components/CartBar/CartBar';
 
 // MAIN
 const ShopPage = (props) => {
   const [allProducts, setAllProducts] = useState([]);
   const [displayedProducts, setDisplayedProducts] = useState([]);
-  const [category, setCategory] = useState();
-  const [subCategory, setSubCategory] = useState();
+  const [category, setCategory] = useState('');
+  const [subCategory, setSubCategory] = useState('');
   const [categoryTags, setCategoryTags] = useState([]);
 
   //GET ALL PRODUCTS
   const getProductData = axios
-    .get('http://localhost:1337/products')
-    .then((response) => setAllProducts(response.data))
+    .get(`http://localhost:1337/products${category}`)
+    .then((response) => setDisplayedProducts(response.data))
     .catch((error) => console.log(error));
 
   //SET DEFAULT DISPLAYED PRODUCTS
-  useEffect(() => {
-    setDisplayedProducts(allProducts.splice(0, 20));
-  }, [allProducts]);
+  // useEffect(() => {
+  //   setDisplayedProducts(allProducts.splice(0, 20));
+  // }, [allProducts]);
 
   return (
     <>
       <NavBar />
       <SearchBar />
       <BodyWrapper>
-        <FilterBar productFilter={props.productFilter} />
+        <FilterBar
+          productFilter={props.productFilter}
+          setCategory={setCategory}
+        />
         <BodyDiv>
           <CoverBar />
           <SortBy />

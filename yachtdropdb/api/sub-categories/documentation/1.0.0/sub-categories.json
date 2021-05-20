@@ -538,72 +538,6 @@
           "subCategory": {
             "type": "string"
           },
-          "products": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "display",
-                "packSize"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "display": {
-                  "type": "string"
-                },
-                "subDisplay": {
-                  "type": "string"
-                },
-                "featured": {
-                  "type": "boolean"
-                },
-                "productImg": {
-                  "type": "string"
-                },
-                "price": {
-                  "type": "number"
-                },
-                "packSize": {
-                  "type": "integer"
-                },
-                "unitVolume": {
-                  "type": "string"
-                },
-                "vintage": {
-                  "type": "integer"
-                },
-                "packageType": {
-                  "type": "string"
-                },
-                "supplier": {
-                  "type": "string"
-                },
-                "subCategory": {
-                  "type": "string"
-                },
-                "fullDescription": {
-                  "type": "string"
-                },
-                "categoryTags": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "port": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -614,12 +548,6 @@
         "properties": {
           "subCategory": {
             "type": "string"
-          },
-          "products": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           },
           "published_at": {
             "type": "string",
