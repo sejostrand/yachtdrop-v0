@@ -25,10 +25,12 @@ const ShopPage = (props) => {
   const [categoryTags, setCategoryTags] = useState([]);
 
   //GET ALL PRODUCTS
-  const getProductData = axios
-    .get(`http://localhost:1337/products${category}`)
-    .then((response) => setDisplayedProducts(response.data))
-    .catch((error) => console.log(error));
+  useEffect(() => {
+    const getProductData = axios
+      .get(`http://localhost:1337/products${category}`)
+      .then((response) => setDisplayedProducts(response.data))
+      .catch((error) => console.log(error));
+  }, [category]);
 
   //SET DEFAULT DISPLAYED PRODUCTS
   // useEffect(() => {
