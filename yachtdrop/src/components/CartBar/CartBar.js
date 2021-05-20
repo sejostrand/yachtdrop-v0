@@ -12,6 +12,7 @@ const Container = styled.div`
   right: 0;
   position: fixed;
   height: 90vh;
+  padding-bottom: 50px;
   width: ${(props) => (props.showCart ? '500px' : '0')};
   background-color: ${COLORS.white};
   border-left: 3px solid black;
@@ -25,7 +26,7 @@ const ListContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
   background-color: white;
-  height: 70vh;
+  height: auto;
   padding: 5px;
   overflow-y: scroll;
 `;
