@@ -1,6 +1,9 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { COLORS } from '@assets/theme/theme';
+import CartItem from './objects/CartItem';
+import axios from 'axios';
 
 const Container = styled.div`
   margin-top: 44px;
@@ -17,11 +20,6 @@ const Container = styled.div`
   transition: width 0.2s;
 `;
 
-const Title = styled.h1`
-  font-size: 28px;
-  margin: 25px 40px;
-`;
-
 const ListContainer = styled.div`
   margin: 0px 40px;
   display: flex;
@@ -29,13 +27,15 @@ const ListContainer = styled.div`
   background-color: white;
   height: 70vh;
   padding: 5px;
+  overflow-y: scroll;
 `;
 
 const ButtonContainer = styled.div`
-  margin: 25px 40px;
+  margin: 15px 40px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  align-items: flex-end;
 `;
 
 const Checkout = styled.div`
@@ -54,20 +54,30 @@ const Checkout = styled.div`
 `;
 
 const Total = styled.div`
-  font-size: 20px;
+  font-size: 14px;
   font-weight: bold;
-  margin-left: 40px;
 `;
 
 const CartBar = (props) => {
   return (
     <Container showCart={props.showCart}>
-      <Title>Check your Yachtdrop</Title>
-      <ListContainer>aa</ListContainer>
       <ButtonContainer>
-        <Total> TOTAL: $ 200</Total>
         <Checkout>Proceed to chekcout</Checkout>
+        <Total> Total: $ 200</Total>
       </ButtonContainer>
+      <ListContainer>
+        {props.cartItems.map((product) => (
+          <CartItem
+            id={product.id}
+            fullDescription={product.fullDescription}
+            display={product.display}
+            subDisplay={product.subDisplay}
+            price={product.price}
+            packSize={product.packSize}
+            imgUrl={'http://localhost:1337' + product.productImg.url}
+          />
+        ))}
+      </ListContainer>
     </Container>
   );
 };
