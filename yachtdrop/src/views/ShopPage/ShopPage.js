@@ -14,6 +14,7 @@ import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '@components/SortBy/SortBy.js';
 import Footer from '@components/Footer/Footer';
 import ProductGrid from '@components/ProductGrid/ProductGrid';
+import CartBar from '@components/CartBar/CartBar';
 
 // MAIN
 const ShopPage = (props) => {
