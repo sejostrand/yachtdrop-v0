@@ -15,11 +15,6 @@
       "type": "string",
       "required": false,
       "unique": true
-    },
-    "products": {
-      "via": "categoryTags",
-      "collection": "products",
-      "dominant": true
     }
   }
 }

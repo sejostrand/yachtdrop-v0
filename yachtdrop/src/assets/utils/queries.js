@@ -1,17 +1,5 @@
-import gql from 'graphql-tag';
+// FILTERING QUERIES
 
-export const PRODUCTS_QUERY = gql`
-  query {
-    products {
-      id
-      display
-      subDisplay
-      fullDescription
-      productImg {
-        url
-      }
-      price
-      packSize
-    }
-  }
-`;
+export const spiritCategoryQuery = '?category=60a63608ab4f414abc9136f7';
+
+export const wineCategoryQuery = '?category=60a635f5ab4f414abc9136f5';

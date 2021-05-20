@@ -53,22 +53,23 @@
       "type": "string"
     },
     "supplier": {
-      "via": "products",
-      "model": "suppliers"
-    },
-    "subCategory": {
-      "via": "products",
-      "model": "sub-categories"
+      "model": "suppliers",
+      "via": "products"
     },
     "fullDescription": {
       "type": "text"
     },
-    "categoryTags": {
-      "collection": "category-tags",
-      "via": "products"
-    },
     "port": {
       "model": "ports"
+    },
+    "category": {
+      "model": "categories"
+    },
+    "sub_category": {
+      "model": "sub-categories"
+    },
+    "category_tags": {
+      "collection": "category-tags"
     }
   }
 }

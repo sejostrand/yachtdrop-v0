@@ -106,14 +106,16 @@ const FilterBar = (props) => {
         <PrimarySection>
           <PrimaryButton
             primaryTag={productFilter.primaryTag}
-            onClick={() => clearFilter()}
+            onClick={() => props.setCategory('')}
           >
             Clear filters
           </PrimaryButton>
           <PrimaryButton
             tag='wine'
             primaryTag={productFilter.primaryTag}
-            onClick={() => primaryFilter('wine')}
+            onClick={() =>
+              props.setCategory('?category=60a635f5ab4f414abc9136f5')
+            }
           >
             Wine
           </PrimaryButton>
