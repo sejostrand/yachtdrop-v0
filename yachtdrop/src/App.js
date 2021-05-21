@@ -1,7 +1,13 @@
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import styled from 'styled-components';
+import History from '@components/History';
 
 //import GlobalStyles from './styles/global';
+
+//COMPONENTS
+import NavBar from '@components/NavBar/NavBar';
+import Footer from '@components/Footer/Footer';
 
 import ShopPage from './views/ShopPage/ShopPage';
 import HomePage from './views/HomePage/HomePage';
@@ -13,88 +19,49 @@ import LogIn from './views/LogIn/LogIn';
 import NewLogIn from '@views/LogIn/NewLogIn';
 import Profile from '@views/Profile/Profile';
 
+const AppWrapper = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  width: auto;
+`;
+
 function App() {
-  class Filter {
-    constructor() {
-      this.primaryTag = [];
-      this.secondaryTag = [];
-      this.otherTags = [];
-    }
-
-    checkTag(whichTag, tag) {}
-
-    getTags() {
-      let group = [];
-      return group.concat(this.primaryTag, this.secondaryTag);
-    }
-
-    togglePrimaryTag(tag) {
-      if (String(this.primaryTag[0]) == String(tag)) {
-        this.clearTags();
-      } else {
-        this.clearTags();
-        this.primaryTag = [tag];
-        console.log(this.getTags());
-      }
-
-      return console.log(tag + ' was toggled');
-    }
-
-    toggleSecondaryTag(tag) {
-      String(this.secondaryTag[0]) == String([tag])
-        ? (this.secondaryTag = [])
-        : (this.secondaryTag = [tag]);
-      console.log(this.getTags());
-    }
-    toggleTag(tag) {
-      if (this.otherTags.includes(tag)) {
-        this.otherTags.splice(this.otherTags.indexOf(tag), 1);
-      } else {
-        this.otherTags.push(tag);
-      }
-      console.log(this.otherTags);
-    }
-    clearTags() {
-      this.primaryTag = [];
-      this.secondaryTag = [];
-      this.otherTags = [];
-      return console.log('tags were cleared');
-    }
-  }
-  const productFilter = new Filter();
-
   return (
-    <Router>
-      <Switch>
-        <Route exact path='/'>
-          <HomePage />
-        </Route>
-        <Route path='/shoppage'>
-          <ShopPage productFilter={productFilter} />
-        </Route>
-        <Route path='/signup'>
-          <SignUp />
-        </Route>
-        <Route path='/login'>
-          <LogIn />
-        </Route>
-        <Route path='/newlogin'>
-          <NewLogIn />
-        </Route>
-        <Route path='/aboutus'>
-          <AboutUs />
-        </Route>
-        <Route path='/profile'>
-          <Profile />
-        </Route>
-        <Route path='/contactus'>
-          <ContactUs />
-        </Route>
-        <Route path='/embassador'>
-          <Embassador />
-        </Route>
-      </Switch>
-    </Router>
+    <AppWrapper>
+      <NavBar />
+      <Router history={History}>
+        <Switch>
+          <Route exact path='/'>
+            <HomePage />
+          </Route>
+          <Route path='/shoppage'>
+            <ShopPage />
+          </Route>
+          <Route path='/signup'>
+            <SignUp />
+          </Route>
+          <Route path='/login'>
+            <LogIn />
+          </Route>
+          <Route path='/newlogin'>
+            <NewLogIn />
+          </Route>
+          <Route path='/aboutus'>
+            <AboutUs />
+          </Route>
+          <Route path='/profile'>
+            <Profile />
+          </Route>
+          <Route path='/contactus'>
+            <ContactUs />
+          </Route>
+          <Route path='/embassador'>
+            <Embassador />
+          </Route>
+        </Switch>
+      </Router>
+      <Footer />
+    </AppWrapper>
   );
 }
 export default App;

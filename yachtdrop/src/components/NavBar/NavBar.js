@@ -22,7 +22,7 @@ const StyledNavBar = styled.nav`
   justify-content: space-between;
   top: 0;
   display: flex;
-  position: fixed;
+  position: sticky;
   z-index: 10;
 `;
 

@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styled, { withTheme } from 'styled-components';
 import { COLORS, FONTS } from '../../assets/theme/theme';
 import axios from 'axios';
+import History from '@components/History';
 import { wineCategoryQuery, spiritCategoryQuery } from '@assets/utils/queries';
 
 // IMPORT COMPONENTS
@@ -18,44 +20,45 @@ import CartBar from '@components/CartBar/CartBar';
 
 // MAIN
 const ShopPage = (props) => {
+  //const [q, setQ] = useState('');
   const [allProducts, setAllProducts] = useState([]);
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [category, setCategory] = useState('');
   const [subCategory, setSubCategory] = useState('');
   const [categoryTags, setCategoryTags] = useState([]);
 
+  //GET Q STRING
+  // useEffect(() => {
+  //   const params = new URLSearchParams(document.location.search);
+  //   setQ(params.toString());
+  //   console.log(params.toString());
+  // }, [category]);
+
   //GET ALL PRODUCTS
   useEffect(() => {
+    const params = new URLSearchParams(document.location.search);
+    const query = params.toString();
+    setCategory(query);
+    //History.push(`products?category.category=${category}`);
     const getProductData = axios
-      .get(`http://localhost:1337/products${category}`)
+      .get(`http://localhost:1337/products?${category}`)
       .then((response) => setDisplayedProducts(response.data))
       .catch((error) => console.log(error));
   }, [category]);
 
-  //SET DEFAULT DISPLAYED PRODUCTS
-  // useEffect(() => {
-  //   setDisplayedProducts(allProducts.splice(0, 20));
-  // }, [allProducts]);
+  const params = new URLSearchParams(document.location.search);
 
   return (
     <>
-      <NavBar />
       <SearchBar products={displayedProducts} />
       <BodyWrapper>
-        <FilterBar
-          productFilter={props.productFilter}
-          setCategory={setCategory}
-        />
+        <FilterBar setCategory={setCategory} />
         <BodyDiv>
           <CoverBar />
           <SortBy />
-          <ProductGrid
-            products={displayedProducts}
-            productFilter={props.productFilter}
-          />
+          <ProductGrid products={displayedProducts} />
         </BodyDiv>
       </BodyWrapper>
-      <Footer />
     </>
   );
 };

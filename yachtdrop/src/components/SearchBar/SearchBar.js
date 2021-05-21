@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import History from '@components/History';
 
 // IMPORT OBJECTS
 import LocationTag from './objects/LocationTag';
@@ -25,12 +26,12 @@ const SearchInput = styled.input`
 `;
 
 const StyledSearchBar = styled.div`
-  margin-top: 52px;
   padding: 0px 25px;
   width: 100vw;
   background-color: white;
   display: flex;
-  position: fixed;
+  position: sticky;
+  top: 52px;
   width: 100%;
   z-index: 9;
   box-shadow: 0px 0px 7px;

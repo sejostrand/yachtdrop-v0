@@ -7,13 +7,10 @@ import {
 import { useHistory } from 'react-router-dom';
 import { callApi } from '../../utils';
 import { COLORS } from '@assets/theme/theme';
-import NavBar from '@components/NavBar/NavBar';
-import Footer from '@components/Footer/Footer';
 import BG from '@assets/img/sea.jpg';
 import SearchBar from '@components/SearchBar/SearchBar';
 
 const BodyWrapper = styled.div`
-  margin-top: 52px;
   display: flex;
   width: 100%;
   flex-flow: column nowrap;
@@ -180,8 +177,7 @@ export default function NewLogIn() {
 
   return (
     <>
-      <NavBar />
-      <SearchBar disabled={true} />
+      {/* <SearchBar disabled={true} /> */}
       <BodyWrapper>
         <Container>
           {errorMsg && <p>{errorMsg}</p>}
@@ -218,7 +214,6 @@ export default function NewLogIn() {
           </ContentContainer>
         </Container>
       </BodyWrapper>
-      <Footer />
     </>
   );
 }
