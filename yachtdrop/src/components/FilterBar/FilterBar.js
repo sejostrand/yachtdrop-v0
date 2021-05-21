@@ -96,7 +96,7 @@ const FilterBar = (props) => {
   const toggleFilter = props.toggleFilter;
 
   const isActive = (tag) => {
-    return true ? true : false;
+    return tag === props.category ? true : false;
   };
 
   return (
@@ -109,12 +109,14 @@ const FilterBar = (props) => {
           <PrimaryButton
             tag='wine'
             href='/shoppage/products?category.category=wine'
+            onClick={() => props.setCategory('wine')}
           >
             Wine
           </PrimaryButton>
           <PrimaryButton
             tag='spirits'
             href='/shoppage/products?category.category=spirit'
+            onClick={() => props.setCategory('wine')}
           >
             Spirits
           </PrimaryButton>
@@ -139,7 +141,7 @@ const FilterBar = (props) => {
         </PrimarySection>
 
         {/* WineMenu */}
-        {isActive('wine') && (
+        {!isActive('wine') && (
           <MenuContainer>
             <Section>
               <SectionTitle>Type</SectionTitle>

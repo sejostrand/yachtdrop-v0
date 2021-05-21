@@ -52,7 +52,8 @@ const ShopPage = (props) => {
     <>
       <SearchBar products={displayedProducts} />
       <BodyWrapper>
-        <FilterBar setCategory={setCategory} />
+        <FilterBar setCategory={setCategory}
+                    category={category} />
         <BodyDiv>
           <CoverBar />
           <SortBy />
