@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import NavBar from '@components/NavBar/NavBar';
-import Footer from '@components/Footer/Footer';
 import { COLORS } from '@assets/theme/theme';
 import BG from '@assets/img/sea.jpg';
 import {
@@ -12,7 +10,6 @@ import SearchBar from '@components/SearchBar/SearchBar';
 import axios from 'axios';
 
 const BodyWrapper = styled.div`
-  margin-top: 95px;
   display: flex;
   width: 100%;
   flex-flow: column nowrap;
@@ -169,8 +166,7 @@ const SignUp = () => {
 
   return (
     <>
-      <NavBar />
-      <SearchBar disabled={true} />
+      {/* <SearchBar disabled={true} /> */}
       <BodyWrapper>
         <Container>
           <FormContainer
@@ -242,7 +238,6 @@ const SignUp = () => {
           </ContentContainer>
         </Container>
       </BodyWrapper>
-      <Footer />
     </>
   );
 };

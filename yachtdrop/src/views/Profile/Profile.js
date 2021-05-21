@@ -13,7 +13,6 @@ import BG from '@assets/img/sea.jpg';
 import SearchBar from '@components/SearchBar/SearchBar';
 
 const BodyWrapper = styled.div`
-  margin-top: 52px;
   display: flex;
   width: 100%;
   flex-flow: column nowrap;
@@ -147,14 +146,12 @@ const StyledInput = styled.input`
 const Profile = () => {
   return (
     <>
-      <NavBar />
-      <SearchBar disabled={true} />
+      {/* <SearchBar disabled={true} /> */}
       <BodyWrapper>
         <Container>
           <ContentContainer></ContentContainer>
         </Container>
       </BodyWrapper>
-      <Footer />
     </>
   );
 };

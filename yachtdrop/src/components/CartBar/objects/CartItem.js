@@ -4,7 +4,10 @@ import styled from 'styled-components';
 const Container = styled.div`
   display: flex;
   flex-flow: row nowrap;
-  margin: 6px 12px;
+  margin: 0 6px;
+  margin-top: 6px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid lightgray;
 `;
 
 const ImgWrapper = styled.img`
