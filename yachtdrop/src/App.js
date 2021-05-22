@@ -10,7 +10,7 @@ import NavBar from '@components/NavBar/NavBar';
 import Footer from '@components/Footer/Footer';
 
 import ShopPage from './views/ShopPage/ShopPage';
-import HomePage from './views/HomePage/HomePage';
+import LandingPage from '@views/LandingPage/LandingPage';
 import AboutUs from './views/AboutUs/AboutUs';
 import ContactUs from './views/ContactUs/ContactUs';
 import Embassador from './views/Embassador/Embassador';
@@ -32,7 +32,7 @@ function App() {
       <Router history={History}>
         <Switch>
           <Route exact path='/'>
-            <HomePage />
+            <LandingPage />
           </Route>
           <Route path='/shoppage'>
             <ShopPage />

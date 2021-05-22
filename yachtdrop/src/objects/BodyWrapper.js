@@ -5,6 +5,7 @@ const StyledBodyWrapper = styled.body`
   background-color: white;
   width: 100%;
   height: auto;
+  min-height: 85vh;
   display: flex;
   flex-flow: row nowrap;
 `;
