@@ -6,8 +6,8 @@ import TIME from '@assets/img/time-icon.png';
 import TRUCK from '@assets/img/truck-icon.png';
 
 const Container = styled.div`
-  margin-top: 150px;
-  margin-bottom: 80px;
+  margin-top: 120px;
+  margin-bottom: 70px;
   width: 100%;
   display: flex;
   flex-flow: column wrap;
@@ -22,7 +22,7 @@ const Title = styled.div`
 `;
 
 const StepContainer = styled.div`
-  margin-top: 40px;
+  margin-top: 30px;
   display: flex;
   flex-flow: row wrap;
 `;
@@ -32,7 +32,7 @@ const Step = styled.div`
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
-  margin: 60px;
+  margin: 50px;
   width: 300px;
 `;
 
@@ -49,7 +49,7 @@ const SubDisplay = styled.p`
 
 const Icon = styled.img`
   height: 200px;
-  width: 200px;
+  width: 180px;
 `;
 
 const Steps = () => {

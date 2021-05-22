@@ -66,6 +66,8 @@ const SecondaryButton = styled.a`
   }
 `;
 
+
+
 const FilterBar = (props) => {
   let hello = [
     {
@@ -97,10 +99,7 @@ const FilterBar = (props) => {
   const primaryFilter = props.primaryFilter;
   const toggleFilter = props.toggleFilter;
 
-  const isActive = (tag) => {
-    return tag == props.category ? true : false;
-  };
-
+  
   const getCategory = (value) => {
     const params = new URLSearchParams(document.location.search);
     if (params.get('category.category') != value) {
@@ -122,6 +121,7 @@ const FilterBar = (props) => {
     return params.toString();
   };
 
+
   const checkCategory = (tag) => {
     const params = new URLSearchParams(document.location.search);
     return params.get('category.category') != tag;
@@ -131,6 +131,17 @@ const FilterBar = (props) => {
     const params = new URLSearchParams(document.location.search);
     return params.get('sub_category.subCategory') != tag;
   };
+
+  const getTags = (value) => {
+    const params = new URLSearchParams(document.location.search);
+    params.get('category_tags.categoryTag') != value
+      ? params.append('category_tags.categoryTag', value)
+      : params.delete('category_tags.categoryTag');
+    console.log(params.toString());
+    return params.toString();
+  };
+
+  
 
   return (
     <FilterBarWrapper>
@@ -230,6 +241,9 @@ const FilterBar = (props) => {
               <CheckBoxItem tag='australia' />
               <CheckBoxItem tag='austria' />
               <CheckBoxItem tag='chile' />
+              <a href={`/shoppage/products?${getTags('chile')}`}>chile</a>
+              <br />
+              <a href={`/shoppage/products?${getTags('france')}`}>france</a>
               <CheckBoxItem tag='france' />
               <CheckBoxItem tag='hungary' />
               <CheckBoxItem tag='italy' />

@@ -20,7 +20,7 @@ const CheckBoxItem = (props) => {
         <CheckboxContainer>
           <input
             type='checkbox'
-            onChange={() => props.toggleFilter(props.tag)}
+            /* onChange={() => getTags(props.tag)} */
           />
         </CheckboxContainer>
         {props.tag}

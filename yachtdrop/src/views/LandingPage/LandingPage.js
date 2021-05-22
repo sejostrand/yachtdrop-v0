@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { COLORS } from '@assets/theme/theme';
 
 import COVER from '@assets/img/yacht.jpg';
+import YACHT from '@assets/img/yacht2.jpg';
 import ShopSelection from './objects/ShopSelection';
 import Steps from './objects/Steps';
 import Division from './objects/Division';
@@ -17,19 +18,19 @@ const BodyWrapper = styled.body`
 `;
 
 const CoverImg = styled.div`
-  margin-top: 52px;
+  /* margin-top: 52px; */
   display: flex;
   background-image: url(${(props) => props.img});
   background-size: cover;
   background-position-y: center;
   width: 100%;
-  height: 30vh;
+  height: 60vh;
 `;
 
 const LandingPage = () => {
   return (
     <BodyWrapper>
-      <CoverImg img={COVER} />
+      <CoverImg img={YACHT} />
       <ShopSelection />
       <Division />
       <Steps />
