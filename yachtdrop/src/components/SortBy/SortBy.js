@@ -27,7 +27,7 @@ const SortTitle = styled.div`
 
 const SortButton = styled.div`
   background-color: ${(props) =>
-    props.sortButtonState == props.field ? COLORS.darkGreen : COLORS.green};
+    props.sortState == props.field ? COLORS.darkGreen : COLORS.green};
   color: white;
   padding: 5px 20px;
 
@@ -57,24 +57,23 @@ const SortBy = (props) => {
       <SortButton
         color='#03b29a'
         field='popularity'
-        onClick={() => props.sortAlpha('popularity')}
-        sortButtonState={props.sortButtonState}
+        onClick={() => props.setSortState()}
       >
         Popularity
       </SortButton>
       <SortButton
         color='#03b29a'
         field='alphabetical'
-        onClick={() => props.sortAlpha('alphabetical')}
-        sortButtonState={props.sortButtonState}
+        onClick={() => props.setSortState('alphabetical')}
+        sortState={props.sortState}
       >
         Alphabetical
       </SortButton>
       <SortButton
         color='#03b29a'
-        field='price'
-        onClick={() => props.sortPrice('price')}
-        sortButtonState={props.sortButtonState}
+        field='&_sort=price:ASC'
+        onClick={() => props.setSortState('&_sort=price:ASC')}
+        sortState={props.sortState}
       >
         Price
       </SortButton>

@@ -31,7 +31,6 @@ const LandingPage = () => {
     <BodyWrapper>
       <CoverImg img={COVER} />
       <ShopSelection />
-      <Division />
       <Steps />
     </BodyWrapper>
   );

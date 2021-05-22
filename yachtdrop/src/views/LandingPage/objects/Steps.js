@@ -49,7 +49,7 @@ const SubDisplay = styled.p`
 
 const Icon = styled.img`
   height: 200px;
-  width: 200px;
+  width: 180px;
 `;
 
 const Steps = () => {
