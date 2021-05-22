@@ -27,33 +27,30 @@ const ShopPage = (props) => {
   const [subCategory, setSubCategory] = useState('');
   const [categoryTags, setCategoryTags] = useState([]);
 
-  //GET Q STRING
-  // useEffect(() => {
-  //   const params = new URLSearchParams(document.location.search);
-  //   setQ(params.toString());
-  //   console.log(params.toString());
-  // }, [category]);
-
   //GET ALL PRODUCTS
   useEffect(() => {
     const params = new URLSearchParams(document.location.search);
-    const query = params.toString();
-    setCategory(query);
+    console.log(params.toString());
+    const url = `http://localhost:1337/products?${params.toString()}`;
     //History.push(`products?category.category=${category}`);
     const getProductData = axios
-      .get(`http://localhost:1337/products?${category}`)
+      .get(url)
       .then((response) => setDisplayedProducts(response.data))
       .catch((error) => console.log(error));
-  }, [category]);
+  }, [category, subCategory, categoryTags]);
 
-  const params = new URLSearchParams(document.location.search);
+  //const params = new URLSearchParams(document.location.search);
 
   return (
     <>
       <SearchBar products={displayedProducts} />
       <BodyWrapper>
-        <FilterBar setCategory={setCategory}
-                    category={category} />
+        <FilterBar
+          category={category}
+          setCategory={setCategory}
+          subCategory={subCategory}
+          setSubCategory={setSubCategory}
+        />
         <BodyDiv>
           <CoverBar />
           <SortBy />

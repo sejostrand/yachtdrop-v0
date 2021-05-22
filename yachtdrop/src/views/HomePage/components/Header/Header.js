@@ -5,8 +5,8 @@ const Header = ({ image }) => {
     return (
         <HeaderWrapper>
             <HeaderImg src={ image } />
-            <Yachtdrop href="/">yachtdrop</Yachtdrop>
-            <LogIn href="/ShopPage">Log in</LogIn>
+            {/* <Yachtdrop href="/">yachtdrop</Yachtdrop>
+            <LogIn href="/ShopPage">Log in</LogIn> */}
         </HeaderWrapper>  
     )
 }

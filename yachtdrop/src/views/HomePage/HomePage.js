@@ -13,7 +13,6 @@ const HomePage = () => {
     <>
       <Header image={HeaderIcon} />
       <HomePageMain />
-      <Footer />
     </>
   );
 };
