@@ -32,7 +32,6 @@ const LandingPage = () => {
     <BodyWrapper>
       <CoverImg img={YACHT} />
       <ShopSelection />
-      <Division />
       <Steps />
     </BodyWrapper>
   );

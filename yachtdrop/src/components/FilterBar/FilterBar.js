@@ -7,7 +7,6 @@ import YearSlider from '../YearSlider';
 import { Slider } from '@material-ui/core';
 import CheckBoxItem from '@objects/CheckBoxItem';
 import {
-  FilterBarWrapper,
   BlackSection,
   FilterGrid,
   FilterTitle,
@@ -19,6 +18,18 @@ import {
   HiddenSection,
 } from './FilterBar.styles';
 import ShopPage from '../../views/ShopPage/ShopPage.js';
+
+const FilterBarWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  position: relative;
+  float: left;
+  z-index: 3;
+  overflow: hidden;
+  max-width: ${(props) => (props.filterBar ? '500px' : '0')};
+  transition: all 0.2s;
+`;
 
 const PrimaryButton = styled.a`
   background-color: ${(props) =>
@@ -93,13 +104,8 @@ const FilterBar = (props) => {
     setVal(data);
   };
 
-  const productFilter = props.productFilter;
-  const clearFilter = props.clearFilter;
-  const secondaryFilter = props.secondaryFilter;
-  const primaryFilter = props.primaryFilter;
-  const toggleFilter = props.toggleFilter;
+  const [filterBar, setFilterBar] = useState(true);
 
-  
   const getCategory = (value) => {
     const params = new URLSearchParams(document.location.search);
     if (params.get('category.category') != value) {
@@ -144,17 +150,13 @@ const FilterBar = (props) => {
   
 
   return (
-    <FilterBarWrapper>
+    <FilterBarWrapper filterBar={filterBar}>
+      <BarButton filterBar={filterBar} setFilterBar={setFilterBar} />
       <BlackSection />
       <FilterGrid>
         <FilterTitle>Filter by</FilterTitle>
         <PrimarySection>
-          <PrimaryButton
-            href='/shoppage/'
-            tag=''
-            checkCategory={checkCategory}
-            onClick={() => props.setCategory('')}
-          >
+          <PrimaryButton href='/shoppage/' tag='' checkCategory={checkCategory}>
             Clear filters
           </PrimaryButton>
           <PrimaryButton

@@ -16,12 +16,21 @@ const ButtonWrapper = styled.div`
   font-size: 24px;
   font-family: 'consolas';
   cursor: pointer;
+  visibility: hidden;
+
+  @media (max-width: 960px) {
+    visibility: visible;
+  }
 `;
 
 const StyledButton = styled.div``;
 
-const BarButton = () => {
-  return <ButtonWrapper>{'<'}</ButtonWrapper>;
+const BarButton = (props) => {
+  return (
+    <ButtonWrapper onClick={() => props.setFilterBar(!props.filterBar)}>
+      {'<'}
+    </ButtonWrapper>
+  );
 };
 
 export default BarButton;

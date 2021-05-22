@@ -1,15 +1,6 @@
 import { COLORS } from '@assets/theme/theme';
 import styled from 'styled-components';
 
-export const FilterBarWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0px;
-  position: relative;
-  float: left;
-  z-index: 3;
-`;
-
 export const FilterGrid = styled.div`
   justify-content: left;
   height: 100%;
@@ -51,7 +42,6 @@ export const CategoryList = styled.div`
 export const Section = styled.div`
   padding: 10px 10px 20px 10px;
   border-bottom: 2px solid lightgray;
-  }
 `;
 
 export const HiddenSection = styled.div`
