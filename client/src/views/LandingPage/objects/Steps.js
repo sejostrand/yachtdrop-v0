@@ -6,8 +6,13 @@ import TIME from '@assets/img/time-icon.png';
 import TRUCK from '@assets/img/truck-icon.png';
 
 const Container = styled.div`
+<<<<<<< HEAD:client/src/views/LandingPage/objects/Steps.js
   padding-top: 150px;
   padding-bottom: 80px;
+=======
+  margin-top: 120px;
+  margin-bottom: 70px;
+>>>>>>> 34521cdaa013a7dbfe970a42edf8cb10c43b7831:yachtdrop/src/views/LandingPage/objects/Steps.js
   width: 100%;
   display: flex;
   flex-flow: column wrap;
@@ -23,7 +28,7 @@ const Title = styled.div`
 `;
 
 const StepContainer = styled.div`
-  margin-top: 40px;
+  margin-top: 30px;
   display: flex;
   flex-flow: row wrap;
 `;
@@ -33,7 +38,7 @@ const Step = styled.div`
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
-  margin: 60px;
+  margin: 50px;
   width: 300px;
 `;
 

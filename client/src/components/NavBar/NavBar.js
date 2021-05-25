@@ -43,18 +43,16 @@ const NavBar = (props) => {
       {window.location.href != 'http://localhost:3000/' && (
         <NavMenu>
           <MenuLink href='/shoppage'>All</MenuLink>
-          <MenuLink href='shoppage/products?category.category=wine'>
+          <MenuLink href='/shoppage/products?category.category=wine'>
             Wine
           </MenuLink>
-          <MenuLink href='shoppage/products?category.category=spirit'>
+          <MenuLink href='/shoppage/products?category.category=spirit'>
             Spirits
           </MenuLink>
-          <MenuLink href='shoppage/products?category.category=beer'>
+          <MenuLink href='/shoppage/products?category.category=beer'>
             Beer
           </MenuLink>
-          <MenuLink href='shoppage/products?category.category=other'>
-            Other
-          </MenuLink>
+          <MenuLink href='/shoppage'>Other</MenuLink>
         </NavMenu>
       )}
       <NavAdmin>

@@ -136,25 +136,7 @@ const FilterBar = (props) => {
     return params.get('sub_category.subCategory') != tag;
   };
 
-  const getTags = (value) => {
-    const params = new URLSearchParams(document.location.search);
-    const newParams = new URLSearchParams(document.location.search);
-    if (!params.getAll('category_tags.categoryTag').includes(value)) {
-      params.append('category_tags.categoryTag', value);
-    } else {
-      newParams.delete('category_tags.categoryTag');
-      let x;
-      let result = params
-        .getAll('category_tags.categoryTag')
-        .splice(params.getAll('category_tags.categoryTag').findIndex(value));
-      for (x = 0; x < result.length(); x++) {
-        newParams.append('category_tags.categoryTag', result[x]);
-      }
-      return newParams.toString();
-    }
-  };
-
-  const getTest = () => {
+  const getTags = () => {
     return null;
   };
 
@@ -170,7 +152,7 @@ const FilterBar = (props) => {
           <PrimaryButton
             tag='wine'
             checkCategory={checkCategory}
-            href={`/shoppage/products?${getTest()}`}
+            href={`/shoppage/products?${getCategory('wine')}`}
           >
             Wine
           </PrimaryButton>
@@ -251,6 +233,9 @@ const FilterBar = (props) => {
               <CheckBoxItem tag='australia' />
               <CheckBoxItem tag='austria' />
               <CheckBoxItem tag='chile' />
+              <a href={`/shoppage/products?${getTags('chile')}`}>chile</a>
+              <br />
+              <a href={`/shoppage/products?${getTags('france')}`}>france</a>
               <CheckBoxItem tag='france' />
               <CheckBoxItem tag='hungary' />
               <CheckBoxItem tag='italy' />
