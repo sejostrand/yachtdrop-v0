@@ -116,7 +116,6 @@ const FilterBar = (props) => {
 
   class ParamsFilter {
     constructor(queryString) {
-      this.input = queryString;
       this.category = queryString.match(/(?<=category.category=)(.*?)(?=\&)/g);
       this.subCategory = queryString.match(
         /(?<=sub_category.subCategory=)(.*?)(?=&)/g
@@ -132,13 +131,6 @@ const FilterBar = (props) => {
       this.subCategory = null;
       this.categoryTags = null;
       this.sort = null;
-    }
-
-    getValues() {
-      console.log(this.getQueryString());
-      console.log(this.category);
-      console.log(this.subCategory);
-      console.log(this.categoryTags);
     }
 
     setCategory(value) {
