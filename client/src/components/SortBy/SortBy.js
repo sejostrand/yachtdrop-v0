@@ -152,21 +152,13 @@ const SortBy = (props) => {
       <SortTitle>Sort</SortTitle>
       <SortButton
         color='#03b29a'
-        field='default'
-        checkSort={checkSort}
-        href={`/shoppage/products?${toggleSort('')}`}
-      >
-        Popularity
-      </SortButton>
-      <SortButton
-        color='#03b29a'
         field1='display:ASC'
         field2='display:DESC'
         checkSort={checkSort}
         href={`/shoppage/products?${toggleSort('display')}`}
-        sortState={props.sortState}
       >
-        Alphabetical
+        Alphabetical {checkSort('display:ASC') ? '△' : ''}
+        {checkSort('display:DESC') ? '▽' : ''}
       </SortButton>
       <SortButton
         color='#03b29a'
@@ -175,7 +167,8 @@ const SortBy = (props) => {
         checkSort={checkSort}
         href={`/shoppage/products?${toggleSort('price')}`}
       >
-        Price
+        Price {checkSort('price:ASC') ? '△' : ''}
+        {checkSort('price:DESC') ? '▽' : ''}
       </SortButton>
     </StyledSortBy>
   );
