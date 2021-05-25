@@ -4,7 +4,6 @@ import CategoryItem from './objects/CategoryItem.js';
 import { COLORS } from '@assets/theme/theme.js';
 import YearSlider from '../YearSlider';
 import { Slider } from '@material-ui/core';
-import CheckBoxItem from '@objects/CheckBoxItem';
 import {
   BlackSection,
   FilterGrid,
@@ -79,65 +78,162 @@ const SecondaryButton = styled.a`
   }
 `;
 
+const CheckBoxItem = styled.a`
+  background-color: ${(props) =>
+    props.checkCategoryTag(props.tag) ? 'black' : 'none'};
+  color: ${(props) => (props.checkCategoryTag(props.tag) ? 'white' : 'black')};
+  display: flex;
+  text-transform: capitalize;
+  text-decoration: none;
+  width: fit-content;
+  border-radius: 6px;
+  padding: 2px 6px;
+  margin: 2px;
+  font-size: 12px;
+  margin: 2px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 const FilterBar = (props) => {
-  let hello = [
-    {
-      value: 1989,
-      label: '1989',
-    },
-    {
-      value: 2000,
-      label: '2000',
-    },
-    {
-      value: 2003,
-      label: '2003',
-    },
-    {
-      value: 2004,
-      label: '2004',
-    },
-  ];
+  //FILTER MENU TAGS
 
-  const [val, setVal] = useState([20, 40]);
-  const updateVal = (e, data) => {
-    setVal(data);
-  };
+  const CategoryList = ['wine', 'spirit', 'beer', 'soft-drinks', 'other'];
 
-  const getCategory = (value) => {
-    const params = new URLSearchParams(document.location.search);
-    if (params.get('category.category') != value) {
-      params.set('category.category', value);
-      params.delete('sub_category.subCategory');
-    } else {
-      params.delete('category.category');
-      params.delete('sub_category.subCategory');
+  //WINE
+  const WineSubCategoryList = ['red', 'white', 'champagne'];
+  const Region = ['argentina', 'australia', 'austria', 'chile', 'france'];
+  const Variety = ['merlot', 'rioja'];
+  const Vintage = ['1990', '2003'];
+  const Volume = ['700ml', '1L'];
+
+  //SPIRITS
+  const SpiritSubCategoryList = ['vodka', 'gin'];
+
+  //NEW CODE
+
+  class ParamsFilter {
+    constructor(queryString) {
+      this.input = queryString;
+      this.category = queryString.match(/(?<=category.category=)(.*?)(?=\&)/g);
+      this.subCategory = queryString.match(
+        /(?<=sub_category.subCategory=)(.*?)(?=&)/g
+      );
+      this.categoryTags = queryString.match(
+        /(?<=category_tags.categoryTag=)(.*?)(?=&)/g
+      );
+      this.sort = queryString.match(/(?<=_sort=)(.*?)(?=&)/g);
     }
-    console.log(params.toString());
-    return params.toString();
-  };
 
-  const getSubCategory = (value) => {
-    const params = new URLSearchParams(document.location.search);
-    params.get('sub_category.subCategory') != value
-      ? params.set('sub_category.subCategory', value)
-      : params.delete('sub_category.subCategory');
-    console.log(params.toString());
-    return params.toString();
-  };
+    clear() {
+      this.category = null;
+      this.subCategory = null;
+      this.categoryTags = null;
+      this.sort = null;
+    }
+
+    getValues() {
+      console.log(this.getQueryString());
+      console.log(this.category);
+      console.log(this.subCategory);
+      console.log(this.categoryTags);
+    }
+
+    setCategory(value) {
+      if (this.category == value) {
+        this.category = null;
+        this.subCategory = null;
+        this.categoryTags = null;
+      } else {
+        this.category = value;
+        this.subCategory = null;
+        this.categoryTags = null;
+      }
+    }
+
+    setSubCategory(value) {
+      if (this.subCategory == value) {
+        this.subCategory = null;
+      } else {
+        this.subCategory = value;
+      }
+    }
+
+    setCategoryTag(value) {
+      if (this.categoryTags == null) {
+        this.categoryTags = [value];
+      } else if (this.categoryTags.includes(value)) {
+        this.categoryTags.splice(this.categoryTags.indexOf(value), 1);
+      } else {
+        this.categoryTags.push(value);
+      }
+    }
+
+    setSort(value) {
+      if (this.sort == `${value}:ASC&`) {
+        this.sort = `${value}:DSC&`;
+      } else if (this.sort == `${value}:DSC&`) {
+        this.sort = null;
+      } else {
+        this.sort = `${value}:ASC&`;
+      }
+    }
+
+    getQueryString() {
+      let result = '';
+      if (this.category != null) {
+        result = result.concat(`category.category=${this.category}&`);
+      }
+      if (this.subCategory != null) {
+        result = result.concat(`sub_category.subCategory=${this.subCategory}&`);
+      }
+      if (this.categoryTags != null) {
+        this.categoryTags.forEach(
+          (tag) => (result = result.concat(`category_tags.categoryTag=${tag}&`))
+        );
+      }
+      if (this.sort != null) {
+        result = result.concat(`_sort=${this.sort}&`);
+      }
+      return result;
+    }
+  }
 
   const checkCategory = (tag) => {
-    const params = new URLSearchParams(document.location.search);
-    return params.get('category.category') != tag;
+    const params = new ParamsFilter(document.location.search);
+    return params.category != tag;
   };
 
   const checkSubCategory = (tag) => {
-    const params = new URLSearchParams(document.location.search);
-    return params.get('sub_category.subCategory') != tag;
+    const params = new ParamsFilter(document.location.search);
+    return params.subCategory != tag;
   };
 
-  const getTags = () => {
-    return null;
+  const checkCategoryTag = (tag) => {
+    const params = new ParamsFilter(document.location.search);
+    return params.categoryTags == null
+      ? null
+      : params.categoryTags.includes(tag);
+  };
+
+  const toggleCategory = (value) => {
+    const params = new ParamsFilter(document.location.search);
+    params.setCategory(value);
+    return params.getQueryString();
+  };
+
+  const toggleSubCategory = (value) => {
+    const params = new ParamsFilter(document.location.search);
+    params.setSubCategory(value);
+    return params.getQueryString();
+  };
+
+  const toggleCategoryTag = (value) => {
+    const params = new ParamsFilter(document.location.search);
+    params.setCategoryTag(value);
+    return params.getQueryString();
   };
 
   return (
@@ -146,41 +242,45 @@ const FilterBar = (props) => {
       <FilterGrid>
         <FilterTitle>Browse</FilterTitle>
         <PrimarySection>
-          <PrimaryButton href='/shoppage/' tag='' checkCategory={checkCategory}>
+          <PrimaryButton
+            tag=''
+            href={`/shoppage/products?`}
+            checkCategory={checkCategory}
+          >
             Clear filters
           </PrimaryButton>
           <PrimaryButton
             tag='wine'
             checkCategory={checkCategory}
-            href={`/shoppage/products?${getCategory('wine')}`}
+            href={`/shoppage/products?${toggleCategory('wine')}`}
           >
             Wine
           </PrimaryButton>
           <PrimaryButton
             tag='spirit'
             checkCategory={checkCategory}
-            href={`/shoppage/products?${getCategory('spirit')}`}
+            href={`/shoppage/products?${toggleCategory('spirit')}`}
           >
             Spirits
           </PrimaryButton>
           <PrimaryButton
             tag='beer'
             checkCategory={checkCategory}
-            href={`/shoppage/products?${getCategory('beer')}`}
+            href={`/shoppage/products?${toggleCategory('beer')}`}
           >
             Beer
           </PrimaryButton>
           <PrimaryButton
             tag='soft-drink'
             checkCategory={checkCategory}
-            href={`/shoppage/products?${getCategory('soft-drink')}`}
+            href={`/shoppage/products?${toggleCategory('soft-drink')}`}
           >
             Soft Drinks
           </PrimaryButton>
           <PrimaryButton
             tag='other'
             checkCategory={checkCategory}
-            href={`/shoppage/products?${getCategory('other')}`}
+            href={`/shoppage/products?${toggleCategory('other')}`}
           >
             Other
           </PrimaryButton>
@@ -194,117 +294,90 @@ const FilterBar = (props) => {
               <SecondaryButton
                 tag='red'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${getSubCategory('red')}`}
+                href={`/shoppage/products?${toggleSubCategory('red')}`}
               >
                 Red
               </SecondaryButton>
               <SecondaryButton
                 tag='white'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${getSubCategory('white')}`}
+                href={`/shoppage/products?${toggleSubCategory('white')}`}
               >
                 White
               </SecondaryButton>
               <SecondaryButton
                 tag='rose'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${getSubCategory('rose')}`}
+                href={`/shoppage/products?${toggleSubCategory('rose')}`}
               >
                 Rose
               </SecondaryButton>
               <SecondaryButton
                 tag='champagne'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${getSubCategory('champagne')}`}
+                href={`/shoppage/products?${toggleSubCategory('champagne')}`}
               >
                 Champagne
               </SecondaryButton>
               <SecondaryButton
                 tag='sparkling'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${getSubCategory('sparkling')}`}
+                href={`/shoppage/products?${toggleSubCategory('sparkling')}`}
               >
                 Sparkling
               </SecondaryButton>
             </Section>
+
             <HiddenSection>
               <SectionTitle>Region</SectionTitle>
-              <CheckBoxItem tag='argentina' />
-              <CheckBoxItem tag='australia' />
-              <CheckBoxItem tag='austria' />
-              <CheckBoxItem tag='chile' />
-              <a href={`/shoppage/products?${getTags('chile')}`}>chile</a>
-              <br />
-              <a href={`/shoppage/products?${getTags('france')}`}>france</a>
-              <CheckBoxItem tag='france' />
-              <CheckBoxItem tag='hungary' />
-              <CheckBoxItem tag='italy' />
-              <CheckBoxItem tag='new zealand' />
-              <CheckBoxItem tag='south africa' />
-              <CheckBoxItem tag='spain' />
-              <CheckBoxItem tag='usa' />
+              {Region.map((tag) => (
+                <CheckBoxItem
+                  tag={tag}
+                  checkCategoryTag={checkCategoryTag}
+                  href={`/shoppage/products?${toggleCategoryTag(tag)}`}
+                >
+                  {tag}
+                </CheckBoxItem>
+              ))}
             </HiddenSection>
 
             <HiddenSection>
               <SectionTitle>Variety</SectionTitle>
-              <CheckBoxItem tag='alsace' />
-              <CheckBoxItem tag='bordeaux' />
-              <CheckBoxItem tag='cava' />
-              <CheckBoxItem tag='chardonanay' />
-              <CheckBoxItem tag='cotes de provence' />
-              <CheckBoxItem tag='emporda' />
-              <CheckBoxItem tag='fronsac' />
-              <CheckBoxItem tag='margaux' />
-              <CheckBoxItem tag='pauillac' />
-              <CheckBoxItem tag='penedes' />
-              <CheckBoxItem tag='pessac-leognan' />
-              <CheckBoxItem tag='pomeral' />
-              <CheckBoxItem tag='priorat' />
-              <CheckBoxItem tag='provence' />
-              <CheckBoxItem tag='rhone' />
-              <CheckBoxItem tag='ria baixas' />
-              <CheckBoxItem tag='ribera del duero' />
-              <CheckBoxItem tag='riesling' />
-              <CheckBoxItem tag='rioja' />
-              <CheckBoxItem tag='rueda' />
-              <CheckBoxItem tag='saint emilion' />
-              <CheckBoxItem tag='saint estephe' />
-              <CheckBoxItem tag='saint julien' />
-              <CheckBoxItem tag='sauternes' />
-              <CheckBoxItem tag='semillon' />
-              <CheckBoxItem tag='tokaji' />
+              {Variety.map((tag) => (
+                <CheckBoxItem
+                  tag={tag}
+                  checkCategoryTag={checkCategoryTag}
+                  href={`/shoppage/products?${toggleCategoryTag(tag)}`}
+                >
+                  {tag}
+                </CheckBoxItem>
+              ))}
             </HiddenSection>
 
             <HiddenSection>
               <SectionTitle>Vintage</SectionTitle>
-              <CheckBoxItem tag='1989' />
-              <CheckBoxItem tag='2000' />
-              <CheckBoxItem tag='2003' />
-              <CheckBoxItem tag='2004' />
-              <CheckBoxItem tag='2005' />
-              <CheckBoxItem tag='2006' />
-              <CheckBoxItem tag='2007' />
-              <CheckBoxItem tag='2008' />
-              <CheckBoxItem tag='2009' />
-              <CheckBoxItem tag='2010' />
-              <CheckBoxItem tag='2011' />
-              <CheckBoxItem tag='2012' />
-              <CheckBoxItem tag='2013' />
-              <CheckBoxItem tag='2014' />
-              <CheckBoxItem tag='2015' />
-              <CheckBoxItem tag='2016' />
-              <CheckBoxItem tag='2017' />
-              <CheckBoxItem tag='2018' />
-              <CheckBoxItem tag='2019' />
-              <CheckBoxItem tag='NV' />
+              {Vintage.map((tag) => (
+                <CheckBoxItem
+                  tag={tag}
+                  checkCategoryTag={checkCategoryTag}
+                  href={`/shoppage/products?${toggleCategoryTag(tag)}`}
+                >
+                  {tag}
+                </CheckBoxItem>
+              ))}
             </HiddenSection>
 
             <HiddenSection>
               <SectionTitle>Volume</SectionTitle>
-              <CheckBoxItem tag='1.5L' />
-              <CheckBoxItem tag='75cl' />
-              <CheckBoxItem tag='50cl' />
-              <CheckBoxItem tag='37.5cl' />
+              {Volume.map((tag) => (
+                <CheckBoxItem
+                  tag={tag}
+                  checkCategoryTag={checkCategoryTag}
+                  href={`/shoppage/products?${toggleCategoryTag(tag)}`}
+                >
+                  {tag}
+                </CheckBoxItem>
+              ))}
             </HiddenSection>
           </MenuContainer>
         )}
@@ -317,35 +390,35 @@ const FilterBar = (props) => {
               <SecondaryButton
                 tag='gin'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${getSubCategory('gin')}`}
+                href={`/shoppage/products?${toggleSubCategory('gin')}`}
               >
                 Gin
               </SecondaryButton>
               <SecondaryButton
                 tag='rum'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${getSubCategory('rum')}`}
+                href={`/shoppage/products?${toggleSubCategory('rum')}`}
               >
                 Rum
               </SecondaryButton>
               <SecondaryButton
                 tag='tequila'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${getSubCategory('tequila')}`}
+                href={`/shoppage/products?${toggleSubCategory('tequila')}`}
               >
                 Tequila
               </SecondaryButton>
               <SecondaryButton
                 tag='vodka'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${getSubCategory('vodka')}`}
+                href={`/shoppage/products?${toggleSubCategory('vodka')}`}
               >
                 Vodka
               </SecondaryButton>
               <SecondaryButton
                 tag='whiskey'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${getSubCategory('whiskey')}`}
+                href={`/shoppage/products?${toggleSubCategory('whiskey')}`}
               >
                 Whiskey
               </SecondaryButton>
@@ -361,21 +434,21 @@ const FilterBar = (props) => {
               <SecondaryButton
                 tag='larger'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${getSubCategory('larger')}`}
+                href={`/shoppage/products?${toggleSubCategory('larger')}`}
               >
                 Larger
               </SecondaryButton>
               <SecondaryButton
                 tag='ale'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${getSubCategory('ale')}`}
+                href={`/shoppage/products?${toggleSubCategory('ale')}`}
               >
                 Ale
               </SecondaryButton>
               <SecondaryButton
                 tag='cider'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${getSubCategory('cider')}`}
+                href={`/shoppage/products?${toggleSubCategory('cider')}`}
               >
                 Cider
               </SecondaryButton>
@@ -391,28 +464,28 @@ const FilterBar = (props) => {
               <SecondaryButton
                 tag='mixers'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${getSubCategory('mixer')}`}
+                href={`/shoppage/products?${toggleSubCategory('mixer')}`}
               >
                 Mixers
               </SecondaryButton>
               <SecondaryButton
                 tag='juice'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${getSubCategory('juice')}`}
+                href={`/shoppage/products?${toggleSubCategory('juice')}`}
               >
                 Juice
               </SecondaryButton>
               <SecondaryButton
                 tag='water'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${getSubCategory('water')}`}
+                href={`/shoppage/products?${toggleSubCategory('water')}`}
               >
                 Water
               </SecondaryButton>
               <SecondaryButton
                 tag='fizzy-drinks'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${getSubCategory('fizzy-drink')}`}
+                href={`/shoppage/products?${toggleSubCategory('fizzy-drink')}`}
               >
                 Fizzy Drinks
               </SecondaryButton>
@@ -428,7 +501,7 @@ const FilterBar = (props) => {
               <SecondaryButton
                 tag='whatever'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${getSubCategory('whatever')}`}
+                href={`/shoppage/products?${toggleSubCategory('whatever')}`}
               >
                 Whatever
               </SecondaryButton>

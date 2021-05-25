@@ -14,20 +14,11 @@ const CheckboxContainer = styled.div`
 `;
 
 const CheckBoxItem = (props) => {
-  //
-  const getQ = (value) => {
-    const params = new URLSearchParams(document.location.search);
-    params.append('category_tags.categoryTag', value.toString());
-    console.log(params.get('category_tags.categoryTag'));
-    return params.toString();
-  };
-
   return (
     <>
-      <Wrapper href={`/shoppage/products?${getQ(props.tag)}`}>
-        <CheckboxContainer>
-          <input type='checkbox' />
-        </CheckboxContainer>
+      <Wrapper
+        href={`/shoppage/products?${props.toggleCategoryTag(props.tag)}`}
+      >
         {props.tag}
       </Wrapper>
     </>
