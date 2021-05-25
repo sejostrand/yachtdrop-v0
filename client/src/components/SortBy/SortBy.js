@@ -2,7 +2,31 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { COLORS } from '../../assets/theme/theme';
 
-const StyledSortBy = styled.div`
+const Container = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+`;
+
+const Tag = styled.a`
+  background-color: black;
+  color: white;
+  display: flex;
+  text-transform: capitalize;
+  text-decoration: none;
+  width: fit-content;
+  border-radius: 6px;
+  padding: 2px 6px;
+  margin: 2px;
+  font-size: 12px;
+  margin: 2px 8px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const ButtonsContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
   background-color: white;
@@ -147,30 +171,51 @@ const SortBy = (props) => {
     return params.sort == value;
   };
 
+  const SelectedTags = () => {
+    const params = new ParamsFilter(document.location.search);
+    return params.categoryTags;
+  };
+
+  const toggleCategoryTag = (value) => {
+    const params = new ParamsFilter(document.location.search);
+    params.setCategoryTag(value);
+    return params.getQueryString();
+  };
+
   return (
-    <StyledSortBy>
-      <SortTitle>Sort</SortTitle>
-      <SortButton
-        color='#03b29a'
-        field1='display:ASC'
-        field2='display:DESC'
-        checkSort={checkSort}
-        href={`/shoppage/products?${toggleSort('display')}`}
-      >
-        Alphabetical {checkSort('display:ASC') ? '△' : ''}
-        {checkSort('display:DESC') ? '▽' : ''}
-      </SortButton>
-      <SortButton
-        color='#03b29a'
-        field1='price:ASC'
-        field2='price:DESC'
-        checkSort={checkSort}
-        href={`/shoppage/products?${toggleSort('price')}`}
-      >
-        Price {checkSort('price:ASC') ? '△' : ''}
-        {checkSort('price:DESC') ? '▽' : ''}
-      </SortButton>
-    </StyledSortBy>
+    <Container>
+      <ButtonsContainer>
+        <SortTitle>Sort</SortTitle>
+        <SortButton
+          color='#03b29a'
+          field1='display:ASC'
+          field2='display:DESC'
+          checkSort={checkSort}
+          href={`/shoppage/products?${toggleSort('display')}`}
+        >
+          Alphabetical {checkSort('display:ASC') ? '△' : ''}
+          {checkSort('display:DESC') ? '▽' : ''}
+        </SortButton>
+        <SortButton
+          color='#03b29a'
+          field1='price:ASC'
+          field2='price:DESC'
+          checkSort={checkSort}
+          href={`/shoppage/products?${toggleSort('price')}`}
+        >
+          Price {checkSort('price:ASC') ? '△' : ''}
+          {checkSort('price:DESC') ? '▽' : ''}
+        </SortButton>
+      </ButtonsContainer>
+      <ButtonsContainer>
+        {SelectedTags() != null &&
+          SelectedTags().map((tag) => (
+            <Tag href={`/shoppage/products?${toggleCategoryTag(tag)}`}>
+              {tag}
+            </Tag>
+          ))}
+      </ButtonsContainer>
+    </Container>
   );
 };
 
