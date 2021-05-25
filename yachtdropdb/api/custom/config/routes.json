@@ -1,9 +1,0 @@
-{
-    "routes": [
-      {
-        "method": "POST",
-        "path": "/logout",
-        "handler": "Custom.logout"
-      }
-    ]
-  }
