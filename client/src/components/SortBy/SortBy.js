@@ -211,7 +211,7 @@ const SortBy = (props) => {
         {SelectedTags() != null &&
           SelectedTags().map((tag) => (
             <Tag href={`/shoppage/products?${toggleCategoryTag(tag)}`}>
-              {tag}
+              {tag} &nbsp;&nbsp;✖
             </Tag>
           ))}
       </ButtonsContainer>
