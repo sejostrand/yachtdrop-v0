@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ports",
+  "info": {
+    "name": "ports",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "port": {
+      "type": "string",
+      "required": true
+    },
+    "suppliers": {
+      "via": "ports",
+      "collection": "suppliers",
+      "dominant": true
+    },
+    "portAddress": {
+      "type": "richtext"
+    }
+  }
+}
