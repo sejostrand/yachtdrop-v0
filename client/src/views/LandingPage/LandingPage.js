@@ -20,9 +20,9 @@ const CoverImg = styled.div`
   display: flex;
   background-image: url(${(props) => props.img});
   background-size: 100% auto;
-  background-position-y: center;
+  background-position-y: 60%;
   width: 100%;
-  min-height: 400px;
+  min-height: 500px;
 `;
 
 const ColorSection = styled.div`
