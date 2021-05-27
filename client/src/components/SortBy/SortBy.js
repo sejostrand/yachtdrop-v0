@@ -16,13 +16,13 @@ const Tag = styled.a`
   text-decoration: none;
   width: fit-content;
   border-radius: 6px;
-  padding: 2px 6px;
+  padding: 2px 7px;
   margin: 2px;
   font-size: 12px;
   margin: 2px 8px;
 
   &:hover {
-    text-decoration: underline;
+    opacity: 0.8;
   }
 `;
 

@@ -93,7 +93,9 @@ const CheckBoxItem = styled.a`
   margin: 2px;
 
   &:hover {
-    text-decoration: underline;
+    text-decoration: ${(props) =>
+      props.checkCategoryTag(props.tag) ? 'none' : 'underline'};
+    opacity: ${(props) => (props.checkCategoryTag(props.tag) ? '0.8' : 'none')};
   }
 `;
 
