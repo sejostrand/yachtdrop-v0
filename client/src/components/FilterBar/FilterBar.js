@@ -93,7 +93,9 @@ const CheckBoxItem = styled.a`
   margin: 2px;
 
   &:hover {
-    text-decoration: underline;
+    text-decoration: ${(props) =>
+      props.checkCategoryTag(props.tag) ? 'none' : 'underline'};
+    opacity: ${(props) => (props.checkCategoryTag(props.tag) ? '0.8' : 'none')};
   }
 `;
 
@@ -124,6 +126,7 @@ const FilterBar = (props) => {
         /(?<=category_tags.categoryTag=)(.*?)(?=&)/g
       );
       this.sort = queryString.match(/(?<=_sort=)(.*?)(?=&)/g);
+      this.search = queryString.match(/(?<=fullDescription=)(.*?)(?=\&)/g);
     }
 
     clear() {
@@ -171,6 +174,10 @@ const FilterBar = (props) => {
       } else {
         this.sort = `${value}:ASC&`;
       }
+    }
+
+    setSearch(value) {
+      this.search = value;
     }
 
     getQueryString() {

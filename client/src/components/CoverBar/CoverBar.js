@@ -2,19 +2,27 @@ import React from 'react';
 import styled from 'styled-components';
 
 //objects
-import Cover from './objects/Cover';
+import COVER from '@assets/img/sea.jpg';
 import Caption from './objects/Caption';
 
 const StyledCoverBar = styled.div`
   width: 100%;
-  z-index: 3;
+`;
+
+const CoverImg = styled.div`
+  display: flex;
+  background-image: url(${(props) => props.img});
+  background-size: 100% auto;
+  background-position-y: 70%;
+  width: 100%;
+  height: 13vw;
 `;
 
 const CoverBar = () => {
   return (
     <StyledCoverBar>
       <Caption />
-      <Cover />
+      <CoverImg img={COVER} />
     </StyledCoverBar>
   );
 };
