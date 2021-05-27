@@ -59,7 +59,7 @@ const Icon = styled.img`
 const Steps = () => {
   return (
     <Container>
-      <Title>How it works.</Title>
+      <Title>How it works?</Title>
       <StepContainer>
         <Step>
           <Icon src={DRINK} />

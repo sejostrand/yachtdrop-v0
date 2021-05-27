@@ -1,5 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import LOGO from '@assets/img/yd-logo-black.png';
+import { keyframes } from 'styled-components';
+
+const popUp = keyframes`
+from {
+  width: 0;
+  height: 0;
+}
+to {
+  width: 50px;
+  height: 50px;
+}
+`;
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,6 +25,9 @@ const Wrapper = styled.div`
   padding: 20px;
   border-radius: 10px;
   transform: translateY(-100px);
+  @media (max-width: 900px) {
+    transform: translateY(-150px);
+  }
 `;
 
 const Content = styled.p`
@@ -24,6 +40,18 @@ const Content = styled.p`
 const ButtonContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
+  margin-top: 15px;
+  @media (max-width: 900px) {
+    flex-flow: column nowrap;
+  }
+`;
+
+//on hover yd icon
+const YD = styled.img`
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin: auto;
 `;
 
 const Button = styled.a`
@@ -41,9 +69,11 @@ const Button = styled.a`
   cursor: pointer;
   align-self: center;
   text-decoration: none;
-  transition: all 0.1s;
+  transition: all 0.2s;
+  transform: scale(0.9);
   &:hover {
     opacity: 0.8;
+    transform: scale(1);
   }
 `;
 
