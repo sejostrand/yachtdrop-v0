@@ -26,6 +26,7 @@ const StepContainer = styled.div`
   margin-top: 30px;
   display: flex;
   flex-flow: row wrap;
+
   @media (max-width: 1300px) {
     flex-flow: column nowrap;
   }
@@ -38,6 +39,11 @@ const Step = styled.div`
   align-items: center;
   margin: 50px;
   width: 300px;
+  transition: ease-in-out 0.1s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 `;
 
 const Display = styled.p`
