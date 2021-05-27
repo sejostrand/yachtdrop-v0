@@ -37,18 +37,16 @@ const ShopPage = (props) => {
       .catch((error) => console.log(error));
   }, []);
 
-  useEffect(
-    () => [
-      setDisplayedProducts(
-        displayedProducts.filter((product) => {
-          return product.display
-            .toLowerCase()
-            .includes(searchInput.toLowerCase());
-        })
-      ),
-    ],
-    [searchInput]
-  );
+  useEffect(() => {
+    const params = new URLSearchParams(document.location.search);
+    setDisplayedProducts(
+      displayedProducts.filter((product) => {
+        return product.display
+          .toLowerCase()
+          .includes(searchInput.toLowerCase());
+      })
+    );
+  }, [searchInput]);
 
   return (
     <>

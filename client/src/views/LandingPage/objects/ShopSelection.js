@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: flex;
-  position: absolute;
+  position: relative;
   flex-flow: column wrap;
   align-self: center;
   justify-content: center;
@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   background-color: white;
   padding: 20px;
   border-radius: 10px;
-  transform: translateY(400px);
+  transform: translateY(-100px);
 `;
 
 const Content = styled.p`
@@ -47,6 +47,17 @@ const Button = styled.a`
   }
 `;
 
+const Caption = styled.div`
+  display: flex;
+  position: relative;
+  flex-flow: row nowrap;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: white;
+  transform: translateY(80px);
+`;
+
 const ShopSelection = () => {
   return (
     <Wrapper>
@@ -58,6 +69,7 @@ const ShopSelection = () => {
         <Button href='/shoppage'>Menorca</Button>
         <Button href='/shoppage'>Monte Negro</Button>
       </ButtonContainer>
+      <Caption>Drinks delivery to where ever you are.</Caption>
     </Wrapper>
   );
 };

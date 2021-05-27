@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from '@assets/theme/theme';
 
-import COVER from '@assets/img/sea.jpg';
+import COVER from '@assets/img/cover.jpg';
 import ShopSelection from './objects/ShopSelection';
 import Steps from './objects/Steps';
 import Division from './objects/Division';
 
 const BodyWrapper = styled.body`
-  background-color: #ffcbc7;
+  background-color: ${COLORS.orange};
   width: 100%;
   height: auto;
   min-height: 85vh;
@@ -22,7 +22,7 @@ const CoverImg = styled.div`
   background-size: 100% auto;
   background-position-y: center;
   width: 100%;
-  height: 30vw;
+  min-height: 400px;
 `;
 
 const ColorSection = styled.div`
@@ -38,7 +38,7 @@ const LandingPage = () => {
       <ColorSection height='52px' color='white' />
       <CoverImg img={COVER} />
       <ShopSelection />
-      <ColorSection height='200px' color='#ffc9c4' />
+      <ColorSection height='152px' color='white' />
       <Steps />
     </BodyWrapper>
   );
