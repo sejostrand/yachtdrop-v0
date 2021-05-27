@@ -39,6 +39,35 @@ const ShopPage = (props) => {
       .catch((error) => console.log(error));
   }, [sortState]);
 
+
+    class TestClass {
+      constructor(x, y) {
+        this.x = x
+        this.y = y
+      }
+
+      calculateSum() {
+        return (this.x + this.y)
+      }
+
+      calculateMin() {
+        return (this.x - this.y)
+      }
+
+      concatNumbs() {
+        return `${this.x}${this.y}`
+      }
+
+      setNumbs() {
+        if (this.x == 500) {
+          this.x = null
+        } else {
+          return false
+        }
+      }
+    }
+
+
   return (
     <>
       <SearchBar products={displayedProducts} />
