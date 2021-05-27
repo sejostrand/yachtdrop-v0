@@ -22,7 +22,16 @@ const CoverImg = styled.div`
   background-size: 100% auto;
   background-position-y: 60%;
   width: 100%;
-  min-height: 500px;
+  height: 500px;
+
+  @media (max-width: 900px) {
+    max-height: 450px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 700px) {
+    max-height: 320px;
+    margin-bottom: 80px;
+  }
 `;
 
 const ColorSection = styled.div`
