@@ -47,7 +47,7 @@ const SearchBar = (props) => {
         <SearchInput
           type='text'
           placeholder='What can we help you find?'
-          onChange={(char) => props.setSearchInput(char.target.value)}
+          onChange={(e) => props.setSearchInput(e.target.value)}
         />
       )}
       <CartLink onCart={() => setShowCart(!showCart)} />
