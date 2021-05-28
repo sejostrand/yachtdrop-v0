@@ -36,7 +36,12 @@ const Price = styled.div`
   margin: 3px;
 `;
 
+const Button = styled.button`
+  margin: 20px;
+`;
+
 const cartItem = (props) => {
+
   return (
     <Container>
       <ImgWrapper src={props.imgUrl} />
@@ -45,6 +50,7 @@ const cartItem = (props) => {
         <SubDisplay>{props.subDisplay}</SubDisplay>
         <Price>{props.price}</Price>
       </Details>
+      <Button>remove</Button>
     </Container>
   );
 };

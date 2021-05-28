@@ -1,9 +1,10 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { COLORS } from '@assets/theme/theme';
 import CartItem from './objects/CartItem';
 import axios from 'axios';
+import { CartContext } from '../../assets/utils/CartContext';
 
 const Container = styled.div`
   margin-top: 97px;
@@ -61,15 +62,23 @@ const Total = styled.div`
   font-weight: bold;
 `;
 
+
+
+
 const CartBar = (props) => {
+  const [cart, setCart] = useContext(CartContext);
+  const totalPrice = cart.reduce((acc, curr) => acc + curr.price, 0);
+
+
   return (
     <Container showCart={props.showCart}>
       <ButtonContainer>
         <Checkout>Proceed to chekcout</Checkout>
-        <Total> Total: $ 200</Total>
+        <div>Items in Cart: {cart.length}</div>
+        <Total> Total: $ {totalPrice}</Total>
       </ButtonContainer>
       <ListContainer>
-        {props.cartItems.map((product) => (
+        {cart.map((product) => (
           <CartItem
             id={product.id}
             fullDescription={product.fullDescription}
@@ -77,7 +86,7 @@ const CartBar = (props) => {
             subDisplay={product.subDisplay}
             price={product.price}
             packSize={product.packSize}
-            imgUrl={'http://localhost:1337' + product.productImg.url}
+            imgUrl={'http://localhost:1337' + product.imgUrl}
           />
         ))}
       </ListContainer>
