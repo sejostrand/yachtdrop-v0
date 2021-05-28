@@ -26,6 +26,7 @@ const ShopPage = (props) => {
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const [filterBar, setFilterBar] = useState(true);
+  const [showCart, setShowCart] = useState(false);
 
   //GET ALL PRODUCTS
   useEffect(() => {
@@ -51,7 +52,17 @@ const ShopPage = (props) => {
 
   return (
     <>
-      <SearchBar setSearchInput={setSearchInput} products={displayedProducts} />
+      <SearchBar
+        setSearchInput={setSearchInput}
+        products={displayedProducts}
+        setShowCart={setShowCart}
+        showCart={showCart}
+      />
+      <CartBar
+        cartItems={displayedProducts}
+        showCart={showCart}
+        setShowCart={setShowCart}
+      />
       <BodyWrapper>
         <FilterBar filterBar={filterBar} />
         <FilterToggle filterBar={filterBar} setFilterBar={setFilterBar} />

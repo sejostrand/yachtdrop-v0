@@ -6,19 +6,21 @@ import CartItem from './objects/CartItem';
 import axios from 'axios';
 
 const Container = styled.div`
-  margin-top: 44px;
+  margin-top: 97px;
   display: flex;
   flex-flow: column nowrap;
   right: 0;
   position: fixed;
+  z-index: 10;
   height: 90vh;
   padding-bottom: 50px;
-  width: ${(props) => (props.showCart ? '500px' : '0')};
+  width: 500px;
   background-color: ${COLORS.white};
   border-left: 3px solid black;
   border-top: 18px solid black;
   overflow: hidden;
-  transition: width 0.2s;
+  transform: ${(props) => (props.showCart ? 'none' : 'translateX(500px)')};
+  transition: ease-in-out 0.1s;
 `;
 
 const ListContainer = styled.div`
