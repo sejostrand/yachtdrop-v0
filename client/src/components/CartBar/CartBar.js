@@ -18,7 +18,7 @@ const Container = styled.div`
   width: 500px;
   background-color: ${COLORS.white};
   border-left: 3px solid black;
-  border-top: 18px solid black;
+  border-top: 19px solid black;
   overflow: hidden;
   transform: ${(props) => (props.showCart ? 'none' : 'translateX(500px)')};
   transition: ease-in-out 0.1s;
