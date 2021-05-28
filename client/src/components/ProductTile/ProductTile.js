@@ -30,10 +30,23 @@ const ProductTile = (props) => {
   const user = useCurrentUser();
   const [cart, setCart] = useContext(CartContext)
 
-  const addToCart = () => {
+  /* const onAdd = () => {
     const product = { id: props.id, display: props.display, subDisplay: props.subDisplay, price: props.price, imgUrl: props.imgUrl };
     setCart(currentState => [...currentState, product])
-  }
+  } */
+
+  const onAdd = (product) => {
+    const exist = cart.find((x) => x.id === product.id);
+    if (exist) {
+      setCart(
+        cart.map((x) =>
+          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
+        )
+      );
+    } else {
+      setCart([...cart, { ...product, qty: 1 }]);
+    }
+  };
 
 
   //POST PRODUCT
@@ -69,7 +82,7 @@ const ProductTile = (props) => {
           <ProductSubDisplay>{props.subDisplay}</ProductSubDisplay>
           <ProductPrice>€ {props.price.toFixed(2)}</ProductPrice>
         </DetailsWrapper>
-        <AddButtonWrapper onClick={addToCart}>ADD</AddButtonWrapper>
+        <AddButtonWrapper onClick={() => onAdd(props.id)}>ADD</AddButtonWrapper>
       </TileWrapper>
     </>
   );

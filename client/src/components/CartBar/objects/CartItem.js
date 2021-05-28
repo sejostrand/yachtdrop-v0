@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
+import { CartContext } from '../../../assets/utils/CartContext';
 
 const Container = styled.div`
   display: flex;
@@ -37,10 +38,25 @@ const Price = styled.div`
 `;
 
 const Button = styled.button`
-  margin: 20px;
+  padding: 5px;
+  margin-left: 200px;
 `;
 
-const cartItem = (props) => {
+const CartItem = (props) => {
+  const [cart, setCart] = useContext(CartContext);
+
+  const onRemove = (product) => {
+    const exist = cart.find((x) => x.id === product.id);
+    if (exist.qty === 1) {
+      setCart(cart.filter((x) => x.id !== product.id));
+    } else {
+      setCart(
+        cart.map((x) =>
+          x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
+        )
+      );
+    }
+  };
 
   return (
     <Container>
@@ -50,9 +66,9 @@ const cartItem = (props) => {
         <SubDisplay>{props.subDisplay}</SubDisplay>
         <Price>{props.price}</Price>
       </Details>
-      <Button>remove</Button>
+      <Button onClick={(product) => onRemove(product)}>remove</Button>
     </Container>
   );
 };
 
-export default cartItem;
+export default CartItem;
