@@ -110,7 +110,6 @@ const CoverBar = () => {
 
   const getImg = () => {
     const params = new ParamsFilter(window.location.search);
-    console.log(params.category);
     if (params.category !== null) {
       switch (params.category[0]) {
         case 'wine':

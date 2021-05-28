@@ -126,14 +126,13 @@ const FilterBar = (props) => {
         /(?<=category_tags.categoryTag=)(.*?)(?=&)/g
       );
       this.sort = queryString.match(/(?<=_sort=)(.*?)(?=&)/g);
-      this.search = queryString.match(/(?<=fullDescription=)(.*?)(?=\&)/g);
+      this.search = queryString.match(/(?<=search\?_q=)(.*?)(?=\&)/g);
     }
 
     clear() {
       this.category = null;
       this.subCategory = null;
       this.categoryTags = null;
-      this.sort = null;
     }
 
     setCategory(value) {
@@ -177,11 +176,12 @@ const FilterBar = (props) => {
     }
 
     setSearch(value) {
+      this.clear();
       this.search = value;
     }
 
     getQueryString() {
-      let result = '';
+      let result = 'products?';
       if (this.category != null) {
         result = result.concat(`category.category=${this.category}&`);
       }
@@ -243,7 +243,7 @@ const FilterBar = (props) => {
         <PrimarySection>
           <PrimaryButton
             tag=''
-            href={`/shoppage/products?`}
+            href={`/shoppage/`}
             checkCategory={checkCategory}
           >
             Clear filters
@@ -251,35 +251,35 @@ const FilterBar = (props) => {
           <PrimaryButton
             tag='wine'
             checkCategory={checkCategory}
-            href={`/shoppage/products?${toggleCategory('wine')}`}
+            href={`/shoppage/${toggleCategory('wine')}`}
           >
             Wine
           </PrimaryButton>
           <PrimaryButton
             tag='spirit'
             checkCategory={checkCategory}
-            href={`/shoppage/products?${toggleCategory('spirit')}`}
+            href={`/shoppage/${toggleCategory('spirit')}`}
           >
             Spirits
           </PrimaryButton>
           <PrimaryButton
             tag='beer'
             checkCategory={checkCategory}
-            href={`/shoppage/products?${toggleCategory('beer')}`}
+            href={`/shoppage/${toggleCategory('beer')}`}
           >
             Beer
           </PrimaryButton>
           <PrimaryButton
             tag='soft-drink'
             checkCategory={checkCategory}
-            href={`/shoppage/products?${toggleCategory('soft-drink')}`}
+            href={`/shoppage/${toggleCategory('soft-drink')}`}
           >
             Soft Drinks
           </PrimaryButton>
           <PrimaryButton
             tag='other'
             checkCategory={checkCategory}
-            href={`/shoppage/products?${toggleCategory('other')}`}
+            href={`/shoppage/${toggleCategory('other')}`}
           >
             Other
           </PrimaryButton>
@@ -293,35 +293,35 @@ const FilterBar = (props) => {
               <SecondaryButton
                 tag='red'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${toggleSubCategory('red')}`}
+                href={`/shoppage/${toggleSubCategory('red')}`}
               >
                 Red
               </SecondaryButton>
               <SecondaryButton
                 tag='white'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${toggleSubCategory('white')}`}
+                href={`/shoppage/${toggleSubCategory('white')}`}
               >
                 White
               </SecondaryButton>
               <SecondaryButton
                 tag='rose'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${toggleSubCategory('rose')}`}
+                href={`/shoppage/${toggleSubCategory('rose')}`}
               >
                 Rose
               </SecondaryButton>
               <SecondaryButton
                 tag='champagne'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${toggleSubCategory('champagne')}`}
+                href={`/shoppage/${toggleSubCategory('champagne')}`}
               >
                 Champagne
               </SecondaryButton>
               <SecondaryButton
                 tag='sparkling'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${toggleSubCategory('sparkling')}`}
+                href={`/shoppage/${toggleSubCategory('sparkling')}`}
               >
                 Sparkling
               </SecondaryButton>
@@ -333,7 +333,7 @@ const FilterBar = (props) => {
                 <CheckBoxItem
                   tag={tag}
                   checkCategoryTag={checkCategoryTag}
-                  href={`/shoppage/products?${toggleCategoryTag(tag)}`}
+                  href={`/shoppage/${toggleCategoryTag(tag)}`}
                 >
                   {tag}
                 </CheckBoxItem>
@@ -346,7 +346,7 @@ const FilterBar = (props) => {
                 <CheckBoxItem
                   tag={tag}
                   checkCategoryTag={checkCategoryTag}
-                  href={`/shoppage/products?${toggleCategoryTag(tag)}`}
+                  href={`/shoppage/${toggleCategoryTag(tag)}`}
                 >
                   {tag}
                 </CheckBoxItem>
@@ -359,7 +359,7 @@ const FilterBar = (props) => {
                 <CheckBoxItem
                   tag={tag}
                   checkCategoryTag={checkCategoryTag}
-                  href={`/shoppage/products?${toggleCategoryTag(tag)}`}
+                  href={`/shoppage/${toggleCategoryTag(tag)}`}
                 >
                   {tag}
                 </CheckBoxItem>
@@ -372,7 +372,7 @@ const FilterBar = (props) => {
                 <CheckBoxItem
                   tag={tag}
                   checkCategoryTag={checkCategoryTag}
-                  href={`/shoppage/products?${toggleCategoryTag(tag)}`}
+                  href={`/shoppage/${toggleCategoryTag(tag)}`}
                 >
                   {tag}
                 </CheckBoxItem>
@@ -389,35 +389,35 @@ const FilterBar = (props) => {
               <SecondaryButton
                 tag='gin'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${toggleSubCategory('gin')}`}
+                href={`/shoppage/${toggleSubCategory('gin')}`}
               >
                 Gin
               </SecondaryButton>
               <SecondaryButton
                 tag='rum'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${toggleSubCategory('rum')}`}
+                href={`/shoppage/${toggleSubCategory('rum')}`}
               >
                 Rum
               </SecondaryButton>
               <SecondaryButton
                 tag='tequila'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${toggleSubCategory('tequila')}`}
+                href={`/shoppage/${toggleSubCategory('tequila')}`}
               >
                 Tequila
               </SecondaryButton>
               <SecondaryButton
                 tag='vodka'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${toggleSubCategory('vodka')}`}
+                href={`/shoppage/${toggleSubCategory('vodka')}`}
               >
                 Vodka
               </SecondaryButton>
               <SecondaryButton
                 tag='whiskey'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${toggleSubCategory('whiskey')}`}
+                href={`/shoppage/${toggleSubCategory('whiskey')}`}
               >
                 Whiskey
               </SecondaryButton>
@@ -433,21 +433,21 @@ const FilterBar = (props) => {
               <SecondaryButton
                 tag='larger'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${toggleSubCategory('larger')}`}
+                href={`/shoppage/${toggleSubCategory('larger')}`}
               >
                 Larger
               </SecondaryButton>
               <SecondaryButton
                 tag='ale'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${toggleSubCategory('ale')}`}
+                href={`/shoppage/${toggleSubCategory('ale')}`}
               >
                 Ale
               </SecondaryButton>
               <SecondaryButton
                 tag='cider'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${toggleSubCategory('cider')}`}
+                href={`/shoppage/${toggleSubCategory('cider')}`}
               >
                 Cider
               </SecondaryButton>
@@ -463,28 +463,28 @@ const FilterBar = (props) => {
               <SecondaryButton
                 tag='mixers'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${toggleSubCategory('mixer')}`}
+                href={`/shoppage/${toggleSubCategory('mixer')}`}
               >
                 Mixers
               </SecondaryButton>
               <SecondaryButton
                 tag='juice'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${toggleSubCategory('juice')}`}
+                href={`/shoppage/${toggleSubCategory('juice')}`}
               >
                 Juice
               </SecondaryButton>
               <SecondaryButton
                 tag='water'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${toggleSubCategory('water')}`}
+                href={`/shoppage/${toggleSubCategory('water')}`}
               >
                 Water
               </SecondaryButton>
               <SecondaryButton
                 tag='fizzy-drinks'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${toggleSubCategory('fizzy-drink')}`}
+                href={`/shoppage/${toggleSubCategory('fizzy-drink')}`}
               >
                 Fizzy Drinks
               </SecondaryButton>
@@ -500,7 +500,7 @@ const FilterBar = (props) => {
               <SecondaryButton
                 tag='whatever'
                 checkSubCategory={checkSubCategory}
-                href={`/shoppage/products?${toggleSubCategory('whatever')}`}
+                href={`/shoppage/${toggleSubCategory('whatever')}`}
               >
                 Whatever
               </SecondaryButton>
