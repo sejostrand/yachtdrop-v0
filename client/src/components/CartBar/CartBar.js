@@ -73,7 +73,7 @@ const CartBar = (props) => {
       {cart.length === 0 && <div>Cart is empty</div>}
       {cart.length !== 0 && (
         <>
-        <Checkout>Proceed to chekcout</Checkout>
+        <Checkout>Proceed to checkout</Checkout>
         <Total> Total: $ {totalPrice}</Total>
         </>)}
       </ButtonContainer>
