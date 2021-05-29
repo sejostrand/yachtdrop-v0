@@ -5,7 +5,7 @@ import {
   useCurrentUserData,
   useDispatchCurrentUser,
 } from '@assets/utils/CurrentUser';
-import { CartContext } from '@assets/utils/CartContext'
+import { CartContext } from '../../assets/utils/CartContext'
 
 //import styles
 import {
@@ -82,7 +82,7 @@ const ProductTile = (props) => {
           <ProductSubDisplay>{props.subDisplay}</ProductSubDisplay>
           <ProductPrice>€ {props.price.toFixed(2)}</ProductPrice>
         </DetailsWrapper>
-        <AddButtonWrapper onClick={() => onAdd(props.id)}>ADD</AddButtonWrapper>
+        <AddButtonWrapper onClick={(product) => onAdd(product)}>ADD</AddButtonWrapper>
       </TileWrapper>
     </>
   );
