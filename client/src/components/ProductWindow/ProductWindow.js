@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { COLORS, FONTS } from '@assets/theme/theme';
 
 const Container = styled.div`
   position: fixed;
@@ -7,6 +8,9 @@ const Container = styled.div`
   left: 0;
   z-index: 12;
   display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
   background-color: rgb(0, 0, 0, 0.4);
@@ -14,25 +18,38 @@ const Container = styled.div`
 
 const Window = styled.div`
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   background-color: white;
-  margin: auto;
   border-radius: 10px;
-  padding: 10px;
-  align-items: start;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Close = styled.div`
+  display: flex;
+  font-size: 25px;
+  font-weight: bold;
+  color: black;
+  width: 100%;
+  justify-content: flex-end;
+  cursor: pointer;
+  padding-right: 5px;
 `;
 
 const Section = styled.div`
   display: flex;
-  flex-flow: column wrap;
-  margin: auto;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  margin: 10px;
+  width: 300px;
+  height: 400px;
 `;
 
 const ProductImg = styled.img`
-  height: 50vh;
+  height: 400px;
   width: auto;
   display: flex;
+  margin: 10px;
 `;
 
 const Cross = styled.div`
@@ -43,43 +60,103 @@ const Cross = styled.div`
 `;
 
 const FullDescription = styled.h1`
+  display: flex;
+  flex-flow: row wrap;
   font-size: 22px;
-  top: 10px;
-  margin-top: -30px;
-  margin-bottom: 20px;
+  margin: 5px;
 `;
 
-const Display = styled.p`
+const Field = styled.p`
   font-size: 18px;
   margin: 5px;
 `;
 
-const Price = styled.p`
-  font-size: 18px;
-  margin: 5px;
+const SubHeading = styled.p`
+  font-size: 10px;
+  color: gray;
 `;
 
-const PackSize = styled.p`
-  font-size: 18px;
-  margin: 5px;
+const AddToCart = styled.div`
+  background-color: ${COLORS.orange};
+  color: white;
+  font-family: ${FONTS.secondaryFont};
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+
+  padding: 3px 0px;
+  text-align: center;
+
+  border-radius: 4px;
+  width: 280px;
+  height: auto;
+  margin: 3px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+const AddFav = styled.div`
+  background-color: orange;
+  color: white;
+  font-family: ${FONTS.secondaryFont};
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+
+  padding: 3px 0px;
+  text-align: center;
+
+  border-radius: 4px;
+  width: 280px;
+  height: auto;
+  margin: 3px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+const ContentContainer = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
 `;
 
 const ProductWindow = (props) => {
   return (
-    <Container onClick={() => props.setIsVisible(false)}>
-      <Window onClick={() => props.setIsVisible(true)}>
-        <Cross onClick={() => props.setIsVisible(false)} />
+    <Container>
+      <Window>
+        <ProductImg src={props.imgUrl} />
         <Section>
-          <ProductImg src={props.imgUrl} />
-        </Section>
-        <Section>
-          <FullDescription>{props.fullDescription}</FullDescription>
-          {props.id}
-          <Display>{`Category: ${props.display}`}</Display>
-          <Price>
-            <p>{`Price: ${props.price}$`}</p>
-          </Price>
-          <PackSize>{`Pack size: ${props.packSize}`}</PackSize>
+          <Close onClick={() => props.setIsVisible(false)}>✖</Close>
+          <ContentContainer>
+            <SubHeading>Description</SubHeading>
+            <FullDescription>{props.fullDescription}</FullDescription>
+            <SubHeading>Display</SubHeading>
+            <Field>{props.display}</Field>
+            <SubHeading>Price</SubHeading>
+            <Field>
+              <p>{`${props.price}$`}</p>
+            </Field>
+            <SubHeading>Container Volume</SubHeading>
+            <Field>10ml</Field>
+            <SubHeading>Pack Size</SubHeading>
+            <Field>{`${props.packSize}`}</Field>
+          </ContentContainer>
+          <ButtonContainer>
+            <AddToCart onClick={() => console.log('hello')}>
+              Add to Cart
+            </AddToCart>
+            <AddFav>Save as Favourite</AddFav>
+          </ButtonContainer>
         </Section>
       </Window>
     </Container>
