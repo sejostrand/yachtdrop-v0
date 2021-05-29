@@ -52,6 +52,13 @@ const CartLink = styled.a`
 `;
 
 const SearchBar = (props) => {
+  const convertSearch = (input) => {
+    const words = input.split(' ');
+    let string = '';
+    words.forEach((word) => (string = string.concat(`${word}+`)));
+    return string.slice(0, -1);
+  };
+
   return (
     <StyledSearchBar>
       <LocationTag />
@@ -60,7 +67,7 @@ const SearchBar = (props) => {
           id='search'
           type='text'
           placeholder='What can we help you find?'
-          onChange={(e) => props.setSearchInput(e.target.value)}
+          onChange={(e) => props.setSearchInput(convertSearch(e.target.value))}
         />
       )}
       <CartLink onClick={() => props.setShowCart(!props.showCart)}>

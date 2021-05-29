@@ -113,34 +113,15 @@ const ShopPage = (props) => {
   //GET ALL PRODUCTS
   useEffect(() => {
     const params = new URLSearchParams(document.location.search);
-    const url = `http://localhost:1337/products?${params.toString()}`;
-    const getProductData = axios
-      .get(url)
-      .then((response) => setDisplayedProducts(response.data))
-      .catch((error) => console.log(error));
-  }, []);
-
-  useEffect(() => {
-    const words = searchInput.split(' ');
-    let string = '';
-    words.forEach((word) => (string = string.concat(`${word}+`)));
-    const url = `http://localhost:1337/products?_q=${string.slice(0, -1)}`;
+    const url =
+      searchInput === ''
+        ? `http://localhost:1337/products?${params.toString()}`
+        : `http://localhost:1337/products?_q=${searchInput}`;
     const getProductData = axios
       .get(url)
       .then((response) => setDisplayedProducts(response.data))
       .catch((error) => console.log(error));
   }, [searchInput]);
-
-  // useEffect(() => {
-  //   const params = new URLSearchParams(document.location.search);
-  //   setDisplayedProducts(
-  //     displayedProducts.filter((product) => {
-  //       return product.display
-  //         .toLowerCase()
-  //         .includes(searchInput.toLowerCase());
-  //     })
-  //   );
-  // }, [searchInput]);
 
   return (
     <>
