@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { COLORS, FONTS } from '@assets/theme/theme';
+import { CartContext } from '../../assets/utils/CartContext'
 
 const Container = styled.div`
   position: fixed;
@@ -131,6 +132,22 @@ const ButtonContainer = styled.div`
 `;
 
 const ProductWindow = (props) => {
+  const [cart, setCart] = useContext(CartContext);
+
+  const onAdd = () => {
+    const product = { id: props.id, display: props.display, subDisplay: props.subDisplay, price: props.price, imgUrl: props.imgUrl };
+    const exist = cart.find((x) => x.id === product.id);
+    if (exist) {
+      setCart(
+        cart.map((x) =>
+          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
+        )
+      );
+    } else {
+      setCart([...cart, { ...product, qty: 1 }]);
+    }
+  };
+
   return (
     <Container>
       <Window>
@@ -152,7 +169,7 @@ const ProductWindow = (props) => {
             <Field>{`${props.packSize}`}</Field>
           </ContentContainer>
           <ButtonContainer>
-            <AddToCart onClick={() => console.log('hello')}>
+            <AddToCart onClick={() => onAdd(props.product)}>
               Add to Cart
             </AddToCart>
             <AddFav>Save as Favourite</AddFav>
