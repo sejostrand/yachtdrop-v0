@@ -65,18 +65,22 @@ const Total = styled.div`
 
 const CartBar = (props) => {
   const [cart, setCart] = useContext(CartContext);
-  const totalPrice = cart.reduce((acc, curr) => acc + curr.price, 0);
+  const totalPrice = cart.reduce((acc, curr) => acc + curr.qty * curr.price, 0);
 
   return (
     <Container showCart={props.showCart}>
       <ButtonContainer>
+      {cart.length === 0 && <div>Cart is empty</div>}
+      {cart.length !== 0 && (
+        <>
         <Checkout>Proceed to chekcout</Checkout>
-        <div>Items in Cart: {cart.length}</div>
         <Total> Total: $ {totalPrice}</Total>
+        </>)}
       </ButtonContainer>
       <ListContainer>
         {cart.map((product, index) => (
           <CartItem
+            qty={product.qty}
             key={index}
             id={product.id}
             fullDescription={product.fullDescription}

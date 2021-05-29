@@ -120,6 +120,7 @@ const ShopPage = (props) => {
       .catch((error) => console.log(error));
   }, [searchInput]);
 
+
   return (
     <>
       <SearchBar
@@ -128,7 +129,7 @@ const ShopPage = (props) => {
         setShowCart={setShowCart}
         showCart={showCart}
       />
-      <CartBar cartItems={displayedProducts} showCart={showCart} />
+      <CartBar showCart={showCart} />
       <BodyWrapper>
         <FilterBar filterBar={filterBar} />
         <FilterToggle filterBar={filterBar} setFilterBar={setFilterBar} />

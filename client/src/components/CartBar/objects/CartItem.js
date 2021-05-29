@@ -22,6 +22,14 @@ const Details = styled.div`
   font-size: 16px;
 `;
 
+const ButtonContainer = styled.div`
+  margin: 0 15px;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: flex-start;
+`;
+
 const Display = styled.div`
   font-size: 10px;
   margin: 3px;
@@ -37,15 +45,23 @@ const Price = styled.div`
   margin: 3px;
 `;
 
-const Button = styled.button`
-  padding: 5px;
-  margin-left: 200px;
+
+const QTY = styled.div`
+  font-size: 16px;
 `;
+
+const Buttons = styled.button`
+  padding: 5px 10px;
+  margin: 0 50px;
+  background-color: white;
+`;
+
 
 const CartItem = (props) => {
   const [cart, setCart] = useContext(CartContext);
 
-  const onRemove = (product) => {
+  const onRemove = () => {
+    const product = { id: props.id, display: props.display, subDisplay: props.subDisplay, price: props.price, imgUrl: props.imgUrl, qty: props.qty };
     const exist = cart.find((x) => x.id === product.id);
     if (exist.qty === 1) {
       setCart(cart.filter((x) => x.id !== product.id));
@@ -58,6 +74,20 @@ const CartItem = (props) => {
     }
   };
 
+  const onAdd = () => {
+    const product = { id: props.id, display: props.display, subDisplay: props.subDisplay, price: props.price, imgUrl: props.imgUrl };
+    const exist = cart.find((x) => x.id === product.id);
+    if (exist) {
+      setCart(
+        cart.map((x) =>
+          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
+        )
+      );
+    } else {
+      setCart([...cart, { ...product, qty: 1 }]);
+    }
+  };
+
   return (
     <Container>
       <ImgWrapper src={props.imgUrl} />
@@ -66,7 +96,11 @@ const CartItem = (props) => {
         <SubDisplay>{props.subDisplay}</SubDisplay>
         <Price>{props.price}</Price>
       </Details>
-      <Button onClick={(product) => onRemove(product)}>remove</Button>
+      <ButtonContainer>
+        <Buttons onClick={() => onRemove(props.product)}>-</Buttons>
+        <QTY>{props.qty}</QTY>
+        <Buttons onClick={() => onAdd(props.product)}>+</Buttons>
+      </ButtonContainer>
     </Container>
   );
 };

@@ -35,7 +35,8 @@ const ProductTile = (props) => {
     setCart(currentState => [...currentState, product])
   } */
 
-  const onAdd = (product) => {
+  const onAdd = () => {
+    const product = { id: props.id, display: props.display, subDisplay: props.subDisplay, price: props.price, imgUrl: props.imgUrl };
     const exist = cart.find((x) => x.id === product.id);
     if (exist) {
       setCart(
