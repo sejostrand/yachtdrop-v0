@@ -23,6 +23,7 @@ const AppWrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;
   width: auto;
+  overflow-x: hidden;
 `;
 
 function App() {

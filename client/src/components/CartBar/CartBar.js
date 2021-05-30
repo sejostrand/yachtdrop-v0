@@ -7,13 +7,13 @@ import axios from 'axios';
 import { CartContext } from '@assets/utils/CartContext';
 
 const Container = styled.div`
-  margin-top: 97px;
+  margin-top: 0px;
   display: flex;
   flex-flow: column nowrap;
   right: 0;
   position: fixed;
   z-index: 10;
-  height: 90vh;
+  height: 100vh;
   padding-bottom: 50px;
   width: 500px;
   background-color: ${COLORS.white};
@@ -22,6 +22,10 @@ const Container = styled.div`
   overflow: hidden;
   transform: ${(props) => (props.showCart ? 'none' : 'translateX(500px)')};
   transition: ease-in-out 0.1s;
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 const ListContainer = styled.div`
@@ -51,6 +55,7 @@ const Checkout = styled.div`
   padding: 5px;
   justify-content: center;
   cursor: pointer;
+  border-radius: 3px;
 
   &:hover {
     opacity: 0.8;
@@ -62,6 +67,21 @@ const Total = styled.div`
   font-weight: bold;
 `;
 
+const HideButton = styled.div`
+  background-color: ${COLORS.orange};
+  color: white;
+  width: fit-content;
+  padding: 3px 15px;
+  margin: 20px 40px 0px 40px;
+  border-radius: 3px;
+  font-size: 30px;
+  text-align: center;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
 const CartBar = (props) => {
   const [cart, setCart] = useContext(CartContext);
   const totalPrice = cart.reduce((acc, curr) => acc + curr.qty * curr.price, 0);
@@ -69,12 +89,13 @@ const CartBar = (props) => {
 
   return (
     <Container showCart={props.showCart}>
+      <HideButton onClick={() => props.setShowCart(false)}>></HideButton>
       <ButtonContainer>
         {cart.length === 0 && <div>Cart is empty</div>}
         {cart.length !== 0 && (
           <>
             <Checkout>Proceed to checkout</Checkout>
-            <Total> Total: $ {totalPrice}</Total>
+            <Total> Total € {totalPrice.toFixed(2)}</Total>
           </>
         )}
       </ButtonContainer>

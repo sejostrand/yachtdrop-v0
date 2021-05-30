@@ -45,7 +45,6 @@ const Price = styled.div`
   margin: 3px;
 `;
 
-
 const QTY = styled.div`
   font-size: 16px;
 `;
@@ -56,12 +55,18 @@ const Buttons = styled.button`
   background-color: white;
 `;
 
-
 const CartItem = (props) => {
   const [cart, setCart] = useContext(CartContext);
 
   const onRemove = () => {
-    const product = { id: props.id, display: props.display, subDisplay: props.subDisplay, price: props.price, imgUrl: props.imgUrl, qty: props.qty };
+    const product = {
+      id: props.id,
+      display: props.display,
+      subDisplay: props.subDisplay,
+      price: props.price,
+      imgUrl: props.imgUrl,
+      qty: props.qty,
+    };
     const exist = cart.find((x) => x.id === product.id);
     if (exist.qty === 1) {
       setCart(cart.filter((x) => x.id !== product.id));
@@ -75,7 +80,13 @@ const CartItem = (props) => {
   };
 
   const onAdd = () => {
-    const product = { id: props.id, display: props.display, subDisplay: props.subDisplay, price: props.price, imgUrl: props.imgUrl };
+    const product = {
+      id: props.id,
+      display: props.display,
+      subDisplay: props.subDisplay,
+      price: props.price,
+      imgUrl: props.imgUrl,
+    };
     const exist = cart.find((x) => x.id === product.id);
     if (exist) {
       setCart(
@@ -94,7 +105,7 @@ const CartItem = (props) => {
       <Details>
         <Display>{props.display}</Display>
         <SubDisplay>{props.subDisplay}</SubDisplay>
-        <Price>{props.price}</Price>
+        <Price>€ {props.price.toFixed(2)}</Price>
       </Details>
       <ButtonContainer>
         <Buttons onClick={() => onRemove(props.product)}>-</Buttons>
