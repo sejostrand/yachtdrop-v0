@@ -1,9 +1,8 @@
 import React from 'react';
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { COLORS } from '@assets/theme/theme';
 import CartItem from './objects/CartItem';
-import axios from 'axios';
 import { CartContext } from '@assets/utils/CartContext';
 
 const Container = styled.div`
@@ -119,7 +118,7 @@ const CartBar = (props) => {
 
   return (
     <Container showCart={props.showCart}>
-      <HideButton onClick={() => props.setShowCart(false)}>></HideButton>
+      <HideButton onClick={() => props.setShowCart(false)}>x</HideButton>
       <ButtonContainer>
         {cart.length !== 0 && (
           <>

@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import styled, { withTheme } from 'styled-components';
-import { COLORS, FONTS } from '@assets/theme/theme';
 import axios from 'axios';
 
 // IMPORT COMPONENTS
-import NavBar from '@components/NavBar/NavBar';
 import SearchBar from '@components/SearchBar/SearchBar';
 import FilterBar from '@components/FilterBar/FilterBar.js';
 import CoverBar from '@components/CoverBar/CoverBar';
