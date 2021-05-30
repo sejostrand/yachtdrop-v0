@@ -36,7 +36,8 @@ const ListContainer = styled.div`
   height: auto;
   padding: 5px;
   overflow-y: scroll;
-  border-radius: 7px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
 `;
 
 const ButtonContainer = styled.div`
@@ -93,12 +94,14 @@ const ListTitle = styled.div`
   margin: 0 40px;
   padding: 2px 10px;
   font-weight: bold;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
 `;
 
 const EmptyCaption = styled.p`
-  font-size: 20px;
+  font-size: 18px;
   color: black;
-  margin: 3px;
+  margin: 20px 5px;
 `;
 
 const CartBar = (props) => {
