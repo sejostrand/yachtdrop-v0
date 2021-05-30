@@ -7,7 +7,7 @@ import axios from 'axios';
 import { CartContext } from '@assets/utils/CartContext';
 
 const Container = styled.div`
-  margin-top: 0px;
+  margin-top: 97px;
   display: flex;
   flex-flow: column nowrap;
   right: 0;
@@ -18,7 +18,7 @@ const Container = styled.div`
   width: 500px;
   background-color: ${COLORS.white};
   border-left: 3px solid black;
-  border-top: 19px solid black;
+  border-top: 19.5px solid black;
   overflow: hidden;
   transform: ${(props) => (props.showCart ? 'none' : 'translateX(500px)')};
   transition: ease-in-out 0.1s;
@@ -68,13 +68,13 @@ const Total = styled.div`
 `;
 
 const HideButton = styled.div`
-  background-color: ${COLORS.orange};
+  background-color: ${COLORS.green};
   color: white;
   width: fit-content;
-  padding: 3px 15px;
+  padding: 0px 30px;
   margin: 20px 40px 0px 40px;
   border-radius: 3px;
-  font-size: 30px;
+  font-size: 25px;
   text-align: center;
   cursor: pointer;
   &:hover {

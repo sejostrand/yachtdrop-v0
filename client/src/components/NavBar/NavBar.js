@@ -21,8 +21,10 @@ const StyledNavBar = styled.nav`
   justify-content: space-between;
   top: 0;
   display: flex;
+  position: -webkit-sticky;
   position: sticky;
   z-index: 10;
+  overflow-x: hidden;
 `;
 
 const NavMenu = styled.div`

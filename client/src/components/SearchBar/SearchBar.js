@@ -29,12 +29,14 @@ const StyledSearchBar = styled.div`
   width: 100vw;
   background-color: white;
   display: flex;
+  position: -webkit-sticky;
   position: sticky;
   top: 52px;
   width: 100%;
   z-index: 9;
   box-shadow: 0px 0px 7px;
   justify-content: space-between;
+  overflow-x: hidden;
 `;
 
 const CartLink = styled.a`
