@@ -5,7 +5,7 @@ import {
   useCurrentUserData,
   useDispatchCurrentUser,
 } from '@assets/utils/CurrentUser';
-import { CartContext } from '../../assets/utils/CartContext'
+import { CartContext } from '../../assets/utils/CartContext';
 
 //import styles
 import {
@@ -28,7 +28,7 @@ import ProductWindow from '@components/ProductWindow/ProductWindow';
 const ProductTile = (props) => {
   const [isVisible, setIsVisible] = useState(false);
   const user = useCurrentUser();
-  const [cart, setCart] = useContext(CartContext)
+  const [cart, setCart] = useContext(CartContext);
 
   /* const onAdd = () => {
     const product = { id: props.id, display: props.display, subDisplay: props.subDisplay, price: props.price, imgUrl: props.imgUrl };
@@ -36,7 +36,13 @@ const ProductTile = (props) => {
   } */
 
   const onAdd = () => {
-    const product = { id: props.id, display: props.display, subDisplay: props.subDisplay, price: props.price, imgUrl: props.imgUrl };
+    const product = {
+      id: props.id,
+      display: props.display,
+      subDisplay: props.subDisplay,
+      price: props.price,
+      imgUrl: props.imgUrl,
+    };
     const exist = cart.find((x) => x.id === product.id);
     if (exist) {
       setCart(
@@ -47,8 +53,8 @@ const ProductTile = (props) => {
     } else {
       setCart([...cart, { ...product, qty: 1 }]);
     }
+    //document.getElementById('cartLink').animate(keyframes);
   };
-
 
   //POST PRODUCT
   const addFavourite = (id) => {};
@@ -83,7 +89,9 @@ const ProductTile = (props) => {
           <ProductSubDisplay>{props.subDisplay}</ProductSubDisplay>
           <ProductPrice>€ {props.price.toFixed(2)}</ProductPrice>
         </DetailsWrapper>
-        <AddButtonWrapper onClick={(product) => onAdd(product)}>ADD</AddButtonWrapper>
+        <AddButtonWrapper onClick={(product) => onAdd(product)}>
+          ADD
+        </AddButtonWrapper>
       </TileWrapper>
     </>
   );

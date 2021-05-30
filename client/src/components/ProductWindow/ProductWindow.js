@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { COLORS, FONTS } from '@assets/theme/theme';
-import { CartContext } from '../../assets/utils/CartContext'
+import { CartContext } from '@assets/utils/CartContext';
 
 const Container = styled.div`
   position: fixed;
@@ -135,7 +135,13 @@ const ProductWindow = (props) => {
   const [cart, setCart] = useContext(CartContext);
 
   const onAdd = () => {
-    const product = { id: props.id, display: props.display, subDisplay: props.subDisplay, price: props.price, imgUrl: props.imgUrl };
+    const product = {
+      id: props.id,
+      display: props.display,
+      subDisplay: props.subDisplay,
+      price: props.price,
+      imgUrl: props.imgUrl,
+    };
     const exist = cart.find((x) => x.id === product.id);
     if (exist) {
       setCart(
