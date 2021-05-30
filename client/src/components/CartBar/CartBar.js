@@ -36,6 +36,7 @@ const ListContainer = styled.div`
   height: auto;
   padding: 5px;
   overflow-y: scroll;
+  border-radius: 7px;
 `;
 
 const ButtonContainer = styled.div`
@@ -82,6 +83,24 @@ const HideButton = styled.div`
   }
 `;
 
+const ListTitle = styled.div`
+  width: 410px;
+  padding: 1px;
+  background-color: ${COLORS.green};
+  color: white;
+  letter-spacing: 2px;
+  font-size: 12px;
+  margin: 0 40px;
+  padding: 2px 10px;
+  font-weight: bold;
+`;
+
+const EmptyCaption = styled.p`
+  font-size: 20px;
+  color: black;
+  margin: 3px;
+`;
+
 const CartBar = (props) => {
   const [cart, setCart] = useContext(CartContext);
   const totalPrice = cart.reduce((acc, curr) => acc + curr.qty * curr.price, 0);
@@ -91,7 +110,6 @@ const CartBar = (props) => {
     <Container showCart={props.showCart}>
       <HideButton onClick={() => props.setShowCart(false)}>></HideButton>
       <ButtonContainer>
-        {cart.length === 0 && <div>Cart is empty</div>}
         {cart.length !== 0 && (
           <>
             <Checkout>Proceed to checkout</Checkout>
@@ -99,7 +117,14 @@ const CartBar = (props) => {
           </>
         )}
       </ButtonContainer>
+      <ListTitle>MY CART</ListTitle>
       <ListContainer>
+        {cart.length === 0 && (
+          <>
+            <EmptyCaption>Cart is empty.</EmptyCaption>
+            <EmptyCaption>Add items to your basket!</EmptyCaption>
+          </>
+        )}
         {cart.map((product, index) => (
           <CartItem
             qty={product.qty}
@@ -110,7 +135,7 @@ const CartBar = (props) => {
             subDisplay={product.subDisplay}
             price={product.price}
             packSize={product.packSize}
-            imgUrl={'http://localhost:1337' + product.imgUrl}
+            imgUrl={product.imgUrl}
           />
         ))}
       </ListContainer>

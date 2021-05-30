@@ -6,6 +6,9 @@ export const COLORS = {
   white: '#f8faf7',
   green: '#03b29a',
   purple: '#874b96',
+  gray: '#575757',
+  darkGray: '#404040',
+  lightGray: '#a8a8a8',
 };
 
 // Fonts

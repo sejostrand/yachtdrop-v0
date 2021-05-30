@@ -1,62 +1,118 @@
 import { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
-import { CartContext } from '../../../assets/utils/CartContext';
+import { CartContext } from '@assets/utils/CartContext';
+import { COLORS } from '@assets/theme/theme';
 
 const Container = styled.div`
   display: flex;
   flex-flow: row nowrap;
-  margin: 0 6px;
-  margin-top: 6px;
-  padding-bottom: 7px;
-  border-bottom: 1px solid lightgray;
+  margin: 5px;
+  background-color: ${COLORS.white};
+  border-radius: 7px;
 `;
 
 const ImgWrapper = styled.img`
-  height: 70px;
+  height: 80px;
   width: auto;
+  border-radius: 7px;
 `;
 
 const Details = styled.div`
   display: flex;
   flex-flow: column nowrap;
+  padding: 5px;
   font-size: 16px;
+  width: 300px;
 `;
 
 const ButtonContainer = styled.div`
   margin: 0 15px;
+  width: 100%;
   display: flex;
   flex-flow: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
 `;
 
 const Display = styled.div`
-  font-size: 10px;
-  margin: 3px;
+  font-size: 16px;
+  margin: 2px;
 `;
 
 const SubDisplay = styled.div`
-  font-size: 10px;
-  margin: 3px;
+  font-size: 12px;
+  color: ${COLORS.lightGray};
+  margin: 2px;
 `;
 
 const Price = styled.div`
   font-size: 10px;
-  margin: 3px;
+  margin: 2px;
 `;
 
 const QTY = styled.div`
   font-size: 16px;
+  font-weight: 500;
 `;
 
-const Buttons = styled.button`
+const SmallFont = styled.span`
+  font-size: 10px;
+`;
+
+const OperationButton = styled.a`
+  display: flex;
+  justify-content: center;
+  font-size: 17px;
+  width: 22px;
+  height: 22px;
+  padding: 0px auto;
+  border-radius: 11px;
+  background-color: ${COLORS.orange};
+  cursor: pointer;
+  font-weight: 600;
+  color: ${COLORS.white};
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+const RemoveButton = styled.a`
+  font-size: 14px;
+  font-weight: 100;
+  color: ${COLORS.darkGray};
+  padding: 0px 10px;
+  background-color: ${COLORS.white};
+  border-radius: 5px;
   padding: 5px 10px;
-  margin: 0 50px;
-  background-color: white;
+  cursor: pointer;
+  &:hover {
+    color: ${COLORS.lightGray};
+  }
 `;
 
 const CartItem = (props) => {
   const [cart, setCart] = useContext(CartContext);
+
+  const onReduce = () => {
+    const product = {
+      id: props.id,
+      display: props.display,
+      subDisplay: props.subDisplay,
+      price: props.price,
+      imgUrl: props.imgUrl,
+      qty: props.qty,
+    };
+    const exist = cart.find((x) => x.id === product.id);
+    if (exist.qty === 1) {
+      console.log('tu mama');
+    } else {
+      setCart(
+        cart.map((x) =>
+          x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
+        )
+      );
+    }
+  };
 
   const onRemove = () => {
     const product = {
@@ -68,15 +124,7 @@ const CartItem = (props) => {
       qty: props.qty,
     };
     const exist = cart.find((x) => x.id === product.id);
-    if (exist.qty === 1) {
-      setCart(cart.filter((x) => x.id !== product.id));
-    } else {
-      setCart(
-        cart.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
-        )
-      );
-    }
+    setCart(cart.filter((x) => x.id !== product.id));
   };
 
   const onAdd = () => {
@@ -108,9 +156,17 @@ const CartItem = (props) => {
         <Price>€ {props.price.toFixed(2)}</Price>
       </Details>
       <ButtonContainer>
-        <Buttons onClick={() => onRemove(props.product)}>-</Buttons>
-        <QTY>{props.qty}</QTY>
-        <Buttons onClick={() => onAdd(props.product)}>+</Buttons>
+        <OperationButton onClick={() => onReduce(props.product)}>
+          -
+        </OperationButton>
+        <QTY>
+          <SmallFont>x </SmallFont>
+          {props.qty}
+        </QTY>
+        <OperationButton onClick={() => onAdd(props.product)}>
+          +
+        </OperationButton>
+        <RemoveButton onClick={() => onRemove(props.product)}>✖</RemoveButton>
       </ButtonContainer>
     </Container>
   );
