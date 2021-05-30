@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { COLORS } from '@assets/theme/theme';
 import CartItem from './objects/CartItem';
 import axios from 'axios';
-import { CartContext } from '../../assets/utils/CartContext';
+import { CartContext } from '@assets/utils/CartContext';
 
 const Container = styled.div`
   margin-top: 97px;
@@ -62,20 +62,21 @@ const Total = styled.div`
   font-weight: bold;
 `;
 
-
 const CartBar = (props) => {
   const [cart, setCart] = useContext(CartContext);
   const totalPrice = cart.reduce((acc, curr) => acc + curr.qty * curr.price, 0);
+  const totalItems = cart.reduce((acc, curr) => acc + curr.qty, 0);
 
   return (
     <Container showCart={props.showCart}>
       <ButtonContainer>
-      {cart.length === 0 && <div>Cart is empty</div>}
-      {cart.length !== 0 && (
-        <>
-        <Checkout>Proceed to checkout</Checkout>
-        <Total> Total: $ {totalPrice}</Total>
-        </>)}
+        {cart.length === 0 && <div>Cart is empty</div>}
+        {cart.length !== 0 && (
+          <>
+            <Checkout>Proceed to checkout</Checkout>
+            <Total> Total: $ {totalPrice}</Total>
+          </>
+        )}
       </ButtonContainer>
       <ListContainer>
         {cart.map((product, index) => (

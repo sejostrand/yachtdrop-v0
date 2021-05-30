@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import History from '@components/History';
+import { COLORS } from '@assets/theme/theme';
+import { CartContext } from '@assets/utils/CartContext';
 
 // IMPORT OBJECTS
 import LocationTag from './objects/LocationTag';
+import CART from '@assets/media/cart.png';
 //import SearchInput from './objects/SearchInput';
 
 const SearchInput = styled.input`
@@ -35,6 +38,8 @@ const StyledSearchBar = styled.div`
 `;
 
 const CartLink = styled.a`
+  display: flex;
+  flex-flow: row nowrap;
   background-color: #f8694b;
   color: white;
   font-family: 'Calibri';
@@ -43,15 +48,39 @@ const CartLink = styled.a`
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
-  padding: 8px 20px;
-  margin: 5px;
+  padding: 8px 10px;
   height: 2rem;
   border-radius: 10px;
   cursor: pointer;
   align-self: center;
 `;
 
+const CartIcon = styled.img`
+  height: 20px;
+  width: auto;
+  transform: translateY(-2px);
+  margin-right: 10px;
+  display: flex;
+`;
+
+const Number = styled.div`
+  justify-content: center;
+  display: flex;
+  height: 20px;
+  width: 20px;
+  font-size: 15px;
+  border-radius: 5px;
+  background-color: white;
+  color: ${COLORS.orange};
+  transform: translateY(-2px);
+  padding-bottom: 1px;
+  letter-spacing: 0.5px;
+`;
+
 const SearchBar = (props) => {
+  const [cart, setCart] = useContext(CartContext);
+  const totalItems = cart.reduce((acc, curr) => acc + curr.qty, 0);
+
   const convertSearch = (input) => {
     const words = input.split(' ');
     let string = '';
@@ -70,8 +99,12 @@ const SearchBar = (props) => {
           onChange={(e) => props.setSearchInput(convertSearch(e.target.value))}
         />
       )}
-      <CartLink onClick={() => props.setShowCart(!props.showCart)}>
-        Cart
+      <CartLink
+        id='cartLink'
+        onClick={() => props.setShowCart(!props.showCart)}
+      >
+        <CartIcon src={CART} />
+        <Number>{totalItems}</Number>
       </CartLink>
     </StyledSearchBar>
   );
