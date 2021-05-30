@@ -24,7 +24,9 @@ const StyledNavBar = styled.nav`
   position: -webkit-sticky;
   position: sticky;
   z-index: 10;
-  overflow-x: hidden;
+  overflow: hidden;
+  max-height: ${(props) => props.navHeight};
+  transition: ease-in-out 0.2s;
 `;
 
 const NavMenu = styled.div`
@@ -39,6 +41,9 @@ const NavMenu = styled.div`
 `;
 
 const NavBar = (props) => {
+  const [navHeight, setNavHeight] = useState('none');
+  const [scrollPos, setScrollPos] = useState();
+
   return (
     <StyledNavBar>
       <YachtdropLogo />
