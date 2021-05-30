@@ -67,6 +67,17 @@ const CartBar = (props) => {
   const [cart, setCart] = useContext(CartContext);
   const totalPrice = cart.reduce((acc, curr) => acc + curr.qty * curr.price, 0);
 
+  useEffect(()=>{
+    const data = localStorage.getItem('cart')
+    if(data){
+      setCart(JSON.parse(data))
+     }
+    },[])
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]); 
+
   return (
     <Container showCart={props.showCart}>
       <ButtonContainer>
