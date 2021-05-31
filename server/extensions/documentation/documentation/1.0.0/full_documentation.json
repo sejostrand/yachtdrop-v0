@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/31/2021 4:11:57 PM"
+    "x-generation-date": "05/31/2021 6:39:57 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -7643,6 +7643,75 @@
               }
             }
           },
+          "products": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "display",
+                "packSize"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "display": {
+                  "type": "string"
+                },
+                "subDisplay": {
+                  "type": "string"
+                },
+                "featured": {
+                  "type": "boolean"
+                },
+                "productImg": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "number"
+                },
+                "packSize": {
+                  "type": "integer"
+                },
+                "unitVolume": {
+                  "type": "string"
+                },
+                "vintage": {
+                  "type": "integer"
+                },
+                "packageType": {
+                  "type": "string"
+                },
+                "supplier": {
+                  "type": "string"
+                },
+                "fullDescription": {
+                  "type": "string"
+                },
+                "port": {
+                  "type": "string"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "sub_category": {
+                  "type": "string"
+                },
+                "category_tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -7687,6 +7756,12 @@
           },
           "vessel": {
             "type": "string"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "published_at": {
             "type": "string",
@@ -8427,6 +8502,12 @@
               "vessel": {
                 "type": "string"
               },
+              "products": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "published_at": {
                 "type": "string"
               },
@@ -8601,6 +8682,12 @@
                 },
                 "vessel": {
                   "type": "string"
+                },
+                "products": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "published_at": {
                   "type": "string"

@@ -7,6 +7,7 @@ import {
 } from '@assets/utils/CurrentUser';
 import { callApi } from '../utils';
 import { COLORS } from '@assets/theme/theme';
+import ICON from '@assets/img/logout-icon.png';
 
 const ButtonWrapper = styled.div`
   margin: 5px;
@@ -32,6 +33,13 @@ const ButtonWrapper = styled.div`
   }
 `;
 
+const Icon = styled.img`
+  margin: 2px 10px;
+  height: 40px;
+  width: auto;
+  cursor: pointer;
+`;
+
 const LogOutButton = () => {
   const dispatch = useDispatchCurrentUser();
   const user = useCurrentUser();
@@ -43,9 +51,12 @@ const LogOutButton = () => {
 
   return (
     <>
-      {user.isAuthenticated && (
-        <ButtonWrapper onClick={handleLogout}>Logout</ButtonWrapper>
-      )}
+      {user.isAuthenticated &&
+        (window.screen.width <= 600 ? (
+          <Icon src={ICON} onClick={handleLogout} />
+        ) : (
+          <ButtonWrapper onClick={handleLogout}>Logout</ButtonWrapper>
+        ))}
     </>
   );
 };

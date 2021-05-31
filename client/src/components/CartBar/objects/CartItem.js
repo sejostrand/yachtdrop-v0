@@ -61,7 +61,25 @@ const SmallFont = styled.span`
   font-size: 10px;
 `;
 
-const OperationButton = styled.a`
+const MinusButton = styled.a`
+  display: flex;
+  justify-content: center;
+  font-size: 17px;
+  width: 22px;
+  height: 22px;
+  padding: 0px auto;
+  border-radius: 11px;
+  background-color: ${COLORS.orange};
+  cursor: pointer;
+  font-weight: 600;
+  color: ${COLORS.white};
+  visibility: ${(props) => (props.vis > 1 ? 'visible' : 'hidden')};
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+const PlusButton = styled.a`
   display: flex;
   justify-content: center;
   font-size: 17px;
@@ -172,17 +190,14 @@ const CartItem = (props) => {
           <Price>€ {props.price.toFixed(2)}</Price>
         </Details>
         <ButtonContainer>
-          {props.qty >= 2 && (
-          <OperationButton onClick={() => onReduce(props.product)}>
+          <MinusButton vis={props.qty} onClick={() => onReduce(props.product)}>
             -
-          </OperationButton>)}
+          </MinusButton>
           <QTY>
             <SmallFont>x </SmallFont>
             {props.qty}
           </QTY>
-          <OperationButton onClick={() => onAdd(props.product)}>
-            +
-          </OperationButton>
+          <PlusButton onClick={() => onAdd(props.product)}>+</PlusButton>
           <RemoveButton onClick={() => onRemove(props.product)}>✖</RemoveButton>
         </ButtonContainer>
       </Container>

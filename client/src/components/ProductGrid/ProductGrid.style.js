@@ -9,7 +9,6 @@ export const GridWrapper = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: start;
-
   @media (max-width: 960px) {
     padding: 0px;
   }

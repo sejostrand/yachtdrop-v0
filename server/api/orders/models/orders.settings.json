@@ -46,6 +46,9 @@
     "vessel": {
       "model": "vessels",
       "via": "orders"
+    },
+    "products": {
+      "collection": "products"
     }
   }
 }

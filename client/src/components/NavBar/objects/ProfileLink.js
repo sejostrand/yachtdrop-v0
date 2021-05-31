@@ -4,27 +4,19 @@ import {
   useCurrentUser,
   useDispatchCurrentUser,
 } from '@assets/utils/CurrentUser';
+import ICON from '@assets/img/profile-icon.png';
 
-const StyledProfileLink = styled.a`
-  color: white;
-  font-family: 'Calibri';
-  font-size: 13px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
+const Icon = styled.img`
+  margin: 2px 10px;
+  height: 40px;
+  width: auto;
+`;
 
-  height: 2rem;
-  border-radius: 8px;
-  padding: 8px 20px;
-  margin: 5px;
+const Link = styled.a`
+  display: flex;
   cursor: pointer;
-
   &:hover {
-    border-bottom: 3px solid #f8694b;
-    background-color: #f8faf7;
-    color: black;
+    opacity: 0.9;
   }
 `;
 
@@ -32,11 +24,11 @@ const ProfileLink = () => {
   const user = useCurrentUser();
 
   return (
-    <>
-      {user.isAuthenticated && (
-        <StyledProfileLink href='/profile'>Profile</StyledProfileLink>
-      )}
-    </>
+    user.isAuthenticated && (
+      <Link>
+        <Icon src={ICON} href='/profile' />
+      </Link>
+    )
   );
 };
 

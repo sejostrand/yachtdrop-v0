@@ -7,6 +7,7 @@ import React from 'react';
 //   props.filterBar ? 'rotate(0deg)' : 'rotate(1800deg)'};
 
 const ButtonWrapper = styled.div`
+  z-index: 5;
   position: absolute;
   display: flex;
   padding: 10px 5px;

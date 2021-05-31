@@ -8,7 +8,7 @@ import MenuLink from './objects/MenuLink';
 import LoginLink from './objects/LoginLink';
 import ProfileLink from './objects/ProfileLink';
 import SignUpLink from './objects/SignUpLink';
-import YachtdropLogo from '../../objects/YachtdropLogo';
+import YachtdropLogo from '@objects/YachtdropLogo';
 import LogOutButton from '@objects/LogOutButton';
 
 //import colors
