@@ -5,7 +5,7 @@ import {
   useCurrentUserData,
   useDispatchCurrentUser,
 } from '@assets/utils/CurrentUser';
-import { CartContext } from '../../assets/utils/CartContext';
+import { CartContext } from '@assets/utils/CartContext';
 
 //import styles
 import {

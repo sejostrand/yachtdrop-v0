@@ -48,7 +48,7 @@ const ButtonContainer = styled.div`
   align-items: flex-end;
 `;
 
-const Checkout = styled.div`
+const Checkout = styled.a`
   display: flex;
   flex-flow: row nowrap;
   width: 200px;
@@ -111,11 +111,11 @@ const CartBar = (props) => {
 
   return (
     <Container showCart={props.showCart}>
-      <HideButton onClick={() => props.setShowCart(false)}>></HideButton>
+      <HideButton onClick={() => props.setShowCart(false)}>▶</HideButton>
       <ButtonContainer>
         {cart.length !== 0 && (
           <>
-            <Checkout>Proceed to checkout</Checkout>
+            <Checkout href='/Checkout'>Proceed to checkout</Checkout>
             <Total> Total € {totalPrice.toFixed(2)}</Total>
           </>
         )}

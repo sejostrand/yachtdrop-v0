@@ -3,12 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import History from '@components/History';
 
-//import GlobalStyles from './styles/global';
-
 //COMPONENTS
 import NavBar from '@components/NavBar/NavBar';
 import Footer from '@components/Footer/Footer';
-
 import ShopPage from './views/ShopPage/ShopPage';
 import LandingPage from '@views/LandingPage/LandingPage';
 import AboutUs from './views/AboutUs/AboutUs';
@@ -18,6 +15,7 @@ import SignUp from './views/SignUp/SignUp';
 import LogIn from './views/LogIn/LogIn';
 import NewLogIn from '@views/LogIn/NewLogIn';
 import Profile from '@views/Profile/Profile';
+import Checkout from '@views/Checkout/Checkout';
 
 const AppWrapper = styled.div`
   display: flex;
@@ -60,6 +58,9 @@ function App() {
           </Route>
           <Route path='/profile'>
             <Profile />
+          </Route>
+          <Route path='/checkout'>
+            <Checkout />
           </Route>
           <Route path='/contactus'>
             <ContactUs />
