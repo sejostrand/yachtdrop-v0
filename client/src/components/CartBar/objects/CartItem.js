@@ -172,9 +172,10 @@ const CartItem = (props) => {
           <Price>€ {props.price.toFixed(2)}</Price>
         </Details>
         <ButtonContainer>
+          {props.qty >= 2 && (
           <OperationButton onClick={() => onReduce(props.product)}>
             -
-          </OperationButton>
+          </OperationButton>)}
           <QTY>
             <SmallFont>x </SmallFont>
             {props.qty}

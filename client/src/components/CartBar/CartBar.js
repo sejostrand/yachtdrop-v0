@@ -1,9 +1,8 @@
 import React from 'react';
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { COLORS } from '@assets/theme/theme';
 import CartItem from './objects/CartItem';
-import axios from 'axios';
 import { CartContext } from '@assets/utils/CartContext';
 
 const Container = styled.div`
@@ -109,6 +108,17 @@ const CartBar = (props) => {
   const [cart, setCart] = useContext(CartContext);
   const totalPrice = cart.reduce((acc, curr) => acc + curr.qty * curr.price, 0);
   const totalItems = cart.reduce((acc, curr) => acc + curr.qty, 0);
+
+  useEffect(()=>{
+    const data = localStorage.getItem('cart')
+    if(data){
+      setCart(JSON.parse(data))
+     }
+    },[])
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]); 
 
   return (
     <Container showCart={props.showCart}>
