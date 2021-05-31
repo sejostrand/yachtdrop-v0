@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { CartContext } from '@assets/utils/CartContext';
 import { COLORS } from '@assets/theme/theme';
+import ProductWindow from '@components/ProductWindow/ProductWindow';
 
 const Container = styled.div`
   display: flex;
@@ -15,6 +16,7 @@ const ImgWrapper = styled.img`
   height: 80px;
   width: auto;
   border-radius: 7px;
+  cursor: pointer;
 `;
 
 const Details = styled.div`
@@ -92,6 +94,7 @@ const RemoveButton = styled.a`
 
 const CartItem = (props) => {
   const [cart, setCart] = useContext(CartContext);
+  const [isVisible, setIsVisible] = useState(false);
 
   const onReduce = () => {
     const product = {
@@ -148,27 +151,41 @@ const CartItem = (props) => {
   };
 
   return (
-    <Container>
-      <ImgWrapper src={props.imgUrl} />
-      <Details>
-        <Display>{props.display}</Display>
-        <SubDisplay>{props.subDisplay}</SubDisplay>
-        <Price>€ {props.price.toFixed(2)}</Price>
-      </Details>
-      <ButtonContainer>
-        <OperationButton onClick={() => onReduce(props.product)}>
-          -
-        </OperationButton>
-        <QTY>
-          <SmallFont>x </SmallFont>
-          {props.qty}
-        </QTY>
-        <OperationButton onClick={() => onAdd(props.product)}>
-          +
-        </OperationButton>
-        <RemoveButton onClick={() => onRemove(props.product)}>✖</RemoveButton>
-      </ButtonContainer>
-    </Container>
+    <>
+      {isVisible && (
+        <ProductWindow
+          setIsVisible={setIsVisible}
+          id={props.id}
+          fullDescription={props.fullDescription}
+          display={props.display}
+          subDisplay={props.subDisplay}
+          price={props.price}
+          packSize={props.packSize}
+          imgUrl={props.imgUrl}
+        />
+      )}
+      <Container>
+        <ImgWrapper src={props.imgUrl} onClick={() => setIsVisible(true)} />
+        <Details>
+          <Display>{props.display}</Display>
+          <SubDisplay>{props.subDisplay}</SubDisplay>
+          <Price>€ {props.price.toFixed(2)}</Price>
+        </Details>
+        <ButtonContainer>
+          <OperationButton onClick={() => onReduce(props.product)}>
+            -
+          </OperationButton>
+          <QTY>
+            <SmallFont>x </SmallFont>
+            {props.qty}
+          </QTY>
+          <OperationButton onClick={() => onAdd(props.product)}>
+            +
+          </OperationButton>
+          <RemoveButton onClick={() => onRemove(props.product)}>✖</RemoveButton>
+        </ButtonContainer>
+      </Container>
+    </>
   );
 };
 

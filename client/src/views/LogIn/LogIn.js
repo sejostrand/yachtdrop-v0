@@ -8,7 +8,6 @@ import { useHistory } from 'react-router-dom';
 import { callApi } from '../../utils';
 import { COLORS } from '@assets/theme/theme';
 import BG from '@assets/img/sea.jpg';
-import SearchBar from '@components/SearchBar/SearchBar';
 
 const BodyWrapper = styled.div`
   display: flex;
