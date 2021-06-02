@@ -10,6 +10,8 @@ import ProfileLink from './objects/ProfileLink';
 import SignUpLink from './objects/SignUpLink';
 import YachtdropLogo from '@objects/YachtdropLogo';
 import LogOutButton from '@objects/LogOutButton';
+import DropDown from '../DropDownMenu/DropDown'
+import useMediaQuery from '../DropDownMenu/useMediaQuery'
 
 //import colors
 import { COLORS } from '@assets/theme/theme';
@@ -43,6 +45,7 @@ const NavMenu = styled.div`
 const NavBar = (props) => {
   const [navHeight, setNavHeight] = useState('none');
   const [scrollPos, setScrollPos] = useState();
+  const matches = useMediaQuery('(min-width: 600px)')
 
   return (
     <StyledNavBar>
@@ -64,12 +67,13 @@ const NavBar = (props) => {
           </MenuLink>
         </NavMenu>
       )}
+      {matches ? (
       <NavAdmin>
         <LoginLink />
         <ProfileLink />
         <SignUpLink />
         <LogOutButton />
-      </NavAdmin>
+      </NavAdmin>) : <DropDown />}
     </StyledNavBar>
   );
 };

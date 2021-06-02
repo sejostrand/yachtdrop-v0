@@ -17,7 +17,7 @@ import LogIn from './views/LogIn/LogIn';
 import NewLogIn from '@views/LogIn/NewLogIn';
 import Profile from '@views/Profile/Profile';
 import Checkout from '@views/Checkout/Checkout';
-import DropDown from './components/DropDown';
+import DropDown from './components/DropDownMenu/DropDown';
 
 const AppWrapper = styled.div`
   display: flex;
@@ -25,20 +25,6 @@ const AppWrapper = styled.div`
   width: auto;
 `;
 
-const items = [
-  {
-    id: 1,
-    value: 'Login'
-  },
-  {
-    id: 2,
-    value: 'Sign Up'
-  },
-  {
-    id: 3,
-    value: 'Profile'
-  }
-]
 
 function App() {
   document.addEventListener('DOMContentLoaded', function (event) {

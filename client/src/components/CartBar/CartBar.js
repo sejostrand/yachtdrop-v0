@@ -122,7 +122,7 @@ const CartBar = (props) => {
 
   return (
     <Container showCart={props.showCart}>
-      <HideButton onClick={() => props.setShowCart(false)}>▶</HideButton>
+      {/* <HideButton onClick={() => props.setShowCart(false)}>▶</HideButton> */}
       <ButtonContainer>
         {cart.length !== 0 && (
           <>
