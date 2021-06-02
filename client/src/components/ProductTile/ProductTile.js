@@ -6,6 +6,7 @@ import {
   useDispatchCurrentUser,
 } from '@assets/utils/CurrentUser';
 import { CartContext } from '@assets/utils/CartContext';
+import axios from 'axios';
 
 //import styles
 import {
@@ -57,7 +58,21 @@ const ProductTile = (props) => {
   };
 
   //POST PRODUCT
-  const addFavourite = (id) => {};
+  const addFavourite = (id) => {
+    const jwtToken =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTRlMzRkNGI5NzVkMjI3Yzc4YTkyMSIsImlhdCI6MTYyMjUzODIwMCwiZXhwIjoxNjI1MTMwMjAwfQ.66XSCaEdheTk26U58vqj5lpSQM3QRs8KYz7AAtagTdg';
+    const authAxios = axios.create({
+      baseURL: `http://localhost:1337`,
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    });
+    const products = cart.id;
+    console.log(cart);
+    authAxios.put(`users/${user.id}`, {
+      favouriteProducts: id,
+    });
+  };
 
   const removeFavourite = (id) => {};
 

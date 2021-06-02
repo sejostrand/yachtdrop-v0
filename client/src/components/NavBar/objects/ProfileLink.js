@@ -7,7 +7,7 @@ import {
 import ICON from '@assets/img/profile-icon.png';
 
 const Icon = styled.img`
-  margin: 2px 10px;
+  margin: 1px 10px;
   height: 40px;
   width: auto;
 `;

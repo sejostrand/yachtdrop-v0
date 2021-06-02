@@ -6,6 +6,8 @@ import COVER from '@assets/img/cover.jpg';
 import ShopSelection from './objects/ShopSelection';
 import Steps from './objects/Steps';
 import Division from './objects/Division';
+import VIDEO from '@assets/media/yachtdrop-promo.mp4';
+import LandingNav from '@components/LandingNav/LandingNav';
 
 const BodyWrapper = styled.body`
   background-color: ${COLORS.orange};
@@ -34,6 +36,11 @@ const CoverImg = styled.div`
   }
 `;
 
+const VideoWrapper = styled.div`
+  display: flex;
+  margin: 60px;
+`;
+
 const ColorSection = styled.div`
   background-color: ${(props) => props.color};
   width: 100%;
@@ -42,14 +49,17 @@ const ColorSection = styled.div`
 `;
 
 const LandingPage = () => {
+  console.log(window.location.href);
   return (
-    <BodyWrapper>
-      <ColorSection height='52px' color='white' />
-      <CoverImg img={COVER} />
-      <ShopSelection />
-      <ColorSection height='152px' color='white' />
-      <Steps />
-    </BodyWrapper>
+    <>
+      <LandingNav />
+      <BodyWrapper>
+        <video src={VIDEO} type='video/mp4' loop autoPlay muted />
+        <ShopSelection />
+        <ColorSection height='52px' color={COLORS.white} />
+        <Steps />
+      </BodyWrapper>
+    </>
   );
 };
 

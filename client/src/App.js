@@ -8,6 +8,7 @@ import NavBar from '@components/NavBar/NavBar';
 import Footer from '@components/Footer/Footer';
 import ShopPage from './views/ShopPage/ShopPage';
 import LandingPage from '@views/LandingPage/LandingPage';
+import LandingPage2 from '@views/LandingPage2/LandingPage2';
 import AboutUs from './views/AboutUs/AboutUs';
 import ContactUs from './views/ContactUs/ContactUs';
 import Embassador from './views/Embassador/Embassador';
@@ -35,11 +36,14 @@ function App() {
 
   return (
     <AppWrapper>
-      <NavBar />
+      {window.location.href !== 'http://localhost:3000/' && <NavBar />}
       <Router history={History}>
         <Switch>
           <Route exact path='/'>
             <LandingPage />
+          </Route>
+          <Route exact path='/landingpage'>
+            <LandingPage2 />
           </Route>
           <Route path='/shoppage'>
             <ShopPage />
