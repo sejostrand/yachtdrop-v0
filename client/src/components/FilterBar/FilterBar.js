@@ -101,7 +101,6 @@ const CheckBoxItem = styled.a`
 
 const FilterBar = (props) => {
   //FILTER MENU TAGS
-
   const CategoryList = ['wine', 'spirit', 'beer', 'soft-drinks', 'other'];
 
   //WINE

@@ -16,12 +16,28 @@ import LogIn from './views/LogIn/LogIn';
 import NewLogIn from '@views/LogIn/NewLogIn';
 import Profile from '@views/Profile/Profile';
 import Checkout from '@views/Checkout/Checkout';
+import DropDown from './components/DropDown';
 
 const AppWrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;
   width: auto;
 `;
+
+const items = [
+  {
+    id: 1,
+    value: 'Login'
+  },
+  {
+    id: 2,
+    value: 'Sign Up'
+  },
+  {
+    id: 3,
+    value: 'Profile'
+  }
+]
 
 function App() {
   document.addEventListener('DOMContentLoaded', function (event) {
@@ -36,6 +52,7 @@ function App() {
   return (
     <AppWrapper>
       <NavBar />
+      <DropDown title="DropDown" items={items} />
       <Router history={History}>
         <Switch>
           <Route exact path='/'>
