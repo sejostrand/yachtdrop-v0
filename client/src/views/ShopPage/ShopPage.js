@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import axios from 'axios';
 
 // IMPORT COMPONENTS
@@ -6,11 +7,18 @@ import SearchBar from '@components/SearchBar/SearchBar';
 import FilterBar from '@components/FilterBar/FilterBar.js';
 import CoverBar from '@components/CoverBar/CoverBar';
 import BodyWrapper from '../../objects/BodyWrapper.js';
-import BodyDiv from '../../objects/BodyDiv.js';
 import SortBy from '@components/SortBy/SortBy.js';
 import ProductGrid from '@components/ProductGrid/ProductGrid';
 import CartBar from '@components/CartBar/CartBar';
 import FilterToggle from '@objects/FilterToggle';
+
+const BodyDiv = styled.div`
+  width: 100%;
+  display: block;
+  @media (max-width: 460px) {
+    margin-left: 25px;
+  }
+`;
 
 // MAIN
 const ShopPage = (props) => {

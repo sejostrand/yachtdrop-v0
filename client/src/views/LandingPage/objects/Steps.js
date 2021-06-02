@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { COLORS } from '@assets/theme/theme';
 import DRINK from '@assets/img/wine-icon.png';
 import TIME from '@assets/img/time-icon.png';
 import TRUCK from '@assets/img/truck-icon.png';
@@ -12,7 +12,7 @@ const Container = styled.div`
   display: flex;
   flex-flow: column wrap;
   align-content: center;
-  background-color: white;
+  background-color: ${COLORS.white};
 `;
 
 const Title = styled.div`

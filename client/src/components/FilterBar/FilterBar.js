@@ -18,15 +18,17 @@ import {
 import ShopPage from '../../views/ShopPage/ShopPage.js';
 
 const FilterBarWrapper = styled.div`
-  z-index: 12px;
+  z-index: 4;
   display: flex;
   flex-flow: column nowrap;
   max-width: ${(props) => (props.filterBar ? '600px' : '30px')};
   transition: all 0.1s;
   overflow: ${(props) => (props.filterBar ? 'visible' : 'hidden')};
   position: relative;
+  min-height: 90vh;
 
   @media (max-width: 460px) {
+    position: absolute;
   }
 `;
 

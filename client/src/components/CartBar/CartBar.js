@@ -12,7 +12,7 @@ const Container = styled.div`
   right: 0;
   position: fixed;
   z-index: 10;
-  height: 100vh;
+  height: calc(100vh - 97px);
   padding-bottom: 50px;
   width: 500px;
   background-color: ${COLORS.white};
@@ -57,6 +57,7 @@ const Checkout = styled.a`
   justify-content: center;
   cursor: pointer;
   border-radius: 3px;
+  text-decoration: none;
 
   &:hover {
     opacity: 0.8;

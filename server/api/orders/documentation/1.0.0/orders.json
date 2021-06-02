@@ -683,6 +683,75 @@
               }
             }
           },
+          "products": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "display",
+                "packSize"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "display": {
+                  "type": "string"
+                },
+                "subDisplay": {
+                  "type": "string"
+                },
+                "featured": {
+                  "type": "boolean"
+                },
+                "productImg": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "number"
+                },
+                "packSize": {
+                  "type": "integer"
+                },
+                "unitVolume": {
+                  "type": "string"
+                },
+                "vintage": {
+                  "type": "integer"
+                },
+                "packageType": {
+                  "type": "string"
+                },
+                "supplier": {
+                  "type": "string"
+                },
+                "fullDescription": {
+                  "type": "string"
+                },
+                "port": {
+                  "type": "string"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "sub_category": {
+                  "type": "string"
+                },
+                "category_tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -727,6 +796,12 @@
           },
           "vessel": {
             "type": "string"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "published_at": {
             "type": "string",

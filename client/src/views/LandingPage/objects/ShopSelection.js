@@ -2,17 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import LOGO from '@assets/img/yd-logo-black.png';
 import { keyframes } from 'styled-components';
-
-const popUp = keyframes`
-from {
-  width: 0;
-  height: 0;
-}
-to {
-  width: 50px;
-  height: 50px;
-}
-`;
+import { COLORS } from '@assets/theme/theme';
 
 const Wrapper = styled.div`
   display: flex;
@@ -30,28 +20,23 @@ const Wrapper = styled.div`
   }
 `;
 
-const Content = styled.p`
-  font-size: 20px;
-  color: black;
+const Title = styled.p`
+  font-size: 24px;
+  color: ${COLORS.orange};
   display: flex;
-  padding: 20px;
+  margin-top: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
-  margin-top: 15px;
+  margin-top: 24px;
   @media (max-width: 900px) {
     flex-flow: column nowrap;
   }
-`;
-
-//on hover yd icon
-const YD = styled.img`
-  position: relative;
-  width: 50px;
-  height: 50px;
-  margin: auto;
 `;
 
 const Button = styled.a`
@@ -64,7 +49,7 @@ const Button = styled.a`
   font-weight: bold;
   text-align: center;
   padding: 8px 20px;
-  margin: 5px 10px;
+  margin: 0px 10px;
   border-radius: 10px;
   cursor: pointer;
   align-self: center;
@@ -88,10 +73,20 @@ const Caption = styled.div`
   transform: translateY(80px);
 `;
 
+const Subtitle = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: black;
+  margin-top: 20px;
+`;
+
 const ShopSelection = () => {
   return (
     <Wrapper>
-      <Content>Select your Drop Port!</Content>
+      <Title>Order drinks to your yacht.</Title>
+
       <ButtonContainer>
         <Button href='/shoppage'>Mallorca</Button>
         <Button href='/shoppage'>Croaticia</Button>
@@ -99,7 +94,8 @@ const ShopSelection = () => {
         <Button href='/shoppage'>Menorca</Button>
         <Button href='/shoppage'>Monte Negro</Button>
       </ButtonContainer>
-      <Caption>Drinks delivery to where ever you are.</Caption>
+      <Subtitle>Select your location!</Subtitle>
+      <Caption>Drinks delivery in 24 hours.</Caption>
     </Wrapper>
   );
 };
