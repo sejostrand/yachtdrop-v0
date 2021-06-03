@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: white;
-  padding: 20px;
+  padding: 18px;
   border-radius: 10px;
   transform: translateY(-100px);
   @media (max-width: 900px) {
@@ -79,7 +79,7 @@ const Subtitle = styled.div`
   font-size: 16px;
   letter-spacing: 1px;
   color: black;
-  margin-top: 20px;
+  transform: translateY(20px);
 `;
 
 const ShopSelection = () => {

@@ -14,7 +14,6 @@ const StyledSignUpLink = styled.a`
   margin: 5px;
 
   height: 2rem;
-  align-self: center;
   justify-content: space-around;
   font-family: 'Calibri';
   text-align: center;

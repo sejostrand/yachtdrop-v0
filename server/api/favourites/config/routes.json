@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/favourites",
+      "handler": "favourites.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/favourites/count",
+      "handler": "favourites.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/favourites/:id",
+      "handler": "favourites.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/favourites",
+      "handler": "favourites.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/favourites/:id",
+      "handler": "favourites.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/favourites/:id",
+      "handler": "favourites.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
