@@ -31,10 +31,6 @@ const ProductTile = (props) => {
   const user = useCurrentUser();
   const [cart, setCart] = useContext(CartContext);
 
-  /* const onAdd = () => {
-    const product = { id: props.id, display: props.display, subDisplay: props.subDisplay, price: props.price, imgUrl: props.imgUrl };
-    setCart(currentState => [...currentState, product])
-  } */
 
   const onAdd = () => {
     const product = {
