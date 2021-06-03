@@ -12,11 +12,11 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: white;
-  padding: 20px;
+  padding: 18px;
   border-radius: 10px;
-  transform: translateY(-100px);
+  transform: translateY(-5vw);
   @media (max-width: 900px) {
-    transform: translateY(-150px);
+    transform: translateY(-5vw);
   }
 `;
 
@@ -40,7 +40,7 @@ const ButtonContainer = styled.div`
 `;
 
 const Button = styled.a`
-  background-color: #f8694b;
+  background-color: ${COLORS.green};
   color: white;
   font-family: 'Calibri';
   font-size: 18px;
@@ -70,7 +70,7 @@ const Caption = styled.div`
   font-weight: bold;
   letter-spacing: 1px;
   color: white;
-  transform: translateY(80px);
+  transform: translateY(5vw);
 `;
 
 const Subtitle = styled.div`
@@ -78,8 +78,9 @@ const Subtitle = styled.div`
   flex-flow: row nowrap;
   font-size: 16px;
   letter-spacing: 1px;
+  font-weight: bold;
   color: black;
-  margin-top: 20px;
+  transform: translateY(20px);
 `;
 
 const ShopSelection = () => {

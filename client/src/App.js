@@ -17,14 +17,12 @@ import LogIn from './views/LogIn/LogIn';
 import NewLogIn from '@views/LogIn/NewLogIn';
 import Profile from '@views/Profile/Profile';
 import Checkout from '@views/Checkout/Checkout';
-import DropDown from './components/DropDownMenu/DropDown';
 
 const AppWrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;
   width: auto;
 `;
-
 
 function App() {
   document.addEventListener('DOMContentLoaded', function (event) {

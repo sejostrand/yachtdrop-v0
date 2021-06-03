@@ -9,6 +9,7 @@ export const COLORS = {
   gray: '#575757',
   darkGray: '#404040',
   lightGray: '#a8a8a8',
+  marineBlue: '#19498c',
 };
 
 // Fonts

@@ -54,23 +54,18 @@ const ProductTile = (props) => {
   };
 
   //POST PRODUCT
-  const addFavourite = (id) => {
-    const jwtToken =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTRlMzRkNGI5NzVkMjI3Yzc4YTkyMSIsImlhdCI6MTYyMjUzODIwMCwiZXhwIjoxNjI1MTMwMjAwfQ.66XSCaEdheTk26U58vqj5lpSQM3QRs8KYz7AAtagTdg';
-    const authAxios = axios.create({
-      baseURL: `http://localhost:1337`,
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-    });
-    const products = cart.id;
-    console.log(cart);
-    authAxios.put(`users/${user.id}`, {
-      favouriteProducts: id,
-    });
+  const addFav = (id) => {
+    const url = `http://localhost:1337/users/${user.id}`;
+    const data = {
+      favouriteProducts: [id],
+    };
+    const getProductData = axios
+      .put(url, data, { withCredentials: true })
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
   };
 
-  const removeFavourite = (id) => {};
+  const removeFav = (id) => {};
 
   return (
     <>
@@ -90,9 +85,9 @@ const ProductTile = (props) => {
         {props.packSize != 1 && <PackSize>{props.packSize + ' PACK'}</PackSize>}
         {user.isAuthenticated &&
           (user.favouriteProducts.includes(props.id) ? (
-            <FavStar src={star} onClick={() => removeFavourite(props.id)} />
+            <FavStar src={star} onClick={() => removeFav(props.id)} />
           ) : (
-            <FavStar src={emptyStar} onClick={() => addFavourite(props.id)} />
+            <FavStar src={emptyStar} onClick={() => addFav(props.id)} />
           ))}
         <ProductImage src={props.imgUrl} onClick={() => setIsVisible(true)} />
         <DetailsWrapper>

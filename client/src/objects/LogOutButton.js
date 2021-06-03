@@ -51,12 +51,9 @@ const LogOutButton = () => {
 
   return (
     <>
-      {user.isAuthenticated &&
-        (window.screen.width <= 600 ? (
-          <Icon src={ICON} onClick={handleLogout} />
-        ) : (
-          <ButtonWrapper onClick={handleLogout}>Logout</ButtonWrapper>
-        ))}
+      {user.isAuthenticated && (
+        <ButtonWrapper onClick={handleLogout}>Logout</ButtonWrapper>
+      )}
     </>
   );
 };

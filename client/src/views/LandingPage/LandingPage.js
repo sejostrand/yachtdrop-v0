@@ -48,6 +48,14 @@ const ColorSection = styled.div`
   height: ${(props) => props.height};
 `;
 
+const Gradient = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 10vw;
+  transform: translateY(32.3vw);
+  background: linear-gradient(rgb(0, 0, 0, 0), ${COLORS.orange});
+`;
+
 const LandingPage = () => {
   console.log(window.location.href);
   return (
