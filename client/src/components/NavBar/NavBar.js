@@ -27,7 +27,7 @@ const StyledNavBar = styled.nav`
   position: sticky;
   z-index: 12;
   overflow: hidden;
-  height: ${(props) => props.maxHeight};
+  height: ${(props) => (props.open ? 'auto' : '52px')};
   -webkit-transition: all 0.2s ease-in;
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
@@ -61,7 +61,7 @@ const NavBar = (props) => {
   const [open, setOpen] = useState(false); //drop down menu
 
   return (
-    <StyledNavBar maxHeight={open ? 'auto' : '52px'}>
+    <StyledNavBar open={open}>
       <YachtdropLogo />
       {window.location.href != 'http://localhost:3000/' && (
         <NavMenu>
