@@ -27,11 +27,10 @@ const StyledNavBar = styled.nav`
   position: sticky;
   z-index: 12;
   overflow: hidden;
-  height: ${(props) => (props.open ? 'auto' : '52px')};
-  -webkit-transition: all 0.2s ease-in;
-  -moz-transition: all 0.2s ease-in;
-  -o-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
+  max-height: ${(props) => (props.open ? '500px' : '52px')};
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 `;
 
 const NavMenu = styled.div`
