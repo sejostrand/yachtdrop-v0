@@ -58,7 +58,16 @@ const ProductTile = (props) => {
   };
 
   //POST PRODUCT
-  const addFav = (id) => {};
+  const addFav = (id) => {
+    const url = `http://localhost:1337/users/${user.id}`;
+    const data = {
+      favouriteProducts: [id],
+    };
+    const getProductData = axios
+      .put(url, data, { withCredentials: true })
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+  };
 
   const removeFav = (id) => {};
 
