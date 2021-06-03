@@ -10,7 +10,7 @@ import SignUpLink from './objects/SignUpLink';
 import YachtdropLogo from '@objects/YachtdropLogo';
 import LogOutButton from '@objects/LogOutButton';
 import DropDownMenu from '@components/DropDownMenu/DropDownMenu';
-import useMediaQuery from '@components/DropDownMenu/useMediaQuery';
+import useMediaQuery from '@assets/utils/useMediaQuery';
 import Hamburger from './objects/Hamburger';
 
 //import colors
@@ -58,7 +58,6 @@ const NavBar = (props) => {
   const [scrollPos, setScrollPos] = useState();
   const matches = useMediaQuery('(min-width: 600px)');
   const [open, setOpen] = useState(false); //drop down menu
-
   return (
     <StyledNavBar open={open}>
       <YachtdropLogo />

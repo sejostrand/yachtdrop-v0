@@ -5,6 +5,7 @@ import {
   useDispatchCurrentUser,
 } from '@assets/utils/CurrentUser';
 import ICON from '@assets/img/profile-icon.png';
+import useMediaQuery from '@assets/utils/useMediaQuery';
 
 const Icon = styled.img`
   margin: 1px 10px;
@@ -21,7 +22,9 @@ const Link = styled.a`
 `;
 
 const StyledLink = styled.a`
-  color: white;
+  color: ${(props) => (props.mobile ? 'white' : 'black')};
+  background-color: ${(props) => (props.mobile ? 'none' : 'white')};
+  border-bottom: ${(props) => (props.mobile ? 'none' : '3px solid #f8694b')};
   font-family: 'Calibri';
   font-size: 13px;
   font-weight: bold;
@@ -45,9 +48,14 @@ const StyledLink = styled.a`
 
 const ProfileLink = () => {
   const user = useCurrentUser();
+  const matches = useMediaQuery('(min-width: 600px)');
 
   return (
-    user.isAuthenticated && <StyledLink href='/profile'>Profile</StyledLink>
+    user.isAuthenticated && (
+      <StyledLink mobile={matches} href='/profile'>
+        Profile
+      </StyledLink>
+    )
   );
 };
 

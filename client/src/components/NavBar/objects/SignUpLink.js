@@ -11,8 +11,7 @@ const StyledSignUpLink = styled.a`
   border-bottom: 3px solid #f8694b;
   background-color: #f8faf7;
   color: #f8694b;
-  margin: 5px;
-
+  margin: 5px 3px;
   height: 2rem;
   justify-content: space-around;
   font-family: 'Calibri';
