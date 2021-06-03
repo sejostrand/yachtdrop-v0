@@ -58,19 +58,7 @@ const ProductTile = (props) => {
   };
 
   //POST PRODUCT
-  const addFav = (id) => {
-    const authAxios = axios.create({
-      baseURL: `http://localhost:1337`,
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-    });
-    const products = cart.id;
-    console.log(cart);
-    authAxios.put(`users/${user.id}`, {
-      favouriteProducts: id,
-    });
-  };
+  const addFav = (id) => {};
 
   const removeFav = (id) => {};
 
