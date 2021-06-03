@@ -58,9 +58,7 @@ const ProductTile = (props) => {
   };
 
   //POST PRODUCT
-  const addFavourite = (id) => {
-    const jwtToken =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTRlMzRkNGI5NzVkMjI3Yzc4YTkyMSIsImlhdCI6MTYyMjUzODIwMCwiZXhwIjoxNjI1MTMwMjAwfQ.66XSCaEdheTk26U58vqj5lpSQM3QRs8KYz7AAtagTdg';
+  const addFav = (id) => {
     const authAxios = axios.create({
       baseURL: `http://localhost:1337`,
       headers: {
@@ -74,7 +72,7 @@ const ProductTile = (props) => {
     });
   };
 
-  const removeFavourite = (id) => {};
+  const removeFav = (id) => {};
 
   return (
     <>
@@ -94,9 +92,9 @@ const ProductTile = (props) => {
         {props.packSize != 1 && <PackSize>{props.packSize + ' PACK'}</PackSize>}
         {user.isAuthenticated &&
           (user.favouriteProducts.includes(props.id) ? (
-            <FavStar src={star} onClick={() => removeFavourite(props.id)} />
+            <FavStar src={star} onClick={() => removeFav(props.id)} />
           ) : (
-            <FavStar src={emptyStar} onClick={() => addFavourite(props.id)} />
+            <FavStar src={emptyStar} onClick={() => addFav(props.id)} />
           ))}
         <ProductImage src={props.imgUrl} onClick={() => setIsVisible(true)} />
         <DetailsWrapper>
