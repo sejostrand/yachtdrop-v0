@@ -106,6 +106,7 @@ const ProductTile = (props) => {
         {user.isAuthenticated &&
           (user.favouriteProducts.includes(props.id) ? (
             <FavStar
+              isFav={isFav}
               src={icon}
               onClick={() => setFavs(props.id) && setIsFav(!isFav)}
             />

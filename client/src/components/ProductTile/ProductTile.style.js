@@ -6,7 +6,7 @@ export const FavStar = styled.img`
   float: right;
   width: 30px;
   height: 30px;
-  visibility: hidden;
+  visibility: ${(props) => (props.isFav ? 'visible' : 'hidden')};
   cursor: pointer;
 `;
 
