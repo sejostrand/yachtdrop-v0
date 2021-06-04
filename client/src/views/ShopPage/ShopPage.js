@@ -5,17 +5,18 @@ import axios from 'axios';
 // IMPORT COMPONENTS
 import SearchBar from '@components/SearchBar/SearchBar';
 import FilterBar from '@components/FilterBar/FilterBar.js';
+import MobileFilter from '@components/FilterBar/MobileFilter.js';
 import CoverBar from '@components/CoverBar/CoverBar';
 import BodyWrapper from '../../objects/BodyWrapper.js';
 import SortBy from '@components/SortBy/SortBy.js';
 import ProductGrid from '@components/ProductGrid/ProductGrid';
 import CartBar from '@components/CartBar/CartBar';
-import FilterToggle from '@objects/FilterToggle';
+import useMediaQuery from '@assets/utils/useMediaQuery';
 
 const BodyDiv = styled.div`
   width: 100%;
   display: block;
-  @media (max-width: 460px) {
+  @media (max-width: 600px) {
     margin-left: 25px;
   }
 `;
@@ -27,6 +28,7 @@ const ShopPage = (props) => {
   const [searchInput, setSearchInput] = useState('');
   const [filterBar, setFilterBar] = useState(true);
   const [showCart, setShowCart] = useState(false);
+  const matches = useMediaQuery('(min-width: 600px)');
 
   class ParamsFilter {
     constructor(queryString) {
@@ -124,6 +126,24 @@ const ShopPage = (props) => {
       .catch((error) => console.log(error));
   }, [searchInput]);
 
+  const getFavs = async () => {
+    const res = await axios.get('http://localhost:1337/users/me', {
+      withCredentials: true,
+    });
+    const data = await res.data.favouriteProducts;
+    return data;
+  };
+
+  const displayFavs = async () => {
+    const data = await getFavs();
+    const body = { id: await data };
+    const url = 'http://localhost:1337/products';
+    axios
+      .get(url, body)
+      .then((response) => setDisplayedProducts(response.data))
+      .catch((error) => console.log(error));
+  };
+
   return (
     <>
       <SearchBar
@@ -134,11 +154,14 @@ const ShopPage = (props) => {
       />
       <CartBar showCart={showCart} setShowCart={setShowCart} />
       <BodyWrapper>
-        <FilterBar filterBar={filterBar} />
-        <FilterToggle filterBar={filterBar} setFilterBar={setFilterBar} />
+        {matches ? (
+          <FilterBar filterBar={filterBar} setFilterBar={setFilterBar} />
+        ) : (
+          <MobileFilter filterBar={filterBar} setFilterBar={setFilterBar} />
+        )}
         <BodyDiv>
           <CoverBar />
-          <SortBy />
+          <SortBy displayFavs={displayFavs} />
           <ProductGrid products={displayedProducts} />
         </BodyDiv>
       </BodyWrapper>

@@ -2,6 +2,8 @@ import { COLORS } from '@assets/theme/theme';
 import styled from 'styled-components';
 
 export const FilterGrid = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
   justify-content: left;
   height: 100%;
   width: 100%;
@@ -32,8 +34,10 @@ export const FilterTitle = styled.h1`
 `;
 
 export const BlackSection = styled.div`
+  display: flex;
   background-color: black;
   height: 19px;
+  width: 100%;
 `;
 
 export const CategoryList = styled.div`

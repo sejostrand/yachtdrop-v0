@@ -6,7 +6,7 @@ export const FavStar = styled.img`
   float: right;
   width: 30px;
   height: 30px;
-  visibility: hidden;
+  visibility: ${(props) => (props.isFav ? 'visible' : 'hidden')};
   cursor: pointer;
 `;
 
@@ -25,7 +25,7 @@ export const TileWrapper = styled.div`
 
   @media (max-width: 960px) {
     transform: scale(0.8);
-    margin: 2px;
+    margin: 0;
   }
 `;
 

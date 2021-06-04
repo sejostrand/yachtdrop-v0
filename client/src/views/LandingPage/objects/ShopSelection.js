@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: white;
+  margin: 0 15vw;
   padding: 18px;
   border-radius: 10px;
   transform: translateY(-5vw);
@@ -34,9 +35,6 @@ const ButtonContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
   margin-top: 24px;
-  @media (max-width: 900px) {
-    flex-flow: column nowrap;
-  }
 `;
 
 const Button = styled.a`
@@ -49,7 +47,7 @@ const Button = styled.a`
   font-weight: bold;
   text-align: center;
   padding: 8px 20px;
-  margin: 0px 10px;
+  margin: 3px 8px;
   border-radius: 10px;
   cursor: pointer;
   align-self: center;

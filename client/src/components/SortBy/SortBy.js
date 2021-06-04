@@ -72,6 +72,33 @@ const SortButton = styled.a`
   }
 `;
 
+const FavButton = styled.a`
+  background-color: ${(props) =>
+    props.checkSort(props.field1) || props.checkSort(props.field2)
+      ? COLORS.orange
+      : COLORS.green};
+  color: white;
+  padding: 5px 20px;
+
+  font-family: 'Calibri';
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin: 5px 10px;
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  align-self: space-between;
+  display: flex;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
 const SortBy = (props) => {
   class ParamsFilter {
     constructor(queryString) {
@@ -206,6 +233,15 @@ const SortBy = (props) => {
           Price {checkSort('price:ASC') ? '△' : ''}
           {checkSort('price:DESC') ? '▽' : ''}
         </SortButton>
+        <FavButton
+          color='#03b29a'
+          field1='price:ASC'
+          field2='price:DESC'
+          checkSort={checkSort}
+          onClick={() => props.displayFavs()}
+        >
+          Favourites
+        </FavButton>
       </ButtonsContainer>
       <ButtonsContainer>
         {SelectedTags() != null &&
