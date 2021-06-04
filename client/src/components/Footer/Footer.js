@@ -10,6 +10,7 @@ const FooterWrapper = styled.div`
   background-color: ${COLORS.orange};
   align-items: start;
   justify-content: center;
+  z-index: 2;
 `;
 
 const Section = styled.div`

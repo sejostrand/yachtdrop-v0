@@ -17,7 +17,7 @@ import Hamburger from './objects/Hamburger';
 import { COLORS } from '@assets/theme/theme';
 
 const StyledNavBar = styled.nav`
-  padding: 6px;
+  padding: 6px 20px;
   background-color: ${COLORS.green};
   width: 100%;
   justify-content: space-between;
@@ -58,9 +58,10 @@ const NavBar = (props) => {
   const [scrollPos, setScrollPos] = useState();
   const matches = useMediaQuery('(min-width: 600px)');
   const [open, setOpen] = useState(false); //drop down menu
+
   return (
     <StyledNavBar open={open}>
-      <YachtdropLogo />
+      <YachtdropLogo open={open} setOpen={setOpen} />
       {window.location.href != 'http://localhost:3000/' && (
         <NavMenu>
           <MenuLink href='/shoppage'>All</MenuLink>

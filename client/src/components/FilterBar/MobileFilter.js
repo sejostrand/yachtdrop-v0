@@ -17,14 +17,17 @@ import {
 } from './FilterBar.styles';
 
 const FilterBarWrapper = styled.div`
-  z-index: 4;
+  height: calc(100vh - 96px);
   display: flex;
   flex-flow: column nowrap;
+  left: 0;
+  position: fixed;
+  z-index: ${(props) => (props.filterBar ? '4' : '1')};
+  background-color: ${COLORS.white};
   max-width: ${(props) => (props.filterBar ? '600px' : '30px')};
   transition: all 0.1s;
-  overflow: ${(props) => (props.filterBar ? 'visible' : 'hidden')};
-  position: relative;
-  min-height: 90vh;
+  overflow-x: hidden;
+  overflow-y: sc;
 `;
 
 const PrimaryButton = styled.a`
@@ -98,7 +101,7 @@ const CheckBoxItem = styled.a`
 
 const FilterToggle = styled.div`
   z-index: 5;
-  position: absolute;
+  position: fixed;
   display: flex;
   padding: 10px 5px;
   height: min-content;
@@ -119,7 +122,7 @@ const FilterToggle = styled.div`
   }
 `;
 
-const FilterBar = (props) => {
+const MobileFilter = (props) => {
   //FILTER MENU TAGS
   const CategoryList = ['wine', 'spirit', 'beer', 'soft-drinks', 'other'];
 
@@ -539,4 +542,4 @@ const FilterBar = (props) => {
   );
 };
 
-export default FilterBar;
+export default MobileFilter;

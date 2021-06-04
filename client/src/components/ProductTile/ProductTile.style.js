@@ -25,7 +25,7 @@ export const TileWrapper = styled.div`
 
   @media (max-width: 960px) {
     transform: scale(0.8);
-    margin: 2px;
+    margin: 0;
   }
 `;
 

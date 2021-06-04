@@ -30,11 +30,11 @@ const ProductTile = (props) => {
   const [isVisible, setIsVisible] = useState(false);
   const user = useCurrentUser();
   const [cart, setCart] = useContext(CartContext);
-
-  /* const onAdd = () => {
-    const product = { id: props.id, display: props.display, subDisplay: props.subDisplay, price: props.price, imgUrl: props.imgUrl };
-    setCart(currentState => [...currentState, product])
-  } */
+  const [isFav, setIsFav] = useState(
+    user.favouriteProducts !== undefined
+      ? user.favouriteProducts.includes(props.id)
+      : false
+  );
 
   const onAdd = () => {
     const product = {
@@ -58,18 +58,34 @@ const ProductTile = (props) => {
   };
 
   //POST PRODUCT
-  const addFav = (id) => {
+  const getFavs = async () => {
+    const res = await axios.get('http://localhost:1337/users/me', {
+      withCredentials: true,
+    });
+    const data = await res.data.favouriteProducts;
+    return data;
+  };
+
+  const putFavs = (data) => {
     const url = `http://localhost:1337/users/${user.id}`;
-    const data = {
-      favouriteProducts: [id],
-    };
-    const getProductData = axios
+    axios
       .put(url, data, { withCredentials: true })
-      .then((response) => console.log(response))
+      .then((response) => console.log(response.data))
       .catch((error) => console.log(error));
   };
 
-  const removeFav = (id) => {};
+  const setFavs = async (id) => {
+    const userFavs = await getFavs();
+    if (userFavs !== undefined) {
+      const newUserFavs =
+        (await userFavs.includes(id)) === true
+          ? userFavs.splice(userFavs.indexOf(id), 1)
+          : userFavs.push(id);
+      putFavs({ favouriteProducts: userFavs });
+    }
+  };
+
+  const icon = isFav ? star : emptyStar;
 
   return (
     <>
@@ -89,9 +105,15 @@ const ProductTile = (props) => {
         {props.packSize != 1 && <PackSize>{props.packSize + ' PACK'}</PackSize>}
         {user.isAuthenticated &&
           (user.favouriteProducts.includes(props.id) ? (
-            <FavStar src={star} onClick={() => removeFav(props.id)} />
+            <FavStar
+              src={icon}
+              onClick={() => setFavs(props.id) && setIsFav(!isFav)}
+            />
           ) : (
-            <FavStar src={emptyStar} onClick={() => addFav(props.id)} />
+            <FavStar
+              src={icon}
+              onClick={() => setFavs(props.id) && setIsFav(!isFav)}
+            />
           ))}
         <ProductImage src={props.imgUrl} onClick={() => setIsVisible(true)} />
         <DetailsWrapper>
