@@ -82,12 +82,48 @@ export const ProductPrice = styled.div`
   margin: 1px;
 `;
 
+export const AddButton = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  height: 28px;
+`;
+
+export const SaveContainer = styled.div`
+  display: flex;
+  background-color: ${(props) => (props.isFav ? 'none' : COLORS.orange)};
+  width: 40px;
+  margin-right: 1px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 20px;
+  overflow: hidden;
+`;
+
+export const StarContainer = styled.div`
+  font-size: 28px;
+  color: ${(props) => (props.isFav ? COLORS.orange : 'white')};
+  transform: translate(3.5px, -6px);
+`;
+
+export const AddContainer = styled.div`
+  background-color: ${COLORS.orange};
+  font-family: ${FONTS.secondaryFont};
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 100%;
+  height: auto;
+  text-align: center;
+`;
+
 export const AddButtonWrapper = styled.div`
   background-color: ${COLORS.orange};
   color: white;
   font-family: ${FONTS.secondaryFont};
   font-size: 20px;
-  font-weight: bold;
   letter-spacing: 4px;
   cursor: pointer;
 

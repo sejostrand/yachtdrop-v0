@@ -14,6 +14,10 @@ import {
   ProductPrice,
   ProductSubDisplay,
   FavStar,
+  SaveContainer,
+  AddContainer,
+  AddButton,
+  StarContainer,
 } from './ProductTile.style';
 
 //import objects
@@ -117,9 +121,15 @@ const ProductTile = (props) => {
           <ProductSubDisplay>{props.subDisplay}</ProductSubDisplay>
           <ProductPrice>€ {props.price.toFixed(2)}</ProductPrice>
         </DetailsWrapper>
-        <AddButtonWrapper onClick={(product) => onAdd(product)}>
-          ADD
-        </AddButtonWrapper>
+        <AddButton>
+          <SaveContainer
+            isFav={isFav}
+            onClick={() => setFavs(props.id) && setIsFav(!isFav)}
+          >
+            <StarContainer isFav={isFav}>★</StarContainer>
+          </SaveContainer>
+          <AddContainer onClick={(product) => onAdd(product)}>ADD</AddContainer>
+        </AddButton>
       </TileWrapper>
     </>
   );
