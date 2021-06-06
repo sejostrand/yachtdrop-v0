@@ -42,7 +42,7 @@ function App() {
           <Route exact path='/'>
             <LandingPage />
           </Route>
-          <Route exact path='/landingpage'>
+          <Route exact path='/landingpage2'>
             <LandingPage2 />
           </Route>
           <Route path='/shoppage'>

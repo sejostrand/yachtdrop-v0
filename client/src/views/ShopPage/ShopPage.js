@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import {
+  useCurrentUser,
+  useCurrentUserData,
+  useDispatchCurrentUser,
+} from '@assets/utils/CurrentUser';
 
 // IMPORT COMPONENTS
 import SearchBar from '@components/SearchBar/SearchBar';
@@ -29,6 +34,7 @@ const ShopPage = (props) => {
   const [filterBar, setFilterBar] = useState(true);
   const [showCart, setShowCart] = useState(false);
   const matches = useMediaQuery('(min-width: 600px)');
+  const user = useCurrentUser();
 
   class ParamsFilter {
     constructor(queryString) {
@@ -113,18 +119,14 @@ const ShopPage = (props) => {
     }
   }
 
-  //GET ALL PRODUCTS
-  useEffect(() => {
-    const params = new URLSearchParams(document.location.search);
-    const url =
-      searchInput === ''
-        ? `http://localhost:1337/products?${params.toString()}`
-        : `http://localhost:1337/products?_q=${searchInput}`;
-    const getProductData = axios
-      .get(url)
-      .then((response) => setDisplayedProducts(response.data))
-      .catch((error) => console.log(error));
-  }, [searchInput]);
+  const getFavsString = async () => {
+    const userFavs = await getFavs();
+    let result = '';
+    console.log(userFavs);
+    userFavs.forEach((id) => (result = result.concat(`id=${id}&`)));
+    console.log(result);
+    return result;
+  };
 
   const getFavs = async () => {
     const res = await axios.get('http://localhost:1337/users/me', {
@@ -134,15 +136,31 @@ const ShopPage = (props) => {
     return data;
   };
 
-  const displayFavs = async () => {
-    const data = await getFavs();
-    const body = { id: await data };
-    const url = 'http://localhost:1337/products';
-    axios
-      .get(url, body)
+  const filterFavs = async () => {
+    const query = await getFavsString();
+    const url = await `http://localhost:1337/products?${query}`;
+    await axios
+      .get(url)
       .then((response) => setDisplayedProducts(response.data))
       .catch((error) => console.log(error));
   };
+
+  useEffect(() => {
+    if (document.location.search === '?favourites') {
+      filterFavs();
+    } else {
+      const params = new URLSearchParams(document.location.search);
+      const url =
+        searchInput === ''
+          ? `http://localhost:1337/products?${params.toString()}`
+          : `http://localhost:1337/products?_q=${searchInput}`;
+
+      const getProductData = axios
+        .get(url)
+        .then((response) => setDisplayedProducts(response.data))
+        .catch((error) => console.log(error));
+    }
+  }, [searchInput]);
 
   return (
     <>
@@ -161,7 +179,7 @@ const ShopPage = (props) => {
         )}
         <BodyDiv>
           <CoverBar />
-          <SortBy displayFavs={displayFavs} />
+          <SortBy />
           <ProductGrid products={displayedProducts} />
         </BodyDiv>
       </BodyWrapper>

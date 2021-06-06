@@ -6,7 +6,7 @@ import TIME from '@assets/img/time-icon.png';
 import TRUCK from '@assets/img/truck-icon.png';
 
 const Container = styled.div`
-  padding-top: 50px;
+  padding-top: 100px;
   padding-bottom: 80px;
   width: 100%;
   display: flex;

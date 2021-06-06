@@ -8,6 +8,8 @@ import Steps from './objects/Steps';
 import Division from './objects/Division';
 import VIDEO from '@assets/media/yachtdrop-promo.mp4';
 import LandingNav from '@components/LandingNav/LandingNav';
+import UPPERTRIANGLE from '@assets/media/orange-triangle.png';
+import LOWERTRIANGLE from '@assets/media/orange-triangle2.png';
 
 const BodyWrapper = styled.body`
   background-color: ${COLORS.orange};
@@ -34,6 +36,18 @@ const CoverImg = styled.div`
     max-height: 320px;
     margin-bottom: 80px;
   }
+`;
+
+const UpperCover = styled.img`
+  width: 100%;
+  position: absolute;
+  transform: translateY(26vw);
+`;
+
+const LowerCover = styled.img`
+  width: 100%;
+  position: absolute;
+  transform: translateY(48vw);
 `;
 
 const VideoWrapper = styled.div`
@@ -63,8 +77,10 @@ const LandingPage = () => {
       <LandingNav />
       <BodyWrapper>
         <video src={VIDEO} type='video/mp4' loop autoPlay muted />
+
         <ShopSelection />
-        <ColorSection height='52px' color={COLORS.white} />
+        <ColorSection color={COLORS.orange} height='10vw' />
+
         <Steps />
       </BodyWrapper>
     </>

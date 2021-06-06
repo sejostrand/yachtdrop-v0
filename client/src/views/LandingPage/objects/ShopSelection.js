@@ -5,19 +5,20 @@ import { keyframes } from 'styled-components';
 import { COLORS } from '@assets/theme/theme';
 
 const Wrapper = styled.div`
+  z-index: 3;
   display: flex;
-  position: relative;
+  position: absolute;
   flex-flow: column wrap;
   align-self: center;
   justify-content: center;
   align-items: center;
   background-color: white;
-  margin: 0 15vw;
+  margin: 0;
   padding: 18px;
   border-radius: 10px;
-  transform: translateY(-5vw);
+  transform: translateY(35vw);
   @media (max-width: 900px) {
-    transform: translateY(-5vw);
+    transform: translateY(35vw);
   }
 `;
 

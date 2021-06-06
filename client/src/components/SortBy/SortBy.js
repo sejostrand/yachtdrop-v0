@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { COLORS } from '../../assets/theme/theme';
+import axios from 'axios';
+import { useCurrentUser } from '@assets/utils/CurrentUser';
 
 const Container = styled.div`
   display: flex;
@@ -100,6 +102,8 @@ const FavButton = styled.a`
 `;
 
 const SortBy = (props) => {
+  const user = useCurrentUser();
+
   class ParamsFilter {
     constructor(queryString) {
       this.input = queryString;
@@ -209,6 +213,19 @@ const SortBy = (props) => {
     return params.getQueryString();
   };
 
+  const getFavsQuery = async () => {
+    const res = await axios.get('http://localhost:1337/users/me', {
+      withCredentials: true,
+    });
+    const data = await res.data.favouriteProducts;
+
+    let result = '';
+    data.favouriteProducts.forEach(
+      (id) => (result = result.concat(`id=${id}&`))
+    );
+    return result;
+  };
+
   return (
     <Container>
       <ButtonsContainer>
@@ -238,7 +255,7 @@ const SortBy = (props) => {
           field1='price:ASC'
           field2='price:DESC'
           checkSort={checkSort}
-          onClick={() => props.displayFavs()}
+          href={`/shoppage/products?favourites`}
         >
           Favourites
         </FavButton>
