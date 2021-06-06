@@ -1,4 +1,3 @@
-import React, { useContext, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import History from '@components/History';

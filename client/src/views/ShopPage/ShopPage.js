@@ -1,11 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import {
-  useCurrentUser,
-  useCurrentUserData,
-  useDispatchCurrentUser,
-} from '@assets/utils/CurrentUser';
 
 // IMPORT COMPONENTS
 import SearchBar from '@components/SearchBar/SearchBar';
@@ -27,14 +22,12 @@ const BodyDiv = styled.div`
 `;
 
 // MAIN
-const ShopPage = (props) => {
-  const [allProducts, setAllProducts] = useState([]);
+const ShopPage = () => {
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const [filterBar, setFilterBar] = useState(true);
   const [showCart, setShowCart] = useState(false);
   const matches = useMediaQuery('(min-width: 600px)');
-  const user = useCurrentUser();
 
   class ParamsFilter {
     constructor(queryString) {

@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import styled from 'styled-components';
 import { COLORS } from '../../assets/theme/theme';
 import axios from 'axios';

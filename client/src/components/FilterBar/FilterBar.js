@@ -1,9 +1,5 @@
 import styled from 'styled-components';
-import React, { useState } from 'react';
-import CategoryItem from './objects/CategoryItem.js';
 import { COLORS } from '@assets/theme/theme.js';
-import YearSlider from '../YearSlider';
-import { Slider } from '@material-ui/core';
 import {
   BlackSection,
   FilterGrid,
@@ -12,7 +8,6 @@ import {
   Section,
   SectionTitle,
   MenuContainer,
-  CheckboxLabel,
   HiddenSection,
 } from './FilterBar.styles';
 
@@ -120,21 +115,14 @@ const FilterToggle = styled.div`
 `;
 
 const FilterBar = (props) => {
-  //FILTER MENU TAGS
-  const CategoryList = ['wine', 'spirit', 'beer', 'soft-drinks', 'other'];
-
-  //WINE
-  const WineSubCategoryList = ['red', 'white', 'champagne'];
+  //WINE TAGS
   const Region = ['argentina', 'australia', 'austria', 'chile', 'france'];
   const Variety = ['merlot', 'rioja'];
   const Vintage = ['1990', '2003'];
   const Volume = ['700ml', '1L'];
 
-  //SPIRITS
-  const SpiritSubCategoryList = ['vodka', 'gin'];
-
-  //NEW CODE
-
+  //FILTER CLASS WITH REGEX
+  
   class ParamsFilter {
     constructor(queryString) {
       this.category = queryString.match(/(?<=category.category=)(.*?)(?=\&)/g);
