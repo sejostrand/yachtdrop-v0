@@ -10,6 +10,7 @@ export const COLORS = {
   darkGray: '#404040',
   lightGray: '#a8a8a8',
   marineBlue: '#19498c',
+  yellow: '#FBD403',
 };
 
 // Fonts

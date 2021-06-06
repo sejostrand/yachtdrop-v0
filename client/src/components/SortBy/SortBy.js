@@ -75,12 +75,12 @@ const SortButton = styled.a`
 
 const FavButton = styled.a`
   background-color: ${(props) =>
-    props.checkSort(props.field1) || props.checkSort(props.field2)
-      ? COLORS.orange
-      : COLORS.green};
+    props.checkFav() ? COLORS.orange : COLORS.yellow};
   color: white;
   padding: 5px 20px;
-
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: 10vw;
   font-family: 'Calibri';
   font-size: 13px;
   font-weight: bold;
@@ -88,7 +88,6 @@ const FavButton = styled.a`
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  margin: 5px 10px;
   height: auto;
   border-radius: 10px;
   cursor: pointer;
@@ -201,6 +200,10 @@ const SortBy = (props) => {
     return params.sort == value;
   };
 
+  const checkFav = (value) => {
+    return document.location.search == '?favourites' ? true : false;
+  };
+
   const SelectedTags = () => {
     const params = new ParamsFilter(document.location.search);
     return params.categoryTags;
@@ -253,8 +256,8 @@ const SortBy = (props) => {
           color='#03b29a'
           field1='price:ASC'
           field2='price:DESC'
-          checkSort={checkSort}
-          href={`/shoppage/products?favourites`}
+          checkFav={checkFav}
+          href={checkFav() ? '/shoppage/' : '/shoppage/products?favourites'}
         >
           Favourites
         </FavButton>
