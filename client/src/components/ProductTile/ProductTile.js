@@ -1,10 +1,5 @@
 import React, { useState, useContext } from 'react';
-import styled from 'styled-components';
-import {
-  useCurrentUser,
-  useCurrentUserData,
-  useDispatchCurrentUser,
-} from '@assets/utils/CurrentUser';
+import { useCurrentUser } from '@assets/utils/CurrentUser';
 import { CartContext } from '@assets/utils/CartContext';
 import axios from 'axios';
 
@@ -36,6 +31,7 @@ const ProductTile = (props) => {
       : false
   );
 
+  //ADDING PRODUCT TO CART
   const onAdd = () => {
     const product = {
       id: props.id,
@@ -54,10 +50,9 @@ const ProductTile = (props) => {
     } else {
       setCart([...cart, { ...product, qty: 1 }]);
     }
-    //document.getElementById('cartLink').animate(keyframes);
   };
 
-  //POST PRODUCT
+  //FAV PRODUCTS
   const getFavs = async () => {
     const res = await axios.get('http://localhost:1337/users/me', {
       withCredentials: true,
