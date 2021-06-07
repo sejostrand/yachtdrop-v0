@@ -14,41 +14,46 @@
     "state": {
       "type": "enumeration",
       "enum": [
-        "cart",
+        "pending",
         "active",
+        "failed",
         "cancelled",
-        "completed"
+        "completed",
+        "refunded"
       ],
-      "default": "cart",
-      "required": true
-    },
-    "orderId": {
-      "type": "string",
-      "required": true
+      "default": "pending",
+      "required": false
     },
     "transactionId": {
       "type": "string"
     },
-    "orderDatetime": {
-      "type": "datetime"
-    },
     "expectedDelivery": {
-      "type": "datetime"
+      "type": "datetime",
+      "required": false
     },
     "usersPermissionsUser": {
       "plugin": "users-permissions",
       "model": "user"
     },
-    "transaction": {
-      "model": "transactions",
-      "via": "order"
+    "location": {
+      "type": "richtext",
+      "required": false
     },
-    "vessel": {
-      "model": "vessels",
-      "via": "orders"
+    "productList": {
+      "type": "json",
+      "required": false
     },
-    "products": {
-      "collection": "products"
+    "transactionAmount": {
+      "type": "decimal"
+    },
+    "recieverName": {
+      "type": "string"
+    },
+    "vesselName": {
+      "type": "string"
+    },
+    "contactNumber": {
+      "type": "biginteger"
     }
   }
 }

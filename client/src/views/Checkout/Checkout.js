@@ -21,7 +21,7 @@ const BodyWrapper = styled.div`
 const BodyContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
-  margin-top: 55vh;
+  margin-top: min(55vh, 35vw);
   width: 100%;
   background-color: ${COLORS.white};
   border-top-right-radius: 20px;
@@ -172,6 +172,21 @@ const CheckOut = () => {
   const totalPrice = cart.reduce((acc, curr) => acc + curr.qty * curr.price, 0);
   const totalItems = cart.reduce((acc, curr) => acc + curr.qty, 0);
   const mediaQuery = useMediaQuery('(min-width: 600px)');
+
+  const [vessel, setVessel] = useState('');
+  const [name, setName] = useState('');
+  const [contact, setContact] = useState('');
+
+  const POSTbody = {
+    transactionId: 'string',
+    expectedDelivery: '2021-06-07T17:55:14.099Z',
+    usersPermissionsUser: 'string',
+    location: 'string',
+    vesselName: 'string',
+    productList: { id: 'quantity' },
+    transactionAmount: 0,
+    published_at: '2021-06-07T17:55:14.099Z',
+  };
 
   useEffect(() => {
     const data = localStorage.getItem('cart');
