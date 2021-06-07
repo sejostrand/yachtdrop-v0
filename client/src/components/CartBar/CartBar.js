@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { COLORS } from '@assets/theme/theme';
 import CartItem from './objects/CartItem';
@@ -109,16 +108,16 @@ const CartBar = (props) => {
   const totalPrice = cart.reduce((acc, curr) => acc + curr.qty * curr.price, 0);
   const totalItems = cart.reduce((acc, curr) => acc + curr.qty, 0);
 
-  useEffect(()=>{
-    const data = localStorage.getItem('cart')
-    if(data){
-      setCart(JSON.parse(data))
-     }
-    },[])
+  useEffect(() => {
+    const data = localStorage.getItem('cart');
+    if (data) {
+      setCart(JSON.parse(data));
+    }
+  }, []);
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]); 
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <Container showCart={props.showCart}>

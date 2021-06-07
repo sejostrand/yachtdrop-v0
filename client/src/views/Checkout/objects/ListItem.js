@@ -92,6 +92,15 @@ const RemoveButton = styled.a`
   }
 `;
 
+const TotalPrice = styled.div`
+  display: flex;
+  font-size: 18px;
+  margin: 0 25px;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+`;
+
 const ListItem = (props) => {
   const [cart, setCart] = useContext(CartContext);
   const [isVisible, setIsVisible] = useState(false);
@@ -182,6 +191,7 @@ const ListItem = (props) => {
           <OperationButton onClick={() => onAdd(props.product)}>
             +
           </OperationButton>
+          <TotalPrice>€ {(props.price * props.qty).toFixed(2)}</TotalPrice>
           <RemoveButton onClick={() => onRemove(props.product)}>✖</RemoveButton>
         </ButtonContainer>
       </Container>
