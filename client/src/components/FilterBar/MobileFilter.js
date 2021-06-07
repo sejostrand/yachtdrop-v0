@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import React, { useState } from 'react';
 import CategoryItem from './objects/CategoryItem.js';
 import { COLORS } from '@assets/theme/theme.js';
-import YearSlider from '../YearSlider';
 import { Slider } from '@material-ui/core';
 import {
   BlackSection,

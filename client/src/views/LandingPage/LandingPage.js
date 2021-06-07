@@ -56,10 +56,16 @@ const VideoWrapper = styled.div`
 `;
 
 const ColorSection = styled.div`
-  background-color: ${(props) => props.color};
+  background-image: linear-gradient(
+    120deg,
+    ${COLORS.paleOrange},
+    ${COLORS.orange}
+  );
   width: 100%;
   display: flex;
   height: ${(props) => props.height};
+  background-position: center bottom;
+  background-size: auto 100vh;
 `;
 
 const Gradient = styled.div`
@@ -67,7 +73,7 @@ const Gradient = styled.div`
   width: 100%;
   height: 10vw;
   transform: translateY(32.3vw);
-  background: linear-gradient(rgb(0, 0, 0, 0), ${COLORS.orange});
+  background-image: linear-gradient(${COLORS.green}, ${COLORS.orange});
 `;
 
 const LandingPage = () => {
@@ -79,7 +85,7 @@ const LandingPage = () => {
         <video src={VIDEO} type='video/mp4' loop autoPlay muted />
 
         <ShopSelection />
-        <ColorSection color={COLORS.orange} height='10vw' />
+        <ColorSection height='10vw' />
 
         <Steps />
       </BodyWrapper>

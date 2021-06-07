@@ -75,7 +75,7 @@ const SortButton = styled.a`
 
 const FavButton = styled.a`
   background-color: ${(props) =>
-    props.checkFav() ? COLORS.darkGreen : COLORS.green};
+    props.checkFav() ? COLORS.purple : COLORS.orange};
   color: white;
   padding: 5px 20px;
   margin-top: 5px;

@@ -91,18 +91,34 @@ const CheckBoxItem = styled.a`
   }
 `;
 
+const LabelContainer = styled.div`
+  position: absolute;
+  transform: translate(216px, 115px);
+  transform: ${(props) =>
+    props.filterBar ? 'translate(185px, 175px)' : 'translate(-50px, 175px)'};
+  z-index: 5;
+`;
+
+const FilterLabel = styled.div`
+  color: ${COLORS.gray};
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  transform: rotate(-90deg);
+`;
+
 const FilterToggle = styled.div`
   z-index: 5;
   position: absolute;
   display: flex;
-  padding: 10px 5px;
+  padding: 12px 6px 10px 5px;
   height: min-content;
   width: min-content;
   border-radius: 10px;
   background-color: #f8694b;
   text-align: center;
   color: white;
-  font-size: 24px;
+  font-size: 16px;
   font-family: 'consolas';
   cursor: pointer;
   transform: ${(props) =>
@@ -122,10 +138,10 @@ const FilterBar = (props) => {
   const Volume = ['700ml', '1L'];
 
   //FILTER CLASS WITH REGEX
-  
+
   class ParamsFilter {
     constructor(queryString) {
-      this.category = queryString.match(/(?<=category.category=)(.*?)(?=\&)/g);
+      this.category = queryString.match(/(?<=category.category=)(.*?)(?=&)/g);
       this.subCategory = queryString.match(
         /(?<=sub_category.subCategory=)(.*?)(?=&)/g
       );
@@ -133,7 +149,7 @@ const FilterBar = (props) => {
         /(?<=category_tags.categoryTag=)(.*?)(?=&)/g
       );
       this.sort = queryString.match(/(?<=_sort=)(.*?)(?=&)/g);
-      this.search = queryString.match(/(?<=search\?_q=)(.*?)(?=\&)/g);
+      this.search = queryString.match(/(?<=search\?_q=)(.*?)(?=&)/g);
     }
 
     clear() {
@@ -521,8 +537,11 @@ const FilterBar = (props) => {
         filterBar={props.filterBar}
         onClick={() => props.setFilterBar(!props.filterBar)}
       >
-        {'<'}
+        {props.filterBar ? '◀' : '▶'}
       </FilterToggle>
+      <LabelContainer filterBar={props.filterBar}>
+        <FilterLabel>FILTER BAR</FilterLabel>
+      </LabelContainer>
     </>
   );
 };

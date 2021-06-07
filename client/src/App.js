@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import History from '@components/History';
 
@@ -16,6 +16,7 @@ import LogIn from './views/LogIn/LogIn';
 import NewLogIn from '@views/LogIn/NewLogIn';
 import Profile from '@views/Profile/Profile';
 import Checkout from '@views/Checkout/Checkout';
+import OrderConfirmation from '@views/OrderConfirmation/OrderConfirmation';
 
 const AppWrapper = styled.div`
   display: flex;
@@ -64,6 +65,9 @@ function App() {
           </Route>
           <Route path='/checkout'>
             <Checkout />
+          </Route>
+          <Route path='/order-confirmation'>
+            <OrderConfirmation />
           </Route>
           <Route path='/contactus'>
             <ContactUs />
