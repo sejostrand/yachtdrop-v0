@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { CartContext } from '@assets/utils/CartContext';
 import { COLORS } from '@assets/theme/theme';
+import axios from 'axios';
 
 import ListItem from './objects/ListItem';
 
@@ -122,6 +123,7 @@ const CheckOut = () => {
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
+
 
   return (
     <BodyWrapper>
