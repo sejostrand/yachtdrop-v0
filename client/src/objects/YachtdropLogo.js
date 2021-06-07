@@ -7,6 +7,7 @@ const Container = styled.div`
   flex-flow: column nowrap;
   color: white;
   align-self: center;
+  margin-left: 35px;
 `;
 
 const StyledLogo = styled.a`

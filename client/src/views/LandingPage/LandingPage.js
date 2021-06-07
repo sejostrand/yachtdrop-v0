@@ -63,9 +63,21 @@ const ColorSection = styled.div`
   );
   width: 100%;
   display: flex;
-  height: ${(props) => props.height};
+  height: ${(props) => `${props.height}px`};
   background-position: center bottom;
   background-size: auto 100vh;
+  @media (max-width: 900px) {
+    height: ${(props) => `${props.height * 1.4}px`};
+  }
+  @media (max-width: 700px) {
+    height: ${(props) => `${props.height * 1.6}px`};
+  }
+  @media (max-width: 600px) {
+    height: ${(props) => `${props.height * 1.6}px`};
+  }
+  @media (max-width: 400px) {
+    height: ${(props) => `${props.height * 2.2}px`};
+  }
 `;
 
 const Gradient = styled.div`
@@ -85,7 +97,7 @@ const LandingPage = () => {
         <video src={VIDEO} type='video/mp4' loop autoPlay muted />
 
         <ShopSelection />
-        <ColorSection height='10vw' />
+        <ColorSection height='200' />
 
         <Steps />
       </BodyWrapper>
