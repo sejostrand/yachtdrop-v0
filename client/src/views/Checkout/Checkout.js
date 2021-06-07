@@ -172,6 +172,21 @@ const CheckOut = () => {
   const totalItems = cart.reduce((acc, curr) => acc + curr.qty, 0);
   const mediaQuery = useMediaQuery('(min-width: 600px)');
 
+  const [vessel, setVessel] = useState('');
+  const [name, setName] = useState('');
+  const [contact, setContact] = useState('');
+
+  const POSTbody = {
+    transactionId: 'string',
+    expectedDelivery: '2021-06-07T17:55:14.099Z',
+    usersPermissionsUser: 'string',
+    location: 'string',
+    vesselName: 'string',
+    productList: { id: 'quantity' },
+    transactionAmount: 0,
+    published_at: '2021-06-07T17:55:14.099Z',
+  };
+
   useEffect(() => {
     const data = localStorage.getItem('cart');
     if (data) {

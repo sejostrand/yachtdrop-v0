@@ -17,10 +17,6 @@
       "collection": "user",
       "dominant": true
     },
-    "orders": {
-      "via": "vessel",
-      "collection": "orders"
-    },
     "vessel_name": {
       "type": "string",
       "required": true

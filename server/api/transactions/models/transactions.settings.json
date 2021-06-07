@@ -15,10 +15,6 @@
       "plugin": "users-permissions",
       "model": "user"
     },
-    "order": {
-      "via": "transaction",
-      "model": "orders"
-    },
     "transaction_id": {
       "type": "string"
     },

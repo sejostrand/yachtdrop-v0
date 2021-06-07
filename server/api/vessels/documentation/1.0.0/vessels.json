@@ -592,66 +592,6 @@
               }
             }
           },
-          "orders": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "state",
-                "orderId"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "state": {
-                  "type": "string",
-                  "enum": [
-                    "cart",
-                    "active",
-                    "cancelled",
-                    "completed"
-                  ]
-                },
-                "orderId": {
-                  "type": "string"
-                },
-                "transactionId": {
-                  "type": "string"
-                },
-                "orderDatetime": {
-                  "type": "string"
-                },
-                "expectedDelivery": {
-                  "type": "string"
-                },
-                "usersPermissionsUser": {
-                  "type": "string"
-                },
-                "transaction": {
-                  "type": "string"
-                },
-                "vessel": {
-                  "type": "string"
-                },
-                "products": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "vessel_name": {
             "type": "string"
           },
@@ -667,12 +607,6 @@
         ],
         "properties": {
           "users_permissions_users": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "orders": {
             "type": "array",
             "items": {
               "type": "string"

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "06/04/2021 11:03:29 AM"
+    "x-generation-date": "06/07/2021 6:55:08 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -8153,9 +8153,7 @@
       },
       "Orders": {
         "required": [
-          "id",
-          "state",
-          "orderId"
+          "id"
         ],
         "properties": {
           "id": {
@@ -8163,23 +8161,18 @@
           },
           "state": {
             "type": "string",
-            "default": "cart",
+            "default": "pending",
             "enum": [
-              "cart",
+              "pending",
               "active",
+              "failed",
               "cancelled",
-              "completed"
+              "completed",
+              "refunded"
             ]
-          },
-          "orderId": {
-            "type": "string"
           },
           "transactionId": {
             "type": "string"
-          },
-          "orderDatetime": {
-            "type": "string",
-            "format": "date-time"
           },
           "expectedDelivery": {
             "type": "string",
@@ -8251,143 +8244,14 @@
               }
             }
           },
-          "transaction": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "users_permissions_user": {
-                "type": "string"
-              },
-              "order": {
-                "type": "string"
-              },
-              "transaction_id": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "amount": {
-                "type": "number"
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
+          "location": {
+            "type": "string"
           },
-          "vessel": {
-            "required": [
-              "id",
-              "vessel_name"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "users_permissions_users": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "orders": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "vessel_name": {
-                "type": "string"
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
+          "productList": {
+            "type": "object"
           },
-          "products": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "display",
-                "packSize"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "display": {
-                  "type": "string"
-                },
-                "subDisplay": {
-                  "type": "string"
-                },
-                "featured": {
-                  "type": "boolean"
-                },
-                "productImg": {
-                  "type": "string"
-                },
-                "price": {
-                  "type": "number"
-                },
-                "packSize": {
-                  "type": "integer"
-                },
-                "unitVolume": {
-                  "type": "string"
-                },
-                "vintage": {
-                  "type": "integer"
-                },
-                "packageType": {
-                  "type": "string"
-                },
-                "supplier": {
-                  "type": "string"
-                },
-                "fullDescription": {
-                  "type": "string"
-                },
-                "port": {
-                  "type": "string"
-                },
-                "category": {
-                  "type": "string"
-                },
-                "sub_category": {
-                  "type": "string"
-                },
-                "category_tags": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
+          "transactionAmount": {
+            "type": "number"
           },
           "published_at": {
             "type": "string",
@@ -8396,30 +8260,21 @@
         }
       },
       "NewOrders": {
-        "required": [
-          "state",
-          "orderId"
-        ],
         "properties": {
           "state": {
             "type": "string",
-            "default": "cart",
+            "default": "pending",
             "enum": [
-              "cart",
+              "pending",
               "active",
+              "failed",
               "cancelled",
-              "completed"
+              "completed",
+              "refunded"
             ]
-          },
-          "orderId": {
-            "type": "string"
           },
           "transactionId": {
             "type": "string"
-          },
-          "orderDatetime": {
-            "type": "string",
-            "format": "date-time"
           },
           "expectedDelivery": {
             "type": "string",
@@ -8428,17 +8283,14 @@
           "usersPermissionsUser": {
             "type": "string"
           },
-          "transaction": {
+          "location": {
             "type": "string"
           },
-          "vessel": {
-            "type": "string"
+          "productList": {
+            "type": "object"
           },
-          "products": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "transactionAmount": {
+            "type": "number"
           },
           "published_at": {
             "type": "string",
@@ -9139,63 +8991,6 @@
               }
             }
           },
-          "order": {
-            "required": [
-              "id",
-              "state",
-              "orderId"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "state": {
-                "type": "string",
-                "enum": [
-                  "cart",
-                  "active",
-                  "cancelled",
-                  "completed"
-                ]
-              },
-              "orderId": {
-                "type": "string"
-              },
-              "transactionId": {
-                "type": "string"
-              },
-              "orderDatetime": {
-                "type": "string"
-              },
-              "expectedDelivery": {
-                "type": "string"
-              },
-              "usersPermissionsUser": {
-                "type": "string"
-              },
-              "transaction": {
-                "type": "string"
-              },
-              "vessel": {
-                "type": "string"
-              },
-              "products": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
           "transaction_id": {
             "type": "string"
           },
@@ -9214,9 +9009,6 @@
       "NewTransactions": {
         "properties": {
           "users_permissions_user": {
-            "type": "string"
-          },
-          "order": {
             "type": "string"
           },
           "transaction_id": {
@@ -9318,66 +9110,6 @@
               }
             }
           },
-          "orders": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "state",
-                "orderId"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "state": {
-                  "type": "string",
-                  "enum": [
-                    "cart",
-                    "active",
-                    "cancelled",
-                    "completed"
-                  ]
-                },
-                "orderId": {
-                  "type": "string"
-                },
-                "transactionId": {
-                  "type": "string"
-                },
-                "orderDatetime": {
-                  "type": "string"
-                },
-                "expectedDelivery": {
-                  "type": "string"
-                },
-                "usersPermissionsUser": {
-                  "type": "string"
-                },
-                "transaction": {
-                  "type": "string"
-                },
-                "vessel": {
-                  "type": "string"
-                },
-                "products": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "vessel_name": {
             "type": "string"
           },
@@ -9393,12 +9125,6 @@
         ],
         "properties": {
           "users_permissions_users": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "orders": {
             "type": "array",
             "items": {
               "type": "string"
@@ -9664,12 +9390,6 @@
                   "type": "string"
                 },
                 "users_permissions_users": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "orders": {
                   "type": "array",
                   "items": {
                     "type": "string"
