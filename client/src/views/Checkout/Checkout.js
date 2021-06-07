@@ -5,6 +5,7 @@ import { COLORS } from '@assets/theme/theme';
 import useMediaQuery from '@assets/utils/useMediaQuery';
 import ListItem from './objects/ListItem';
 import COVER from '@assets/img/cover-narrow.jpg';
+import axios from 'axios'
 
 const BodyWrapper = styled.div`
   display: flex;
@@ -183,6 +184,23 @@ const CheckOut = () => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
+  const PostOrder = () => {
+      axios
+        .post('http://localhost:1337/auth/local/register', {
+        orderId: first_name,
+        transactionId: surname,
+        username: username,
+        email: user_email,
+        password: user_password,
+        products: cart
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   return (
     <BodyWrapper>
