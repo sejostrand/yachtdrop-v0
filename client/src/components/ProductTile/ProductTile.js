@@ -122,12 +122,12 @@ const ProductTile = (props) => {
           <ProductPrice>€ {props.price.toFixed(2)}</ProductPrice>
         </DetailsWrapper>
         <AddButton>
-          <SaveContainer
+          {/* <SaveContainer
             isFav={isFav}
             onClick={() => setFavs(props.id) && setIsFav(!isFav)}
           >
             <StarContainer isFav={isFav}>★</StarContainer>
-          </SaveContainer>
+          </SaveContainer> */}
           <AddContainer onClick={(product) => onAdd(product)}>ADD</AddContainer>
         </AddButton>
       </TileWrapper>

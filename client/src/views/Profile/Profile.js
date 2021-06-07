@@ -1,68 +1,56 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import {
-  useCurrentUser,
-  useDispatchCurrentUser,
-} from '@assets/utils/CurrentUser';
-import { useHistory } from 'react-router-dom';
-import { callApi } from '../../utils';
 import { COLORS } from '@assets/theme/theme';
-import NavBar from '@components/NavBar/NavBar';
-import Footer from '@components/Footer/Footer';
-import BG from '@assets/img/sea.jpg';
-import SearchBar from '@components/SearchBar/SearchBar';
+
+import DetailsContainer from './objects/DetailsContainer';
+import OrdersContainer from './objects/OrdersContainer';
+import WalletContainer from './objects/WalletContainer';
 
 const BodyWrapper = styled.div`
   display: flex;
-  width: 100%;
   flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
-  background-image: url(${BG});
-  background-position: center bottom;
-  background-size: auto 100vh;
+  width: 100%;
+  min-height: 80vh;
+  padding: 50px;
+  background: ${COLORS.white};
 `;
 
 const Container = styled.div`
   display: flex;
-  flex-flow: row wrap;
-  background-color: #f8faf7;
-  padding: 30px;
-  border-radius: 20px;
-  margin: 15vh 0px;
-`;
-
-const FormContainer = styled.form`
-  display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
-  align-items: start;
-  width: auto;
+  width: 100%;
   background-color: #f8faf7;
   padding: 30px;
   border-radius: 20px;
 `;
 
-const ContentContainer = styled.div`
+const SubMenu = styled.div`
   display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
+  flex-flow: row nowrap;
 `;
 
-const PageTitle = styled.div`
+const MenuButton = styled.div`
+  background-color: ${(props) =>
+    props.menuState === props.tag ? COLORS.darkGreen : COLORS.green};
+  padding: 5px 20px;
+  color: white;
+  font-family: 'Calibri';
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin: 5px 10px;
+  height: fit-content;
+  border-radius: 10px;
+  cursor: pointer;
+  align-self: space-between;
   display: flex;
-  color: black;
-  font-size: 30px;
-  padding: 10px 0px;
-`;
 
-const Caption = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  margin: 30px 0px;
-  font-size: 18px;
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 const SubmitButton = styled.input`
@@ -86,70 +74,39 @@ const SubmitButton = styled.input`
   }
 `;
 
-const LogInButton = styled.button`
-  margin: 10px 0px;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: center;
-  height: 30px;
-  width: 100px;
-  border-radius: 5px;
-  background-color: ${COLORS.green};
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-  font-weight: bold;
-  letter-spacing: 1px;
-
-  &:hover {
-    opacity: 0.8;
-  }
-`;
-
-const SignUpButton = styled.a`
-  margin: 0px;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: center;
-  height: 30px;
-  width: 100px;
-  border-radius: 5px;
-  background-color: ${COLORS.orange};
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-  text-transform: capitalize;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-decoration: none;
-
-  &:hover {
-    opacity: 0.8;
-  }
-`;
-
-const Label = styled.div`
-  font-size: 18px;
-  color: black;
-  margin: 2px 0px;
-  position: relative;
-`;
-
-const StyledInput = styled.input`
-  margin: 6px 0px;
-  padding: 5px;
-  width: 300px;
-`;
-
 const Profile = () => {
+  const [menuState, setMenuState] = useState('details');
+
   return (
     <>
-      {/* <SearchBar disabled={true} /> */}
       <BodyWrapper>
         <Container>
-          <ContentContainer></ContentContainer>
+          <SubMenu>
+            <MenuButton
+              menuState={menuState}
+              tag='details'
+              onClick={() => setMenuState('details')}
+            >
+              Details
+            </MenuButton>
+            <MenuButton
+              menuState={menuState}
+              tag='orders'
+              onClick={() => setMenuState('orders')}
+            >
+              Orders
+            </MenuButton>
+            <MenuButton
+              menuState={menuState}
+              tag='wallet'
+              onClick={() => setMenuState('wallet')}
+            >
+              Wallet
+            </MenuButton>
+          </SubMenu>
+          {menuState === 'details' && <DetailsContainer />}
+          {menuState === 'orders' && <OrdersContainer />}
+          {menuState === 'wallet' && <WalletContainer />}
         </Container>
       </BodyWrapper>
     </>
