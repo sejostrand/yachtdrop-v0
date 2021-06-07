@@ -4,30 +4,40 @@ import { CartContext } from '@assets/utils/CartContext';
 import { COLORS } from '@assets/theme/theme';
 import useMediaQuery from '@assets/utils/useMediaQuery';
 import ListItem from './objects/ListItem';
-import COVER from '@assets/img/cover.jpg';
+import COVER from '@assets/img/cover-narrow.jpg';
 
 const BodyWrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
-  min-height: 80vh;
   background: ${COLORS.white};
-`;
-
-const Cover = styled.img`
-  height: 30vw;
-  position: absolute;
-  right: 0;
-  top: 300px;
-`;
-const BackgroundCover = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  width: 100%;
   background-image: url(${COVER});
   background-size: 100% auto;
-  background-position-y: 60%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+`;
+
+const BodyContainer = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  margin-top: 55vh;
+  width: 100%;
+  background-color: ${COLORS.white};
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  min-height: 80vh;
+  box-shadow: 0px -1px 50px ${COLORS.darkGray};
+`;
+
+const BackgroundCover = styled.div`
+  display: flex;
+  width: 100%;
+  height: 400px;
+  background-image: url(${COVER});
+  background-size: 100% auto;
+  background-position-y: 68%;
   margin-bottom: 60px;
+  box-shadow: onset 0px -5px 50px black;
 `;
 
 const RowContainer = styled.div`
@@ -45,7 +55,8 @@ const Title = styled.div`
   display: flex;
   flex-flow: row nowrap;
   margin: 10px auto 10px 10px;
-  font-size: 20px;
+  font-size: 30px;
+  font-weight: 400;
 `;
 
 const ConfirmButton = styled.a`
@@ -57,6 +68,7 @@ const ConfirmButton = styled.a`
   border-radius: 5px;
   padding: 10px 25px;
   width: fit-content;
+  height: fit-content;
   cursor: pointer;
   margin-left: auto;
   &:hover {
@@ -173,73 +185,76 @@ const CheckOut = () => {
 
   return (
     <BodyWrapper>
-      <RowContainer>
-        <Title>Confirm Order</Title>
-        <ConfirmButton>Confirm & continue to payment</ConfirmButton>
-        {/* <Cover src={COVER} /> */}
-      </RowContainer>
-      <RowContainer>
-        <Paragrapgh>
-          Please check your cart and fill out the details to confirm your order
-          and proceed to payment.
-        </Paragrapgh>
-      </RowContainer>
+      {/* <BackgroundCover /> */}
+      <BodyContainer>
+        <RowContainer>
+          <Title>Order confirmation</Title>
+          <ConfirmButton>Confirm & continue to payment</ConfirmButton>
+          {/* <Cover src={COVER} /> */}
+        </RowContainer>
+        <RowContainer>
+          <Paragrapgh>
+            Please check your cart and fill out the details to confirm your
+            order and proceed to payment.
+          </Paragrapgh>
+        </RowContainer>
 
-      <RowContainer>
-        <FormContainer>
-          <OrderForm>
-            <Field>
-              <FieldLabel>Vessel Name: </FieldLabel>
-              <InputField type='text'></InputField>
-            </Field>
-            <Field>
-              <FieldLabel>Reciever Name:</FieldLabel>
-              <InputField type='text'></InputField>
-            </Field>
-            <Field>
-              <FieldLabel>Contact Number:</FieldLabel>
-              <InputField type='text'></InputField>
-            </Field>
-            <Field>
-              <FieldLabel>Location: </FieldLabel>
-              <InputField type='text'></InputField>
-            </Field>
-            <Field>
-              <FieldLabel>Datetime:</FieldLabel>
-              <InputField type='text'></InputField>
-            </Field>
-            <Field>
-              <FieldLabel>Iced delivery?</FieldLabel>
-              <InputField type='text'></InputField>
-            </Field>
-          </OrderForm>
-        </FormContainer>
+        <RowContainer>
+          <FormContainer>
+            <OrderForm>
+              <Field>
+                <FieldLabel>Vessel Name: </FieldLabel>
+                <InputField type='text'></InputField>
+              </Field>
+              <Field>
+                <FieldLabel>Reciever Name:</FieldLabel>
+                <InputField type='text'></InputField>
+              </Field>
+              <Field>
+                <FieldLabel>Contact Number:</FieldLabel>
+                <InputField type='text'></InputField>
+              </Field>
+              <Field>
+                <FieldLabel>Location: </FieldLabel>
+                <InputField type='text'></InputField>
+              </Field>
+              <Field>
+                <FieldLabel>Datetime:</FieldLabel>
+                <InputField type='text'></InputField>
+              </Field>
+              <Field>
+                <FieldLabel>Iced delivery?</FieldLabel>
+                <InputField type='text'></InputField>
+              </Field>
+            </OrderForm>
+          </FormContainer>
 
-        <CartContainer>
-          <CartHeader>
-            <ReturnButton href='/shoppage'>
-              ◀ Return and continue shopping
-            </ReturnButton>
-            <Total> Total: &nbsp;&nbsp; € {totalPrice.toFixed(2)}</Total>
-          </CartHeader>
-          {cart.map((product, index) => (
-            <>
-              <CartDivider />
-              <ListItem
-                qty={product.qty}
-                key={index}
-                id={product.id}
-                fullDescription={product.fullDescription}
-                display={product.display}
-                subDisplay={product.subDisplay}
-                price={product.price}
-                packSize={product.packSize}
-                imgUrl={product.imgUrl}
-              />
-            </>
-          ))}
-        </CartContainer>
-      </RowContainer>
+          <CartContainer>
+            <CartHeader>
+              <ReturnButton href='/shoppage'>
+                ◀ Return and continue shopping
+              </ReturnButton>
+              <Total> Total: &nbsp;&nbsp; € {totalPrice.toFixed(2)}</Total>
+            </CartHeader>
+            {cart.map((product, index) => (
+              <>
+                <CartDivider />
+                <ListItem
+                  qty={product.qty}
+                  key={index}
+                  id={product.id}
+                  fullDescription={product.fullDescription}
+                  display={product.display}
+                  subDisplay={product.subDisplay}
+                  price={product.price}
+                  packSize={product.packSize}
+                  imgUrl={product.imgUrl}
+                />
+              </>
+            ))}
+          </CartContainer>
+        </RowContainer>
+      </BodyContainer>
     </BodyWrapper>
   );
 };
