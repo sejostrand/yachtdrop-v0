@@ -26,7 +26,7 @@ const Title = styled.p`
   font-size: 24px;
   color: ${COLORS.orange};
   display: flex;
-  margin-top: 6px;
+  margin: 6px;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;
@@ -35,29 +35,33 @@ const Title = styled.p`
 const ButtonContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
-  margin-top: 24px;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 100px;
+  @media (max-width: 900px) {
+    margin: 10px;
+  }
 `;
 
 const Button = styled.a`
   background-color: ${COLORS.green};
   color: white;
   font-family: 'Calibri';
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
   padding: 8px 20px;
-  margin: 3px 8px;
+  margin: 5px;
   border-radius: 10px;
   cursor: pointer;
   align-self: center;
   text-decoration: none;
   transition: all 0.2s;
-  transform: scale(0.9);
   &:hover {
     opacity: 0.8;
-    transform: scale(1);
+    transform: scale(1.05);
   }
 `;
 
@@ -69,7 +73,7 @@ const Caption = styled.div`
   font-weight: bold;
   letter-spacing: 1px;
   color: white;
-  transform: translateY(5vw);
+  transform: translateY(90px);
 `;
 
 const Subtitle = styled.div`
