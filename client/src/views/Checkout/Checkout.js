@@ -20,7 +20,7 @@ const BodyWrapper = styled.div`
 const BodyContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
-  margin-top: 55vh;
+  margin-top: min(55vh, 35vw);
   width: 100%;
   background-color: ${COLORS.white};
   border-top-right-radius: 20px;
