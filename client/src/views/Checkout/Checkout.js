@@ -203,7 +203,7 @@ const CheckOut = () => {
       List[product.id] = product.qty
     });
     await axios
-      .post('http://localhost:1337/orders', {
+      .post('http://localhost:1337/orders', { withCredentials: true }, {
         transactionId: 'string',
         usersPermissionsUser: 'string',
         location: location,
