@@ -29,9 +29,9 @@ const SubMenu = styled.div`
   flex-flow: row nowrap;
 `;
 
-const MenuButton = styled.div`
+const MenuButton = styled.a`
   background-color: ${(props) =>
-    props.menuState === props.tag ? COLORS.darkGreen : COLORS.green};
+    props.menuState ? COLORS.darkGreen : COLORS.green};
   padding: 5px 20px;
   color: white;
   font-family: 'Calibri';
@@ -75,7 +75,9 @@ const SubmitButton = styled.input`
 `;
 
 const Profile = () => {
-  const [menuState, setMenuState] = useState('details');
+  const checkMenu = (input) => {
+    window.location.href.toString().match(`/${input}/g`);
+  };
 
   return (
     <>
@@ -83,30 +85,45 @@ const Profile = () => {
         <Container>
           <SubMenu>
             <MenuButton
-              menuState={menuState}
+              menuState={
+                window.location.href.toString().match(/details/g) ? true : false
+              }
               tag='details'
-              onClick={() => setMenuState('details')}
+              href='/profile/details'
+              // onClick={() => setMenuState('details')}
             >
               Details
             </MenuButton>
             <MenuButton
-              menuState={menuState}
+              menuState={
+                window.location.href.toString().match(/orders/g) ? true : false
+              }
               tag='orders'
-              onClick={() => setMenuState('orders')}
+              href='/profile/orders'
+              //onClick={() => setMenuState('orders')}
             >
               Orders
             </MenuButton>
             <MenuButton
-              menuState={menuState}
+              menuState={
+                window.location.href.toString().match(/wallet/g) ? true : false
+              }
               tag='wallet'
-              onClick={() => setMenuState('wallet')}
+              href='/profile/wallet'
+              //onClick={() => setMenuState('wallet')}
             >
               Wallet
             </MenuButton>
           </SubMenu>
-          {menuState === 'details' && <DetailsContainer />}
-          {menuState === 'orders' && <OrdersContainer />}
-          {menuState === 'wallet' && <WalletContainer />}
+          {window.location.href.toString().match(/details/g) == 'details' && (
+            <DetailsContainer />
+          )}
+          {window.location.href.toString().match(/orders/g) == 'orders' && (
+            <OrdersContainer />
+          )}
+          {window.location.href.toString().match(/wallet/g) == 'wallet' && (
+            <WalletContainer />
+          )}
         </Container>
       </BodyWrapper>
     </>

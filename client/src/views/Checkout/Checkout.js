@@ -5,9 +5,9 @@ import { COLORS } from '@assets/theme/theme';
 import useMediaQuery from '@assets/utils/useMediaQuery';
 import ListItem from './objects/ListItem';
 import COVER from '@assets/img/cover-narrow.jpg';
-import axios from 'axios'
-import { callApi } from '../../utils'
-import { useCurrentUser } from '../../assets/utils/CurrentUser'
+import axios from 'axios';
+import { useCurrentUser } from '@assets/utils/CurrentUser';
+import DateTimePicker from 'react-datetime-picker';
 
 const BodyWrapper = styled.div`
   display: flex;
@@ -73,6 +73,7 @@ const ConfirmButton = styled.button`
   width: fit-content;
   height: fit-content;
   cursor: pointer;
+  transform: none;
   margin-left: auto;
   &:hover {
     text-decoration: underline;
@@ -180,9 +181,47 @@ const CheckOut = () => {
   const [name, setName] = useState('');
   const [contact, setContact] = useState('');
   const [location, setLocation] = useState('');
-  const [time, setTime] = useState('');
+  const [dateTime, setDateTime] = useState('');
+  // const [value, onChange] = useState(new Date());
+  const [redirect, setRedirect] = useState(false);
 
+  const getItems = () => {
+    let result = {};
+    cart.forEach((product) => (result[product.id] = product.qty));
+    return result;
+  };
 
+  const POSTbody = () => {
+    return {
+      expectedDelivery: '2021-06-10T17:55:14.099Z',
+      usersPermissionsUser: user.id,
+      location: location,
+      vesselName: vessel,
+      productList: getItems(),
+      contact: contact,
+    };
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post('http://localhost:1337/orders', POSTbody(), {
+        withCredentials: true,
+      })
+      .then(function (response) {
+        console.log(response);
+        setRedirect(true);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    if (redirect == true) {
+      window.location.assign('/profile/orders');
+    }
+  }, [redirect]);
 
   useEffect(() => {
     const data = localStorage.getItem('cart');
@@ -195,65 +234,14 @@ const CheckOut = () => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-
-  /* const handleSubmit = async (e) => {
-    e.preventDefault();
-    let List = {};
-    cart.forEach((product) => {
-      List[product.id] = product.qty
-    });
-    await axios
-      .post('http://localhost:1337/orders', { withCredentials: true }, {
-        transactionId: 'string',
-        usersPermissionsUser: 'string',
-        location: location,
-        vesselName: vessel,
-        productList: List,
-        transactionAmount: totalPrice,
-        recieverName: name,
-        contactNumber: contact,
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }; */
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    let List = {};
-    cart.forEach((product) => {
-      List[product.id] = product.qty
-    });
-    try {
-      const data = await callApi('/orders', 'POST', {
-        transactionId: 'string',
-        usersPermissionsUser: user.id,
-        location: location,
-        vesselName: vessel,
-        productList: List,
-        transactionAmount: totalPrice,
-        recieverName: name,
-        contactNumber: contact,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   return (
     <BodyWrapper>
       {/* <BackgroundCover /> */}
       <BodyContainer>
         <RowContainer>
           <Title>Order confirmation</Title>
-          <ConfirmButton 
-              type='submit'
-              value='orders'
-              >
-                Confirm & continue to payment
+          <ConfirmButton type='submit' value='register'>
+            Confirm & continue to payment
           </ConfirmButton>
           {/* <Cover src={COVER} /> */}
         </RowContainer>
@@ -266,49 +254,57 @@ const CheckOut = () => {
 
         <RowContainer>
           <FormContainer>
-            <OrderForm 
-              action={'/Checkout'}
+            <OrderForm
+              action={'/signup'}
               method={'POST'}
               onSubmit={handleSubmit}
             >
-              <Field> 
+              <Field>
                 <FieldLabel>Vessel Name: </FieldLabel>
-                <InputField 
-                    type='text'
-                    placeholder='Vessel Name'
-                    value={vessel}
-                    onChange={(e) => setVessel(e.target.value)}></InputField>
+                <InputField
+                  type='text'
+                  value={vessel}
+                  onChange={(e) => setVessel(e.target.value)}
+                ></InputField>
               </Field>
               <Field>
                 <FieldLabel>Reciever Name:</FieldLabel>
-                <InputField 
-                    type='text'
-                    placeholder='Name'
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}></InputField>
+                <InputField
+                  type='text'
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                ></InputField>
               </Field>
               <Field>
                 <FieldLabel>Contact Number:</FieldLabel>
-                <InputField 
-                    type='text'
-                    placeholder='Phone Number'
-                    value={contact}
-                    onChange={(e) => setContact(e.target.value)}></InputField>
+                <InputField
+                  type='text'
+                  value={contact}
+                  onChange={(e) => setContact(e.target.value)}
+                ></InputField>
               </Field>
               <Field>
                 <FieldLabel>Location: </FieldLabel>
-                <InputField 
-                    type='text'
-                    placeholder='Location'
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}></InputField>
+                <InputField
+                  type='text'
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                ></InputField>
               </Field>
-              <ConfirmButton 
-              type='submit'
-              value='orders'
-              >
+              <Field>
+                <FieldLabel>Datetime:</FieldLabel>
+                <InputField
+                  type='text'
+                  value={dateTime}
+                  onChange={(e) => setDateTime(e.target.value)}
+                ></InputField>
+                {/* <div>
+                  <DateTimePicker onChange={onChange} value={value} />
+                </div> */}
+              </Field>
+              <ConfirmButton type='submit' value='place-order'>
                 Confirm & continue to payment
-          </ConfirmButton>
+              </ConfirmButton>
             </OrderForm>
           </FormContainer>
 

@@ -56,7 +56,7 @@ const ProductTile = (props) => {
     }
   };
 
-  //FAV PRODUCTS
+  //ADD PRODUCTS TO FAVOURITES
   const getFavs = async () => {
     const res = await axios.get('http://localhost:1337/users/me', {
       withCredentials: true,
