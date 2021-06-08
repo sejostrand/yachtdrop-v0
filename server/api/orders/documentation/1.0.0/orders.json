@@ -616,6 +616,15 @@
           "transactionAmount": {
             "type": "number"
           },
+          "recieverName": {
+            "type": "string"
+          },
+          "vesselName": {
+            "type": "string"
+          },
+          "contactNumber": {
+            "type": "integer"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -654,6 +663,15 @@
           },
           "transactionAmount": {
             "type": "number"
+          },
+          "recieverName": {
+            "type": "string"
+          },
+          "vesselName": {
+            "type": "string"
+          },
+          "contactNumber": {
+            "type": "integer"
           },
           "published_at": {
             "type": "string",

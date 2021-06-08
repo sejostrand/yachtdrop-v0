@@ -6,6 +6,8 @@ import useMediaQuery from '@assets/utils/useMediaQuery';
 import ListItem from './objects/ListItem';
 import COVER from '@assets/img/cover-narrow.jpg';
 import axios from 'axios'
+import { callApi } from '../../utils'
+import { useCurrentUser } from '../../assets/utils/CurrentUser'
 
 const BodyWrapper = styled.div`
   display: flex;
@@ -60,7 +62,7 @@ const Title = styled.div`
   font-weight: 400;
 `;
 
-const ConfirmButton = styled.a`
+const ConfirmButton = styled.button`
   display: flex;
   flex-flow: row nowrap;
   background-color: ${COLORS.orange};
@@ -172,21 +174,15 @@ const CheckOut = () => {
   const totalPrice = cart.reduce((acc, curr) => acc + curr.qty * curr.price, 0);
   const totalItems = cart.reduce((acc, curr) => acc + curr.qty, 0);
   const mediaQuery = useMediaQuery('(min-width: 600px)');
+  const user = useCurrentUser();
 
   const [vessel, setVessel] = useState('');
   const [name, setName] = useState('');
   const [contact, setContact] = useState('');
+  const [location, setLocation] = useState('');
+  const [time, setTime] = useState('');
 
-  const POSTbody = {
-    transactionId: 'string',
-    expectedDelivery: '2021-06-07T17:55:14.099Z',
-    usersPermissionsUser: 'string',
-    location: 'string',
-    vesselName: 'string',
-    productList: { id: 'quantity' },
-    transactionAmount: 0,
-    published_at: '2021-06-07T17:55:14.099Z',
-  };
+
 
   useEffect(() => {
     const data = localStorage.getItem('cart');
@@ -199,15 +195,23 @@ const CheckOut = () => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  const PostOrder = () => {
-      axios
-        .post('http://localhost:1337/auth/local/register', {
-        orderId: first_name,
-        transactionId: surname,
-        username: username,
-        email: user_email,
-        password: user_password,
-        products: cart
+
+  /* const handleSubmit = async (e) => {
+    e.preventDefault();
+    let List = {};
+    cart.forEach((product) => {
+      List[product.id] = product.qty
+    });
+    await axios
+      .post('http://localhost:1337/orders', {
+        transactionId: 'string',
+        usersPermissionsUser: 'string',
+        location: location,
+        vesselName: vessel,
+        productList: List,
+        transactionAmount: totalPrice,
+        recieverName: name,
+        contactNumber: contact,
       })
       .then(function (response) {
         console.log(response);
@@ -215,7 +219,29 @@ const CheckOut = () => {
       .catch(function (error) {
         console.log(error);
       });
-  }
+  }; */
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let List = {};
+    cart.forEach((product) => {
+      List[product.id] = product.qty
+    });
+    try {
+      const data = await callApi('/orders', 'POST', {
+        transactionId: 'string',
+        usersPermissionsUser: user.id,
+        location: location,
+        vesselName: vessel,
+        productList: List,
+        transactionAmount: totalPrice,
+        recieverName: name,
+        contactNumber: contact,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <BodyWrapper>
@@ -223,7 +249,12 @@ const CheckOut = () => {
       <BodyContainer>
         <RowContainer>
           <Title>Order confirmation</Title>
-          <ConfirmButton>Confirm & continue to payment</ConfirmButton>
+          <ConfirmButton 
+              type='submit'
+              value='orders'
+              >
+                Confirm & continue to payment
+          </ConfirmButton>
           {/* <Cover src={COVER} /> */}
         </RowContainer>
         <RowContainer>
@@ -235,31 +266,49 @@ const CheckOut = () => {
 
         <RowContainer>
           <FormContainer>
-            <OrderForm>
-              <Field>
+            <OrderForm 
+              action={'/Checkout'}
+              method={'POST'}
+              onSubmit={handleSubmit}
+            >
+              <Field> 
                 <FieldLabel>Vessel Name: </FieldLabel>
-                <InputField type='text'></InputField>
+                <InputField 
+                    type='text'
+                    placeholder='Vessel Name'
+                    value={vessel}
+                    onChange={(e) => setVessel(e.target.value)}></InputField>
               </Field>
               <Field>
                 <FieldLabel>Reciever Name:</FieldLabel>
-                <InputField type='text'></InputField>
+                <InputField 
+                    type='text'
+                    placeholder='Name'
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}></InputField>
               </Field>
               <Field>
                 <FieldLabel>Contact Number:</FieldLabel>
-                <InputField type='text'></InputField>
+                <InputField 
+                    type='text'
+                    placeholder='Phone Number'
+                    value={contact}
+                    onChange={(e) => setContact(e.target.value)}></InputField>
               </Field>
               <Field>
                 <FieldLabel>Location: </FieldLabel>
-                <InputField type='text'></InputField>
+                <InputField 
+                    type='text'
+                    placeholder='Location'
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}></InputField>
               </Field>
-              <Field>
-                <FieldLabel>Datetime:</FieldLabel>
-                <InputField type='text'></InputField>
-              </Field>
-              <Field>
-                <FieldLabel>Iced delivery?</FieldLabel>
-                <InputField type='text'></InputField>
-              </Field>
+              <ConfirmButton 
+              type='submit'
+              value='orders'
+              >
+                Confirm & continue to payment
+          </ConfirmButton>
             </OrderForm>
           </FormContainer>
 
