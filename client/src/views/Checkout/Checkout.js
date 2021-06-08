@@ -175,7 +175,6 @@ const CheckOut = () => {
   const totalPrice = cart.reduce((acc, curr) => acc + curr.qty * curr.price, 0);
   const totalItems = cart.reduce((acc, curr) => acc + curr.qty, 0);
   const mediaQuery = useMediaQuery('(min-width: 600px)');
-
   const user = useCurrentUser();
 
   const [vessel, setVessel] = useState('');
