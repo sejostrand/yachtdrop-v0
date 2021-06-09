@@ -101,9 +101,8 @@ const LabelContainer = styled.div`
 `;
 
 const FilterLabel = styled.div`
-  color: ${COLORS.gray};
+  color: ${COLORS.lightGray};
   font-size: 18px;
-  font-weight: bold;
   letter-spacing: 5px;
   transform: rotate(-90deg);
 `;

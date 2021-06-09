@@ -4,24 +4,9 @@ import {
   useCurrentUser,
   useDispatchCurrentUser,
 } from '@assets/utils/CurrentUser';
-import ICON from '@assets/img/profile-icon.png';
 import useMediaQuery from '@assets/utils/useMediaQuery';
 
-const Icon = styled.img`
-  margin: 1px 10px;
-  height: 40px;
-  width: auto;
-`;
-
 const Link = styled.a`
-  display: flex;
-  cursor: pointer;
-  &:hover {
-    opacity: 0.9;
-  }
-`;
-
-const StyledLink = styled.a`
   color: ${(props) => (props.mobile ? 'white' : 'black')};
   background-color: ${(props) => (props.mobile ? 'none' : 'white')};
   border-bottom: ${(props) => (props.mobile ? 'none' : '3px solid #f8694b')};
@@ -46,17 +31,20 @@ const StyledLink = styled.a`
   }
 `;
 
-const ProfileLink = () => {
+const ShopLink = () => {
   const user = useCurrentUser();
-  const matches = useMediaQuery('(min-width: 600px)');
+  const matches1 = useMediaQuery('(min-width: 600px)');
+  const matches = useMediaQuery('(min-width: 1141px)');
 
   return (
-    user.isAuthenticated && (
-      <StyledLink mobile={matches} href='/profile/details'>
-        Profile
-      </StyledLink>
-    )
+    <>
+      {!matches && (
+        <Link mobile={matches1} href='/shoppage'>
+          Shop
+        </Link>
+      )}
+    </>
   );
 };
 
-export default ProfileLink;
+export default ShopLink;

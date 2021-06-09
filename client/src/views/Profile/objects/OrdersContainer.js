@@ -46,7 +46,9 @@ const OrdersContainer = () => {
   useEffect(() => {
     const getData = async () => {
       const res = await axios.get(
-        `http://localhost:1337/orders?usersPermissionsUser=${user.id}`,
+        `http://localhost:1337/orders?usersPermissionsUser=${window.localStorage.getItem(
+          'user'
+        )}`,
         {
           withCredentials: true,
         }
@@ -62,7 +64,7 @@ const OrdersContainer = () => {
   const getOrderDetails = () => {
     let details = [];
     for (let i = 0; i < orders.length; i++) {
-      console.log(`${orders[i]}g`);
+      console.log(orders[i]);
     }
   };
 

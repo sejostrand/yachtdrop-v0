@@ -9,6 +9,16 @@ const Container = styled.div`
   width: 100%;
 `;
 
+const ButtonsContainer = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  background-color: white;
+  color: black;
+  width: 100%;
+  padding: 10px;
+  align-items: center;
+`;
+
 const Tag = styled.a`
   background-color: black;
   color: white;
@@ -25,16 +35,6 @@ const Tag = styled.a`
   &:hover {
     opacity: 0.8;
   }
-`;
-
-const ButtonsContainer = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  background-color: white;
-  color: black;
-  width: 100%;
-  padding: 10px;
-  align-items: center;
 `;
 
 const SortTitle = styled.div`
@@ -250,15 +250,17 @@ const SortBy = (props) => {
           Price {checkSort('price:ASC') ? '△' : ''}
           {checkSort('price:DESC') ? '▽' : ''}
         </SortButton>
-        <FavButton
-          color='#03b29a'
-          field1='price:ASC'
-          field2='price:DESC'
-          checkFav={checkFav}
-          href={checkFav() ? '/shoppage/' : '/shoppage/products?favourites'}
-        >
-          Favourites
-        </FavButton>
+        {user.isAuthenticated && (
+          <FavButton
+            color='#03b29a'
+            field1='price:ASC'
+            field2='price:DESC'
+            checkFav={checkFav}
+            href={checkFav() ? '/shoppage/' : '/shoppage/products?favourites'}
+          >
+            Favourites
+          </FavButton>
+        )}
       </ButtonsContainer>
       <ButtonsContainer>
         {SelectedTags() != null &&
