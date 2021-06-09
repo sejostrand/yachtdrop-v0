@@ -16,8 +16,10 @@ import useMediaQuery from '@assets/utils/useMediaQuery';
 const BodyDiv = styled.div`
   width: 100%;
   display: block;
+  border-left: 3px solid black;
   @media (max-width: 600px) {
     margin-left: 25px;
+    border-left: none;
   }
 `;
 

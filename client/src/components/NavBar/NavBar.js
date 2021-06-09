@@ -28,9 +28,9 @@ const StyledNavBar = styled.nav`
   z-index: 12;
   overflow: hidden;
   max-height: ${(props) => (props.open ? '500px' : '52px')};
-  -moz-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
 `;
 
 const NavMenu = styled.div`

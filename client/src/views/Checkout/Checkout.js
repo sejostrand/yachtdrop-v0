@@ -24,6 +24,7 @@ const BodyContainer = styled.div`
   flex-flow: column nowrap;
   margin-top: min(55vh, 35vw);
   width: 100%;
+  padding: 0 8vw;
   background-color: ${COLORS.white};
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
@@ -31,21 +32,10 @@ const BodyContainer = styled.div`
   box-shadow: 0px -1px 50px ${COLORS.darkGray};
 `;
 
-const BackgroundCover = styled.div`
-  display: flex;
-  width: 100%;
-  height: 400px;
-  background-image: url(${COVER});
-  background-size: 100% auto;
-  background-position-y: 68%;
-  margin-bottom: 60px;
-  box-shadow: onset 0px -5px 50px black;
-`;
-
 const RowContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
-  margin: 30px 5vw;
+  justify-content: space-between;
 `;
 
 const ColumnContainer = styled.div`
@@ -56,7 +46,7 @@ const ColumnContainer = styled.div`
 const Title = styled.div`
   display: flex;
   flex-flow: row nowrap;
-  margin: 10px auto 10px 10px;
+  margin: 50px auto 10px 10px;
   font-size: 30px;
   font-weight: 400;
 `;
@@ -73,7 +63,7 @@ const ConfirmButton = styled.button`
   height: fit-content;
   cursor: pointer;
   transform: none;
-  margin-left: auto;
+  margin: 20px 15px 10px auto;
   &:hover {
     text-decoration: underline;
   }
@@ -122,15 +112,7 @@ const CartContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
   max-width: 900px;
-  margin: 0 auto 50px auto;
-`;
-
-const CartHeader = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px;
+  margin: 30px auto 60px auto;
 `;
 
 const ReturnButton = styled.a`
@@ -145,17 +127,28 @@ const ReturnButton = styled.a`
   padding: 10px 25px;
   cursor: pointer;
   text-decoration: none;
+  margin: 25px 10px;
+
   &:hover {
     text-decoration: underline;
   }
 `;
 
+const CartHeader = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  margin: 10px 20px;
+`;
+
 const Total = styled.div`
-  border-bottom: 2px solid black;
   width: fit-content;
   height: fit-content;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
+  margin: 10px 20px;
 `;
 
 const CartDivider = styled.div`
@@ -166,7 +159,7 @@ const CartDivider = styled.div`
 `;
 
 const Paragrapgh = styled.p`
-  margin: 0 5px;
+  margin: 10px;
 `;
 
 const CheckOut = () => {
@@ -237,101 +230,94 @@ const CheckOut = () => {
     <BodyWrapper>
       {/* <BackgroundCover /> */}
       <BodyContainer>
-        <RowContainer>
+        <ColumnContainer>
           <Title>Order confirmation</Title>
-          <ConfirmButton type='submit' value='register'>
-            Confirm & continue to payment
-          </ConfirmButton>
           {/* <Cover src={COVER} /> */}
-        </RowContainer>
-        <RowContainer>
           <Paragrapgh>
             Please check your cart and fill out the details to confirm your
             order and proceed to payment.
           </Paragrapgh>
-        </RowContainer>
+        </ColumnContainer>
 
         <RowContainer>
-          <FormContainer>
-            <OrderForm
-              action={'/signup'}
-              method={'POST'}
-              onSubmit={handleSubmit}
-            >
-              <Field>
-                <FieldLabel>Vessel Name: </FieldLabel>
-                <InputField
-                  type='text'
-                  value={vessel}
-                  onChange={(e) => setVessel(e.target.value)}
-                ></InputField>
-              </Field>
-              <Field>
-                <FieldLabel>Reciever Name:</FieldLabel>
-                <InputField
-                  type='text'
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                ></InputField>
-              </Field>
-              <Field>
-                <FieldLabel>Contact Number:</FieldLabel>
-                <InputField
-                  type='text'
-                  value={contact}
-                  onChange={(e) => setContact(e.target.value)}
-                ></InputField>
-              </Field>
-              <Field>
-                <FieldLabel>Location: </FieldLabel>
-                <InputField
-                  type='text'
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                ></InputField>
-              </Field>
-              <Field>
-                <FieldLabel>Datetime:</FieldLabel>
-                <InputField
-                  type='text'
-                  value={dateTime}
-                  onChange={(e) => setDateTime(e.target.value)}
-                ></InputField>
-                {/* <div>
+          <ReturnButton href='/shoppage'>
+            ◀ Return and continue shopping
+          </ReturnButton>
+        </RowContainer>
+
+        <CartContainer>
+          <RowContainer>
+            <CartHeader>My order list</CartHeader>
+            <Total> Total: &nbsp;&nbsp; € {totalPrice.toFixed(2)}</Total>
+          </RowContainer>
+          {cart.map((product, index) => (
+            <>
+              <CartDivider />
+              <ListItem
+                qty={product.qty}
+                key={index}
+                id={product.id}
+                fullDescription={product.fullDescription}
+                display={product.display}
+                subDisplay={product.subDisplay}
+                price={product.price}
+                packSize={product.packSize}
+                imgUrl={product.imgUrl}
+              />
+            </>
+          ))}
+        </CartContainer>
+
+        <FormContainer>
+          <OrderForm action={'/signup'} method={'POST'} onSubmit={handleSubmit}>
+            <Field>
+              <FieldLabel>Vessel Name: </FieldLabel>
+              <InputField
+                type='text'
+                value={vessel}
+                onChange={(e) => setVessel(e.target.value)}
+              ></InputField>
+            </Field>
+            <Field>
+              <FieldLabel>Reciever Name:</FieldLabel>
+              <InputField
+                type='text'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              ></InputField>
+            </Field>
+            <Field>
+              <FieldLabel>Contact Number:</FieldLabel>
+              <InputField
+                type='text'
+                value={contact}
+                onChange={(e) => setContact(e.target.value)}
+              ></InputField>
+            </Field>
+            <Field>
+              <FieldLabel>Location: </FieldLabel>
+              <InputField
+                type='text'
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              ></InputField>
+            </Field>
+            <Field>
+              <FieldLabel>Datetime:</FieldLabel>
+              <InputField
+                type='text'
+                value={dateTime}
+                onChange={(e) => setDateTime(e.target.value)}
+              ></InputField>
+              {/* <div>
                   <DateTimePicker onChange={onChange} value={value} />
                 </div> */}
-              </Field>
-              <ConfirmButton type='submit' value='place-order'>
-                Confirm & continue to payment
-              </ConfirmButton>
-            </OrderForm>
-          </FormContainer>
-
-          <CartContainer>
-            <CartHeader>
-              <ReturnButton href='/shoppage'>
-                ◀ Return and continue shopping
-              </ReturnButton>
-              <Total> Total: &nbsp;&nbsp; € {totalPrice.toFixed(2)}</Total>
-            </CartHeader>
-            {cart.map((product, index) => (
-              <>
-                <CartDivider />
-                <ListItem
-                  qty={product.qty}
-                  key={index}
-                  id={product.id}
-                  fullDescription={product.fullDescription}
-                  display={product.display}
-                  subDisplay={product.subDisplay}
-                  price={product.price}
-                  packSize={product.packSize}
-                  imgUrl={product.imgUrl}
-                />
-              </>
-            ))}
-          </CartContainer>
-        </RowContainer>
+            </Field>
+            <ConfirmButton type='submit' value='place-order'>
+              Confirm & continue to payment
+            </ConfirmButton>
+          </OrderForm>
+        </FormContainer>
       </BodyContainer>
     </BodyWrapper>
   );

@@ -28,6 +28,21 @@ const OrdersContainer = () => {
 
   //GET USER ORDERS
 
+  // const getUserId = async () => {};
+
+  // const getData = async () => {
+  //   const res = await axios.get(
+  //     `http://localhost:1337/orders?usersPermissionsUser=${user.id}`,
+  //     {
+  //       withCredentials: true,
+  //     }
+  //   );
+  //   const data = await res.data;
+  //   console.log(data);
+  //   setOrders(data);
+  //   console.log(orders);
+  // };
+
   useEffect(() => {
     const getData = async () => {
       const res = await axios.get(
@@ -47,7 +62,7 @@ const OrdersContainer = () => {
   const getOrderDetails = () => {
     let details = [];
     for (let i = 0; i < orders.length; i++) {
-      console.log(orders[i]);
+      console.log(`${orders[i]}g`);
     }
   };
 
