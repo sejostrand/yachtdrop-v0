@@ -30,6 +30,7 @@ export const CurrentUserProvider = ({ children }) => {
     const fetchUser = async () => {
       const user = await callApi('/users/me', 'GET');
       setUserData(user);
+      window.localStorage.setItem('user', user.id);
       if (user.id) {
         dispatch({ type: 'LOGIN', user });
         return;

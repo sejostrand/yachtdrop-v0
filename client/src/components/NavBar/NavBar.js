@@ -5,6 +5,7 @@ import styled from 'styled-components';
 /* import NavLogo from './objects/NavLogo'; */
 import MenuLink from './objects/MenuLink';
 import LoginLink from './objects/LoginLink';
+import ShopLink from './objects/ShopLink';
 import ProfileLink from './objects/ProfileLink';
 import SignUpLink from './objects/SignUpLink';
 import YachtdropLogo from '@objects/YachtdropLogo';
@@ -81,6 +82,7 @@ const NavBar = (props) => {
       )}
       <NavAdmin direction={!matches ? 'column' : 'row'}>
         {!matches && <Hamburger open={open} setOpen={setOpen} />}
+        <ShopLink />
         <LoginLink />
         <ProfileLink />
         <SignUpLink />

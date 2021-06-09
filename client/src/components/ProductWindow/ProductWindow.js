@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { COLORS, FONTS } from '@assets/theme/theme';
 import { CartContext } from '@assets/utils/CartContext';
+import { useCurrentUser } from '@assets/utils/CurrentUser';
 
 const Container = styled.div`
   position: fixed;
@@ -133,6 +134,7 @@ const ButtonContainer = styled.div`
 
 const ProductWindow = (props) => {
   const [cart, setCart] = useContext(CartContext);
+  const user = useCurrentUser();
 
   const onAdd = () => {
     const product = {
@@ -178,7 +180,7 @@ const ProductWindow = (props) => {
             <AddToCart onClick={() => onAdd(props.product)}>
               Add to Cart
             </AddToCart>
-            <AddFav>Save as Favourite</AddFav>
+            {user.isAuthenticated && <AddFav>Save as Favourite</AddFav>}
           </ButtonContainer>
         </Section>
       </Window>
