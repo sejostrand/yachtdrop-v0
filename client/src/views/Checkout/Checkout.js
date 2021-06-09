@@ -7,7 +7,6 @@ import ListItem from './objects/ListItem';
 import COVER from '@assets/img/cover-narrow.jpg';
 import axios from 'axios';
 import { useCurrentUser } from '@assets/utils/CurrentUser';
-import DateTimePicker from 'react-datetime-picker';
 
 const BodyWrapper = styled.div`
   display: flex;
