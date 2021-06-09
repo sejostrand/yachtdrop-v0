@@ -78,9 +78,7 @@ const FavButton = styled.a`
     props.checkFav() ? COLORS.purple : COLORS.orange};
   color: white;
   padding: 5px 20px;
-  margin-top: 5px;
-  margin-left: auto;
-  margin-right: 10vw;
+  margin: 5px 10px;
   font-family: 'Calibri';
   font-size: 13px;
   font-weight: bold;

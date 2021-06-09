@@ -20,6 +20,7 @@ const FilterBarWrapper = styled.div`
   overflow: ${(props) => (props.filterBar ? 'visible' : 'hidden')};
   position: relative;
   min-height: 90vh;
+  background-color: ${COLORS.white};
 `;
 
 const PrimaryButton = styled.a`

@@ -5,7 +5,7 @@ export const GridWrapper = styled.div`
   width: auto;
   min-height: 70vh;
   background-color: ${COLORS.color5};
-  padding: 10px 20px;
+  padding: 10px;
   display: flex;
   flex-flow: row wrap;
   justify-content: start;

@@ -12,7 +12,7 @@ export const FavStar = styled.img`
 
 export const TileWrapper = styled.div`
   padding: 5px;
-  margin: 10px;
+  margin: 5px;
   background-color: ${COLORS.white};
   display: block;
   width: 160px;

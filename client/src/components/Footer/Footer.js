@@ -14,7 +14,7 @@ const FooterWrapper = styled.div`
 `;
 
 const Section = styled.div`
-  margin: 20px 60px;
+  margin: 20px 40px;
   display: flex;
   flex-flow: column nowrap;
 `;
@@ -34,27 +34,40 @@ const SectionItem = styled.a`
   cursor: pointer;
 `;
 
+const Container = styled.div`
+  display: flex;
+  margin: 0 auto;
+  align-items: flex-start;
+  width: fit-content;
+  flex-flow: row wrap;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+`;
+
 function Footer() {
   return (
     <>
       <FooterWrapper>
-        <Section>
-          <SectionTitle>About Us</SectionTitle>
-          <SectionItem>Story</SectionItem>
-          <SectionItem>Mission</SectionItem>
-          <SectionItem>Testimonials</SectionItem>
-        </Section>
-        <Section>
-          <SectionTitle>Partnerships</SectionTitle>
-          <SectionItem>Become a retail patner</SectionItem>
-          <SectionItem>Become an embassador</SectionItem>
-        </Section>
-        <Section>
-          <SectionTitle>Contact Us</SectionTitle>
-          <SectionItem>Facebook</SectionItem>
-          <SectionItem>Instagram</SectionItem>
-          <SectionItem>Twitter</SectionItem>
-        </Section>
+        <Container>
+          <Section>
+            <SectionTitle>About Us</SectionTitle>
+            <SectionItem>Story</SectionItem>
+            <SectionItem>Mission</SectionItem>
+            <SectionItem>Testimonials</SectionItem>
+          </Section>
+          <Section>
+            <SectionTitle>Partnerships</SectionTitle>
+            <SectionItem>Become a retail patner</SectionItem>
+            <SectionItem>Become an embassador</SectionItem>
+          </Section>
+          <Section>
+            <SectionTitle>Contact Us</SectionTitle>
+            <SectionItem>Facebook</SectionItem>
+            <SectionItem>Instagram</SectionItem>
+            <SectionItem>Twitter</SectionItem>
+          </Section>
+        </Container>
       </FooterWrapper>
     </>
   );
