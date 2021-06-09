@@ -198,11 +198,6 @@ const FilterBar = (props) => {
       }
     }
 
-    setSearch(value) {
-      this.clear();
-      this.search = value;
-    }
-
     getQueryString() {
       let result = 'products?';
       if (this.category != null) {
