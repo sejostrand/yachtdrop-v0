@@ -14,6 +14,7 @@ import {
   CheckboxLabel,
   HiddenSection,
 } from './FilterBar.styles';
+import FilterToggle from './objects/FilterToggle';
 
 const FilterBarWrapper = styled.div`
   height: calc(100vh - 96px);
@@ -23,7 +24,7 @@ const FilterBarWrapper = styled.div`
   position: fixed;
   z-index: ${(props) => (props.filterBar ? '4' : '1')};
   background-color: ${COLORS.white};
-  max-width: ${(props) => (props.filterBar ? '600px' : '30px')};
+  max-width: ${(props) => (props.filterBar ? '600px' : '2px')};
   transition: all 0.1s;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -122,29 +123,6 @@ const FilterLabel = styled.div`
   font-size: 18px;
   letter-spacing: 5px;
   transform: rotate(-90deg);
-`;
-
-const FilterToggle = styled.div`
-  z-index: 5;
-  position: ${(props) => (props.filterBar ? 'fixed' : 'absolute')};
-  display: flex;
-  padding: 12px 6px 10px 5px;
-  height: min-content;
-  width: min-content;
-  border-radius: 10px;
-  background-color: #f8694b;
-  text-align: center;
-  color: white;
-  font-size: 16px;
-  font-family: 'consolas';
-  cursor: pointer;
-  transform: ${(props) =>
-    props.filterBar ? 'translate(256px, 30px)' : 'translate(19px, 30px)'};
-  transition: all 0.1s;
-
-  @media (max-width: 960px) {
-    visibility: visible;
-  }
 `;
 
 const MobileFilter = (props) => {
@@ -559,13 +537,8 @@ const MobileFilter = (props) => {
       </FilterBarWrapper>
       <FilterToggle
         filterBar={props.filterBar}
-        onClick={() => props.setFilterBar(!props.filterBar)}
-      >
-        {props.filterBar ? '◀' : '▶'}
-      </FilterToggle>
-      <LabelContainer filterBar={props.filterBar}>
-        <FilterLabel>FILTER BAR</FilterLabel>
-      </LabelContainer>
+        setFilterBar={props.setFilterBar}
+      />
     </>
   );
 };

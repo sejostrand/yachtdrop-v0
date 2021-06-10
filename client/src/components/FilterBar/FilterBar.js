@@ -10,12 +10,13 @@ import {
   MenuContainer,
   HiddenSection,
 } from './FilterBar.styles';
+import FilterToggle from './objects/FilterToggle';
 
 const FilterBarWrapper = styled.div`
   z-index: 4;
   display: flex;
   flex-flow: column nowrap;
-  max-width: ${(props) => (props.filterBar ? '600px' : '30px')};
+  max-width: ${(props) => (props.filterBar ? '600px' : '0px')};
   transition: all 0.1s;
   overflow: ${(props) => (props.filterBar ? 'visible' : 'hidden')};
   position: relative;
@@ -107,7 +108,30 @@ const FilterLabel = styled.div`
   transform: rotate(-90deg);
 `;
 
-const FilterToggle = styled.div`
+const FilterToggle2 = styled.div`
+  z-index: 5;
+  position: absolute;
+  display: flex;
+  padding: 12px 6px 10px 5px;
+  height: min-content;
+  width: min-content;
+  border-radius: 10px;
+  background-color: #f8694b;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  font-family: 'consolas';
+  cursor: pointer;
+  transform: ${(props) =>
+    props.filterBar ? 'translate(256px, 30px)' : 'translate(19px, 30px)'};
+  transition: all 0.1s;
+
+  @media (max-width: 960px) {
+    visibility: visible;
+  }
+`;
+
+const FilterToggle1 = styled.div`
   z-index: 5;
   position: absolute;
   display: flex;
@@ -530,13 +554,8 @@ const FilterBar = (props) => {
       </FilterBarWrapper>
       <FilterToggle
         filterBar={props.filterBar}
-        onClick={() => props.setFilterBar(!props.filterBar)}
-      >
-        {props.filterBar ? '◀' : '▶'}
-      </FilterToggle>
-      <LabelContainer filterBar={props.filterBar}>
-        <FilterLabel>FILTER BAR</FilterLabel>
-      </LabelContainer>
+        setFilterBar={props.setFilterBar}
+      />
     </>
   );
 };

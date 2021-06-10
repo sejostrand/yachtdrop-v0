@@ -11,6 +11,7 @@ const GridWrapper = styled.div`
   min-height: 70vh;
   background-color: ${COLORS.color5};
   padding: 10px;
+  margin: 0 1vw;
   display: flex;
   flex-flow: row wrap;
   justify-content: start;
