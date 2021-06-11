@@ -6,7 +6,7 @@ import { useCurrentUser } from '@assets/utils/CurrentUser';
 const Container = styled.div`
   display: flex;
   flex-flow: column nowrap;
-  width: 100%;
+  margin-left: 20px;
 `;
 
 const ButtonsContainer = styled.div`

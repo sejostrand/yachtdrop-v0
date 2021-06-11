@@ -84,7 +84,6 @@ const HideButton = styled.div`
 `;
 
 const ListTitle = styled.div`
-  width: 410px;
   padding: 1px;
   background-color: ${COLORS.green};
   color: white;
