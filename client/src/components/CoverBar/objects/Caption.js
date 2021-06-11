@@ -13,7 +13,7 @@ const StyledCaption = styled.div`
 `;
 
 const Caption = () => {
-  return <StyledCaption>La Maite Canala esta bien buena</StyledCaption>;
+  return <StyledCaption>Gain points for your next order!</StyledCaption>;
 };
 
 export default Caption;
