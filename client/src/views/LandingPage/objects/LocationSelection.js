@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   align-items: center;
   background-color: white;
   margin: 0;
-  padding: 18px;
+  padding: 10px;
   border-radius: 10px;
   transform: translateY(35vw);
   @media (max-width: 900px) {
@@ -37,7 +37,7 @@ const ButtonContainer = styled.div`
   flex-flow: row wrap;
   align-items: center;
   justify-content: center;
-  margin: 10px 100px;
+  margin: 20px 50px;
   @media (max-width: 900px) {
     margin: 10px;
   }
@@ -52,8 +52,8 @@ const Button = styled.a`
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
-  padding: 8px 20px;
-  margin: 5px;
+  padding: 4px 15px;
+  margin: 0 5px;
   border-radius: 10px;
   cursor: pointer;
   align-self: center;
@@ -61,19 +61,7 @@ const Button = styled.a`
   transition: all 0.2s;
   &:hover {
     opacity: 0.8;
-    transform: scale(1.05);
   }
-`;
-
-const Caption = styled.div`
-  display: flex;
-  position: relative;
-  flex-flow: row nowrap;
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  color: white;
-  transform: translateY(90px);
 `;
 
 const Subtitle = styled.div`
@@ -83,25 +71,39 @@ const Subtitle = styled.div`
   letter-spacing: 1px;
   font-weight: bold;
   color: black;
-  transform: translateY(20px);
 `;
 
-const ShopSelection = () => {
-  return (
-    <Wrapper>
-      <Title>Order drinks to your yacht.</Title>
+const Caption = styled.div`
+  display: flex;
+  position: absolute;
+  flex-flow: row nowrap;
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: white;
+  justify-content: center;
+  transform: translateY(50vw);
+`;
 
-      <ButtonContainer>
-        <Button href='/shoppage'>Mallorca</Button>
-        <Button href='/shoppage'>Croaticia</Button>
-        <Button href='/shoppage'>Ibiza</Button>
-        <Button href='/shoppage'>Menorca</Button>
-        <Button href='/shoppage'>Monte Negro</Button>
-      </ButtonContainer>
-      <Subtitle>Select your location!</Subtitle>
+const LocationSelection = () => {
+  return (
+    <>
+      <Wrapper>
+        <Title>Order drinks to your yacht.</Title>
+
+        <ButtonContainer>
+          <Button href='/shoppage'>Mallorca</Button>
+          <Button href='/shoppage'>Croaticia</Button>
+          <Button href='/shoppage'>Ibiza</Button>
+          <Button href='/shoppage'>Menorca</Button>
+          <Button href='/shoppage'>Monte Negro</Button>
+        </ButtonContainer>
+        <Subtitle>Select your location!</Subtitle>
+      </Wrapper>
       <Caption>Drinks delivery in 24 hours.</Caption>
-    </Wrapper>
+    </>
   );
 };
 
-export default ShopSelection;
+export default LocationSelection;

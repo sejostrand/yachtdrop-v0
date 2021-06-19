@@ -42,7 +42,7 @@ const Step = styled.div`
   transition: ease-in-out 0.1s;
 
   &:hover {
-    transform: scale(1.02);
+    opacity: 0.8;
   }
 `;
 

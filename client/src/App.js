@@ -17,6 +17,8 @@ import NewLogIn from '@views/LogIn/NewLogIn';
 import Profile from '@views/Profile/Profile';
 import Checkout from '@views/Checkout/Checkout';
 import OrderConfirmation from '@views/OrderConfirmation/OrderConfirmation';
+import Terms from '@views/Terms/Terms';
+import PrivacyPolicy from '@views/PrivacyPolicy/PrivacyPolicy';
 
 const AppWrapper = styled.div`
   display: flex;
@@ -60,6 +62,9 @@ function App() {
           <Route path='/aboutus'>
             <AboutUs />
           </Route>
+          <Route path='/privacy-policy'>
+            <PrivacyPolicy />
+          </Route>
           <Route path='/profile'>
             <Profile />
           </Route>
@@ -74,6 +79,9 @@ function App() {
           </Route>
           <Route path='/embassador'>
             <Embassador />
+          </Route>
+          <Route path='/terms'>
+            <Terms />
           </Route>
         </Switch>
       </Router>

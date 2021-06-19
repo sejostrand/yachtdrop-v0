@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { COLORS } from '@assets/theme/theme';
 
 import COVER from '@assets/img/cover.jpg';
-import ShopSelection from './objects/ShopSelection';
+import LocationSelection from './objects/LocationSelection';
 import Steps from './objects/Steps';
 import Division from './objects/Division';
 import VIDEO from '@assets/media/yachtdrop-promo.mp4';
@@ -96,7 +96,7 @@ const LandingPage = () => {
       <BodyWrapper>
         <video src={VIDEO} type='video/mp4' loop autoPlay muted />
 
-        <ShopSelection />
+        <LocationSelection />
         <ColorSection height='200' />
 
         <Steps />

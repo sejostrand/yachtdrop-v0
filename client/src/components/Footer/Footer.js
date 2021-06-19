@@ -19,7 +19,7 @@ const Section = styled.div`
   flex-flow: column nowrap;
 `;
 
-const SectionTitle = styled.div`
+const SectionTitle = styled.a`
   margin: 5px 0px;
   font-size: 20px;
   font-weight: bold;
@@ -51,9 +51,10 @@ function Footer() {
       <FooterWrapper>
         <Container>
           <Section>
-            <SectionTitle>About Us</SectionTitle>
+            <SectionTitle href='aboutus'>About Us</SectionTitle>
             <SectionItem>Story</SectionItem>
-            <SectionItem>Mission</SectionItem>
+            <SectionItem href='terms'>Terms of service</SectionItem>
+            <SectionItem href='privacy-policy'>Privacy policy</SectionItem>
             <SectionItem>Testimonials</SectionItem>
           </Section>
           <Section>
@@ -62,7 +63,7 @@ function Footer() {
             <SectionItem>Become an embassador</SectionItem>
           </Section>
           <Section>
-            <SectionTitle>Contact Us</SectionTitle>
+            <SectionTitle href='contactus'>Contact Us</SectionTitle>
             <SectionItem>Facebook</SectionItem>
             <SectionItem>Instagram</SectionItem>
             <SectionItem>Twitter</SectionItem>

@@ -47,6 +47,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "DELETE",
+      "path": "/checkout",
+      "handler": "orders.checkout",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

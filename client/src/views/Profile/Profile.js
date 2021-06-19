@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+import { useCurrentUser } from '@assets/utils/CurrentUser';
 import { COLORS } from '@assets/theme/theme';
 
 import DetailsContainer from './objects/DetailsContainer';
@@ -75,9 +77,48 @@ const SubmitButton = styled.input`
 `;
 
 const Profile = () => {
+  const [orders, setOrders] = useState([]);
+  const [renderOrders, setRenderOrders] = useState(false);
+
   const checkMenu = (input) => {
     window.location.href.toString().match(`/${input}/g`);
   };
+
+  const log = () => console.log(orders);
+
+  useEffect(() => {
+    const url = `http://localhost:1337/orders?usersPermissionsUser=${window.localStorage.getItem(
+      'user'
+    )}&_sort=createdAt:DESC`;
+    const getData = axios
+      .get(url, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response.data);
+        setOrders(JSON.parse(JSON.stringify(response.data)));
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const res = await axios.get(
+  //       `http://localhost:1337/orders?usersPermissionsUser=${window.localStorage.getItem(
+  //         'user'
+  //       )}`,
+  //       {
+  //         withCredentials: true,
+  //       }
+  //     );
+  //     const data = await res.data;
+  //     setOrders(JSON.stringify(data));
+  //     console.log(data);
+
+  //     console.log(orders);
+  //   };
+  //   getData();
+  // }, []);
 
   return (
     <>
@@ -104,25 +145,12 @@ const Profile = () => {
             >
               Orders
             </MenuButton>
-            <MenuButton
-              menuState={
-                window.location.href.toString().match(/wallet/g) ? true : false
-              }
-              tag='wallet'
-              href='/profile/wallet'
-              //onClick={() => setMenuState('wallet')}
-            >
-              Wallet
-            </MenuButton>
           </SubMenu>
           {window.location.href.toString().match(/details/g) == 'details' && (
             <DetailsContainer />
           )}
           {window.location.href.toString().match(/orders/g) == 'orders' && (
-            <OrdersContainer />
-          )}
-          {window.location.href.toString().match(/wallet/g) == 'wallet' && (
-            <WalletContainer />
+            <OrdersContainer log={log} orders={orders} />
           )}
         </Container>
       </BodyWrapper>

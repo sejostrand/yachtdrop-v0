@@ -101,7 +101,7 @@ const TotalPrice = styled.div`
   width: 100px;
 `;
 
-const ListItem = (props) => {
+const Order = (props) => {
   const [cart, setCart] = useContext(CartContext);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -192,4 +192,4 @@ const ListItem = (props) => {
   );
 };
 
-export default ListItem;
+export default Order;

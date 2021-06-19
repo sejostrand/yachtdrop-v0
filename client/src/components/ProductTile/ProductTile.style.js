@@ -117,6 +117,11 @@ export const AddContainer = styled.div`
   width: 100%;
   height: auto;
   text-align: center;
+  transition: all 100ms ease-in-out;
+
+  &:active {
+    opacity: 0.8;
+  }
 `;
 
 export const AddButtonWrapper = styled.div`

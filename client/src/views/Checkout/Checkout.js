@@ -1,13 +1,8 @@
-import { useState, useEffect, useContext } from 'react';
+
 import styled from 'styled-components';
-import { CartContext } from '@assets/utils/CartContext';
+
 import { COLORS } from '@assets/theme/theme';
-import useMediaQuery from '@assets/utils/useMediaQuery';
-import ListItem from './objects/ListItem';
 import COVER from '@assets/img/cover-narrow.jpg';
-import axios from 'axios';
-import { useCurrentUser } from '@assets/utils/CurrentUser';
-import DateTimePicker from 'react-datetime-picker';
 import CartList from './components/CartList';
 import CheckoutForm from './components/CheckoutForm';
 import ReturnButton from './objects/ReturnButton';

@@ -16,8 +16,7 @@ const BodyWrapper = styled.div`
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  background-image: url(${BG});
-  background-position: center bottom;
+  background-color: white;
   background-size: auto 100vh;
 `;
 
