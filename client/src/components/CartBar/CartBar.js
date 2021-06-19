@@ -31,7 +31,6 @@ const ListContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
   background-color: white;
-  height: auto;
   padding: 5px;
   overflow-y: scroll;
   border-bottom-left-radius: 7px;
@@ -84,12 +83,11 @@ const HideButton = styled.div`
 `;
 
 const ListTitle = styled.div`
-  padding: 1px;
   background-color: ${COLORS.green};
   color: white;
   letter-spacing: 2px;
   font-size: 12px;
-  margin: 0 40px;
+  margin: 0 45px 0 40px;
   padding: 2px 10px;
   font-weight: bold;
   border-top-left-radius: 7px;
