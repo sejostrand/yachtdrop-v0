@@ -1,6 +1,5 @@
-
+import React from 'react';
 import styled from 'styled-components';
-
 import { COLORS } from '@assets/theme/theme';
 import COVER from '@assets/img/cover-narrow.jpg';
 import CartList from './components/CartList';

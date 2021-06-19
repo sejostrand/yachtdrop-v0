@@ -10,7 +10,6 @@ import ProfileLink from './objects/ProfileLink';
 import SignUpLink from './objects/SignUpLink';
 import YachtdropLogo from '@objects/YachtdropLogo';
 import LogOutButton from '@objects/LogOutButton';
-import DropDownMenu from '@components/DropDownMenu/DropDownMenu';
 import useMediaQuery from '@assets/utils/useMediaQuery';
 import Hamburger from './objects/Hamburger';
 

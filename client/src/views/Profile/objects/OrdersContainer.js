@@ -70,6 +70,10 @@ const OrdersContainer = (props) => {
     console.log(products);
   }, []);
 
+  /* {orders.map((order, index) => (
+        <ListItem key={index} />
+      ))} */
+
   return (
     <Container>
       {props.orders.map((order, index) => {

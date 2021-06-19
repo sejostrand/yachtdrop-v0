@@ -6,7 +6,6 @@ import useMediaQuery from '@assets/utils/useMediaQuery';
 import COVER from '@assets/img/cover-narrow.jpg';
 import axios from 'axios';
 import { useCurrentUser } from '@assets/utils/CurrentUser';
-import DateTimePicker from 'react-datetime-picker';
 import OrderSummary from '../objects/OrderSummary';
 import ConfirmButton from '../objects/ConfirmButton';
 

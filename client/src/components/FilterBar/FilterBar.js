@@ -207,6 +207,7 @@ const FilterBar = (props) => {
         this.categoryTags = [value];
       } else if (this.categoryTags.includes(value)) {
         this.categoryTags.splice(this.categoryTags.indexOf(value), 1);
+        // Removes value from array of tags
       } else {
         this.categoryTags.push(value);
       }
@@ -242,6 +243,8 @@ const FilterBar = (props) => {
     }
   }
 
+
+  //document.location.search = state of the filtering query
   const checkCategory = (tag) => {
     const params = new ParamsFilter(document.location.search);
     return params.category != tag;
@@ -259,6 +262,7 @@ const FilterBar = (props) => {
       : params.categoryTags.includes(tag);
   };
 
+  //Handler that creates new filter query and uses setCategory to toggle
   const toggleCategory = (value) => {
     const params = new ParamsFilter(document.location.search);
     params.setCategory(value);
