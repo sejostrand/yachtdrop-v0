@@ -97,7 +97,7 @@ const SearchBar = (props) => {
         <SearchInput
           id='search'
           type='text'
-          placeholder='What can we help you find?'
+          placeholder='&#x1F50E;&#xFE0E; What can we help you find?'
           onChange={(e) => props.setSearchInput(convertSearch(e.target.value))}
         />
       )}

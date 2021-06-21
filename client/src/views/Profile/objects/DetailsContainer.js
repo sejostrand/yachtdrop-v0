@@ -15,26 +15,17 @@ const Field = styled.div`
   font-weight: 500;
 `;
 
-const EmailField = styled.h2`
-  font-size: 22px;
-  margin: 20px 0; 
-`;
-
-const NameField = styled.h1`
-  font-size: 26px;
-  margin: 40px 0px;
-`;
-
 const DetailsContainer = () => {
   const user = useCurrentUser();
   return (
     <Container>
       <Field>{user.user}</Field>
-      <NameField>Welcome {user.firstName}!</NameField>
+      <Field>Welcome {user.firstName}!</Field>
       <br />
       <Field>Here are your details:</Field>
-      <EmailField>Your Email: {user.email}</EmailField>
-      <EmailField>Your contact number: {user.contactNumber}</EmailField>
+      <br />
+      <Field>Email: {user.email}</Field>
+      <Field>Contact number: {user.contactNumber}</Field>
     </Container>
   );
 };

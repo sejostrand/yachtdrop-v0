@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useCurrentUser } from '@assets/utils/CurrentUser';
 
 const StyledCaption = styled.div`
   background-color: black;
@@ -13,7 +14,14 @@ const StyledCaption = styled.div`
 `;
 
 const Caption = () => {
-  return <StyledCaption>Gain points for your next order!</StyledCaption>;
+  const user = useCurrentUser();
+  return (
+    <StyledCaption>
+      {user.isAuthenticated
+        ? `Welcome ${user.firstName}, happy sailing!`
+        : 'Sign up or log in to save favorites!'}
+    </StyledCaption>
+  );
 };
 
 export default Caption;

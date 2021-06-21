@@ -40,8 +40,14 @@ const OrderSummary = (props) => {
       </Section>
       <Section>
         <Row>
+          <Label>VAT</Label>
+          <Label>+ € {(props.total * 0.19).toFixed(2)}</Label>
+        </Row>
+      </Section>
+      <Section>
+        <Row>
           <Label>TOTAL</Label>
-          <Label>€ {props.total}</Label>
+          <Label>€ {(props.total * 1.19).toFixed(2)}</Label>
         </Row>
       </Section>
     </Container>
