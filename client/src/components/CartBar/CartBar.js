@@ -122,7 +122,7 @@ const CartBar = (props) => {
       <ButtonContainer>
         {cart.length !== 0 && (
           <>
-            <Checkout href='/Checkout'>Proceed to checkout</Checkout>
+            <Checkout href='/order-confirmation'>Proceed to checkout</Checkout>
             <Total> Total € {totalPrice.toFixed(2)}</Total>
           </>
         )}

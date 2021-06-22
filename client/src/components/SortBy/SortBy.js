@@ -74,11 +74,13 @@ const SortButton = styled.a`
 `;
 
 const FavButton = styled.a`
-  background-color: ${(props) =>
-    props.checkFav() ? COLORS.purple : COLORS.orange};
-  color: white;
+  background-color: ${(props) => (!props.checkFav() ? 'white' : COLORS.orange)};
+  color: ${(props) => (!props.checkFav() ? COLORS.orange : 'white')};
+  border: ${(props) =>
+    props.checkFav() ? 'none' : `2px solid ${COLORS.orange}`};
   padding: 5px 20px;
   margin: 5px 10px;
+  margin: ${(props) => (!props.checkFav() ? '3px 8px' : '5px 10px')};
   font-family: 'Calibri';
   font-size: 13px;
   font-weight: bold;

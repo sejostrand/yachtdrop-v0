@@ -18,8 +18,8 @@ const Caption = () => {
   return (
     <StyledCaption>
       {user.isAuthenticated
-        ? `Welcome ${user.firstName}, happy sailing!`
-        : 'Sign up or log in to save favorites!'}
+        ? `Welcome ${user.firstName}, happy shopping sailor!`
+        : 'Sign up or log in and save your favourite products!'}
     </StyledCaption>
   );
 };
