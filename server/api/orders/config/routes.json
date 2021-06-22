@@ -49,7 +49,7 @@
       }
     },
     {
-      "method": "DELETE",
+      "method": "POST",
       "path": "/checkout",
       "handler": "orders.checkout",
       "config": {

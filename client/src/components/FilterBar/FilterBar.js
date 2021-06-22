@@ -243,7 +243,6 @@ const FilterBar = (props) => {
     }
   }
 
-
   //document.location.search = state of the filtering query
   const checkCategory = (tag) => {
     const params = new ParamsFilter(document.location.search);
@@ -293,7 +292,7 @@ const FilterBar = (props) => {
               href={`/shoppage/`}
               checkCategory={checkCategory}
             >
-              Clear filters
+              All
             </PrimaryButton>
             <PrimaryButton
               tag='wine'
