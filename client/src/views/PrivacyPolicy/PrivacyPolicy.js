@@ -57,7 +57,7 @@ const PrivacyPolicy = () => {
   return (
     <BodyWrapper>
       <BodyContainer>
-        <Title>Terms of service</Title>
+        <Title>Privacy Policy</Title>
         <SubTitle>Please read.</SubTitle>
 
         <ContentContainer>

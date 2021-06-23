@@ -20,10 +20,9 @@ const BodyDiv = styled.div`
 `;
 
 // MAIN
-const ShopPage = () => {
+const ShopLandingPage = () => {
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [searchInput, setSearchInput] = useState('');
-  const [filterBar, setFilterBar] = useState(true);
   const [showCart, setShowCart] = useState(false);
   const matches = useMediaQuery('(min-width: 600px)');
 
@@ -80,14 +79,8 @@ const ShopPage = () => {
       />
       <CartBar showCart={showCart} setShowCart={setShowCart} />
       <BodyWrapper>
-        {matches ? (
-          <FilterBar filterBar={filterBar} setFilterBar={setFilterBar} />
-        ) : (
-          <MobileFilter filterBar={filterBar} setFilterBar={setFilterBar} />
-        )}
         <BodyDiv>
           <CoverBar />
-          <SortBy />
           <ProductGrid products={displayedProducts} />
         </BodyDiv>
       </BodyWrapper>
@@ -95,4 +88,4 @@ const ShopPage = () => {
   );
 };
 
-export default ShopPage;
+export default ShopLandingPage;

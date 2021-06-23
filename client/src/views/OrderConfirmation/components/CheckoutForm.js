@@ -104,6 +104,17 @@ const Paragrapgh = styled.p`
   margin: 10px;
 `;
 
+const Consent = styled.div`
+  max-width: 250px;
+  margin: 0 10px;
+  font-size: 12px;
+`;
+
+const PageLink = styled.a`
+  text-decoration: underline;
+  cursor: pointer;
+`;
+
 const CheckoutForm = () => {
   const [cart, setCart] = useContext(CartContext);
   const totalPrice = cart.reduce((acc, curr) => acc + curr.qty * curr.price, 0);
@@ -118,6 +129,7 @@ const CheckoutForm = () => {
   const [dateTime, setDateTime] = useState('');
   // const [value, onChange] = useState(new Date());
   const [redirect, setRedirect] = useState(false);
+  const [agreeTerms, setAgreeTerms] = useState(false);
 
   const getItems = () => {
     let result = {};
@@ -153,7 +165,7 @@ const CheckoutForm = () => {
 
   useEffect(() => {
     if (redirect == true) {
-      window.location.assign('/profile/orders');
+      window.location.assign('/checkout');
     }
   }, [redirect]);
 
@@ -170,7 +182,7 @@ const CheckoutForm = () => {
 
   return (
     <FormContainer>
-      <OrderForm action={'/signup'} method={'POST'} onSubmit={handleSubmit}>
+      <OrderForm action={''} method={'POST'} onSubmit={handleSubmit}>
         <VesselContainer>
           <VesselLabel>Vessel Name: </VesselLabel>
           <InputField
@@ -215,7 +227,32 @@ const CheckoutForm = () => {
                 </div> */}
         </Field>
         <OrderSummary total={totalPrice} />
-        <ConfirmButton />
+        <Field>
+          <input
+            type='checkbox'
+            value={agreeTerms}
+            onChange={(e) => setAgreeTerms(!agreeTerms)}
+          />
+          <Consent>
+            I have read the website{' '}
+            <PageLink
+              onClick={() => window.open('http://localhost:3000/terms')}
+            >
+              terms and conditions
+            </PageLink>{' '}
+            and{' '}
+            <PageLink
+              onClick={() =>
+                window.open('http://localhost:3000/privacy-policy')
+              }
+            >
+              privacy policy
+            </PageLink>{' '}
+            and agree to the terms.
+          </Consent>
+        </Field>
+
+        <ConfirmButton agreeTerms={agreeTerms} />
       </OrderForm>
     </FormContainer>
   );

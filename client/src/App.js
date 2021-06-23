@@ -6,6 +6,7 @@ import History from '@components/History';
 import NavBar from '@components/NavBar/NavBar';
 import Footer from '@components/Footer/Footer';
 import ShopPage from './views/ShopPage/ShopPage';
+import ShopLandingPage from './views/ShopLandingPage/ShopLandingPage';
 import LandingPage from '@views/LandingPage/LandingPage';
 import LandingPage2 from '@views/LandingPage2/LandingPage2';
 import AboutUs from './views/AboutUs/AboutUs';
@@ -49,6 +50,9 @@ function App() {
           </Route>
           <Route path='/shoppage'>
             <ShopPage />
+          </Route>
+          <Route path='/shoplandingpage'>
+            <ShopLandingPage />
           </Route>
           <Route path='/signup'>
             <SignUp />

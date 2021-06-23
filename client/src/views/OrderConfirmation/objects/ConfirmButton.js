@@ -20,9 +20,13 @@ const ButtonWrapper = styled.button`
   }
 `;
 
-const ConfirmButton = () => {
+const ConfirmButton = (props) => {
   return (
-    <ButtonWrapper type='submit' value='place-order'>
+    <ButtonWrapper
+      disabled={props.agreeTerms}
+      type='submit'
+      value='place-order'
+    >
       Confirm & continue to payment
     </ButtonWrapper>
   );
