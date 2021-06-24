@@ -4,6 +4,7 @@ import BeerIMG from '../img/beer.png'
 import WineImg from '../img/wine.png'
 import SpiritsImg from '../img/spirits.png'
 import OtherImg from '../img/more.png'
+import axios from 'axios'
 
 const SectionWrapper = styled.section`
     display: flex;
@@ -80,6 +81,11 @@ const ColumnTile = () => {
             link: "http://localhost:3000/shoppage"
         }
     ]
+
+    const TileInfox = async () => {
+        const res = await axios.get('http://localhost:1337/products?')
+        console.log(res.data)
+    }
 
     const updateTile = () => {
         if (displayedTile.id == 3) {

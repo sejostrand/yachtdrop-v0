@@ -8,6 +8,7 @@ import WINE from '@assets/img/wine-tile.png';
 import SPIRIT from '@assets/img/spirits-tile.png';
 import BEER from '@assets/img/beer-tile.png';
 import MORE from '@assets/img/more-tile.png';
+import ColumnTile from './ColumnTile';
 
 const Container = styled.div`
   display: flex;
@@ -47,6 +48,7 @@ const TileMenu = () => {
   return (
     <Container>
       <SlideShowTile />
+      <ColumnTile />
       <GridContainer>
         <Row>
           <TileIMG src={WINE} />
