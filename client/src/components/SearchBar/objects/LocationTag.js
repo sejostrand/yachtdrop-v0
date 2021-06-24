@@ -23,7 +23,7 @@ const StyledLocationTag = styled.a`
 `;
 
 const LocationTag = () => {
-  return <StyledLocationTag href='shoppage'>Mallorca</StyledLocationTag>;
+  return <StyledLocationTag href='shoplandingpage'>Mallorca</StyledLocationTag>;
 };
 
 export default LocationTag;
