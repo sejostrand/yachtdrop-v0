@@ -11,15 +11,50 @@ const Container = styled.div`
   margin: 5px;
   height: 410px;
   width: 610px;
-  background-color: blue;
+  background-color: ${COLORS.orange};
+  align-items: center;
 `;
 
 const StyledIMG = styled.img`
-  position: absolute;
-  height: 300px;
+  position: relative;
+  height: 280px;
+  margin-left: 5%;
 `;
 
-const SlideShowTile = () => {
+const TileWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+`
+
+const TileTitle = styled.h1`
+    margin: 0 auto;
+    font-size: 38px;
+    padding: 10px 0;
+    color: white;
+`
+
+const TitleText = styled.p`
+    font-size: 20px;
+    padding-bottom: 19px;
+    color: white;
+`
+
+const TileButton = styled.a`
+    background-color: white;
+    color: black;
+    padding: 4px 0;
+    margin: 0 auto;
+    width: 20%;
+    text-decoration: none;
+    border-radius: 5px;
+`
+
+
+const SlideShowTile = (props) => {
   const [displayedTile, setDisplayedTile] = useState({
     id: 1,
     img: CORONA,
@@ -39,15 +74,15 @@ const SlideShowTile = () => {
     {
       id: 2,
       img: HAVANA,
-      title: "It's wine time somewhere.",
-      text: "We've got your balls.",
+      title: "Never rum out of stock.",
+      text: "We've got you by the balls.",
       link: 'http://localhost:3000/shoppage/products?category.category=wine&',
     },
     {
       id: 3,
       img: COKE,
-      title: "It's time for a whyskey.",
-      text: "We've got nuthin on ya.",
+      title: "Some refreshments?",
+      text: "Ye've got nuthin on us.",
       link: 'http://localhost:3000/shoppage/products?category.category=spirit&',
     },
   ];
@@ -61,11 +96,17 @@ const SlideShowTile = () => {
       setDisplayedTile(TileInfo[2]);
     }
   };
-  setTimeout(updateTile, 2000);
+  setTimeout(updateTile, 5000);
+
 
   return (
     <Container>
       <StyledIMG src={displayedTile.img} />
+      <TileWrapper>
+      <TileTitle>{displayedTile.title}</TileTitle>
+      <TitleText>{displayedTile.text}</TitleText>
+      <TileButton href={displayedTile.link}>Shop</TileButton>
+      </TileWrapper>
     </Container>
   );
 };

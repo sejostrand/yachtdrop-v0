@@ -8,7 +8,6 @@ import WINE from '@assets/img/wine-tile.png';
 import SPIRIT from '@assets/img/spirits-tile.png';
 import BEER from '@assets/img/beer-tile.png';
 import MORE from '@assets/img/more-tile.png';
-import ColumnTile from './ColumnTile';
 
 const Container = styled.div`
   display: flex;
@@ -38,7 +37,6 @@ const TileIMG = styled.img`
   height: 200px;
   margin: 5px;
   cursor: pointer;
-
   &:hover {
     opacity: 0.9;
   }
@@ -48,7 +46,6 @@ const TileMenu = () => {
   return (
     <Container>
       <SlideShowTile />
-      <ColumnTile />
       <GridContainer>
         <Row>
           <TileIMG
@@ -60,20 +57,20 @@ const TileMenu = () => {
             }
           />
           <TileIMG
-            src={SPIRIT}
+            src={BEER}
             onClick={() =>
               window.location.assign(
-                'http://localhost:3000/shoppage/products?category.category=spirit&'
+                'http://localhost:3000/shoppage/products?category.category=beer&'
               )
             }
           />
         </Row>
         <Row>
           <TileIMG
-            src={BEER}
+            src={SPIRIT}
             onClick={() =>
               window.location.assign(
-                'http://localhost:3000/shoppage/products?category.category=beer&'
+                'http://localhost:3000/shoppage/products?category.category=spirit&'
               )
             }
           />
