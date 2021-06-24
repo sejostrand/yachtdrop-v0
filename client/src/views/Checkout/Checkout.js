@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from '@assets/theme/theme';
-import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-
+/* import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+ */
 const BodyWrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;

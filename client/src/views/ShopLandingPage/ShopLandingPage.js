@@ -12,6 +12,7 @@ import SortBy from '@components/SortBy/SortBy.js';
 import ProductGrid from '@components/ProductGrid/ProductGrid';
 import CartBar from '@components/CartBar/CartBar';
 import useMediaQuery from '@assets/utils/useMediaQuery';
+import AdvertGrid from './components/AdvertGrid'
 
 const BodyDiv = styled.div`
   width: 100%;
@@ -80,7 +81,7 @@ const ShopLandingPage = () => {
       <CartBar showCart={showCart} setShowCart={setShowCart} />
       <BodyWrapper>
         <BodyDiv>
-          <CoverBar />
+          <AdvertGrid />
           <ProductGrid products={displayedProducts} />
         </BodyDiv>
       </BodyWrapper>
