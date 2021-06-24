@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from '@assets/theme/theme';
+import CardSection from './components/CardSection';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 const BodyWrapper = styled.div`
@@ -13,7 +14,7 @@ const BodyWrapper = styled.div`
 `;
 
 const Checkout = () => {
-  return <BodyWrapper></BodyWrapper>;
+  return <BodyWrapper>{/* <CardSection /> */}</BodyWrapper>;
 };
 
 export default Checkout;

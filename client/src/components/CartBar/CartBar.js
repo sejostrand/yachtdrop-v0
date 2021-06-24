@@ -67,21 +67,6 @@ const Total = styled.div`
   font-weight: bold;
 `;
 
-const HideButton = styled.div`
-  background-color: ${COLORS.green};
-  color: white;
-  width: fit-content;
-  padding: 0px 30px;
-  margin: 20px 40px 0px 40px;
-  border-radius: 3px;
-  font-size: 25px;
-  text-align: center;
-  cursor: pointer;
-  &:hover {
-    opacity: 0.8;
-  }
-`;
-
 const ListTitle = styled.div`
   background-color: ${COLORS.green};
   color: white;
