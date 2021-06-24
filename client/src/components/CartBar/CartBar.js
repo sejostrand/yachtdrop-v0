@@ -72,7 +72,7 @@ const ListTitle = styled.div`
   color: white;
   letter-spacing: 2px;
   font-size: 12px;
-  margin: 0 45px 0 40px;
+  margin: 0 39px 0 40px;
   padding: 2px 10px;
   font-weight: bold;
   border-top-left-radius: 7px;

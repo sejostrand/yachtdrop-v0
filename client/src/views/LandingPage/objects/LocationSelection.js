@@ -93,7 +93,7 @@ const LocationSelection = () => {
         <Title>Order drinks to your yacht.</Title>
 
         <ButtonContainer>
-          <Button href='/shoppage'>Mallorca</Button>
+          <Button href='/shoplandingpage'>Mallorca</Button>
           <Button href='/shoppage'>Croaticia</Button>
           <Button href='/shoppage'>Ibiza</Button>
           <Button href='/shoppage'>Menorca</Button>
