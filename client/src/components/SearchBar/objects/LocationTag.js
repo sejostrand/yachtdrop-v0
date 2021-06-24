@@ -23,7 +23,15 @@ const StyledLocationTag = styled.a`
 `;
 
 const LocationTag = () => {
-  return <StyledLocationTag href='shoplandingpage'>Mallorca</StyledLocationTag>;
+  return (
+    <StyledLocationTag
+      onClick={() =>
+        window.location.assign('http://localhost:3000/shoplandingpage')
+      }
+    >
+      Mallorca
+    </StyledLocationTag>
+  );
 };
 
 export default LocationTag;

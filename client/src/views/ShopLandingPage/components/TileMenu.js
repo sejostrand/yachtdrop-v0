@@ -49,12 +49,38 @@ const TileMenu = () => {
       <SlideShowTile />
       <GridContainer>
         <Row>
-          <TileIMG src={WINE} />
-          <TileIMG src={SPIRIT} />
+          <TileIMG
+            src={WINE}
+            onClick={() =>
+              window.location.assign(
+                'http://localhost:3000/shoppage/products?category.category=wine&'
+              )
+            }
+          />
+          <TileIMG
+            src={SPIRIT}
+            onClick={() =>
+              window.location.assign(
+                'http://localhost:3000/shoppage/products?category.category=spirit&'
+              )
+            }
+          />
         </Row>
         <Row>
-          <TileIMG src={BEER} />
-          <TileIMG src={MORE} />
+          <TileIMG
+            src={BEER}
+            onClick={() =>
+              window.location.assign(
+                'http://localhost:3000/shoppage/products?category.category=beer&'
+              )
+            }
+          />
+          <TileIMG
+            src={MORE}
+            onClick={() =>
+              window.location.assign('http://localhost:3000/shoppage/products?')
+            }
+          />
         </Row>
       </GridContainer>
     </Container>
